@@ -1,0 +1,760 @@
+#!/usr/bin/env python3
+"""Validate the M0 governance and reproducibility foundation.
+
+This validator deliberately checks only research-program contracts. It does not
+evaluate memory mechanisms, scientific claims, or product readiness.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import sys
+from collections.abc import Mapping
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+
+REQUIRED_PATHS = (
+    "README.md",
+    "AGENTS.md",
+    "LICENSE",
+    "requirements-dev.txt",
+    "requirements-dev.lock",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "GOVERNANCE.md",
+    "SECURITY.md",
+    ".github/pull_request_template.md",
+    ".github/workflows/validate-m0.yml",
+    "docs/program/PROGRAM_CHARTER_v0.1.md",
+    "docs/program/M0_FOUNDATION.md",
+    "docs/program/RESEARCH_LAYERS.md",
+    "docs/program/EVIDENCE_LABELS.md",
+    "docs/program/EVIDENCE_STATES.md",
+    "docs/taxonomy/README.md",
+    "docs/benchmarks/README.md",
+    "docs/experiments/README.md",
+    "docs/security/README.md",
+    "schemas/experiment-manifest.schema.json",
+    "schemas/README.md",
+    "schemas/evidence-record.schema.json",
+    "schemas/mechanism-registry.schema.json",
+    "schemas/record-index.schema.json",
+    "examples/experiment-manifest.example.json",
+    "examples/README.md",
+    "examples/evidence-record.example.json",
+    "examples/mechanism-registry.example.json",
+    "templates/research-proposal.md",
+    "templates/README.md",
+    "templates/experiment-protocol.md",
+    "templates/experiment-report.md",
+    "templates/threat-model.md",
+    "registry/mechanisms.yaml",
+    "registry/README.md",
+    "registry/experiments.yaml",
+    "registry/evidence.yaml",
+    "records/README.md",
+    "references/README.md",
+    "reviews/README.md",
+    "reviews/M0_BOUNDARY_REVIEW_2026-07-20.md",
+)
+
+REGISTRIES = {
+    "registry/mechanisms.yaml": "mechanism_registry",
+    "registry/experiments.yaml": "experiment_registry",
+    "registry/evidence.yaml": "evidence_registry",
+}
+
+CHARTER_INVARIANTS = (
+    "LCMRP is not a CorpusStudio subsystem.",
+    "Layer 1 — Foundational Research",
+    "Layer 2 — Product-Independent Reference Implementations",
+    "Layer 3 — Future CorpusStudio Integration",
+    "RESEARCH-TO-PRODUCT HYPOTHESIS",
+    "Negative results, null findings, and failed mechanisms are valid program outputs",
+)
+
+TEMPLATE_INVARIANTS = (
+    "Future CorpusStudio Integration Implications",
+    "RESEARCH-TO-PRODUCT HYPOTHESIS",
+)
+
+MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
+PINNED_REQUIREMENT = re.compile(r"^([A-Za-z0-9_.-]+)==([^\s;]+)$")
+
+
+class RepositoryValidationError(ValueError):
+    """Raised when a repository contract is malformed or violated."""
+
+
+def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise RepositoryValidationError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def load_json(path: Path) -> Any:
+    """Load JSON while rejecting duplicate object keys."""
+
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return json.load(handle, object_pairs_hook=_reject_duplicate_pairs)
+    except (OSError, json.JSONDecodeError, RepositoryValidationError) as exc:
+        raise RepositoryValidationError(f"{path}: {exc}") from exc
+
+
+def load_yaml(path: Path) -> Any:
+    """Safely load YAML while rejecting duplicate mapping keys."""
+
+    try:
+        import yaml
+    except ImportError as exc:  # pragma: no cover - dependency failure path
+        raise RepositoryValidationError(
+            "PyYAML is required; install requirements-dev.txt"
+        ) from exc
+
+    class UniqueKeyLoader(yaml.SafeLoader):
+        pass
+
+    def construct_mapping(loader: UniqueKeyLoader, node: Any, deep: bool = False) -> Any:
+        mapping: dict[Any, Any] = {}
+        for key_node, value_node in node.value:
+            key = loader.construct_object(key_node, deep=deep)
+            if key in mapping:
+                raise RepositoryValidationError(f"{path}: duplicate YAML key: {key}")
+            mapping[key] = loader.construct_object(value_node, deep=deep)
+        return mapping
+
+    UniqueKeyLoader.add_constructor(
+        yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+        construct_mapping,
+    )
+
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return yaml.load(handle, Loader=UniqueKeyLoader)
+    except (OSError, yaml.YAMLError, RepositoryValidationError) as exc:
+        raise RepositoryValidationError(f"{path}: {exc}") from exc
+
+
+def validate_required_paths(root: Path) -> list[str]:
+    errors: list[str] = []
+    for relative in REQUIRED_PATHS:
+        path = root / relative
+        if not path.is_file():
+            errors.append(f"missing required file: {relative}")
+        elif path.stat().st_size == 0:
+            errors.append(f"required file is empty: {relative}")
+    return errors
+
+
+def _load_pinned_requirements(path: Path) -> tuple[dict[str, str], list[str]]:
+    pins: dict[str, str] = {}
+    errors: list[str] = []
+    if not path.is_file():
+        return pins, errors
+
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        match = PINNED_REQUIREMENT.fullmatch(line)
+        if match is None:
+            errors.append(f"{path.name}:{line_number}: dependency must use an exact == pin")
+            continue
+        name = match.group(1).lower().replace("_", "-")
+        version = match.group(2)
+        if name in pins:
+            errors.append(f"{path.name}:{line_number}: duplicate dependency pin: {name}")
+        pins[name] = version
+    return pins, errors
+
+
+def validate_dependency_lock(root: Path) -> list[str]:
+    direct, errors = _load_pinned_requirements(root / "requirements-dev.txt")
+    locked, lock_errors = _load_pinned_requirements(root / "requirements-dev.lock")
+    errors.extend(lock_errors)
+    for name, version in direct.items():
+        if name not in locked:
+            errors.append(f"requirements-dev.lock: missing direct dependency: {name}")
+        elif locked[name] != version:
+            errors.append(
+                f"requirements-dev.lock: {name} is {locked[name]}, expected {version}"
+            )
+    return errors
+
+
+def validate_schemas_and_examples(root: Path) -> list[str]:
+    errors: list[str] = []
+    try:
+        from jsonschema import Draft202012Validator, FormatChecker
+        from jsonschema.exceptions import SchemaError
+    except ImportError:
+        return ["jsonschema is required; install requirements-dev.txt"]
+
+    schemas: dict[str, Any] = {}
+    schema_ids: set[str] = set()
+    for schema_path in sorted((root / "schemas").glob("*.schema.json")):
+        schema_relative = schema_path.relative_to(root).as_posix()
+        try:
+            schema = load_json(schema_path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            continue
+
+        schemas[schema_relative] = schema
+
+        if schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
+            errors.append(f"{schema_relative}: must declare JSON Schema draft 2020-12")
+
+        schema_id = schema.get("$id")
+        if not isinstance(schema_id, str) or not schema_id:
+            errors.append(f"{schema_relative}: must declare a non-empty $id")
+        elif schema_id in schema_ids:
+            errors.append(f"{schema_relative}: duplicate schema $id: {schema_id}")
+        else:
+            schema_ids.add(schema_id)
+
+        try:
+            Draft202012Validator.check_schema(schema)
+        except SchemaError as exc:
+            errors.append(f"{schema_relative}: invalid schema: {exc.message}")
+
+    for example_path in sorted((root / "examples").glob("*.example.json")):
+        example_relative = example_path.relative_to(root).as_posix()
+        schema_stem = example_path.name.removesuffix(".example.json")
+        schema_relative = f"schemas/{schema_stem}.schema.json"
+        schema = schemas.get(schema_relative)
+        if schema is None:
+            errors.append(
+                f"{example_relative}: no matching schema named {schema_relative}"
+            )
+            continue
+        try:
+            instance = load_json(example_path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            continue
+
+        validator = Draft202012Validator(schema, format_checker=FormatChecker())
+        for error in sorted(
+            validator.iter_errors(instance),
+            key=lambda item: tuple(str(part) for part in item.path),
+        ):
+            location = "/".join(str(part) for part in error.absolute_path) or "<root>"
+            errors.append(f"{example_relative}:{location}: {error.message}")
+        errors.extend(validate_registry_entry_semantics(instance, example_relative))
+
+    for example_path in sorted((root / "examples").glob("*.json")):
+        if example_path.name.endswith(".example.json"):
+            continue
+        try:
+            load_json(example_path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+
+    return errors
+
+
+def _is_ignored_validation_path(path: Path, root: Path) -> bool:
+    relative_parts = path.relative_to(root).parts
+    return any(part in {".git", ".venv", "__pycache__"} for part in relative_parts)
+
+
+def validate_serialized_documents(root: Path) -> list[str]:
+    """Parse every repository JSON/YAML document with duplicate-key rejection."""
+
+    errors: list[str] = []
+    for path in sorted(root.rglob("*.json")):
+        if _is_ignored_validation_path(path, root):
+            continue
+        try:
+            load_json(path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+
+    yaml_paths = (
+        set(root.rglob("*.yaml"))
+        | set(root.rglob("*.yml"))
+        | set(root.rglob("*.cff"))
+    )
+    for path in sorted(yaml_paths):
+        if _is_ignored_validation_path(path, root):
+            continue
+        try:
+            load_yaml(path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+    return errors
+
+
+def _iter_mappings(value: Any):
+    if isinstance(value, Mapping):
+        yield value
+        for child in value.values():
+            yield from _iter_mappings(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _iter_mappings(child)
+
+
+def _resolve_local_artifact(root: Path, locator: str) -> Path | None:
+    if "://" in locator or locator.startswith(("urn:", "doi:")):
+        return None
+    candidate = (root / locator).resolve()
+    try:
+        candidate.relative_to(root.resolve())
+    except ValueError as exc:
+        raise RepositoryValidationError(
+            f"artifact locator escapes repository: {locator}"
+        ) from exc
+    return candidate
+
+
+def validate_local_artifact_references(root: Path) -> list[str]:
+    """Verify recorded local artifact digests and mechanism-version bindings."""
+
+    errors: list[str] = []
+    documents: list[tuple[Path, Any]] = []
+    for path in sorted(root.rglob("*.json")):
+        if _is_ignored_validation_path(path, root):
+            continue
+        try:
+            documents.append((path, load_json(path)))
+        except RepositoryValidationError:
+            continue
+
+    for document_path, document in documents:
+        relative_document = document_path.relative_to(root).as_posix()
+        for mapping in _iter_mappings(document):
+            locator = mapping.get("locator")
+            digest = mapping.get("digest")
+            if not isinstance(locator, str) or not isinstance(digest, Mapping):
+                continue
+            status = digest.get("status")
+            algorithm = digest.get("algorithm")
+            expected = digest.get("value")
+            if status not in {"RECORDED", "VERIFIED"}:
+                continue
+            if not isinstance(algorithm, str) or algorithm.lower().replace("-", "") != "sha256":
+                continue
+            try:
+                artifact_path = _resolve_local_artifact(root, locator)
+            except RepositoryValidationError as exc:
+                errors.append(f"{relative_document}: {exc}")
+                continue
+            if artifact_path is None:
+                continue
+            if not artifact_path.is_file():
+                errors.append(f"{relative_document}: recorded artifact is missing: {locator}")
+                continue
+            actual = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+            if expected != actual:
+                errors.append(
+                    f"{relative_document}: recorded SHA-256 does not match {locator}"
+                )
+
+        mechanism_versions = document.get("mechanism_versions") if isinstance(document, Mapping) else None
+        if not isinstance(mechanism_versions, list):
+            continue
+        for index, mechanism_reference in enumerate(mechanism_versions):
+            if not isinstance(mechanism_reference, Mapping):
+                continue
+            artifact_reference = mechanism_reference.get("mechanism_artifact")
+            if not isinstance(artifact_reference, Mapping):
+                continue
+            locator = artifact_reference.get("locator")
+            if not isinstance(locator, str):
+                continue
+            try:
+                artifact_path = _resolve_local_artifact(root, locator)
+            except RepositoryValidationError as exc:
+                errors.append(f"{relative_document}: {exc}")
+                continue
+            if artifact_path is None or not artifact_path.is_file():
+                continue
+            try:
+                registry = load_json(artifact_path)
+            except RepositoryValidationError:
+                continue
+            entries = registry.get("entries") if isinstance(registry, Mapping) else None
+            if not isinstance(entries, list):
+                errors.append(
+                    f"{relative_document}:mechanism_versions/{index}: locator is not a mechanism registry"
+                )
+                continue
+            expected_id = mechanism_reference.get("mechanism_id")
+            expected_version = mechanism_reference.get("mechanism_version")
+            if not any(
+                isinstance(entry, Mapping)
+                and entry.get("mechanism_id") == expected_id
+                and entry.get("mechanism_version") == expected_version
+                for entry in entries
+            ):
+                errors.append(
+                    f"{relative_document}:mechanism_versions/{index}: referenced mechanism ID/version is absent from {locator}"
+                )
+    return errors
+
+
+def validate_registry_entry_semantics(registry: Any, label: str) -> list[str]:
+    """Check identifier uniqueness and append-only version lineage."""
+
+    if not isinstance(registry, Mapping) or not isinstance(registry.get("entries"), list):
+        return []
+    registry_type = registry.get("registry_type")
+    if registry_type == "mechanism_registry":
+        id_field, version_field = "mechanism_id", "mechanism_version"
+    elif registry_type in {"experiment_registry", "evidence_registry"}:
+        id_field, version_field = "record_id", "record_version"
+    else:
+        return []
+
+    errors: list[str] = []
+    keyed_entries: dict[tuple[Any, Any], Mapping[str, Any]] = {}
+    for index, entry in enumerate(registry["entries"]):
+        if not isinstance(entry, Mapping):
+            continue
+        key = (entry.get(id_field), entry.get(version_field))
+        if key in keyed_entries:
+            errors.append(
+                f"{label}:entries/{index}: duplicate {id_field}/{version_field}: {key!r}"
+            )
+        keyed_entries[key] = entry
+
+    if registry_type != "mechanism_registry":
+        return errors
+
+    for index, entry in enumerate(registry["entries"]):
+        if not isinstance(entry, Mapping):
+            continue
+        version = entry.get("mechanism_version")
+        if not isinstance(version, int) or version <= 1:
+            continue
+        previous_version = entry.get("supersedes_mechanism_version")
+        if not isinstance(previous_version, int) or previous_version >= version:
+            errors.append(
+                f"{label}:entries/{index}: superseded mechanism version must be lower than the new version"
+            )
+            continue
+        previous = keyed_entries.get((entry.get("mechanism_id"), previous_version))
+        if previous is None:
+            errors.append(
+                f"{label}:entries/{index}: superseded mechanism version is absent from registry"
+            )
+            continue
+        supersedes_digest = entry.get("supersedes_artifact_digest")
+        previous_artifact = previous.get("definition_artifact")
+        previous_digest = (
+            previous_artifact.get("digest")
+            if isinstance(previous_artifact, Mapping)
+            else None
+        )
+        if (
+            isinstance(supersedes_digest, Mapping)
+            and isinstance(previous_digest, Mapping)
+            and supersedes_digest.get("value") != previous_digest.get("value")
+        ):
+            errors.append(
+                f"{label}:entries/{index}: supersession digest does not match prior definition artifact"
+            )
+    return errors
+
+
+def validate_registries(root: Path) -> list[str]:
+    errors: list[str] = []
+    try:
+        from jsonschema import Draft202012Validator, FormatChecker
+    except ImportError:
+        return ["jsonschema is required; install requirements-dev.txt"]
+
+    schema_paths_by_registry = {
+        "mechanism_registry": root / "schemas/mechanism-registry.schema.json",
+        "experiment_registry": root / "schemas/record-index.schema.json",
+        "evidence_registry": root / "schemas/record-index.schema.json",
+    }
+    artifact_schemas: dict[str, Any] = {}
+    for schema_path in sorted((root / "schemas").glob("*.schema.json")):
+        try:
+            schema = load_json(schema_path)
+        except RepositoryValidationError:
+            continue
+        schema_id = schema.get("$id")
+        if isinstance(schema_id, str):
+            artifact_schemas[schema_id] = schema
+
+    for relative, expected_type in REGISTRIES.items():
+        path = root / relative
+        if not path.is_file():
+            continue
+        try:
+            registry = load_yaml(path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            continue
+
+        if not isinstance(registry, Mapping):
+            errors.append(f"{relative}: top level must be a mapping")
+            continue
+        if not registry.get("schema_version"):
+            errors.append(f"{relative}: schema_version is required")
+        if registry.get("registry_type") != expected_type:
+            errors.append(
+                f"{relative}: registry_type must be {expected_type!r}"
+            )
+        if "entries" not in registry or not isinstance(registry["entries"], list):
+            errors.append(f"{relative}: entries must be a list")
+        elif any(not isinstance(entry, Mapping) for entry in registry["entries"]):
+            errors.append(f"{relative}: every entry must be a mapping")
+
+        unknown_keys = set(registry) - {"schema_version", "registry_type", "entries"}
+        if unknown_keys:
+            errors.append(
+                f"{relative}: unknown top-level keys: {', '.join(sorted(unknown_keys))}"
+            )
+        errors.extend(validate_registry_entry_semantics(registry, relative))
+
+        registry_schema_path = schema_paths_by_registry[expected_type]
+        if registry_schema_path.is_file():
+            try:
+                registry_schema = load_json(registry_schema_path)
+                validator = Draft202012Validator(
+                    registry_schema,
+                    format_checker=FormatChecker(),
+                )
+                for error in sorted(
+                    validator.iter_errors(registry),
+                    key=lambda item: tuple(str(part) for part in item.path),
+                ):
+                    location = "/".join(str(part) for part in error.absolute_path) or "<root>"
+                    errors.append(f"{relative}:{location}: {error.message}")
+            except RepositoryValidationError as exc:
+                errors.append(str(exc))
+
+        if expected_type not in {"experiment_registry", "evidence_registry"}:
+            continue
+        if not isinstance(registry.get("entries"), list):
+            continue
+
+        for index, entry in enumerate(registry["entries"]):
+            if not isinstance(entry, Mapping):
+                continue
+            artifact_path_value = entry.get("artifact_path")
+            digest = entry.get("artifact_digest")
+            if not isinstance(artifact_path_value, str) or not isinstance(digest, Mapping):
+                continue
+
+            artifact_path = (root / artifact_path_value).resolve()
+            try:
+                artifact_path.relative_to(root.resolve())
+            except ValueError:
+                errors.append(f"{relative}:entries/{index}: artifact_path escapes repository")
+                continue
+            if not artifact_path.is_file():
+                errors.append(
+                    f"{relative}:entries/{index}: missing artifact: {artifact_path_value}"
+                )
+                continue
+
+            expected_digest = digest.get("value")
+            actual_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+            if expected_digest != actual_digest:
+                errors.append(
+                    f"{relative}:entries/{index}: SHA-256 digest does not match raw file bytes"
+                )
+
+            try:
+                artifact = load_json(artifact_path)
+            except RepositoryValidationError as exc:
+                errors.append(str(exc))
+                continue
+            if artifact.get("artifact_type") != entry.get("artifact_type"):
+                errors.append(f"{relative}:entries/{index}: artifact_type does not match record")
+
+            record_id_field = (
+                "manifest_record_id"
+                if expected_type == "experiment_registry"
+                else "record_id"
+            )
+            if artifact.get(record_id_field) != entry.get("record_id"):
+                errors.append(f"{relative}:entries/{index}: record_id does not match artifact")
+            if artifact.get("record_version") != entry.get("record_version"):
+                errors.append(
+                    f"{relative}:entries/{index}: record_version does not match artifact"
+                )
+
+            record_version = artifact.get("record_version")
+            amendment = artifact.get("amendment")
+            if isinstance(record_version, int) and record_version > 1 and isinstance(amendment, Mapping):
+                previous_version = amendment.get("supersedes_record_version")
+                if not isinstance(previous_version, int) or previous_version >= record_version:
+                    errors.append(
+                        f"{relative}:entries/{index}: superseded record version must be lower than the new version"
+                    )
+                else:
+                    previous_entry = next(
+                        (
+                            candidate
+                            for candidate in registry["entries"]
+                            if isinstance(candidate, Mapping)
+                            and candidate.get("record_id") == entry.get("record_id")
+                            and candidate.get("record_version") == previous_version
+                        ),
+                        None,
+                    )
+                    if previous_entry is None:
+                        errors.append(
+                            f"{relative}:entries/{index}: superseded record version is absent from registry"
+                        )
+                    else:
+                        supersedes_digest = amendment.get("supersedes_artifact_digest")
+                        previous_digest = previous_entry.get("artifact_digest")
+                        if (
+                            isinstance(supersedes_digest, Mapping)
+                            and isinstance(previous_digest, Mapping)
+                            and supersedes_digest.get("value") != previous_digest.get("value")
+                        ):
+                            errors.append(
+                                f"{relative}:entries/{index}: supersession digest does not match prior registry entry"
+                            )
+
+            schema_id = entry.get("schema_id")
+            schema = artifact_schemas.get(schema_id) if isinstance(schema_id, str) else None
+            if schema is None:
+                errors.append(f"{relative}:entries/{index}: unknown schema_id: {schema_id!r}")
+                continue
+            validator = Draft202012Validator(schema, format_checker=FormatChecker())
+            for error in sorted(
+                validator.iter_errors(artifact),
+                key=lambda item: tuple(str(part) for part in item.path),
+            ):
+                location = "/".join(str(part) for part in error.absolute_path) or "<root>"
+                errors.append(
+                    f"{relative}:entries/{index}:{artifact_path_value}:{location}: {error.message}"
+                )
+    return errors
+
+
+def validate_citation_metadata(root: Path) -> list[str]:
+    errors: list[str] = []
+    path = root / "CITATION.cff"
+    if not path.is_file():
+        return errors
+
+    try:
+        citation = load_yaml(path)
+    except RepositoryValidationError as exc:
+        return [str(exc)]
+
+    if not isinstance(citation, Mapping):
+        return ["CITATION.cff: top level must be a mapping"]
+
+    required = ("cff-version", "message", "title", "type", "authors", "license")
+    for key in required:
+        if not citation.get(key):
+            errors.append(f"CITATION.cff: missing required value: {key}")
+    if citation.get("cff-version") != "1.2.0":
+        errors.append("CITATION.cff: cff-version must be 1.2.0")
+    if not isinstance(citation.get("authors"), list):
+        errors.append("CITATION.cff: authors must be a list")
+    return errors
+
+
+def validate_policy_invariants(root: Path) -> list[str]:
+    errors: list[str] = []
+    charter_path = root / "docs/program/PROGRAM_CHARTER_v0.1.md"
+    if charter_path.is_file():
+        charter = charter_path.read_text(encoding="utf-8")
+        for invariant in CHARTER_INVARIANTS:
+            if invariant not in charter:
+                errors.append(f"program charter missing invariant: {invariant}")
+
+    for relative in (
+        "templates/research-proposal.md",
+        "templates/experiment-protocol.md",
+        "templates/experiment-report.md",
+        "templates/threat-model.md",
+    ):
+        path = root / relative
+        if not path.is_file():
+            continue
+        content = path.read_text(encoding="utf-8")
+        for invariant in TEMPLATE_INVARIANTS:
+            if invariant not in content:
+                errors.append(f"{relative}: missing required boundary label: {invariant}")
+    return errors
+
+
+def validate_markdown_links(root: Path) -> list[str]:
+    errors: list[str] = []
+    for path in sorted(root.rglob("*.md")):
+        if any(part.startswith(".") and part != ".github" for part in path.parts):
+            continue
+        content = path.read_text(encoding="utf-8")
+        for target in MARKDOWN_LINK.findall(content):
+            target = target.strip().strip("<>")
+            if not target or target.startswith(("#", "http://", "https://", "mailto:")):
+                continue
+            file_part = target.split("#", 1)[0]
+            if not file_part:
+                continue
+            resolved = (path.parent / file_part).resolve()
+            try:
+                resolved.relative_to(root.resolve())
+            except ValueError:
+                errors.append(f"{path.relative_to(root)}: link escapes repository: {target}")
+                continue
+            if not resolved.exists():
+                errors.append(f"{path.relative_to(root)}: broken relative link: {target}")
+    return errors
+
+
+def validate_repository(root: Path = ROOT) -> list[str]:
+    """Return all discovered contract violations without stopping at the first."""
+
+    errors: list[str] = []
+    errors.extend(validate_required_paths(root))
+    errors.extend(validate_dependency_lock(root))
+    errors.extend(validate_serialized_documents(root))
+    errors.extend(validate_local_artifact_references(root))
+    errors.extend(validate_schemas_and_examples(root))
+    errors.extend(validate_registries(root))
+    errors.extend(validate_citation_metadata(root))
+    errors.extend(validate_policy_invariants(root))
+    errors.extend(validate_markdown_links(root))
+    return errors
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=ROOT,
+        help="repository root to validate (defaults to this checkout)",
+    )
+    args = parser.parse_args(argv)
+
+    errors = validate_repository(args.root.resolve())
+    if errors:
+        print(f"M0 validation failed with {len(errors)} error(s):", file=sys.stderr)
+        for error in errors:
+            print(f"- {error}", file=sys.stderr)
+        return 1
+
+    print(
+        "M0 structural validation passed: required governance, schemas, examples, "
+        "registries, serialized documents, and relative links satisfy the configured checks."
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
