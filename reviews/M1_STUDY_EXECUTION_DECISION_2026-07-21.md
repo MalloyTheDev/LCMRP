@@ -75,7 +75,7 @@ These checks establish truthful containment and repository conformance only. The
 
 1. Taxonomy readiness: PR [#16](https://github.com/MalloyTheDev/LCMRP/pull/16), exact reviewed head `b4a6269c5da4eefcfb91e0e00af94a8717909cef`, successful Actions run [29873632380](https://github.com/MalloyTheDev/LCMRP/actions/runs/29873632380), squash merge `bfa1216694b16a888ca515f0701b2addcae09396`.
 2. Formal preflight: PR [#17](https://github.com/MalloyTheDev/LCMRP/pull/17), exact reviewed head `14a3052f7d78c79f7769895325d32d9f519ca9b1`, successful Actions run [29873774211](https://github.com/MalloyTheDev/LCMRP/actions/runs/29873774211), squash merge `ebaee2ce50093f27395f15850a973aaf9d0af2b9`.
-3. Verification, integration, and this decision: **PENDING PUBLICATION**. The final pull-request head and exact-head Actions run must be recorded in that pull request because embedding a commit hash in the commit itself would be self-referential.
+3. Verification, integration, and this decision: PR [#18](https://github.com/MalloyTheDev/LCMRP/pull/18), initial byte-checked head `db6aa97b9d14366c7d81c6068e2ed1becf64a835`. The final decision-bound head and exact-head Actions run are recorded in that pull request because embedding a commit hash in the commit itself would be self-referential.
 
 ## Next governed work
 
