@@ -1,0 +1,343 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_manifest",
+  "study_record_id": "LCMRP-FSTUDYREC-9902-SYNTHETIC-DRY-RUN-FORMAL",
+  "record_version": 1,
+  "immutable_record_notice": "Once frozen, this study manifest is immutable. Changes require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": [],
+    "result_accessed_before_amendment": false,
+    "post_result_change_disclosure": null
+  },
+  "preregistration": {
+    "status": "FROZEN",
+    "results_accessed_before_freeze": false,
+    "frozen_at": "2026-07-21T14:00:00Z",
+    "registration_authority": "LCMRP-SYNTHETIC-DRY-RUN-LOCAL-FIXTURE-AUTHORITY",
+    "freeze_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FREEZE-ATTESTATION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:freeze-attestation:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/freeze-attestation.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "7812cc5806aa799c550c6ca31e4c2b93eecb7d07244ee6336ff7aab04ac2ef5c",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "record_status": "FROZEN",
+  "study_id": "LCMRP-FSTUDY-9902-SYNTHETIC-DRY-RUN-FORMAL",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "subject": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "FORMAL_MEMORY_MODEL",
+    "subject_id": "LCMRP-FSUBJ-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROPOSITIONAL-SYSTEM",
+    "subject_version": 1,
+    "name": "SYNTHETIC-DRY-RUN tiny propositional formal-system fixture",
+    "definition": "A deliberately tiny two-valued propositional system over atoms A and B with the sole theory assumption A. It exists only to exercise serialization of the FORMAL_ANALYSIS contract.",
+    "boundary": "This fixture is not FMO-0.1, is not a model of cognition or memory behavior, and cannot establish formal correctness, scientific validity, mechanism performance, or production readiness.",
+    "definition_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SUBJECT-DEFINITION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:formal-subject-definition:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/subject-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "fd3fcbdca56fa2a79e8457b113c22c9a3b7566d1f5a4fa7c48ef501019a921cf",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "primary_method_profile": {
+    "profile_kind": "FORMAL_ANALYSIS",
+    "profile_id": "LCMRP-MPROF-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "profile_series": "LCMRP-SYNTHETIC-DRY-RUN-FORMAL-ANALYSIS-PROFILE",
+    "profile_version": 1,
+    "profile_definition_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FORMAL-PROFILE-DEFINITION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:formal-method-profile:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/method-profile-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "3b361943b08051a1e38e7b19ace257de1d3c30f235611a81ef10fe84a2b9d8fa",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "formal_system_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FORMAL-SYSTEM",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:tiny-formal-system:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/formal-system.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "fb713782f187850cf0fc38da06ef12edc07fd74fdfa1c4e1e0bb4b868bc4554e",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "assumptions": [
+      "ASSUMPTION-9902-BOOLEAN-SEMANTICS: A and B each take exactly one truth value from {false, true}.",
+      "ASSUMPTION-9902-THEORY-A: The complete theory under test is the singleton set {A}.",
+      "ASSUMPTION-9902-FINITE-DOMAIN: The semantic search domain is exactly the four valuations over A and B."
+    ],
+    "propositions": [
+      "PROP-9902-A",
+      "PROP-9902-B"
+    ],
+    "consistency_or_satisfiability_checks": [
+      "Exhaustively enumerate the four frozen valuations and retain at least one valuation satisfying the complete theory {A}."
+    ],
+    "intended_entailments": [
+      "Check that every retained model of the theory {A} satisfies PROP-9902-A."
+    ],
+    "non_entailments_or_countermodels": [
+      "Check that PROP-9902-B is not entailed by {A} and retain a theory-satisfying valuation with B=false as a countermodel."
+    ],
+    "tool_provenance": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-TOOL-PROVENANCE",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:tool-provenance:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/tool-provenance.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "3f2b23111499524e0eb55876cb3ef869769a211cd078cc59fc14bc463c75cb0c",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "proof_or_verification_method": "Replay all four valuations against the exact truth conditions; retain witnesses, theory models, and the countermodel. This is bounded exhaustive verification, not syntax checking.",
+    "semantic_validity_check": "Evaluate theory satisfaction and proposition truth in each declared valuation; no inference is accepted from parse or schema validity alone.",
+    "counterexample_search": "Search the complete frozen four-valuation domain and retain the first theory model that falsifies PROP-9902-B."
+  },
+  "research_question": "Can the accepted FORMAL_ANALYSIS record path serialize exact subject, profile, formal-system, semantic-analysis, atomic-finding, and immutable-closeout bindings end to end?",
+  "hypothesis": {
+    "claim": "The exact synthetic theory {A} has a model, entails PROP-9902-A, and does not entail PROP-9902-B, for which a countermodel exists in the complete frozen valuation domain.",
+    "competing_explanation": "An apparent result could arise from incomplete enumeration or syntax-only inspection rather than semantic evaluation.",
+    "predicted_observation": "Exactly two of four valuations satisfy {A}; all such models satisfy PROP-9902-A; and the model A=true,B=false falsifies PROP-9902-B.",
+    "falsifier": "Missing or duplicate valuations, no theory model, a theory model falsifying PROP-9902-A, or failure to retain a theory model falsifying PROP-9902-B."
+  },
+  "analyses": [
+    {
+      "analysis_id": "ANALYSIS-9902-SATISFIABILITY",
+      "analysis_mode": "CONFIRMATORY",
+      "question": "Does the complete exact synthetic theory {A} have at least one model in the frozen four-valuation domain?",
+      "method": "Enumerate each valuation exactly once, evaluate A, and retain all theory-satisfaction outcomes and one witness.",
+      "decision_rule": "Return POSITIVE only if at least one valuation satisfies {A}; return NEGATIVE if none does; mark INVALID if coverage is incomplete or duplicated.",
+      "planned_output_artifact": {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SATISFIABILITY-RESULT",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-analysis-output:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/outputs/satisfiability-result.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "required_terminal_dispositions": [
+        "COMPLETED",
+        "NOT_RUN",
+        "HALTED",
+        "INVALID"
+      ]
+    },
+    {
+      "analysis_id": "ANALYSIS-9902-ENTAILMENT-COUNTERMODEL",
+      "analysis_mode": "CONFIRMATORY",
+      "question": "Does {A} entail PROP-9902-A while failing to entail PROP-9902-B with a retained countermodel?",
+      "method": "Inspect every theory model, test both proposition truth conditions, and retain a theory model falsifying PROP-9902-B.",
+      "decision_rule": "Return POSITIVE only if no theory model falsifies PROP-9902-A and at least one retained theory model falsifies PROP-9902-B; otherwise NEGATIVE; mark INVALID if coverage is incomplete or duplicated.",
+      "planned_output_artifact": {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-ENTAILMENT-COUNTERMODEL-RESULT",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-analysis-output:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/outputs/entailment-countermodel-result.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "required_terminal_dispositions": [
+        "COMPLETED",
+        "NOT_RUN",
+        "HALTED",
+        "INVALID"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "SOURCE-9902-SYNTHETIC-FORMAL-SYSTEM",
+      "source_kind": "FORMAL_SPECIFICATION",
+      "role": "FORMAL_INPUT",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FORMAL-SYSTEM",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:tiny-formal-system:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/artifacts/formal-system.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "fb713782f187850cf0fc38da06ef12edc07fd74fdfa1c4e1e0bb4b868bc4554e",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "reproducibility": {
+    "source_revision": "SYNTHETIC-DRY-RUN-BUNDLE-9902-V1",
+    "environment_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-ENVIRONMENT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:environment:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/environment.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "de4a8f6501ba2fd2449aa98124220df2776994b501549d5958bf6e9ffad906db",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "configuration_artifacts": [
+      {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-ASSUMPTIONS",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-assumptions:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/artifacts/assumptions.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "c52f09ae704aa257805239061bb8d1e6ce8b0707b9f3b0387cd2e4127d9b92b4",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-PROPOSITIONS",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-propositions:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/artifacts/propositions.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "96f359d365da2740f2d904c5cc975f33855fd2d12e2c48b289a0bdc64d8514ea",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-CONFIGURATION",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-configuration:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/artifacts/configuration.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "443fdb64e33576c736cd21739c5d92a6f485d76a79aa1516848a17b761f900b5",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    ],
+    "replication_criteria": [
+      "Recompute every recorded SHA-256 digest from raw repository bytes.",
+      "Enumerate exactly the four frozen valuations with no duplicates or omissions.",
+      "Recover two theory models, witness A=true,B=false, entailment of PROP-9902-A, and the retained countermodel to PROP-9902-B.",
+      "Validate all schema-backed records and isolated indexes against the repository Draft 2020-12 schemas."
+    ]
+  },
+  "rejection_criteria": [
+    {
+      "criterion_id": "REJECT-9902-NO-SATISFYING-VALUATION",
+      "condition": "No frozen valuation satisfies the exact theory {A}.",
+      "disposition": "REJECT_CLAIM",
+      "rationale": "The first bounded claim predicts existence of a model."
+    },
+    {
+      "criterion_id": "REJECT-9902-ENTAILMENT-OR-NONENTAILMENT-FAILURE",
+      "condition": "A theory model falsifies PROP-9902-A or no theory model falsifies PROP-9902-B.",
+      "disposition": "REJECT_CLAIM",
+      "rationale": "Either observation contradicts the exact planned semantic relations."
+    },
+    {
+      "criterion_id": "INVALIDATE-9902-INCOMPLETE-ENUMERATION",
+      "condition": "Any one of the four declared valuations is missing, duplicated, or evaluated under a changed theory.",
+      "disposition": "INVALIDATE_ANALYSIS",
+      "rationale": "The bounded verification claim depends on complete enumeration of the exact frozen domain."
+    }
+  ],
+  "ethics_scope": {
+    "human_subjects_involved": false,
+    "human_participant_data_involved": false,
+    "rationale": "This isolated dry run uses only a hand-authored two-atom synthetic formal system and no humans, participant data, model calls, or datasets."
+  },
+  "security_and_privacy_analysis": {
+    "assets": [
+      "Raw-byte integrity of the frozen subject, profile, formal inputs, protocol, findings, and closeout bindings"
+    ],
+    "threats": [
+      "Artifact substitution or provenance forgery",
+      "Overinterpreting lifecycle words such as FROZEN or PUBLISHED as program acceptance or evidence"
+    ],
+    "controls": [
+      "Verified SHA-256 references over raw local bytes",
+      "Reserved 9902 identifiers and repeated SYNTHETIC-DRY-RUN non-evidentiary notices",
+      "Isolated example indexes that do not alter production registries"
+    ],
+    "data_retention_and_deletion": "Retain this synthetic fixture family for contract regression, including negative or invalid dispositions if later superseded; it contains no personal or secret data.",
+    "residual_risks": [
+      "A reader may mistake a trivial bounded truth-table result for validation of a substantive memory formalism despite explicit boundaries."
+    ]
+  },
+  "limitations": [
+    "This is a NON-EVIDENTIARY synthetic dry run and is absent from production registries.",
+    "The two-atom system is deliberately trivial and is not FMO-0.1 or a memory model.",
+    "Manual serialization plus deterministic validation does not constitute independent validation.",
+    "No solver, language model, human subject, participant data, dataset, or network service was used.",
+    "The planned-output references remain PENDING in the frozen manifest because result bytes are post-freeze artifacts; published findings bind their actual bytes."
+  ],
+  "mechanism_maturity_boundary": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "rationale": "The exact target is a mechanism-free synthetic foundational subject used only to exercise contract serialization."
+  },
+  "protocol_artifact": {
+    "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-PROTOCOL",
+    "artifact_version": 1,
+    "schema_id": "urn:lcmrp:synthetic-dry-run:formal-study-protocol:0.1.0",
+    "locator": "examples/m1-dry-runs/formal-analysis/protocol.md",
+    "digest": {
+      "algorithm": "SHA-256",
+      "status": "VERIFIED",
+      "value": "a3f449fe48dd81d694bbe3547e734bc6fd9e6498195e3c98142a75f2c30f2a9a",
+      "scope": "RAW_FILE_BYTES"
+    },
+    "media_type": "text/markdown"
+  },
+  "created_at": "2026-07-21T14:00:00Z"
+}

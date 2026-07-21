@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_record_index",
+  "registry_type": "foundational_study_registry",
+  "entries": [
+    {
+      "record_id": "LCMRP-FSTUDYREC-9902-SYNTHETIC-DRY-RUN-FORMAL",
+      "record_version": 1,
+      "artifact_type": "foundational_study_manifest",
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "artifact_path": "records/foundational/studies/LCMRP-FSTUDYREC-9902-SYNTHETIC-DRY-RUN-FORMAL-v1.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "55dd5ce20c55ce788cdb2f178296b976025bec563f658245eaa5deb1f89c1f41",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T14:01:00Z"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN — NON-EVIDENTIARY — DELIBERATELY TINY FORMAL SYSTEM",
+  "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FORMAL-SYSTEM",
+  "artifact_version": 1,
+  "formal_system_id": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROP-9902",
+  "formal_system_version": 1,
+  "logic": "Classical two-valued propositional semantics restricted to atoms A and B.",
+  "vocabulary": [
+    "A",
+    "B"
+  ],
+  "valuation_domain": [
+    false,
+    true
+  ],
+  "theory": [
+    "A"
+  ],
+  "satisfaction_definition": "A valuation satisfies the theory exactly when it assigns true to A.",
+  "propositions": {
+    "PROP-9902-A": "A",
+    "PROP-9902-B": "B"
+  },
+  "semantic_obligations": {
+    "satisfiability": "There exists at least one valuation satisfying A.",
+    "intended_entailment": "Every valuation satisfying A also satisfies PROP-9902-A.",
+    "declared_non_entailment": "Not every valuation satisfying A satisfies PROP-9902-B; retain a countermodel."
+  },
+  "out_of_scope": "No statement about FMO-0.1, memory behavior, biological cognition, temporal logic, probability, identity, governance, or implementation behavior is represented."
+}

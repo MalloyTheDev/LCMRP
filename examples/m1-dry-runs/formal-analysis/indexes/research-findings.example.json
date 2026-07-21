@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_record_index",
+  "registry_type": "research_finding_registry",
+  "entries": [
+    {
+      "record_id": "LCMRP-FINDREC-9902-SYNTHETIC-DRY-RUN-SAT",
+      "record_version": 1,
+      "artifact_type": "research_finding_record",
+      "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+      "artifact_path": "records/foundational/findings/LCMRP-FINDREC-9902-SYNTHETIC-DRY-RUN-SAT-v1.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "3634684df3d3d2b81423a624cc900eab72222bc65e162f552603cfe2c85beeae",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T14:12:00Z"
+    },
+    {
+      "record_id": "LCMRP-FINDREC-9902-SYNTHETIC-DRY-RUN-COUNTERMODEL",
+      "record_version": 1,
+      "artifact_type": "research_finding_record",
+      "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+      "artifact_path": "records/foundational/findings/LCMRP-FINDREC-9902-SYNTHETIC-DRY-RUN-COUNTERMODEL-v1.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "4a34f3c26d6a885e6d76f25624d76fb999432c11ea5484d98e69ae545815fb66",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T14:12:00Z"
+    }
+  ]
+}
