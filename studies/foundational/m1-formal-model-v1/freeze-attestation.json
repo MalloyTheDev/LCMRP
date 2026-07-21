@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_freeze_attestation",
+  "artifact_id": "ARTIFACT-M1-FORMAL-MODEL-FREEZE-ATTESTATION",
+  "artifact_version": 1,
+  "study_id": "LCMRP-FSTUDY-0002-M1-FORMAL-MODEL",
+  "study_record_id": "LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL",
+  "study_record_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "frozen_at": "2026-07-21T21:28:00Z",
+  "registration_authority": "LCMRP-ROOT-STEWARD-FREEZE-2026-07-21",
+  "results_accessed_before_freeze": false,
+  "author_package_revision": "9966c31a86c999c5eda53aced8bb4274f2cbdc2d",
+  "review": {
+    "authoring_lane": "LCMRP-M1-FORMAL-PROTOCOL-AUTHORING-LANE",
+    "verification_lane": "LCMRP-M1-STUDY-FREEZE-VERIFICATION-LANE",
+    "steward_review": "LCMRP-ROOT-STEWARD",
+    "relationship": "Internal agent-assisted protocol, guard, and contract review; not independent scientific validation"
+  },
+  "frozen_scope": {
+    "planned_analysis_count": 7,
+    "planned_output_count": 7,
+    "existing_planned_output_count": 0,
+    "output_state": "ABSENT_AT_FREEZE",
+    "analyzer_status": "COMPILED_AND_STATICALLY_REVIEWED_NOT_EXECUTED",
+    "external_service_calls": 0
+  },
+  "claim_boundary": [
+    "This attestation freezes a preregistration and does not report a research result.",
+    "No proof, satisfiability result, formal validity finding, closeout, mechanism evidence label, or M1 completion follows from freeze.",
+    "The bounded analyzer remains forbidden until a separately governed execution increment begins."
+  ]
+}
