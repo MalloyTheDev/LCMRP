@@ -1,0 +1,14 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN — NON-EVIDENTIARY — NOT A PRODUCTION REGISTRATION",
+  "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SUBJECT-DEFINITION",
+  "artifact_version": 1,
+  "subject_id": "LCMRP-FSUBJ-9902-SYNTHETIC-DRY-RUN-FORMAL",
+  "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROPOSITIONAL-SYSTEM",
+  "subject_version": 1,
+  "subject_kind": "FORMAL_MEMORY_MODEL",
+  "name": "SYNTHETIC-DRY-RUN tiny propositional formal-system fixture",
+  "definition": "A deliberately tiny two-valued propositional system over atoms A and B with the sole theory assumption A. It exists only to exercise serialization of the FORMAL_ANALYSIS contract.",
+  "boundary": "This fixture is not FMO-0.1, is not a model of cognition or memory behavior, and cannot establish formal correctness, scientific validity, mechanism performance, or production readiness.",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "mechanism_maturity_applicability": "NOT_APPLICABLE"
+}

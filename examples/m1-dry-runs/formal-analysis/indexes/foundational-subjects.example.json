@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_subject_registry",
+  "registry_type": "foundational_subject_registry",
+  "entries": [
+    {
+      "target_type": "FOUNDATIONAL_SUBJECT",
+      "subject_kind": "FORMAL_MEMORY_MODEL",
+      "subject_id": "LCMRP-FSUBJ-9902-SYNTHETIC-DRY-RUN-FORMAL",
+      "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROPOSITIONAL-SYSTEM",
+      "subject_version": 1,
+      "supersedes_subject_version": null,
+      "supersedes_definition_digest": null,
+      "entry_status": "ACTIVE",
+      "name": "SYNTHETIC-DRY-RUN tiny propositional formal-system fixture",
+      "definition": "A deliberately tiny two-valued propositional system over atoms A and B with the sole theory assumption A. It exists only to exercise serialization of the FORMAL_ANALYSIS contract.",
+      "boundary": "This fixture is not FMO-0.1, is not a model of cognition or memory behavior, and cannot establish formal correctness, scientific validity, mechanism performance, or production readiness.",
+      "definition_artifact": {
+        "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SUBJECT-DEFINITION",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:formal-subject-definition:0.1.0",
+        "locator": "examples/m1-dry-runs/formal-analysis/artifacts/subject-definition.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "fd3fcbdca56fa2a79e8457b113c22c9a3b7566d1f5a4fa7c48ef501019a921cf",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+      "mechanism_maturity_applicability": "NOT_APPLICABLE",
+      "registered_at": "2026-07-21T13:55:00Z"
+    }
+  ]
+}

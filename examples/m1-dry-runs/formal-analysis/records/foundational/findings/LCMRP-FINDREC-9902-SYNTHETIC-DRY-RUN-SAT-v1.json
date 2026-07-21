@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "research_finding_record",
+  "record_id": "LCMRP-FINDREC-9902-SYNTHETIC-DRY-RUN-SAT",
+  "record_version": 1,
+  "immutable_record_notice": "Once published, this finding record is immutable. Corrections, reinterpretations, retractions, or new dispositions require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": []
+  },
+  "record_status": "PUBLISHED",
+  "finding_id": "LCMRP-FIND-9902-SYNTHETIC-DRY-RUN-SAT",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_reference": {
+    "study_id": "LCMRP-FSTUDY-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "study_record_id": "LCMRP-FSTUDYREC-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "study_record_version": 1,
+    "manifest_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-STUDY-MANIFEST",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/records/foundational/studies/LCMRP-FSTUDYREC-9902-SYNTHETIC-DRY-RUN-FORMAL-v1.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "55dd5ce20c55ce788cdb2f178296b976025bec563f658245eaa5deb1f89c1f41",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "subject_reference": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "FORMAL_MEMORY_MODEL",
+    "subject_id": "LCMRP-FSUBJ-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROPOSITIONAL-SYSTEM",
+    "subject_version": 1,
+    "definition_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SUBJECT-DEFINITION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:formal-subject-definition:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/subject-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "fd3fcbdca56fa2a79e8457b113c22c9a3b7566d1f5a4fa7c48ef501019a921cf",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "primary_method_profile_reference": {
+    "profile_kind": "FORMAL_ANALYSIS",
+    "profile_id": "LCMRP-MPROF-9902-SYNTHETIC-DRY-RUN-FORMAL",
+    "profile_series": "LCMRP-SYNTHETIC-DRY-RUN-FORMAL-ANALYSIS-PROFILE",
+    "profile_version": 1,
+    "profile_artifact": {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-FORMAL-PROFILE-DEFINITION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:formal-method-profile:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/artifacts/method-profile-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "3b361943b08051a1e38e7b19ace257de1d3c30f235611a81ef10fe84a2b9d8fa",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "analysis_reference": {
+    "analysis_id": "ANALYSIS-9902-SATISFIABILITY",
+    "analysis_mode": "CONFIRMATORY"
+  },
+  "claim": {
+    "claim_id": "CLAIM-9902-SYNTHETIC-SATISFIABILITY",
+    "statement": "The exact synthetic theory {A} has at least one model in the complete frozen four-valuation domain.",
+    "scope": "Only the exact synthetic subject, profile, formal-system version, frozen manifest, and analysis identified by this record."
+  },
+  "terminal_disposition": "COMPLETED",
+  "result_classification": "POSITIVE",
+  "claim_assessment": "SUPPORTS_CLAIM",
+  "result_assessment_orthogonality_notice": "Result classification and claim assessment are independent fields. A POSITIVE, NEGATIVE, NULL, or MIXED result does not determine whether the scoped claim is supported.",
+  "finding_statement": "Two of the four retained valuations satisfy the exact synthetic theory {A}; A=true,B=false is a retained witness.",
+  "uncertainty": "The declared finite domain was exhaustively represented, so there is no sampling uncertainty inside that domain; manual fixture encoding and the trivial scope remain material limitations.",
+  "raw_output_artifacts": [
+    {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SATISFIABILITY-RESULT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:formal-analysis-output:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/outputs/satisfiability-result.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "70a6f0186c737423a704bd36f46c304452efd7203c7f0f5313901d1b302752fa",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    {
+      "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-SATISFIABILITY-REPORT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:atomic-finding-report:0.1.0",
+      "locator": "examples/m1-dry-runs/formal-analysis/reports/satisfiability-finding.md",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "dfe57076ad88a186db74227c8d7e125f9e941b405081ed312ba9ac722fc57caa",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "text/markdown"
+    }
+  ],
+  "deviations": [],
+  "failures": [],
+  "limitations": [
+    "SYNTHETIC-DRY-RUN lifecycle publication is not production registration, research evidence, replication, or independent validation.",
+    "The deliberately trivial two-atom system is not FMO-0.1 and says nothing about cognition, memory behavior, or mechanism effectiveness.",
+    "The retained output was manually encoded and checked only within the fixture's deterministic validation path."
+  ],
+  "mechanism_maturity_effect": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "awarded_mechanism_evidence_labels": [],
+    "rationale": "This is an atomic finding about a synthetic foundational formal-system fixture, not a mechanism evidence decision."
+  },
+  "recommended_next_step": "Independently review the exact serialization and semantic replay before proposing any real formal study.",
+  "created_at": "2026-07-21T14:10:00Z"
+}

@@ -1,0 +1,22 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN — NON-EVIDENTIARY — LOCAL TOOL PROVENANCE ONLY",
+  "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-TOOL-PROVENANCE",
+  "artifact_version": 1,
+  "semantic_check_method": "Direct exhaustive enumeration of the four frozen valuations encoded in the retained output artifacts; no external theorem prover or solver was invoked.",
+  "schema_validation_environment": {
+    "python": "3.12.13",
+    "jsonschema": "4.25.1",
+    "referencing": "0.37.0",
+    "json_schema_dialect": "Draft 2020-12"
+  },
+  "digest_environment": {
+    "algorithm": "SHA-256",
+    "command": "sha256sum",
+    "implementation": "GNU coreutils 9.4",
+    "scope": "RAW_FILE_BYTES"
+  },
+  "network_calls": 0,
+  "model_calls": 0,
+  "human_or_participant_data_used": false,
+  "architecture_boundary": "These tools reproduce this fixture only. They are not selected or required as a general LCMRP solver, vendor, runtime, model, storage, or deployment architecture."
+}

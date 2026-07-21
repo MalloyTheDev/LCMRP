@@ -1,0 +1,19 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN — NON-EVIDENTIARY",
+  "artifact_id": "ARTIFACT-9902-SYNTHETIC-DRY-RUN-PROPOSITIONS",
+  "artifact_version": 1,
+  "formal_system_id": "LCMRP-SYNTHETIC-DRY-RUN-TINY-PROP-9902",
+  "formal_system_version": 1,
+  "propositions": [
+    {
+      "proposition_id": "PROP-9902-A",
+      "expression": "A",
+      "planned_relation": "INTENDED_ENTAILMENT"
+    },
+    {
+      "proposition_id": "PROP-9902-B",
+      "expression": "B",
+      "planned_relation": "DECLARED_NON_ENTAILMENT_WITH_COUNTERMODEL"
+    }
+  ]
+}

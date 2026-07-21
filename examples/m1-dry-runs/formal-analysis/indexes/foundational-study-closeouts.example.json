@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_record_index",
+  "registry_type": "foundational_study_closeout_registry",
+  "entries": [
+    {
+      "record_id": "LCMRP-FCLOSEREC-9902-SYNTHETIC-DRY-RUN-FORMAL",
+      "record_version": 1,
+      "artifact_type": "foundational_study_closeout",
+      "schema_id": "urn:lcmrp:schema:foundational-study-closeout:0.1.0",
+      "artifact_path": "records/foundational/closeouts/LCMRP-FCLOSEREC-9902-SYNTHETIC-DRY-RUN-FORMAL-v1.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "99eec5ef6ac52cacf7a5f68a014e2a939d6212ddcc00ba68b76b6eb257de65cd",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T14:21:00Z"
+    }
+  ]
+}
