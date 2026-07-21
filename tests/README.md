@@ -49,7 +49,7 @@ The M1 launch tests treat the taxonomy, prior-art map, and formal object model a
 - a typed formal model with declared operations, invariants, intended non-entailments, countermodels, and missing proof obligations;
 - no mechanism maturity award, adoption claim, novelty claim, or fabricated finding;
 - no product, model-provider, storage-provider, or CorpusStudio architecture assumption; and
-- unchanged empty production registries.
+- no registry effect from the historical launch package itself; a later, separately reviewed admission may populate only the foundational-subject registry without changing the launch artifacts into evidence.
 
 These are launch-contract checks, not validation of the candidate definitions or their supporting sources.
 
@@ -62,10 +62,22 @@ The M1 dry-run tests treat both bundles as isolated, synthetic program-infrastru
 - one terminal atomic record per planned analysis and set-equal closeout ledgers;
 - disjoint bundle identities and one active version per governed record;
 - explicit non-evidentiary markers, no human data, and no mechanism maturity effect;
-- empty production registries; and
+- no dry-run-derived production entry: only the two separately admitted, exact real subjects may appear in the foundational-subject registry, and the other six production registries remain empty; and
 - rejection of digest substitution, cross-bundle identity substitution, missing, duplicate, or extra closeout rows, profile swaps, false completion rhetoric, production-registry contamination, and multiple active versions.
 
 Bundle-native semantic replay and serialization checks supplement these tests. They do not prove taxonomy quality, formal soundness, external validity, independent validation, or M1 completion.
+
+## M1 subject-admission boundary expectations
+
+The subject-admission tests treat registration as an identity and provenance action supporting Layer 1. They require:
+
+- exactly two `ACTIVE` version-1 subjects with unique IDs, stable series, correct kinds, null supersession, safe locators, and exact verified raw-byte digests;
+- exact agreement among the registry, candidate bytes, and final reviewed dossier bindings;
+- `NOT_APPLICABLE` mechanism maturity and no adoption, validation, study-completion, evidence, or product-readiness claim;
+- empty foundational-study, research-finding, foundational-closeout, experiment, mechanism, and evidence registries; and
+- rejection of digest substitution, kind or locator swaps, duplicate active lineage, false validation or completion rhetoric, and accidental study or evidence entries.
+
+These checks show that the two candidates are addressable for later governed studies. They do not establish taxonomy quality, formal consistency, scientific validity, adoption, independent validation, or M1 completion.
 
 ## Interpretation limits
 

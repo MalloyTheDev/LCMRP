@@ -95,6 +95,11 @@ PRODUCTION_REGISTRIES = (
     "registry/foundational-study-closeouts.yaml",
 )
 
+ADMITTED_REAL_SUBJECT_IDS = {
+    "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "LCMRP-FSUBJ-0002-FORMAL-MEMORY-OBJECT-MODEL",
+}
+
 HIGH_LEVEL_ID_FIELDS = {
     "subject_id",
     "study_id",
@@ -878,7 +883,28 @@ def production_registry_errors(documents: Mapping[str, Any]) -> list[str]:
         registry = documents.get(relative)
         if not isinstance(registry, Mapping):
             errors.append(f"{relative}: production registry is missing or malformed")
-        elif registry.get("entries") != []:
+            continue
+        entries = registry.get("entries")
+        if not isinstance(entries, list):
+            errors.append(f"{relative}: production registry entries are malformed")
+            continue
+        if relative == "registry/foundational-subjects.yaml":
+            subject_ids = {
+                entry.get("subject_id")
+                for entry in entries
+                if isinstance(entry, Mapping)
+            }
+            if len(entries) != len(ADMITTED_REAL_SUBJECT_IDS) or subject_ids != ADMITTED_REAL_SUBJECT_IDS:
+                errors.append(
+                    f"{relative}: contains an unauthorized subject or dry-run contamination"
+                )
+            if any(
+                SYNTHETIC_ID.search(value)
+                for entry in entries
+                for value in _iter_strings(entry)
+            ):
+                errors.append(f"{relative}: contains a synthetic dry-run subject")
+        elif entries:
             errors.append(f"{relative}: production registry was populated by a dry run")
     return errors
 

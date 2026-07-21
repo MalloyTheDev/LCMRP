@@ -1,7 +1,7 @@
 # Memory Taxonomy and Formal Model
 
 **Layer:** Layer 1 — Foundational Research  
-**M1 status:** Launched; candidate definitions and formal obligations are under review. No taxonomy or model has been validated or adopted.
+**M1 status:** In progress; the exact candidate taxonomy and formal-model bytes are registered as Layer 1 foundational subjects for later study. No taxonomy or model has been validated or adopted.
 
 This workstream will define a product-independent vocabulary for memory objects, processes, lifecycle states, authority, provenance, confidence, and uncertainty. Its purpose is to make hypotheses and experiments comparable without allowing a storage product, model vendor, application schema, or biological metaphor to dictate the definitions.
 
@@ -12,7 +12,7 @@ This workstream will define a product-independent vocabulary for memory objects,
 - [Formal Memory Object Model v0.1 Candidate](FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) supplies a candidate formal vocabulary, operations, invariants, conjectures, countermodels, and missing proof obligations. It is not a validated formal system.
 - [M1 Foundation](../program/M1_FOUNDATION.md) defines the milestone scope and exit criteria.
 
-No launch artifact is a registered study, published foundational finding, mechanism evidence record, or maturity decision. The production registries remain empty.
+No launch artifact is a registered study, published foundational finding, mechanism evidence record, or maturity decision. The foundational-subject registry now identifies the two exact candidate artifacts, but registration is not adoption, validation, a result, or evidence. The foundational-study, research-finding, foundational-closeout, experiment, mechanism, and evidence registries remain empty.
 
 ## Scope
 

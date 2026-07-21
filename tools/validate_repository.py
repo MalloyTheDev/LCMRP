@@ -95,11 +95,16 @@ REQUIRED_PATHS = (
     "reviews/M1_LAUNCH_DECISION_2026-07-21.md",
     "reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md",
     "reviews/M1_DRY_RUN_DECISION_2026-07-21.md",
+    "reviews/M1_TAXONOMY_SUBJECT_ADMISSION_2026-07-21.md",
+    "reviews/M1_FORMAL_MODEL_SUBJECT_ADMISSION_2026-07-21.md",
+    "reviews/M1_SUBJECT_ADMISSION_ADVERSARIAL_REVIEW_2026-07-21.md",
+    "reviews/M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md",
     "tests/README.md",
     "tests/test_foundational_contracts.py",
     "tests/test_m1_launch.py",
     "tests/test_m1_dry_run_discovery.py",
     "tests/test_m1_dry_runs.py",
+    "tests/test_m1_subject_admission.py",
 )
 
 REGISTRIES = {
