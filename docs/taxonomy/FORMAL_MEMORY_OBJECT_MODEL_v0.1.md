@@ -13,7 +13,7 @@ This document proposes an abstract formal system, **FMO-0.1**, for describing me
 
 FMO-0.1 does not select a serialization, database, index, model, embedding, API, process topology, hosting environment, or application schema. Its “objects” and “operations” are mathematical entities and relations, not implementation components.
 
-The vocabulary is mapped to the companion [Candidate Memory Taxonomy v0.1](MEMORY_TAXONOMY_v0.1.md). If the natural-language taxonomy and this formalization disagree, neither silently overrides the other; the mismatch is an analysis input requiring versioned resolution.
+The vocabulary is mapped to the companion [Candidate Memory Taxonomy v0.1](MEMORY_TAXONOMY_v0.1.md), including its taxonomy-to-FMO [Companion formal-model crosswalk](MEMORY_TAXONOMY_v0.1.md#companion-formal-model-crosswalk). If the natural-language taxonomy and this formalization disagree, neither silently overrides the other; the mismatch is an analysis input requiring versioned resolution. Crosswalk entries marked `partial`, `absent`, or `conflict` are analysis inputs, not automatic overrides, validation outcomes, evidence-state changes, or adoption decisions.
 
 ## Research question
 
