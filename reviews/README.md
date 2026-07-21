@@ -16,3 +16,5 @@ A repository review is not automatically an independent validation. Each review 
 - [M1 formal-model subject-admission dossier — 2026-07-21](M1_FORMAL_MODEL_SUBJECT_ADMISSION_2026-07-21.md) binds and reviews the exact candidate formal-model bytes while preserving its open proof obligations.
 - [M1 subject-admission adversarial review — 2026-07-21](M1_SUBJECT_ADMISSION_ADVERSARIAL_REVIEW_2026-07-21.md) records independent-in-process cross-binding and mutation gates for the two real subject entries.
 - [M1 subject-admission decision — 2026-07-21](M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md) records the final identity-only admission judgment and remaining M1 obligations.
+- [M1 study-freeze adversarial review — 2026-07-21](M1_STUDY_FREEZE_ADVERSARIAL_REVIEW_2026-07-21.md) records exact-byte, cross-binding, mutation, output-absence, and registry-containment checks for the two substantive preregistrations.
+- [M1 study-freeze decision — 2026-07-21](M1_STUDY_FREEZE_DECISION_2026-07-21.md) records the steward acceptance boundary and the separate execution work still required.
