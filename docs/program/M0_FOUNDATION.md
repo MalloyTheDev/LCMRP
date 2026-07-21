@@ -15,7 +15,7 @@ M0 must make the program charter operational by establishing:
 1. A canonical, versioned program charter.
 2. Explicit research-layer and independence rules.
 3. Defined evidence states and transition obligations.
-4. Machine-readable experiment, evidence, and mechanism records.
+4. Machine-readable mechanism experiments and evidence, mechanism-free foundational studies and findings, and immutable record indexes.
 5. Human-facing proposal, protocol, report, and threat-model templates.
 6. Empty registries that do not imply unperformed research.
 7. Automated structural validation in continuous integration.
@@ -25,6 +25,7 @@ M0 must make the program charter operational by establishing:
 
 - Research governance and terminology boundaries
 - Reproducibility metadata contracts
+- Method-specific applicability profiles for mechanism and mechanism-free research
 - Claim and evidence discipline
 - Security and privacy reporting structure
 - Repository organization and automated contract checks

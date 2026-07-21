@@ -1,6 +1,10 @@
 # Research artifact schemas
 
-These JSON Schema Draft 2020-12 contracts define the minimum machine-readable structure for LCMRP experiment manifests, evidence records, mechanism-registry entries, and immutable record indexes.
+These JSON Schema Draft 2020-12 contracts define the minimum machine-readable structure for LCMRP mechanism experiment manifests, mechanism evidence records, mechanism-registry entries, foundational-study manifests, mechanism-independent research findings, and immutable record indexes.
+
+The mechanism contracts and foundational contracts are deliberately parallel. A foundational finding cannot award a Charter mechanism evidence label, and a mechanism evidence decision cannot omit its exact mechanism version.
+
+See [Foundational Study Contract v0.1](../docs/program/FOUNDATIONAL_STUDY_CONTRACT.md) for the supported profiles, rejection conditions, source rationale, and known limitations.
 
 Schema validity establishes structural conformance only. It does not establish that a hypothesis is sound, a protocol is adequate, a result is true, an evaluator is independent, or an evidence state has been earned.
 

@@ -1,0 +1,263 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_manifest",
+  "study_record_id": "LCMRP-FSTUDYREC-9999-SYNTHETIC-MEMORY-TAXONOMY",
+  "record_version": 1,
+  "immutable_record_notice": "Once frozen, this study manifest is immutable. Changes require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": [],
+    "result_accessed_before_amendment": false,
+    "post_result_change_disclosure": null
+  },
+  "preregistration": {
+    "status": "DRAFT",
+    "results_accessed_before_freeze": false,
+    "frozen_at": null,
+    "registration_authority": null,
+    "freeze_artifact": null
+  },
+  "record_status": "DRAFT",
+  "study_id": "LCMRP-FSTUDY-9999-SYNTHETIC-MEMORY-TAXONOMY",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "subject": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "MEMORY_TAXONOMY",
+    "subject_id": "LCMRP-FSUBJ-9999-SYNTHETIC-MEMORY-TAXONOMY",
+    "subject_series": "LCMRP-SYNTHETIC-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "name": "Synthetic memory-function taxonomy fixture",
+    "definition": "A deliberately synthetic category system used only to demonstrate the foundational-study contract.",
+    "boundary": "The fixture evaluates category structure only; it does not evaluate a memory mechanism or biological validity.",
+    "definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-TAXONOMY-DEFINITION",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:planned:schema:foundational-subject:0.1.0",
+      "locator": "records/foundational/9999/synthetic-taxonomy-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "PENDING",
+        "value": null,
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "primary_method_profile": {
+    "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+    "profile_id": "LCMRP-MPROF-9999-STRUCTURAL-TAXONOMY",
+    "profile_series": "LCMRP-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
+    "profile_version": 1,
+    "profile_definition_artifact": {
+      "artifact_id": "ARTIFACT-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "docs/program/FOUNDATIONAL_STUDY_CONTRACT.md",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "PENDING",
+        "value": null,
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "text/markdown"
+    },
+    "category_definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-CATEGORY-DEFINITIONS",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:planned:schema:category-definitions:0.1.0",
+      "locator": "records/foundational/9999/category-definitions.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "PENDING",
+        "value": null,
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "competency_questions": [
+      "Can the taxonomy distinguish retained event reports from generalized propositions without assigning one item to incompatible categories?"
+    ],
+    "integrity_constraints": [
+      "Every test case must resolve to an allowed category or an explicit unresolved classification."
+    ],
+    "positive_case_source_ids": [
+      "SOURCE-POSITIVE-SYNTHETIC"
+    ],
+    "negative_case_source_ids": [
+      "SOURCE-NEGATIVE-SYNTHETIC"
+    ],
+    "adjudication_method": "Two independent synthetic rule applications followed by explicit disagreement recording.",
+    "coverage_rule": "Exercise every declared category, every declared exclusion, and at least one unresolved boundary case."
+  },
+  "research_question": "Does the synthetic taxonomy classify its declared positive, negative, and boundary fixtures consistently with its own definitions?",
+  "hypothesis": {
+    "claim": "The synthetic taxonomy will satisfy its declared structural competency question and integrity constraint on the planned fixtures.",
+    "competing_explanation": "Any apparent consistency is caused by incomplete fixtures that omit category boundaries.",
+    "predicted_observation": "All fixtures produce traceable classifications and all negative cases are rejected by the relevant category rule.",
+    "falsifier": "Any fixture violates an integrity constraint or a declared negative case is accepted without an unresolved classification."
+  },
+  "analyses": [
+    {
+      "analysis_id": "ANALYSIS-STRUCTURAL-CONFORMANCE",
+      "analysis_mode": "CONFIRMATORY",
+      "question": "Do the planned fixtures satisfy the declared competency and integrity rules?",
+      "method": "Apply each versioned category rule to every positive, negative, and boundary fixture and retain individual validation outcomes.",
+      "decision_rule": "Reject the claim if any integrity violation occurs or coverage omits a declared category or exclusion.",
+      "planned_output_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-CONFORMANCE-RESULTS",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:planned:schema:structural-results:0.1.0",
+        "locator": "records/foundational/9999/structural-results.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "required_terminal_dispositions": [
+        "COMPLETED",
+        "NOT_RUN",
+        "HALTED",
+        "INVALID"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "SOURCE-POSITIVE-SYNTHETIC",
+      "source_kind": "SYNTHETIC_CASE_SET",
+      "role": "POSITIVE_CASES",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-POSITIVE-CASES",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:planned:schema:case-set:0.1.0",
+        "locator": "records/foundational/9999/positive-cases.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    },
+    {
+      "source_id": "SOURCE-NEGATIVE-SYNTHETIC",
+      "source_kind": "SYNTHETIC_CASE_SET",
+      "role": "NEGATIVE_CASES",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-NEGATIVE-CASES",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:planned:schema:case-set:0.1.0",
+        "locator": "records/foundational/9999/negative-cases.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "reproducibility": {
+    "source_revision": "UNCREATED-SYNTHETIC-FIXTURE",
+    "environment_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-ENVIRONMENT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:planned:schema:environment:0.1.0",
+      "locator": "records/foundational/9999/environment.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "PENDING",
+        "value": null,
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "configuration_artifacts": [
+      {
+        "artifact_id": "ARTIFACT-SYNTHETIC-VALIDATION-CONFIG",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:planned:schema:configuration:0.1.0",
+        "locator": "records/foundational/9999/validation-config.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    ],
+    "replication_criteria": [
+      "A separate evaluator obtains the same individual conformance outcomes from the frozen definitions and fixtures."
+    ]
+  },
+  "rejection_criteria": [
+    {
+      "criterion_id": "REJECT-INTEGRITY-VIOLATION",
+      "condition": "Any fixture violates a declared integrity constraint.",
+      "disposition": "REJECT_CLAIM",
+      "rationale": "Structural consistency is the exact bounded claim under study."
+    },
+    {
+      "criterion_id": "INVALIDATE-INCOMPLETE-COVERAGE",
+      "condition": "The fixture set omits any declared category or exclusion.",
+      "disposition": "INVALIDATE_ANALYSIS",
+      "rationale": "An incomplete suite cannot support the planned coverage assessment."
+    }
+  ],
+  "ethics_scope": {
+    "human_subjects_involved": false,
+    "human_participant_data_involved": false,
+    "rationale": "This is a synthetic contract fixture and contains no participant data."
+  },
+  "security_and_privacy_analysis": {
+    "assets": [
+      "Integrity of category definitions and fixture provenance"
+    ],
+    "threats": [
+      "Fixture substitution or provenance forgery"
+    ],
+    "controls": [
+      "Freeze exact raw-byte digests before execution"
+    ],
+    "data_retention_and_deletion": "Retain the synthetic fixture family for schema regression; remove no adverse or null disposition from a frozen record family.",
+    "residual_risks": [
+      "Structural conformance could be over-interpreted as external validity despite the explicit boundary."
+    ]
+  },
+  "limitations": [
+    "This draft fixture contains no executed analysis and supports no empirical or maturity claim.",
+    "Structural consistency does not establish biological validity, completeness, usefulness, or mechanism effectiveness."
+  ],
+  "mechanism_maturity_boundary": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "rationale": "The subject is a foundational taxonomy, not a versioned memory mechanism."
+  },
+  "protocol_artifact": {
+    "artifact_id": "ARTIFACT-SYNTHETIC-FOUNDATIONAL-PROTOCOL",
+    "artifact_version": 1,
+    "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+    "locator": "records/foundational/9999/study-protocol.json",
+    "digest": {
+      "algorithm": "SHA-256",
+      "status": "PENDING",
+      "value": null,
+      "scope": "RAW_FILE_BYTES"
+    },
+    "media_type": "application/json"
+  },
+  "created_at": "2026-07-21T00:00:00Z"
+}

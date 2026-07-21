@@ -33,6 +33,7 @@ REQUIRED_PATHS = (
     "docs/program/PROGRAM_CHARTER_v0.1.md",
     "docs/program/M0_FOUNDATION.md",
     "docs/program/RESEARCH_LAYERS.md",
+    "docs/program/FOUNDATIONAL_STUDY_CONTRACT.md",
     "docs/program/EVIDENCE_LABELS.md",
     "docs/program/EVIDENCE_STATES.md",
     "docs/taxonomy/README.md",
@@ -42,11 +43,17 @@ REQUIRED_PATHS = (
     "schemas/experiment-manifest.schema.json",
     "schemas/README.md",
     "schemas/evidence-record.schema.json",
+    "schemas/foundational-study-manifest.schema.json",
+    "schemas/research-finding-record.schema.json",
+    "schemas/foundational-record-index.schema.json",
     "schemas/mechanism-registry.schema.json",
     "schemas/record-index.schema.json",
     "examples/experiment-manifest.example.json",
     "examples/README.md",
     "examples/evidence-record.example.json",
+    "examples/foundational-study-manifest.example.json",
+    "examples/research-finding-record.example.json",
+    "examples/foundational-record-index.example.json",
     "examples/mechanism-registry.example.json",
     "templates/research-proposal.md",
     "templates/README.md",
@@ -57,16 +64,23 @@ REQUIRED_PATHS = (
     "registry/README.md",
     "registry/experiments.yaml",
     "registry/evidence.yaml",
+    "registry/foundational-studies.yaml",
+    "registry/research-findings.yaml",
     "records/README.md",
     "references/README.md",
     "reviews/README.md",
     "reviews/M0_BOUNDARY_REVIEW_2026-07-20.md",
+    "reviews/M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md",
+    "tests/README.md",
+    "tests/test_foundational_contracts.py",
 )
 
 REGISTRIES = {
     "registry/mechanisms.yaml": "mechanism_registry",
     "registry/experiments.yaml": "experiment_registry",
     "registry/evidence.yaml": "evidence_registry",
+    "registry/foundational-studies.yaml": "foundational_study_registry",
+    "registry/research-findings.yaml": "research_finding_registry",
 }
 
 CHARTER_INVARIANTS = (
@@ -318,6 +332,179 @@ def _resolve_local_artifact(root: Path, locator: str) -> Path | None:
     return candidate
 
 
+def _validate_foundational_finding_binding(
+    root: Path,
+    label: str,
+    finding: Mapping[str, Any],
+) -> list[str]:
+    """Bind a foundational finding to the exact referenced study fields."""
+
+    if finding.get("artifact_type") != "research_finding_record":
+        return []
+
+    study_reference = finding.get("study_reference")
+    if not isinstance(study_reference, Mapping):
+        return []
+    manifest_artifact = study_reference.get("manifest_artifact")
+    if not isinstance(manifest_artifact, Mapping):
+        return []
+    locator = manifest_artifact.get("locator")
+    if not isinstance(locator, str):
+        return []
+
+    try:
+        manifest_path = _resolve_local_artifact(root, locator)
+    except RepositoryValidationError as exc:
+        return [f"{label}: finding binding cannot resolve study manifest: {exc}"]
+    if manifest_path is None or not manifest_path.is_file():
+        return []
+    try:
+        manifest = load_json(manifest_path)
+    except RepositoryValidationError:
+        return []
+    if not isinstance(manifest, Mapping) or manifest.get("artifact_type") != "foundational_study_manifest":
+        return [f"{label}: finding binding target is not a foundational study manifest"]
+
+    errors: list[str] = []
+
+    if (
+        finding.get("record_status") == "PUBLISHED"
+        or finding.get("terminal_disposition") == "COMPLETED"
+    ) and manifest.get("record_status") != "FROZEN":
+        errors.append(
+            f"{label}: finding binding requires a FROZEN study for a "
+            "PUBLISHED or COMPLETED finding"
+        )
+
+    def compare(actual: Any, expected: Any, field: str) -> None:
+        if actual != expected:
+            errors.append(f"{label}: finding binding mismatch for {field}")
+
+    compare(study_reference.get("study_id"), manifest.get("study_id"), "study_id")
+    compare(
+        study_reference.get("study_record_id"),
+        manifest.get("study_record_id"),
+        "study_record_id",
+    )
+    compare(
+        study_reference.get("study_record_version"),
+        manifest.get("record_version"),
+        "study_record_version",
+    )
+    compare(
+        manifest_artifact.get("schema_id"),
+        "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+        "study_manifest.schema_id",
+    )
+
+    subject_reference = finding.get("subject_reference")
+    manifest_subject = manifest.get("subject")
+    if isinstance(subject_reference, Mapping) and isinstance(manifest_subject, Mapping):
+        for field in (
+            "target_type",
+            "subject_kind",
+            "subject_id",
+            "subject_series",
+            "subject_version",
+        ):
+            compare(subject_reference.get(field), manifest_subject.get(field), f"subject.{field}")
+
+    profile_reference = finding.get("primary_method_profile_reference")
+    manifest_profile = manifest.get("primary_method_profile")
+    if isinstance(profile_reference, Mapping) and isinstance(manifest_profile, Mapping):
+        profile_fields = {
+            "profile_kind": "profile_kind",
+            "profile_id": "profile_id",
+            "profile_series": "profile_series",
+            "profile_version": "profile_version",
+        }
+        for reference_field, manifest_field in profile_fields.items():
+            compare(
+                profile_reference.get(reference_field),
+                manifest_profile.get(manifest_field),
+                f"primary_method_profile.{reference_field}",
+            )
+
+    analysis_reference = finding.get("analysis_reference")
+    analyses = manifest.get("analyses")
+    if isinstance(analysis_reference, Mapping) and isinstance(analyses, list):
+        analysis_id = analysis_reference.get("analysis_id")
+        matching_analysis = next(
+            (
+                analysis
+                for analysis in analyses
+                if isinstance(analysis, Mapping)
+                and analysis.get("analysis_id") == analysis_id
+            ),
+            None,
+        )
+        if matching_analysis is None:
+            errors.append(f"{label}: finding binding mismatch for analysis.analysis_id")
+        else:
+            compare(
+                analysis_reference.get("analysis_mode"),
+                matching_analysis.get("analysis_mode"),
+                "analysis.analysis_mode",
+            )
+
+    return errors
+
+
+def _validate_foundational_study_semantics(
+    label: str,
+    study: Mapping[str, Any],
+) -> list[str]:
+    """Check identifier uniqueness and profile-to-source role bindings."""
+
+    if study.get("artifact_type") != "foundational_study_manifest":
+        return []
+
+    errors: list[str] = []
+    analyses = study.get("analyses")
+    if isinstance(analyses, list):
+        analysis_ids = [
+            analysis.get("analysis_id")
+            for analysis in analyses
+            if isinstance(analysis, Mapping)
+        ]
+        if len(analysis_ids) != len(set(analysis_ids)):
+            errors.append(f"{label}: foundational study analysis IDs must be unique")
+
+    sources = study.get("sources")
+    if not isinstance(sources, list):
+        return errors
+    source_roles: dict[Any, Any] = {}
+    for source in sources:
+        if not isinstance(source, Mapping):
+            continue
+        source_id = source.get("source_id")
+        if source_id in source_roles:
+            errors.append(f"{label}: foundational study source IDs must be unique")
+        source_roles[source_id] = source.get("role")
+
+    profile = study.get("primary_method_profile")
+    if not isinstance(profile, Mapping):
+        return errors
+    if profile.get("profile_kind") != "STRUCTURAL_OR_TAXONOMY_EVALUATION":
+        return errors
+
+    for field, expected_role in (
+        ("positive_case_source_ids", "POSITIVE_CASES"),
+        ("negative_case_source_ids", "NEGATIVE_CASES"),
+    ):
+        identifiers = profile.get(field)
+        if not isinstance(identifiers, list):
+            continue
+        for source_id in identifiers:
+            actual_role = source_roles.get(source_id)
+            if actual_role != expected_role:
+                errors.append(
+                    f"{label}: foundational study {field} entry {source_id!r} "
+                    f"must resolve to a source with role {expected_role}"
+                )
+    return errors
+
+
 def validate_local_artifact_references(root: Path) -> list[str]:
     """Verify recorded local artifact digests and mechanism-version bindings."""
 
@@ -360,6 +547,21 @@ def validate_local_artifact_references(root: Path) -> list[str]:
                 errors.append(
                     f"{relative_document}: recorded SHA-256 does not match {locator}"
                 )
+
+        if isinstance(document, Mapping):
+            errors.extend(
+                _validate_foundational_study_semantics(
+                    relative_document,
+                    document,
+                )
+            )
+            errors.extend(
+                _validate_foundational_finding_binding(
+                    root,
+                    relative_document,
+                    document,
+                )
+            )
 
         mechanism_versions = document.get("mechanism_versions") if isinstance(document, Mapping) else None
         if not isinstance(mechanism_versions, list):
@@ -412,7 +614,12 @@ def validate_registry_entry_semantics(registry: Any, label: str) -> list[str]:
     registry_type = registry.get("registry_type")
     if registry_type == "mechanism_registry":
         id_field, version_field = "mechanism_id", "mechanism_version"
-    elif registry_type in {"experiment_registry", "evidence_registry"}:
+    elif registry_type in {
+        "experiment_registry",
+        "evidence_registry",
+        "foundational_study_registry",
+        "research_finding_registry",
+    }:
         id_field, version_field = "record_id", "record_version"
     else:
         return []
@@ -479,6 +686,8 @@ def validate_registries(root: Path) -> list[str]:
         "mechanism_registry": root / "schemas/mechanism-registry.schema.json",
         "experiment_registry": root / "schemas/record-index.schema.json",
         "evidence_registry": root / "schemas/record-index.schema.json",
+        "foundational_study_registry": root / "schemas/foundational-record-index.schema.json",
+        "research_finding_registry": root / "schemas/foundational-record-index.schema.json",
     }
     artifact_schemas: dict[str, Any] = {}
     for schema_path in sorted((root / "schemas").glob("*.schema.json")):
@@ -514,7 +723,12 @@ def validate_registries(root: Path) -> list[str]:
         elif any(not isinstance(entry, Mapping) for entry in registry["entries"]):
             errors.append(f"{relative}: every entry must be a mapping")
 
-        unknown_keys = set(registry) - {"schema_version", "registry_type", "entries"}
+        unknown_keys = set(registry) - {
+            "schema_version",
+            "artifact_type",
+            "registry_type",
+            "entries",
+        }
         if unknown_keys:
             errors.append(
                 f"{relative}: unknown top-level keys: {', '.join(sorted(unknown_keys))}"
@@ -538,7 +752,12 @@ def validate_registries(root: Path) -> list[str]:
             except RepositoryValidationError as exc:
                 errors.append(str(exc))
 
-        if expected_type not in {"experiment_registry", "evidence_registry"}:
+        if expected_type not in {
+            "experiment_registry",
+            "evidence_registry",
+            "foundational_study_registry",
+            "research_finding_registry",
+        }:
             continue
         if not isinstance(registry.get("entries"), list):
             continue
@@ -578,16 +797,34 @@ def validate_registries(root: Path) -> list[str]:
             if artifact.get("artifact_type") != entry.get("artifact_type"):
                 errors.append(f"{relative}:entries/{index}: artifact_type does not match record")
 
-            record_id_field = (
-                "manifest_record_id"
-                if expected_type == "experiment_registry"
-                else "record_id"
-            )
+            record_id_field = {
+                "experiment_registry": "manifest_record_id",
+                "evidence_registry": "record_id",
+                "foundational_study_registry": "study_record_id",
+                "research_finding_registry": "record_id",
+            }[expected_type]
             if artifact.get(record_id_field) != entry.get("record_id"):
                 errors.append(f"{relative}:entries/{index}: record_id does not match artifact")
             if artifact.get("record_version") != entry.get("record_version"):
                 errors.append(
                     f"{relative}:entries/{index}: record_version does not match artifact"
+                )
+
+            if (
+                expected_type == "foundational_study_registry"
+                and entry.get("registry_status") == "ACTIVE"
+                and artifact.get("record_status") != "FROZEN"
+            ):
+                errors.append(
+                    f"{relative}:entries/{index}: ACTIVE foundational study must be FROZEN"
+                )
+            if (
+                expected_type == "research_finding_registry"
+                and entry.get("registry_status") == "ACTIVE"
+                and artifact.get("record_status") != "PUBLISHED"
+            ):
+                errors.append(
+                    f"{relative}:entries/{index}: ACTIVE research finding must be PUBLISHED"
                 )
 
             record_version = artifact.get("record_version")

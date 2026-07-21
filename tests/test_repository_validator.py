@@ -76,6 +76,43 @@ class RepositoryContractTests(unittest.TestCase):
 
         self.assertTrue(any("future.schema.json" in error for error in errors))
 
+    def test_new_schema_and_matching_example_are_discovered_dynamically(self) -> None:
+        """A newly added contract must be enforced without a validator allow-list edit."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "schemas").mkdir()
+            (root / "examples").mkdir()
+            (root / "schemas" / "future-artifact.schema.json").write_text(
+                json.dumps(
+                    {
+                        "$schema": "https://json-schema.org/draft/2020-12/schema",
+                        "$id": "urn:lcmrp:test:future-artifact",
+                        "type": "object",
+                        "additionalProperties": False,
+                        "required": ["artifact_type"],
+                        "properties": {
+                            "artifact_type": {"const": "future_artifact"}
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "examples" / "future-artifact.example.json").write_text(
+                '{"artifact_type": "wrong_artifact_type"}',
+                encoding="utf-8",
+            )
+
+            errors = validate_schemas_and_examples(root)
+
+        self.assertTrue(
+            any(
+                "future-artifact.example.json" in error
+                and "future_artifact" in error
+                for error in errors
+            ),
+            errors,
+        )
+
     def test_example_without_matching_schema_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
