@@ -1,7 +1,7 @@
 # M1 Formal-Model Study Package
 
 Applicable layer: Layer 1 — Foundational Research  
-Package state: `FROZEN PREREGISTRATION` / not executed  
+Package state: `FROZEN PREREGISTRATION` / `BLOCKED_NOT_RUN` / `REQUIRES_SUPERSESSION`  
 Mechanism under evaluation: None  
 Mechanism maturity labels: Not applicable  
 Scientific findings asserted: None
@@ -18,7 +18,7 @@ This directory retains the reviewed draft history and the separately activated p
 
 `manifest-draft.json` and `protocol-draft.md` remain non-authoritative authoring artifacts. The distinct `protocol-v1.md`, `freeze-attestation.json`, canonical record, and exact active registry digest define the frozen preregistration. The draft files supply no finding, disposition, or closeout.
 
-The analyzer has not been executed, and none of the seven planned `results/` locators exists. Freeze alone does not authorize execution. A separately governed execution increment must reverify the final protocol, authority-bound attestation, immutable `FROZEN` manifest, exact canonical index digest, no-prior-result-access assertion, and every absent output before invoking the guard.
+The configured analyzer command, `main`, and `run_kernel` have not been invoked, and none of the seven planned `results/` locators exists. Freeze alone does not authorize execution. A separately governed preflight reverifed the final protocol, authority-bound attestation, immutable `FROZEN` manifest, canonical index, no-prior-result-access assertion, and every absent output, then called only the frozen `verify_manifest_index` guard. That guard failed closed before analysis.
 
 Compilation, JSON parsing, JSON Schema validation, raw-byte digest verification, and static source inspection are allowed draft-integrity checks. They are not formal-analysis results and cannot establish that the bounded kernel—or FMO-0.1—is consistent, satisfiable, sound, complete, realizable, secure, or useful.
 
@@ -38,6 +38,14 @@ Compilation, JSON parsing, JSON Schema validation, raw-byte digest verification,
 | `artifacts/environment.json` | Planned CPython 3.12.13 standard-library environment | Study-local reproducibility target only |
 | `artifacts/tool-provenance.json` | Exact analyzer digest, toolchain, integrity, and semantic boundary | Must be immutable in a frozen manifest |
 | `analyze_fmo_kernel.py` | Guarded deterministic finite-model enumerator | Compile/static-check only before freeze |
+| `execution/preflight-execution-attestation.json` | Exact-byte guard-preflight record | `BLOCKED_NOT_RUN`; not a scientific result |
+| `execution/runtime-provenance.json` | Runtime and zero-invocation provenance | Configured command and kernel invocation counts remain zero |
+
+## Execution-readiness disposition
+
+The frozen guard expects eight leading spaces before the active registry entry's `artifact_digest.value`; the schema-valid canonical YAML uses six. The resulting `StudyGuardError` occurred before `main` or `run_kernel` and therefore says nothing about satisfiability, entailment, non-entailment, invariants, authority, deletion, or the semantic mapping. All seven result paths remain absent.
+
+Because the analyzer is digest-bound by the active version-1 manifest, fixing its parser in place would rewrite the preregistration. Execution requires a separately reviewed version-2 tool and study record, linked by supersession, frozen while every result remains absent. The preflight metadata is governance infrastructure, not an atomic finding or terminal disposition.
 
 ## Planned analysis outputs
 

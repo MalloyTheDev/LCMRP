@@ -1,7 +1,7 @@
 # M1 taxonomy structural-study package v1
 
 Applicable layer: Layer 1 — Foundational Research  
-Package status: `FROZEN PREREGISTRATION` / `NOT EXECUTED`  
+Package status: `FROZEN PREREGISTRATION` / `BLOCKED_NOT_RUN` / `REQUIRES_SUPERSESSION`  
 Study: `LCMRP-FSTUDY-0001-M1-TAXONOMY`  
 Study record: `LCMRP-FSTUDYREC-0001-M1-TAXONOMY@1`  
 Primary profile: `LCMRP-MPROF-0001-M1-STRUCTURAL-TAXONOMY@1`  
@@ -41,9 +41,15 @@ Registration fixes identity and provenance only. This package does not adopt the
 
 The five planned output locators under `outputs/` do not exist. Creating an output outside a separately governed execution increment is an integrity failure, not progress.
 
-## Completed freeze boundary
+## Execution-readiness disposition
 
-The separately reviewed freeze action was required to perform all of the following in order:
+The [non-case execution-readiness review](../../../reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md) blocked version-1 execution before any taxonomy case packet or case content was accessed. It identified independently sufficient blockers: the protocol and manifest source sets disagree; the protocol's M1 milestone digest is stale; freeze-required repository, dependency, platform, and environment bindings are incomplete; the intake digest contract is undefined; and no immutable intake names two eligible primary human adjudicators plus a separate eligible human tie adjudicator.
+
+The review also found that the freeze attestation does not itself contain the artifact/digest inventory described below and that several bound operational inputs retain `DRAFT_FREEZE_INTENT` lifecycle wording. The active frozen record remains an immutable provenance object, but it is not execution-ready. No agent identity may substitute for the required humans. Repair requires a separately reviewed, digest-linked version-2 study record before contributor assignment, case access, coding, or output creation.
+
+## Originally recorded freeze boundary
+
+The freeze action was intended to perform all of the following in order. The later execution-readiness review found that items 4, 6, and 7 were not fully represented in the frozen metadata and that the protocol/manifest source sets diverge. This historical checklist therefore does not authorize execution:
 
 1. confirm that the subject registry resolves the exact subject ID, series, version, locator, and digest above;
 2. assign a named freeze authority and bind the exact eligibility, isolation, and conflict criteria for later adjudicators; adjudicator identities need not and must not be invented to complete freeze;
@@ -55,7 +61,7 @@ The separately reviewed freeze action was required to perform all of the followi
 8. change the manifest and protocol status to `FROZEN` without altering their substantive commitments; and
 9. validate the frozen manifest against JSON Schema Draft 2020-12 and independently recompute every digest.
 
-The draft files preserve the authoring state. Any change to the frozen protocol or bound inputs now requires a superseding study-record version linked to the prior raw-byte digest. Confirmatory analysis may begin only in a separate governed execution increment after the execution-intake requirements are satisfied.
+The draft files preserve the authoring state. Any change to the frozen protocol or bound inputs requires a superseding study-record version linked to the prior raw-byte digest. Confirmatory analysis may begin only after a corrected version is independently reviewed and frozen and its execution-intake requirements are satisfied.
 
 ## Execution boundary
 

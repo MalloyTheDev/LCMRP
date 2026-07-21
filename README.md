@@ -40,6 +40,10 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Formal-Model Frozen Protocol](studies/foundational/m1-formal-model-v1/protocol-v1.md) preregisters seven bounded formal analyses while leaving the analyzer unexecuted.
 - [M1 Study-Freeze Adversarial Review](reviews/M1_STUDY_FREEZE_ADVERSARIAL_REVIEW_2026-07-21.md) records exact-byte, mutation, output-absence, and registry-containment gates.
 - [M1 Study-Freeze Decision](reviews/M1_STUDY_FREEZE_DECISION_2026-07-21.md) records the steward acceptance boundary and remaining execution obligations.
+- [M1 Taxonomy Execution-Readiness Review](reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md) records the non-case preflight blockers that prevent taxonomy v1 execution.
+- [M1 Formal Execution Preflight](studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json) records the fail-closed guard defect discovered before the configured analyzer command ran.
+- [M1 Study-Execution Adversarial Review](reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md) independently tests containment and the two truthful blocked-not-run states.
+- [M1 Study-Execution Decision](reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md) records the steward disposition and required versioned supersession work.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -55,9 +59,9 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 ## Current phase
 
-**M1 in progress — two Layer 1 study protocols frozen; analyses not started**
+**M1 in progress — both frozen v1 studies blocked at execution preflight; neither study ran**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 now has two exact `ACTIVE` subjects and two exact `FROZEN` Layer 1 preregistrations: one structural/taxonomy study and one bounded formal-analysis study. Every planned output remains absent, the formal analyzer has not run, and no finding or closeout exists. Freeze does not adopt or validate either candidate, prove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has two exact `ACTIVE` subjects and two exact `FROZEN` Layer 1 version-1 preregistrations. A separately reviewed pre-execution increment found hard metadata, contributor-intake, and provenance blockers in taxonomy v1 and a fail-closed canonical-index parsing defect in the frozen formal v1 tool. No taxonomy case was adjudicated; the formal configured command, `main`, and `run_kernel` were not invoked. All 12 planned outputs remain absent, and no finding or closeout exists. Both v1 records require digest-linked supersession before execution. These blockers do not adopt or validate either candidate, prove or disprove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
 
 ## License
 

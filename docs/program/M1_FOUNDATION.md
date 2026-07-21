@@ -2,11 +2,11 @@
 
 ## Status
 
-**Milestone state:** In progress — two substantive protocols frozen; analyses not executed  
+**Milestone state:** In progress — two frozen v1 studies blocked at execution preflight; neither study executed  
 Applicable layer: Layer 1 — Foundational Research  
 **Mechanism evidence label:** Not applicable  
 **Scientific findings asserted:** None  
-**Version:** 0.1-study-freeze  
+**Version:** 0.1-execution-readiness  
 **Launch date:** 2026-07-21
 
 M1 begins the governed investigation of a product-independent vocabulary and formal object model for lifelong machine memory. This document authorizes candidate-definition, structural-evaluation, and formal-analysis work only. It does not adopt a taxonomy, establish that the formal model is sound, validate a memory mechanism, or authorize an implementation.
@@ -39,6 +39,9 @@ The milestone succeeds only if later governed analyses can reject or revise its 
 | [Prior Art and Competing Taxonomies](../taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) | Map candidate definitions to relevant research traditions and expose competing organizations and unresolved transfer assumptions. | Scoped research input; not a systematic evidence synthesis | Novelty, exhaustive coverage, or adoption of a source taxonomy. |
 | [Structural/taxonomy study protocol](../../studies/foundational/m1-taxonomy-v1/protocol-v1.md) | Preregister an evaluation under the accepted `STRUCTURAL_OR_TAXONOMY_EVALUATION` profile. | `FROZEN`; five planned analyses; no output or finding | A scientific result before atomic findings and closeout. |
 | [Formal-analysis study protocol](../../studies/foundational/m1-formal-model-v1/protocol-v1.md) | Preregister an evaluation under the accepted `FORMAL_ANALYSIS` profile. | `FROZEN`; seven planned analyses; analyzer not executed | A proof or validity result before the declared verification work. |
+| [Taxonomy execution-readiness review](../../reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md) | Check contributor, source, environment, intake, and output gates without reading case contents. | `BLOCKED`; taxonomy v1 not run; five outputs absent | A case disposition, finding, candidate evaluation, or substitute for eligible human adjudicators. |
+| [Formal execution preflight](../../studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json) | Resolve exact bytes and exercise the frozen provenance guard before machine analysis. | `BLOCKED_NOT_RUN`; configured command, `main`, and `run_kernel` not invoked; seven outputs absent | Satisfiability, consistency, entailment, proof, or any semantic result. |
+| [Study-execution adversarial review](../../reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md) | Test the truthfulness and containment of both pre-execution failures. | Internal pass for fail-closed blockage only; both studies not run | Independent scientific validation, an atomic disposition, or M1 completion. |
 | [Non-evidentiary contract dry runs](../../examples/m1-dry-runs/) | Exercise subject, study, finding, and closeout paths using synthetic inputs before a real study is accepted. | Two isolated fixture families prepared and internally adversarially reviewed | Registration, replication, scientific validity, candidate adoption, or evidence. |
 | [Dry-run adversarial review](../../reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) | Test digest, identity, lifecycle, closeout, production-registry, and claim-boundary failures. | Conditional internal pass; external reproduction not performed | Independent scientific validation or M1 completion. |
 | Independent boundary review of later substantive findings | Assess product independence, claim discipline, ambiguity, and untested obligations after real governed analyses exist. | Not started | Scientific validation by itself. |
@@ -129,6 +132,7 @@ These are objectives to be tested by future frozen studies. They are not results
 4. Resolve any contract defects by versioned supersession; do not rewrite frozen records.
 5. Register the exact candidate taxonomy and formal model as separate foundational subjects if the dry runs show the record path is usable. **Completed for identity and provenance only; no study or evidence effect.**
 6. Freeze one structural/taxonomy protocol and one formal-analysis protocol with explicit analyses, baselines, rejection criteria, tools, and immutable artifacts. **Completed as preregistration only; all outputs remain absent.**
+   A later execution-readiness review found that both frozen version-1 records fail their own pre-execution gates. Taxonomy v1 lacks valid contributor intake and consistent immutable source/environment bindings; formal v1's digest-bound tool rejects the schema-valid canonical index before analysis. Preserve both records and supersede them before execution.
 7. Publish one atomic finding or terminal disposition per planned analysis, including null, halted, invalid, and contradictory outcomes.
 8. Close each study only when its immutable all-analysis ledger is complete.
 9. Commission an independent review of claims, counterexamples, product independence, and unresolved risks.
@@ -136,7 +140,7 @@ These are objectives to be tested by future frozen studies. They are not results
 
 ## M1 exit criteria
 
-M1 is not complete. The two protocol-definition criteria are satisfied by exact frozen preregistrations, but neither study has been executed and no candidate has received a disposition. All result, closeout, independent-review, and completion criteria remain unchecked.
+M1 is not complete. The two protocol-definition criteria are satisfied by exact frozen preregistrations, but the subsequent readiness increment found both version-1 records unexecutable as frozen. Neither study has been executed and no candidate has received a disposition. All result, closeout, independent-review, and completion criteria remain unchecked. Freeze conformance is not an execution-readiness claim.
 
 - [ ] The exact taxonomy and formal-model subject versions evaluated in M1 are immutable and digest-bound in the foundational-subject registry.
 - [x] A frozen `STRUCTURAL_OR_TAXONOMY_EVALUATION` study tests the declared competency questions, integrity constraints, positive and negative cases, adjudication method, and coverage rule.
@@ -160,6 +164,8 @@ Pause new M1 findings and return to candidate design or governance review if any
 - A candidate term or axiom embeds a vendor, storage, embedding, model, product, or application assumption that is represented as general.
 - A study accesses its planned results before freeze or changes a confirmatory analysis after result access without disclosed supersession and exploratory reclassification.
 - The exact subject, study, profile, finding, or artifact digest cannot be resolved through the accepted contracts.
+- A frozen protocol and manifest disagree on their complete source set, or freeze-required environment and intake bindings are absent or self-referential.
+- A digest-bound execution guard rejects the schema-valid canonical registry before the declared analysis can begin.
 - A taxonomy organization is described as exhaustive without a coverage rule, or alternatives and counterexamples are suppressed.
 - A formal claim rests only on a successful parse, type check, example execution, or absence of a found counterexample.
 - A deletion claim omits derivatives, replicas, backups, audit residue, or a declared exception scope.
