@@ -12,3 +12,7 @@ A repository review is not automatically an independent validation. Each review 
 - [M1 launch decision — 2026-07-21](M1_LAUNCH_DECISION_2026-07-21.md) records the final launch judgment, exact limitations, and still-open M1 exit obligations.
 - [M1 dry-run adversarial review — 2026-07-21](M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) records the independent-in-process mutation tests for the two isolated synthetic contract bundles.
 - [M1 dry-run decision — 2026-07-21](M1_DRY_RUN_DECISION_2026-07-21.md) records the final infrastructure-only acceptance boundary and the M1 work that remains open.
+- [M1 taxonomy subject-admission dossier — 2026-07-21](M1_TAXONOMY_SUBJECT_ADMISSION_2026-07-21.md) binds and reviews the exact candidate taxonomy bytes for identity-only registration.
+- [M1 formal-model subject-admission dossier — 2026-07-21](M1_FORMAL_MODEL_SUBJECT_ADMISSION_2026-07-21.md) binds and reviews the exact candidate formal-model bytes while preserving its open proof obligations.
+- [M1 subject-admission adversarial review — 2026-07-21](M1_SUBJECT_ADMISSION_ADVERSARIAL_REVIEW_2026-07-21.md) records independent-in-process cross-binding and mutation gates for the two real subject entries.
+- [M1 subject-admission decision — 2026-07-21](M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md) records the final identity-only admission judgment and remaining M1 obligations.

@@ -32,6 +32,10 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Synthetic Contract Dry Runs](examples/m1-dry-runs/) exercise the foundational subject-to-closeout record graph without registering a real study or producing evidence.
 - [M1 Dry-Run Adversarial Review](reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) records the separate mutation-test verdict and its limits.
 - [M1 Dry-Run Decision](reviews/M1_DRY_RUN_DECISION_2026-07-21.md) records the steward-level acceptance boundary for this M1 increment.
+- [M1 Taxonomy Subject Admission Dossier](reviews/M1_TAXONOMY_SUBJECT_ADMISSION_2026-07-21.md) reviews the exact taxonomy bytes for identity-only registration.
+- [M1 Formal-Model Subject Admission Dossier](reviews/M1_FORMAL_MODEL_SUBJECT_ADMISSION_2026-07-21.md) reviews the exact formal-model bytes for identity-only registration.
+- [M1 Subject-Admission Adversarial Review](reviews/M1_SUBJECT_ADMISSION_ADVERSARIAL_REVIEW_2026-07-21.md) records cross-binding and mutation-test results for the two real subject entries.
+- [M1 Subject-Admission Decision](reviews/M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md) records the final steward judgment and the limits of registration.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -39,7 +43,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [`schemas/`](schemas/) contains versioned JSON Schema Draft 2020-12 contracts.
 - [`examples/`](examples/) contains explicitly non-evidentiary example records.
 - [`templates/`](templates/) contains proposal, protocol, report, foundational closeout, and threat-model structures.
-- [`registry/`](registry/) contains mechanism, experiment, evidence, foundational-subject, foundational-study, research-finding, and foundational-closeout indexes. Empty registries mean that no research entries have yet been accepted.
+- [`registry/`](registry/) contains mechanism, experiment, evidence, foundational-subject, foundational-study, research-finding, and foundational-closeout indexes. The foundational-subject registry identifies two exact M1 candidate artifacts; the other six production registries remain empty. Subject registration is provenance, not research evidence.
 - [`records/`](records/) defines the immutable record layout used once experiments and evidence exist.
 - [`references/`](references/) defines source-verification and citation-recording rules.
 
@@ -49,7 +53,7 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 **M1 launched — Layer 1 taxonomy and formal-model work in progress**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. Two isolated synthetic dry runs now exercise the accepted Layer 1 record paths, but only as non-evidentiary fixtures. The candidates remain hypotheses and research inputs: they are not an adopted taxonomy, a validated formal model, a scientific finding, or evidence that any memory mechanism is ready for use. Production registries remain empty, and M1 remains incomplete.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. Two isolated synthetic dry runs exercise the accepted Layer 1 record paths only as non-evidentiary fixtures. The exact current candidate bytes are now registered as two `ACTIVE` Layer 1 foundational subjects so later studies can bind them without ambiguity. Registration does not adopt or validate either candidate, create a study or finding, award evidence, or establish that a memory mechanism is ready for use. The other six production registries remain empty, no substantive study is frozen, and M1 remains incomplete.
 
 ## License
 
