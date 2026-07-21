@@ -6,7 +6,7 @@
 - **Milestone:** M1 — Candidate Memory Taxonomy and Formal Object Model
 - **Decision:** **CONDITIONAL ACCEPT — SYNTHETIC CONTRACT DRY RUNS ONLY**
 - **M1 state after the condition:** In progress; not complete
-- **Effective condition:** The exact head of the publication pull request must pass the required GitHub Actions workflow and then be merged by the repository steward
+- **Effective condition:** Taxonomy pull request [#7](https://github.com/MalloyTheDev/LCMRP/pull/7) and formal-analysis pull request [#8](https://github.com/MalloyTheDev/LCMRP/pull/8) have merged after exact-head validation; the exact head of integration pull request [#9](https://github.com/MalloyTheDev/LCMRP/pull/9) must also pass the required GitHub Actions workflow and then be merged by the repository steward
 - **Research evidence created:** None
 - **Independent validation established:** No
 - **Mechanism maturity effect:** None
@@ -29,6 +29,16 @@ The fixture records declare **Layer 1 — Foundational Research** because they e
 | Adversarial verification | `tests/test_m1_dry_runs.py` and `reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md` | Thirteen positive and mutation gates plus an internal conditional-pass review |
 
 The authoring arms did not share writable paths. The verification arm treated both bundles as read-only. Root review was limited to repository discovery, navigation, the final decision, corrective claim-boundary wording, testing, and publication. This separation reduces cross-review coupling but is not independent scientific validation.
+
+## Publication chain
+
+| Pull request | Isolated scope | Exact-head result | Merge result |
+| --- | --- | --- | --- |
+| [#7](https://github.com/MalloyTheDev/LCMRP/pull/7) | Taxonomy dry-run bundle only | [Actions run 29864479215](https://github.com/MalloyTheDev/LCMRP/actions/runs/29864479215) passed on `a5ced1a06f478581eeb9c84cba7945a12016341d` | `92245d04cb4121459fe680b243388433258d15c0` |
+| [#8](https://github.com/MalloyTheDev/LCMRP/pull/8) | Formal-analysis dry-run bundle only | [Actions run 29864640719](https://github.com/MalloyTheDev/LCMRP/actions/runs/29864640719) passed on `b75d4d68b03d2b979245b676b13d43fde9dc30ac` | `4bf859ae077ada2ce19cc27364ec3c96c41d6a1c` |
+| [#9](https://github.com/MalloyTheDev/LCMRP/pull/9) | Integration, adversarial tests, internal review, and this decision | Required on the final decision-bound head | Conditional on exact-head success |
+
+Splitting publication by lane preserves reviewable scope. It does not convert originating internal work into independent validation.
 
 ## Final-judge findings
 
@@ -69,4 +79,4 @@ The next falsification step is an outside-workflow reimplementation of both reco
 
 ## Final disposition
 
-**CONDITIONAL ACCEPT — SYNTHETIC CONTRACT DRY RUNS ONLY.** The two bundles are suitable for publication as non-evidentiary regression fixtures once exact-head continuous integration passes and the repository steward merges the publication pull request. This disposition must not be restated as scientific validation, candidate adoption, mechanism evidence, implementation readiness, independent validation, or M1 completion.
+**CONDITIONAL ACCEPT — SYNTHETIC CONTRACT DRY RUNS ONLY.** The two bundle PRs have satisfied their exact-head merge conditions. The fixtures are suitable for publication as non-evidentiary regression infrastructure only when the final head of integration pull request [#9](https://github.com/MalloyTheDev/LCMRP/pull/9) also passes continuous integration and is merged by the repository steward. This disposition must not be restated as scientific validation, candidate adoption, mechanism evidence, implementation readiness, independent validation, or M1 completion.
