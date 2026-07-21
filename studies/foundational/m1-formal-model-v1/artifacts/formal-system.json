@@ -1,0 +1,554 @@
+{
+  "artifact_id": "LCMRP-ARTIFACT-0002-M1-FMO-BOUNDED-FORMAL-SYSTEM",
+  "artifact_version": 1,
+  "formal_system_id": "LCMRP-FSYS-0002-M1-FMO-BOUNDED-KERNEL",
+  "formal_system_version": 1,
+  "subject_id": "LCMRP-FSUBJ-0002-FORMAL-MEMORY-OBJECT-MODEL",
+  "subject_version": 1,
+  "subject_raw_byte_sha256": "82052e424c01d3204828472ef569f74f7c0aad418f827cffda92400562bbfaf3",
+  "logic": "Finite, two-valued propositional semantics with exhaustive valuation enumeration in independent bounded modules.",
+  "scope_notice": "This study-local kernel encodes selected Boolean consequences and counterexample obligations from FMO-0.1. It omits quantified unbounded domains, full transition traces, natural-language claim interpretation, distributed concurrency, policy composition, external systems, and physical deletion. A satisfying kernel model, an entailment, or a retained countermodel does not prove, validate, or establish the consistency of all FMO-0.1.",
+  "expression_language": {
+    "variable": "A JSON string naming one Boolean variable declared by the containing module.",
+    "literal": "A JSON Boolean.",
+    "not": "{\"not\": expression}",
+    "and": "{\"and\": [expression, ...]}",
+    "or": "{\"or\": [expression, ...]}",
+    "implies": "{\"implies\": [antecedent, consequent]}",
+    "iff": "{\"iff\": [left, right]}"
+  },
+  "enumeration_bound": {
+    "domain_per_variable": [false, true],
+    "module_isolation": true,
+    "maximum_variables_in_one_enumerated_module": 16,
+    "maximum_valuations_in_one_enumerated_module": 65536,
+    "cross_module_product_enumerated": false,
+    "rationale": "Module-local exhaustive enumeration is deterministic and tractable, but does not establish a single full FMO structure spanning all modules."
+  },
+  "modules": [
+    {
+      "module_id": "MODULE-TYPE-IDENTITY",
+      "purpose": "Bound type separation, exact identity uniqueness, and identity-field immutability.",
+      "variables": [
+        "source_event_equals_candidate",
+        "candidate_equals_object",
+        "object_equals_operation",
+        "operation_equals_provenance_assertion",
+        "exact_identity_unique",
+        "object_admitted",
+        "identity_fields_preserved"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-01",
+          "formula": {
+            "and": [
+              {"not": "source_event_equals_candidate"},
+              {"not": "candidate_equals_object"},
+              {"not": "object_equals_operation"},
+              {"not": "operation_equals_provenance_assertion"}
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-02",
+          "formula": "exact_identity_unique"
+        },
+        {
+          "invariant_id": "FMO-INV-03",
+          "formula": {
+            "implies": ["object_admitted", "identity_fields_preserved"]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-SUCCESSION",
+      "purpose": "Bound successor identity and predecessor-history preservation.",
+      "variables": [
+        "supersedes",
+        "same_series",
+        "exact_predecessor_link",
+        "later_creation_time",
+        "admitted_update",
+        "fresh_exact_version",
+        "predecessor_preserved",
+        "prior_history_preserved"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-08",
+          "formula": {
+            "and": [
+              {
+                "implies": [
+                  "supersedes",
+                  {
+                    "and": [
+                      "same_series",
+                      "exact_predecessor_link",
+                      "later_creation_time",
+                      "predecessor_preserved",
+                      "prior_history_preserved"
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": [
+                  "admitted_update",
+                  {
+                    "and": [
+                      "fresh_exact_version",
+                      "predecessor_preserved",
+                      "prior_history_preserved"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-LIFECYCLE-AUTHORITY",
+      "purpose": "Bound lifecycle-event legality, operation-scoped authority, no-resurrection, and failure retention.",
+      "variables": [
+        "state_change_succeeded",
+        "successful_event_exists",
+        "exactly_one_success_event",
+        "transition_legal",
+        "authorization_permit",
+        "authorization_deny",
+        "authorization_unresolved",
+        "object_deleted",
+        "later_non_deleted_state",
+        "later_accessible_same_identity",
+        "exact_identity_reused",
+        "failed_or_incomplete_event",
+        "failure_event_retained",
+        "later_success_erases_failure",
+        "archived_object",
+        "retained_materialization_under_recovery_policy"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-04",
+          "formula": {
+            "and": [
+              {
+                "implies": [
+                  "state_change_succeeded",
+                  {
+                    "and": [
+                      "successful_event_exists",
+                      "exactly_one_success_event",
+                      "transition_legal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": ["object_deleted", {"not": "later_non_deleted_state"}]
+              },
+              {
+                "implies": [
+                  "archived_object",
+                  "retained_materialization_under_recovery_policy"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-05",
+          "formula": {
+            "and": [
+              {
+                "implies": ["state_change_succeeded", "authorization_permit"]
+              },
+              {
+                "implies": [
+                  {"or": ["authorization_deny", "authorization_unresolved"]},
+                  {"not": "state_change_succeeded"}
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-15",
+          "formula": {
+            "implies": [
+              "object_deleted",
+              {
+                "and": [
+                  {"not": "later_non_deleted_state"},
+                  {"not": "later_accessible_same_identity"},
+                  {"not": "exact_identity_reused"}
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-16",
+          "formula": {
+            "implies": [
+              "failed_or_incomplete_event",
+              {
+                "and": [
+                  "failure_event_retained",
+                  {"not": "later_success_erases_failure"}
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-PROVENANCE-TRANSFORMS",
+      "purpose": "Bound admission and transform lineage, temporal derivation order, and selected transform entailments.",
+      "variables": [
+        "admitted_object",
+        "exactly_one_admitted_candidate_link",
+        "admission_event_link",
+        "transform_output",
+        "all_declared_input_links",
+        "actor_attributed_or_explicitly_unresolved",
+        "transaction_time_recorded",
+        "object_derivation_edge",
+        "strict_creation_order",
+        "derivation_cycle",
+        "consolidation_output",
+        "reconsolidation_output",
+        "prior_retrieval_event",
+        "new_context_recorded"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-06",
+          "formula": {
+            "and": [
+              {
+                "implies": [
+                  "admitted_object",
+                  {
+                    "and": [
+                      "exactly_one_admitted_candidate_link",
+                      "admission_event_link"
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": [
+                  "transform_output",
+                  {
+                    "and": [
+                      "all_declared_input_links",
+                      "actor_attributed_or_explicitly_unresolved",
+                      "transaction_time_recorded"
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": ["consolidation_output", "all_declared_input_links"]
+              },
+              {
+                "implies": [
+                  "reconsolidation_output",
+                  {"and": ["prior_retrieval_event", "new_context_recorded"]}
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-07",
+          "formula": {
+            "and": [
+              {
+                "implies": ["object_derivation_edge", "strict_creation_order"]
+              },
+              {
+                "implies": ["strict_creation_order", {"not": "derivation_cycle"}]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-EPISTEMIC-NEUTRALITY",
+      "purpose": "Bound the effects of admission and retrieval events while leaving world-level truth, relevance, use, and importance independent.",
+      "variables": [
+        "admission_event",
+        "admission_adds_truth",
+        "admission_adds_support",
+        "admission_adds_relevance",
+        "admission_adds_confidence",
+        "retrieval_event",
+        "retrieval_adds_truth",
+        "retrieval_adds_support",
+        "retrieval_adds_use",
+        "retrieval_adds_relevance",
+        "retrieval_adds_update",
+        "retrieval_adds_consolidation",
+        "retrieval_adds_reconsolidation",
+        "content_true"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-09",
+          "formula": {
+            "implies": [
+              "admission_event",
+              {
+                "and": [
+                  {"not": "admission_adds_truth"},
+                  {"not": "admission_adds_support"},
+                  {"not": "admission_adds_relevance"},
+                  {"not": "admission_adds_confidence"}
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-10",
+          "formula": {
+            "implies": [
+              "retrieval_event",
+              {
+                "and": [
+                  {"not": "retrieval_adds_truth"},
+                  {"not": "retrieval_adds_support"},
+                  {"not": "retrieval_adds_use"},
+                  {"not": "retrieval_adds_relevance"},
+                  {"not": "retrieval_adds_update"},
+                  {"not": "retrieval_adds_consolidation"},
+                  {"not": "retrieval_adds_reconsolidation"}
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-ASSESSMENT-CONFLICT-ACCESS",
+      "purpose": "Bound assessment scoping, conflict preservation, and contextual access.",
+      "variables": [
+        "confidence_or_uncertainty_record",
+        "target_named",
+        "assessor_or_method_named",
+        "context_named",
+        "time_named",
+        "aggregation_record",
+        "aggregation_rule_and_inputs_recorded",
+        "contributors_overwritten",
+        "interclaim_conflict",
+        "claims_distinct",
+        "comparison_context_named",
+        "validity_overlap_or_unresolved",
+        "conflict_changes_inputs",
+        "access_cross_tuple_implied"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-11",
+          "formula": {
+            "and": [
+              {
+                "implies": [
+                  "confidence_or_uncertainty_record",
+                  {
+                    "and": [
+                      "target_named",
+                      "assessor_or_method_named",
+                      "context_named",
+                      "time_named"
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": [
+                  "aggregation_record",
+                  {
+                    "and": [
+                      "aggregation_rule_and_inputs_recorded",
+                      {"not": "contributors_overwritten"}
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-12",
+          "formula": {
+            "implies": [
+              "interclaim_conflict",
+              {
+                "and": [
+                  "claims_distinct",
+                  "comparison_context_named",
+                  "validity_overlap_or_unresolved",
+                  {"not": "conflict_changes_inputs"}
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "invariant_id": "FMO-INV-13",
+          "formula": {"not": "access_cross_tuple_implied"}
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-DELETION",
+      "purpose": "Bound declared deletion closure, scoped verification, and incomplete-attempt labeling.",
+      "variables": [
+        "verified_within_scope",
+        "target_closure_complete",
+        "all_targets_known",
+        "all_targets_not_materialized",
+        "all_targets_not_reconstructable",
+        "missing_or_unknown_target",
+        "in_scope_target_accessible",
+        "in_scope_target_reconstructable",
+        "local_erasure_only",
+        "failed_or_incomplete_attempt",
+        "verified_label_on_same_attempt",
+        "object_terminal_deleted",
+        "failure_event_retained"
+      ],
+      "constraints": [
+        {
+          "invariant_id": "FMO-INV-14",
+          "formula": {
+            "and": [
+              {
+                "implies": [
+                  "verified_within_scope",
+                  {
+                    "and": [
+                      "target_closure_complete",
+                      "all_targets_known",
+                      "all_targets_not_materialized",
+                      "all_targets_not_reconstructable",
+                      "object_terminal_deleted",
+                      {"not": "missing_or_unknown_target"},
+                      {"not": "in_scope_target_accessible"},
+                      {"not": "in_scope_target_reconstructable"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "implies": [
+                  {
+                    "or": [
+                      "missing_or_unknown_target",
+                      "in_scope_target_accessible",
+                      "in_scope_target_reconstructable",
+                      "local_erasure_only"
+                    ]
+                  },
+                  {"not": "verified_within_scope"}
+                ]
+              },
+              {
+                "implies": [
+                  "failed_or_incomplete_attempt",
+                  {
+                    "and": [
+                      "failure_event_retained",
+                      {"not": "verified_label_on_same_attempt"}
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MODULE-DECLARED-NONENTAILMENTS",
+      "purpose": "Provide independent Boolean antecedent and consequent variables for each explicit FMO-0.1 non-entailment. Query-local enumeration is used; the full cross-product is deliberately not formed.",
+      "include_in_satisfiability": false,
+      "variables": [
+        "encoded",
+        "admitted",
+        "content_true",
+        "important",
+        "retrieved",
+        "relevant",
+        "used",
+        "not_retrieved",
+        "absent",
+        "high_confidence",
+        "correct",
+        "low_confidence",
+        "claim_false",
+        "has_provenance",
+        "authentic_provenance",
+        "source_authorized_for_write",
+        "source_truthful",
+        "conflict_detected",
+        "preferred_first_claim",
+        "preferred_second_claim",
+        "supersedes",
+        "predecessor_deleted",
+        "consolidated",
+        "lossless",
+        "sources_deleted",
+        "forgotten",
+        "deleted",
+        "archived",
+        "inaccessible_to_every_actor",
+        "delete_requested",
+        "deletion_succeeded",
+        "locally_erased",
+        "deletion_verified_within_scope",
+        "same_content_id",
+        "same_authority",
+        "same_deletion_duty",
+        "actor_has_system_role",
+        "universal_authority",
+        "plays_role_context_one",
+        "plays_role_context_two",
+        "event_time_equals_t",
+        "transaction_time_equals_t",
+        "claims_differ",
+        "claims_conflict",
+        "validity_intervals_disjoint",
+        "role_context_one_prospective",
+        "role_context_two_episodic",
+        "same_object_version",
+        "original_exact_identity_deleted",
+        "new_independent_identity_admitted",
+        "same_exact_identity_resurrected",
+        "equivalent_content"
+      ],
+      "constraints": []
+    }
+  ],
+  "semantic_exclusions": [
+    "No quantified model of every FMO-0.1 type or operation is provided.",
+    "No natural-language claim truth procedure is provided.",
+    "No policy calculus, legal interpretation, or moral-authority judgment is provided.",
+    "No physical erasure, external-copy, side-channel, or adversary model is provided.",
+    "No distributed-time, liveness, probability, calibration, or information-flow semantics is provided.",
+    "No implementation, storage, retrieval, model, embedding, vendor, or deployment behavior is selected.",
+    "No cross-module model existence is inferred from module-local satisfiability."
+  ]
+}

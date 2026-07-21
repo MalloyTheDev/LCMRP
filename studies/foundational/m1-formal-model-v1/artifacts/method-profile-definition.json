@@ -1,0 +1,60 @@
+{
+  "artifact_id": "LCMRP-ARTIFACT-0002-M1-FORMAL-ANALYSIS-PROFILE",
+  "artifact_version": 1,
+  "profile_kind": "FORMAL_ANALYSIS",
+  "profile_id": "LCMRP-MPROF-0002-M1-FORMAL-ANALYSIS",
+  "profile_series": "LCMRP-M1-FORMAL-MODEL-ANALYSIS",
+  "profile_version": 1,
+  "study_id": "LCMRP-FSTUDY-0002-M1-FORMAL-MODEL",
+  "contract": "Foundational Study Contract v0.1 FORMAL_ANALYSIS profile",
+  "status": "DRAFT-STUDY-LOCAL-DEFINITION-PREPARED-FOR-FREEZE-REVIEW",
+  "method": "After authoritative freeze only, exhaustively enumerate every Boolean valuation in each declared bounded kernel module; apply the frozen constraints; retain module satisfiability models, violating valuations for intended entailments, witnesses for non-entailments, omission witnesses for invariant-independence probes, and named countermodel checks. Separately adjudicate every encoding-to-FMO mapping against the exact source bytes before interpreting a machine output.",
+  "required_obligations": [
+    "Bind the exact registered FMO-0.1 subject version and raw-byte SHA-256 digest.",
+    "Bind one versioned, bounded formal-system artifact and deny that it represents all of FMO-0.1.",
+    "Declare assumptions and stable proposition identifiers before result access.",
+    "Check module-local consistency or satisfiability semantically by exhaustive valuation, not by parsing or syntax alone.",
+    "Search for counterexamples to every encoded intended entailment and retain any violating valuation.",
+    "Search for and retain a witness for every encoded non-entailment and each named FMO-CM-01 through FMO-CM-10 obligation.",
+    "Probe FMO-INV-01 through FMO-INV-16 for independence by one-at-a-time constraint omission within the containing module.",
+    "Evaluate operation-scoped PERMIT, DENY, UNRESOLVED, and universal-authority boundary obligations without claiming a policy calculus.",
+    "Evaluate declared deletion-closure, local-erasure, incomplete-attempt, verified-label, terminal-identity, and independent-reacquisition boundaries without claiming physical or external deletion.",
+    "Bind exact offline tool, script, environment, configuration, input, and output provenance.",
+    "Conduct a separate human semantic-validity review; schema, parse, type, or execution success is never a validity result.",
+    "Retain negative, null, contradictory, failed, halted, invalid, and not-run dispositions."
+  ],
+  "analysis_ids": [
+    "ANALYSIS-FMO-01-SATISFIABILITY",
+    "ANALYSIS-FMO-02-ENTAILMENT",
+    "ANALYSIS-FMO-03-NONENTAILMENT",
+    "ANALYSIS-FMO-04-INVARIANT-INDEPENDENCE",
+    "ANALYSIS-FMO-05-AUTHORITY",
+    "ANALYSIS-FMO-06-DELETION",
+    "ANALYSIS-FMO-07-SEMANTIC-VALIDITY"
+  ],
+  "formal_system_id": "LCMRP-FSYS-0002-M1-FMO-BOUNDED-KERNEL",
+  "formal_system_version": 1,
+  "consistency_or_satisfiability_method": "For every enumerated module, visit exactly 2^n assignments for its n declared Boolean variables, retain the count satisfying all module constraints, and retain the lexicographically first satisfying assignment. A zero-model module rejects bounded satisfiability for that module; module-local models cannot be composed or generalized without a separate proof.",
+  "intended_entailment_method": "For each frozen ENTailment query, enumerate all relevant variables under the containing module constraints and retain the first model with premise=true and conclusion=false. Any retained counterexample rejects the encoded entailment; no counterexample means only that the entailment holds in the finite kernel.",
+  "non_entailment_method": "For each frozen NON_ENTAILMENT query, retain the first satisfying assignment with premise=true and conclusion=false. Absence of a witness rejects the planned kernel non-entailment claim or marks it inconclusive if the semantic-validity analysis shows the encoding is incomplete.",
+  "invariant_independence_method": "For each FMO-INV-01 through FMO-INV-16 constraint, omit only that constraint and search for an assignment satisfying every remaining constraint in the same module while violating the omitted formula. Retaining such an assignment establishes independence only within that bounded module. No witness means redundancy, contradiction, or insufficient bounds must be distinguished by follow-up analysis.",
+  "semantic_validity_method": "Two reviewers independently map each variable, constraint, premise, conclusion, named witness, and scope exclusion to exact FMO-0.1 text. They classify each mapping as faithful, narrower, broader, circular, ambiguous, or unsupported; retain both reviews and adjudication. Any broader, circular, or unsupported mapping invalidates the affected machine analysis until a superseding frozen record is approved.",
+  "counterexample_search": "Deterministic exhaustive valuation within each declared finite module, plus exact evaluation of FMO-CM-01 through FMO-CM-10 assignments. Search is complete only for the declared module variables and constraints; it is not complete for FMO-0.1 histories, domains, or interpretations.",
+  "proof_boundary": "The planned method produces bounded finite-model observations, not a proof of full FMO-0.1 consistency, satisfiability, soundness, completeness, realizability, safety, security, deletion, authority legitimacy, or implementation suitability.",
+  "baselines": [
+    "BASELINE-FMO-01-SYNTAX-ONLY: parsing and schema checks without semantic enumeration.",
+    "BASELINE-FMO-02-UNCONSTRAINED: the same Boolean variables with every invariant constraint removed.",
+    "BASELINE-FMO-03-AXIOM-OMISSION: remove one target invariant at a time.",
+    "BASELINE-FMO-04-NO-WITNESS-RETENTION: report a Boolean outcome without retaining a counterexample or model.",
+    "BASELINE-FMO-05-TRUNCATED-BOUNDARY: treat local erasure or an incomplete target set as verified deletion."
+  ],
+  "stop_conditions": [
+    "The subject, profile, formal system, analyzer, tool provenance, environment, configuration, protocol, freeze attestation, or manifest digest does not match the frozen record.",
+    "Any result path exists before freeze or results_accessed_before_freeze is not false.",
+    "The analyzer skips, duplicates, or silently coerces a valuation, variable, constraint, query, invariant target, or named countermodel.",
+    "The semantic-validity reviewers identify a broader, circular, unsupported, or product-dependent encoding that changes a decision.",
+    "Execution requires a network, model, external solver, undeclared dependency, mutable source, participant data, or human-subject data.",
+    "A machine result is described as proof or validation of all FMO-0.1."
+  ],
+  "boundary": "This profile is product-independent, mechanism-free Layer 1 work. It does not award a mechanism evidence label, change a mechanism evidence profile, register a study, freeze a protocol, publish a finding, or authorize implementation."
+}
