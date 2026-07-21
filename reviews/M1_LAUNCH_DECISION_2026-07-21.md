@@ -6,7 +6,7 @@
 - **Milestone:** M1 — Candidate Memory Taxonomy and Formal Object Model
 - **Decision:** **ACCEPT M1 LAUNCH CANDIDATE — EFFECTIVE ON CONDITIONED MERGE**
 - **M1 state after the condition:** Launched and in progress; not complete
-- **Effective condition:** The exact head of the public M1 launch pull request containing this decision must pass the required GitHub Actions workflow and then be merged by the repository steward
+- **Effective condition:** The exact head of pull request [#6](https://github.com/MalloyTheDev/LCMRP/pull/6) must pass the required GitHub Actions workflow and then be merged by the repository steward
 - **Scientific evidence produced or awarded:** None
 - **Mechanism maturity effect:** None
 - **Production registry effect:** None; all production registries remain empty
@@ -108,6 +108,6 @@ M1 remains incomplete until its foundation's exit criteria are satisfied. Materi
 
 ## Final disposition
 
-**CONDITIONAL ACCEPT — M1 LAUNCH ONLY.** The package is suitable for publication as an in-progress Layer 1 research agenda and set of candidate artifacts. This decision becomes effective only after exact-head GitHub Actions succeeds and the steward merges the public M1 launch pull request containing this record.
+**CONDITIONAL ACCEPT — M1 LAUNCH ONLY.** The package is suitable for publication as an in-progress Layer 1 research agenda and set of candidate artifacts. This decision becomes effective only after exact-head GitHub Actions succeeds and the steward merges pull request [#6](https://github.com/MalloyTheDev/LCMRP/pull/6).
 
 The decision must not be restated as taxonomy adoption, formal-model correctness, research evidence, mechanism validation, implementation readiness, an integration recommendation, or M1 completion.
