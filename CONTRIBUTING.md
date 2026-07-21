@@ -43,7 +43,7 @@ A mechanism contribution should make the following reviewable:
 
 Do not describe a candidate contribution as novel or production-ready without the evidence required to support that statement.
 
-A mechanism-free Layer 1 taxonomy, formal-model, concept, or evaluation-construct study must use the [Foundational Study Contract](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md). Do not create a placeholder mechanism merely to satisfy the mechanism experiment schema, and do not apply a Charter mechanism maturity label to a foundational finding.
+A mechanism-free Layer 1 taxonomy, formal-model, concept, or evaluation-construct study must use the [Foundational Study Contract](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md). Register the exact versioned subject before activating a frozen study, publish one atomic finding or terminal disposition per planned analysis, and publish a separate immutable closeout only after its disposition ledger exactly covers every planned analysis. Use the dedicated foundational protocol, finding, and closeout templates. Do not create a placeholder mechanism merely to satisfy the mechanism experiment schema, and do not apply a Charter mechanism maturity label to a foundational subject, finding, or closeout.
 
 ## Reproducibility requirements
 

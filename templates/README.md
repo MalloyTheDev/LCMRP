@@ -4,4 +4,10 @@ These templates make the Program Charter's reporting obligations explicit. Contr
 
 Completing a template does not advance an evidence state. Claims still require linked, reviewable evidence records for the exact mechanism version and scope.
 
-Mechanism-free Layer 1 studies currently use the machine-readable [Foundational Study Contract v0.1](../docs/program/FOUNDATIONAL_STUDY_CONTRACT.md). A dedicated human-facing foundational protocol and finding template remains an open usability task; contributors must not force such work into a mechanism template in the meantime.
+Mechanism-free Layer 1 work uses the machine-readable [Foundational Study Contract v0.1](../docs/program/FOUNDATIONAL_STUDY_CONTRACT.md) together with:
+
+- [`foundational-study-protocol.md`](foundational-study-protocol.md) for the preregistered, exact subject/profile/analysis plan;
+- [`foundational-finding-report.md`](foundational-finding-report.md) for one atomic analysis result or terminal disposition; and
+- [`foundational-study-closeout.md`](foundational-study-closeout.md) for the immutable all-analysis completion ledger.
+
+Do not force foundational work into a mechanism template, and do not use foundational templates to award a mechanism evidence label. Layer 1 foundational templates prohibit product-specific implications; any later product feasibility question requires a separate Layer 3 artifact.

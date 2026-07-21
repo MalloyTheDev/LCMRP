@@ -11,6 +11,8 @@ This review evaluates whether the proposed M0 repository foundation enforces the
 
 > **Follow-up — 2026-07-21:** The mechanism-free foundational-study gap identified below was addressed by a parallel draft contract and reviewed in [M0 Foundational Contract Review](M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md). That follow-up retains additional blockers before M0 completion or real record registration; it does not retroactively change this review's original scope.
 
+> **Completion follow-up — 2026-07-21:** The remaining infrastructure blockers were closed and adversarially retested in [M0 Final Adversarial Review](M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md). The conditioned governance acceptance is recorded in [M0 Completion Decision](M0_COMPLETION_DECISION_2026-07-21.md). This preserves the original review rather than rewriting its historical disposition.
+
 ## Scope
 
 The review covers the candidate M0 charter, governance policies, research-layer and evidence-label rules, JSON Schemas, synthetic examples, empty registries, templates, repository validator, tests, and continuous-integration workflow.

@@ -18,9 +18,9 @@ Use the files in `templates/` as the human-facing starting point. Machine-readab
 
 ## Mechanism-free foundational studies
 
-Taxonomy, formal-model, concept, and evaluation-construct studies must not invent a dummy mechanism or borrow a mechanism maturity label. Use the parallel [Foundational Study Contract v0.1](../program/FOUNDATIONAL_STUDY_CONTRACT.md), its study manifest, and its atomic research-finding record.
+Taxonomy, formal-model, concept, and evaluation-construct studies must not invent a dummy mechanism or borrow a mechanism maturity label. Use the parallel [Foundational Study Contract v0.1](../program/FOUNDATIONAL_STUDY_CONTRACT.md), its versioned subject registry, study manifest, atomic research-finding record, and immutable all-analysis closeout.
 
-The v0.1 foundational path supports structural/taxonomy evaluation and formal analysis only. Its findings cannot award or change a mechanism evidence profile. Controlled computational/empirical and evidence-synthesis profiles remain open contract work.
+The v0.1 foundational path supports structural/taxonomy evaluation and formal analysis only. Its findings and closeouts cannot award or change a mechanism evidence profile. Controlled computational/empirical and evidence-synthesis profiles are future, separately versioned extensions; do not represent those methods under an inapplicable v0.1 profile.
 
 ## Before execution
 

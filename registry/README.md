@@ -14,6 +14,10 @@ The digest is external to the referenced record, so it is not self-referential. 
 
 Repository validation checks the entry shape, safe path resolution, file existence, raw-byte digest, declared artifact identity, and conformance to the declared schema.
 
-## Foundational studies and findings
+## Foundational subjects, studies, findings, and closeouts
 
-[`foundational-record-index.schema.json`](../schemas/foundational-record-index.schema.json) defines the append-oriented indexes in `foundational-studies.yaml` and `research-findings.yaml`. Both indexes are empty: M0 registers no real study or finding. Exact finding-to-study subject fields are checked, but standalone subject-definition registry resolution remains an open obligation documented in the [Foundational Study Contract](../docs/program/FOUNDATIONAL_STUDY_CONTRACT.md).
+[`foundational-subject-registry.schema.json`](../schemas/foundational-subject-registry.schema.json) defines `foundational-subjects.yaml`. Subject versions retain exact identity, immutable definition artifacts, and digest-linked supersession. Registry presence establishes identity and provenance only; it is not evidence that a subject is correct, useful, or validated.
+
+[`foundational-record-index.schema.json`](../schemas/foundational-record-index.schema.json) defines the append-oriented indexes in `foundational-studies.yaml`, `research-findings.yaml`, and `foundational-study-closeouts.yaml`. All four foundational registries are empty: M0 registers no real subject, study, finding, or closeout.
+
+Repository validation requires active studies to be frozen and resolve an exact registered subject, active findings to be published and bind the exact study/subject/profile/analysis artifacts, and active closeouts to be published and set-complete over every planned analysis. A frozen study remains a valid preregistration while work is partial; only a separate immutable closeout can assert terminal completeness.

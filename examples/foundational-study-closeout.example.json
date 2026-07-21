@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_closeout",
+  "record_id": "LCMRP-FCLOSEREC-9999-SYNTHETIC-TAXONOMY",
+  "record_version": 1,
+  "immutable_record_notice": "Once published, this closeout is immutable. Corrections or retractions require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": []
+  },
+  "record_status": "DRAFT",
+  "closeout_id": "LCMRP-FCLOSE-9999-SYNTHETIC-TAXONOMY",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_reference": {
+    "study_id": "LCMRP-FSTUDY-9999-SYNTHETIC-MEMORY-TAXONOMY",
+    "study_record_id": "LCMRP-FSTUDYREC-9999-SYNTHETIC-MEMORY-TAXONOMY",
+    "study_record_version": 1,
+    "manifest_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-FOUNDATIONAL-STUDY-MANIFEST",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "examples/foundational-study-manifest.example.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "RECORDED",
+        "value": "0a04c6c2836e9695cd4035962f37bb392a9b03ee7f2b08156fe0b459d3a54c70",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "completion_scope": "EXACT_STUDY_RECORD_VERSION",
+  "completeness_assertion": "PENDING_VALIDATION",
+  "analysis_dispositions": [
+    {
+      "analysis_id": "ANALYSIS-STRUCTURAL-CONFORMANCE",
+      "analysis_mode": "CONFIRMATORY",
+      "finding_id": "LCMRP-FIND-9999-SYNTHETIC-TAXONOMY-NOT-RUN",
+      "finding_record_id": "LCMRP-FINDREC-9999-SYNTHETIC-TAXONOMY-NOT-RUN",
+      "finding_record_version": 1,
+      "terminal_disposition": "NOT_RUN",
+      "finding_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-FOUNDATIONAL-FINDING",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+        "locator": "examples/research-finding-record.example.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "RECORDED",
+          "value": "8814c311c803a5a185c23ae81ab71e58833d5728a1e36cbdf6113ce748ee263f",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "closeout_report_artifact": {
+    "artifact_id": "ARTIFACT-SYNTHETIC-CLOSEOUT-REPORT-TEMPLATE",
+    "artifact_version": 1,
+    "schema_id": "urn:lcmrp:template:foundational-study-closeout:0.1.0",
+    "locator": "templates/foundational-study-closeout.md",
+    "digest": {
+      "algorithm": "SHA-256",
+      "status": "RECORDED",
+      "value": "531a6344858fc59eb178bc7fbf157b5faa6dfb8b8b0adee427b61254aa00b6dc",
+      "scope": "RAW_FILE_BYTES"
+    },
+    "media_type": "text/markdown"
+  },
+  "closeout_authority": null,
+  "closed_at": null,
+  "limitations": [
+    "This draft synthetic fixture is not a terminal closeout, registration, result, or evidence.",
+    "Its referenced study and finding are draft examples and cannot satisfy publication gates."
+  ],
+  "mechanism_maturity_effect": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "awarded_mechanism_evidence_labels": [],
+    "rationale": "Study closeout records completeness only; they are not mechanism evidence decisions."
+  },
+  "created_at": "2026-07-21T00:00:00Z"
+}

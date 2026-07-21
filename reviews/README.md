@@ -6,3 +6,5 @@ A repository review is not automatically an independent validation. Each review 
 
 - [M0 boundary review — 2026-07-20](M0_BOUNDARY_REVIEW_2026-07-20.md) is an internal adversarial review of the initial governance and reproducibility foundation.
 - [M0 foundational contract review — 2026-07-21](M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md) reviews the mechanism-free Layer 1 contract and its remaining real-registration blockers.
+- [M0 final adversarial review — 2026-07-21](M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md) records the final technical-infrastructure verdict, corrected false accepts, validation results, and post-M0 scientific limitations.
+- [M0 completion decision — 2026-07-21](M0_COMPLETION_DECISION_2026-07-21.md) records the governance acceptance, exit-criterion evidence, compatibility impact, and post-M0 obligations.

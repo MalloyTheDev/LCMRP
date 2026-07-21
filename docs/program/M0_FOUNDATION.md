@@ -2,7 +2,8 @@
 
 ## Status
 
-**Milestone state:** In progress  
+**Milestone state:** Complete  
+**Accepted:** 2026-07-21 through the conditioned governance decision in [M0 Completion Decision](../../reviews/M0_COMPLETION_DECISION_2026-07-21.md)  
 **Applicable layer:** Program infrastructure supporting all three research layers  
 **Scientific evidence produced:** None
 
@@ -44,23 +45,23 @@ M0 must make the program charter operational by establishing:
 
 M0 may be marked complete only when all of the following hold:
 
-- [ ] The full Program Charter v0.1 is canonical and discoverable.
-- [ ] Research layers and evidence-state semantics are documented.
-- [ ] All JSON Schemas pass Draft 2020-12 meta-schema validation.
-- [ ] Every example record validates against its declared schema.
-- [ ] Registries parse safely, declare a schema version, and contain no fabricated entries.
-- [ ] Templates include hypothesis, baselines, metrics, rejection criteria, failure analysis, reproducibility, limitations, and security/privacy obligations where applicable.
-- [ ] CorpusStudio implications are isolated and labeled **RESEARCH-TO-PRODUCT HYPOTHESIS**.
-- [ ] Duplicate JSON and YAML keys are rejected by repository validation.
-- [ ] Relative Markdown links resolve.
-- [ ] The continuous-integration validation job passes on a clean checkout.
-- [ ] A boundary review confirms that no memory implementation or product-specific architecture entered M0.
+- [x] The full Program Charter v0.1 is canonical and discoverable.
+- [x] Research layers and evidence-state semantics are documented.
+- [x] All JSON Schemas pass Draft 2020-12 meta-schema validation.
+- [x] Every example record validates against its declared schema.
+- [x] Registries parse safely, declare a schema version, and contain no fabricated entries.
+- [x] Templates include hypothesis, baselines, metrics, rejection criteria, failure analysis, reproducibility, limitations, and security/privacy obligations where applicable.
+- [x] CorpusStudio implications are isolated and labeled **RESEARCH-TO-PRODUCT HYPOTHESIS**.
+- [x] Duplicate JSON and YAML keys are rejected by repository validation.
+- [x] Relative Markdown links resolve.
+- [x] The continuous-integration validation job passes on a clean checkout.
+- [x] A boundary review confirms that no memory implementation or product-specific architecture entered M0.
 
-Unchecked criteria are open obligations, not assumed successes. The milestone state must not be changed to complete until CI and review evidence support every applicable criterion.
+Completion evidence, compatibility impact, accepted limitations, and the exact governance condition are recorded in the [M0 Completion Decision](../../reviews/M0_COMPLETION_DECISION_2026-07-21.md). M0 completion establishes infrastructure only and awards no scientific evidence state.
 
 ## M1 entry gate
 
-M1 should begin with the product-independent memory taxonomy and formal object model. Entering M1 requires an accepted M0 foundation, stable artifact identifiers, and an explicit decision about how charter or schema changes will be versioned without rewriting prior evidence records.
+The M1 entry gate is open. M1 should begin with the product-independent memory taxonomy and formal object model. The accepted M0 foundation supplies stable artifact identifiers and requires charter or schema changes to be versioned without rewriting prior evidence records.
 
 M1 must not begin by selecting storage infrastructure or coding a full memory service. Its first deliverables should be falsifiable definitions, competing taxonomies, representative edge cases, and unresolved formal obligations.
 

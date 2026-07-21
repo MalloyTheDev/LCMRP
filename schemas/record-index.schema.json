@@ -48,6 +48,9 @@
                     },
                     "schema_id": {
                       "const": "urn:lcmrp:schema:experiment-manifest:0.1.0"
+                    },
+                    "artifact_path": {
+                      "pattern": "^(?!.*(?:^|/)\\.{1,2}(?:/|$))records/experiments/[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*\\.json$"
                     }
                   }
                 }
@@ -74,6 +77,9 @@
                     },
                     "schema_id": {
                       "const": "urn:lcmrp:schema:evidence-record:0.1.0"
+                    },
+                    "artifact_path": {
+                      "pattern": "^(?!.*(?:^|/)\\.{1,2}(?:/|$))records/evidence/[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*\\.json$"
                     }
                   }
                 }
@@ -116,7 +122,7 @@
         },
         "artifact_path": {
           "type": "string",
-          "pattern": "^records/(experiments|evidence)/[A-Za-z0-9._/-]+\\.json$"
+          "minLength": 1
         },
         "artifact_digest": {
           "type": "object",

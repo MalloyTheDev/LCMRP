@@ -26,7 +26,7 @@
       "digest": {
         "algorithm": "SHA-256",
         "status": "RECORDED",
-        "value": "ee9f97abc54596e77ef6c893ae5dbcd03edaf4561f28c2bf992612070d673753",
+        "value": "0a04c6c2836e9695cd4035962f37bb392a9b03ee7f2b08156fe0b459d3a54c70",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"
@@ -39,14 +39,14 @@
     "subject_series": "LCMRP-SYNTHETIC-MEMORY-TAXONOMY",
     "subject_version": 1,
     "definition_artifact": {
-      "artifact_id": "ARTIFACT-SYNTHETIC-SUBJECT-BINDING",
+      "artifact_id": "ARTIFACT-SYNTHETIC-TAXONOMY-DEFINITION",
       "artifact_version": 1,
-      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
-      "locator": "examples/foundational-study-manifest.example.json",
+      "schema_id": "urn:lcmrp:fixture:foundational-subject-definition:0.1.0",
+      "locator": "examples/fixtures/synthetic-foundational-subject-definition.json",
       "digest": {
         "algorithm": "SHA-256",
         "status": "RECORDED",
-        "value": "ee9f97abc54596e77ef6c893ae5dbcd03edaf4561f28c2bf992612070d673753",
+        "value": "dcd3f8960b949268c6fa1216d15aff06f7b889e7b2748d5631f8c1ada338f1f1",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"
@@ -58,14 +58,14 @@
     "profile_series": "LCMRP-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
     "profile_version": 1,
     "profile_artifact": {
-      "artifact_id": "ARTIFACT-SYNTHETIC-PROFILE-BINDING",
+      "artifact_id": "ARTIFACT-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
       "artifact_version": 1,
-      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
-      "locator": "examples/foundational-study-manifest.example.json",
+      "schema_id": "urn:lcmrp:fixture:foundational-method-profile:0.1.0",
+      "locator": "examples/fixtures/synthetic-structural-taxonomy-profile.json",
       "digest": {
         "algorithm": "SHA-256",
         "status": "RECORDED",
-        "value": "ee9f97abc54596e77ef6c893ae5dbcd03edaf4561f28c2bf992612070d673753",
+        "value": "4b43b38acce509910fbc89576150ee22fcfcb2750176a48637bbe25becf3efc6",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"

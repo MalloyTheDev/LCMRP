@@ -10,6 +10,8 @@
 
 This review addresses the prior M0 boundary finding that the initial experiment and evidence contracts could not represent a mechanism-free Layer 1 study. It does not validate a taxonomy, formal model, memory mechanism, or product architecture.
 
+> **Completion follow-up — 2026-07-21:** The blockers recorded by this review were closed through a standalone subject registry, immutable all-analysis closeout, exact artifact/index binding, and dedicated human templates. The corrections and negative tests are preserved in [M0 Final Adversarial Review](M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md); governance acceptance is recorded in [M0 Completion Decision](M0_COMPLETION_DECISION_2026-07-21.md). The original findings below remain historical context.
+
 ## Review method
 
 Three separate work arms were used:

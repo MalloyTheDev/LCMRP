@@ -35,12 +35,12 @@
     "definition_artifact": {
       "artifact_id": "ARTIFACT-SYNTHETIC-TAXONOMY-DEFINITION",
       "artifact_version": 1,
-      "schema_id": "urn:lcmrp:planned:schema:foundational-subject:0.1.0",
-      "locator": "records/foundational/9999/synthetic-taxonomy-definition.json",
+      "schema_id": "urn:lcmrp:fixture:foundational-subject-definition:0.1.0",
+      "locator": "examples/fixtures/synthetic-foundational-subject-definition.json",
       "digest": {
         "algorithm": "SHA-256",
-        "status": "PENDING",
-        "value": null,
+        "status": "RECORDED",
+        "value": "dcd3f8960b949268c6fa1216d15aff06f7b889e7b2748d5631f8c1ada338f1f1",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"
@@ -54,15 +54,15 @@
     "profile_definition_artifact": {
       "artifact_id": "ARTIFACT-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
       "artifact_version": 1,
-      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
-      "locator": "docs/program/FOUNDATIONAL_STUDY_CONTRACT.md",
+      "schema_id": "urn:lcmrp:fixture:foundational-method-profile:0.1.0",
+      "locator": "examples/fixtures/synthetic-structural-taxonomy-profile.json",
       "digest": {
         "algorithm": "SHA-256",
-        "status": "PENDING",
-        "value": null,
+        "status": "RECORDED",
+        "value": "4b43b38acce509910fbc89576150ee22fcfcb2750176a48637bbe25becf3efc6",
         "scope": "RAW_FILE_BYTES"
       },
-      "media_type": "text/markdown"
+      "media_type": "application/json"
     },
     "category_definition_artifact": {
       "artifact_id": "ARTIFACT-SYNTHETIC-CATEGORY-DEFINITIONS",
