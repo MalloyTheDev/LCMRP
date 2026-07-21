@@ -93,6 +93,21 @@ The study-freeze tests treat both real studies as unexecuted Layer 1 preregistra
 
 These checks establish preregistration integrity and containment only. They do not evaluate the taxonomy, prove the formal model, publish a finding, close either study, award mechanism maturity, or complete M1.
 
+## M1 study-execution readiness expectations
+
+The execution-readiness tests accept only truthful fail-closed blockage. They require:
+
+- exact preservation of both frozen version-1 manifests and their non-result artifact bindings;
+- taxonomy execution to remain blocked without a valid immutable intake, two eligible primary human adjudicators, a distinct eligible human tie adjudicator, consistent source bindings, complete freeze-environment provenance, and a non-self-referential intake digest contract;
+- no taxonomy case access, coding, output, finding, or closeout created by the readiness lane;
+- formal preflight metadata to bind the exact study, tool, inputs, runtime, public snapshot, configured command, and absent result path;
+- configured formal analyzer, `main`, and `run_kernel` invocation counts of zero;
+- reproducible failure of the frozen canonical-index guard before analysis and continued absence of all seven formal result paths;
+- rejection of substituted paths, digest mismatch, fabricated contributors, premature downstream analyses, false proof or validation language, product coupling, and suppressed negative, null, contradictory, counterexample, or invariant-omission rows; and
+- empty research-finding and foundational-closeout registries, with both studies still open and M1 still in progress.
+
+These checks do not show that a repaired intake, superseding analyzer, future result, or human semantic mapping is correct. A blocked preflight is program-engineering evidence about execution readiness, not a research finding about either candidate.
+
 ## Interpretation limits
 
 These checks establish only that encoded cases are accepted or rejected as intended by the current contracts. They do not prove that free-form prose is truthful, that a study is scientifically sound, that identities are controlled by real independent parties, or that every future bypass has been anticipated. Human review and independent scientific validation remain necessary.
