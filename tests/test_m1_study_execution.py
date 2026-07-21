@@ -19,7 +19,6 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path, PurePosixPath
-import platform
 import re
 import subprocess
 import sys
@@ -68,6 +67,7 @@ TAXONOMY_COMPONENTS = (
 )
 FORMAL_ANALYZER = FORMAL_ROOT / "analyze_fmo_kernel.py"
 FORMAL_CONFIGURATION = FORMAL_ROOT / "artifacts/configuration.json"
+FORMAL_ENVIRONMENT = FORMAL_ROOT / "artifacts/environment.json"
 FORMAL_SYSTEM = FORMAL_ROOT / "artifacts/formal-system.json"
 FORMAL_ASSUMPTIONS = FORMAL_ROOT / "artifacts/assumptions.json"
 FORMAL_PROPOSITIONS = FORMAL_ROOT / "artifacts/propositions.json"
@@ -872,24 +872,41 @@ def _formal_execution_metadata_errors() -> list[str]:
 
     runtime_target = preflight.get("runtime_target")
     runtime_observed = runtime.get("runtime")
-    expected_runtime = {
-        "python_implementation": platform.python_implementation(),
-        "python_version": platform.python_version(),
-        "python_executable": sys.executable,
-        "operating_system": platform.system(),
-        "kernel_release": platform.release(),
-        "machine": platform.machine(),
-    }
-    for label, document in (
-        ("preflight runtime target", runtime_target),
-        ("runtime provenance", runtime_observed),
-    ):
-        if not isinstance(document, Mapping):
-            errors.append(f"{label} is missing")
-            continue
-        for field, expected in expected_runtime.items():
-            if document.get(field) != expected:
-                errors.append(f"{label} mismatch for {field}")
+    runtime_fields = (
+        "python_implementation",
+        "python_version",
+        "python_executable",
+        "operating_system",
+        "kernel_release",
+        "machine",
+    )
+    if not isinstance(runtime_target, Mapping):
+        errors.append("preflight runtime target is missing")
+    if not isinstance(runtime_observed, Mapping):
+        errors.append("runtime provenance is missing")
+    if isinstance(runtime_target, Mapping) and isinstance(runtime_observed, Mapping):
+        for field in runtime_fields:
+            if runtime_target.get(field) != runtime_observed.get(field):
+                errors.append(f"historical runtime records disagree for {field}")
+
+        environment = _load_json(FORMAL_ENVIRONMENT)
+        for field in ("python_implementation", "python_version"):
+            if runtime_target.get(field) != environment.get(field):
+                errors.append(f"historical runtime differs from frozen environment for {field}")
+        recorded_os_reference = " ".join(
+            str(runtime_target.get(field, ""))
+            for field in ("operating_system", "kernel_release", "machine")
+        )
+        if recorded_os_reference != environment.get("operating_system_reference"):
+            errors.append("historical OS/kernel/machine differs from frozen environment")
+
+        executable = runtime_target.get("python_executable")
+        if (
+            not isinstance(executable, str)
+            or not executable
+            or not Path(executable).is_absolute()
+        ):
+            errors.append("historical Python executable is not a nonempty absolute path")
 
     outputs = _manifest_outputs(manifest)
     planned_outputs = preflight.get("planned_outputs")
