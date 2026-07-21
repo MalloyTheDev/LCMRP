@@ -108,6 +108,11 @@ REQUIRED_PATHS = (
     "reviews/M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md",
     "reviews/M1_STUDY_FREEZE_ADVERSARIAL_REVIEW_2026-07-21.md",
     "reviews/M1_STUDY_FREEZE_DECISION_2026-07-21.md",
+    "reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md",
+    "reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md",
+    "reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md",
+    "studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json",
+    "studies/foundational/m1-formal-model-v1/execution/runtime-provenance.json",
     "tests/README.md",
     "tests/test_foundational_contracts.py",
     "tests/test_m1_launch.py",
@@ -115,6 +120,7 @@ REQUIRED_PATHS = (
     "tests/test_m1_dry_runs.py",
     "tests/test_m1_subject_admission.py",
     "tests/test_m1_study_freeze.py",
+    "tests/test_m1_study_execution.py",
 )
 
 REGISTRIES = {
