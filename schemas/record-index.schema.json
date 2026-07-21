@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lcmrp:schema:record-index:0.1.0",
+  "title": "LCMRP Experiment and Evidence Record Index",
+  "description": "Append-oriented index of immutable experiment-manifest or evidence-record files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_type", "entries"],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "registry_type": {
+      "enum": ["experiment_registry", "evidence_registry"]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recordReference"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "registry_type": {
+            "const": "experiment_registry"
+          }
+        },
+        "required": ["registry_type"]
+      },
+      "then": {
+        "properties": {
+          "entries": {
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/recordReference"
+                },
+                {
+                  "properties": {
+                    "record_id": {
+                      "pattern": "^LCMRP-EXPMAN-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+                    },
+                    "artifact_type": {
+                      "const": "experiment_manifest"
+                    },
+                    "schema_id": {
+                      "const": "urn:lcmrp:schema:experiment-manifest:0.1.0"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "entries": {
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/recordReference"
+                },
+                {
+                  "properties": {
+                    "record_id": {
+                      "pattern": "^LCMRP-EVIDREC-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+                    },
+                    "artifact_type": {
+                      "const": "evidence_record"
+                    },
+                    "schema_id": {
+                      "const": "urn:lcmrp:schema:evidence-record:0.1.0"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "recordReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_version",
+        "artifact_type",
+        "schema_id",
+        "artifact_path",
+        "artifact_digest",
+        "registry_status",
+        "registered_at"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "artifact_type": {
+          "enum": ["experiment_manifest", "evidence_record"]
+        },
+        "schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_path": {
+          "type": "string",
+          "pattern": "^records/(experiments|evidence)/[A-Za-z0-9._/-]+\\.json$"
+        },
+        "artifact_digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value", "scope"],
+          "properties": {
+            "algorithm": {
+              "const": "SHA-256"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "scope": {
+              "const": "RAW_FILE_BYTES"
+            }
+          }
+        },
+        "registry_status": {
+          "enum": ["ACTIVE", "SUPERSEDED", "RETRACTED"]
+        },
+        "registered_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

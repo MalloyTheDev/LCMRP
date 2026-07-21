@@ -1,0 +1,2992 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lcmrp:schema:evidence-record:0.1.0",
+  "title": "LCMRP Evidence Record",
+  "description": "Product-independent contract for recording evidence without conflating a completed run, a supported claim, or a maturity transition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "evidence_id",
+    "record_id",
+    "record_version",
+    "immutable_record_notice",
+    "amendment",
+    "record_status",
+    "research_layer",
+    "experiment_id",
+    "mechanism_versions",
+    "claim",
+    "evidence_decision",
+    "state_justification",
+    "result_classification",
+    "assessment",
+    "evidence_summary",
+    "experiment_manifest",
+    "runs",
+    "baseline_comparisons",
+    "dataset_or_scenario_coverage",
+    "metric_outcomes",
+    "resource_measurements",
+    "rejection_criteria_assessments",
+    "failure_analysis",
+    "robustness_assessment",
+    "security_and_privacy_review",
+    "independent_validation",
+    "prerequisite_evidence",
+    "limitations",
+    "artifacts",
+    "recommended_next_experiment",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "artifact_type": {
+      "const": "evidence_record"
+    },
+    "evidence_id": {
+      "$ref": "#/$defs/evidenceId"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^LCMRP-EVIDREC-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "record_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "immutable_record_notice": {
+      "const": "This evidence record is immutable. Corrections or new decisions must create a new record version that references the superseded record."
+    },
+    "amendment": {
+      "$ref": "#/$defs/evidenceAmendment"
+    },
+    "record_status": {
+      "enum": ["DRAFT", "ACTIVE", "PUBLISHED", "SUPERSEDED", "RETRACTED"]
+    },
+    "research_layer": {
+      "$ref": "#/$defs/researchLayer"
+    },
+    "experiment_id": {
+      "$ref": "#/$defs/experimentId"
+    },
+    "mechanism_versions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/mechanismVersionReference"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "statement", "scope", "assessment_status"],
+      "properties": {
+        "claim_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessment_status": {
+          "enum": [
+            "UNTESTED",
+            "SUPPORTED",
+            "NOT_SUPPORTED",
+            "MIXED",
+            "INCONCLUSIVE",
+            "REFUTED"
+          ]
+        }
+      }
+    },
+    "evidence_decision": {
+      "$ref": "#/$defs/evidenceDecision"
+    },
+    "state_justification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result_classification": {
+      "enum": [
+        "NOT_YET_EVALUATED",
+        "POSITIVE",
+        "NEGATIVE",
+        "NULL",
+        "MIXED",
+        "INVALID"
+      ]
+    },
+    "assessment": {
+      "enum": [
+        "NOT_EVALUATED",
+        "SUPPORTS_CLAIM",
+        "DOES_NOT_SUPPORT_CLAIM",
+        "PARTIALLY_SUPPORTS_CLAIM",
+        "INCONCLUSIVE",
+        "RUN_INVALID"
+      ]
+    },
+    "evidence_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experiment_manifest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/artifactReference"
+        },
+        {
+          "properties": {
+            "digest": {
+              "properties": {
+                "status": {
+                  "enum": ["RECORDED", "VERIFIED"]
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/runRecord"
+      }
+    },
+    "baseline_comparisons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/baselineComparison"
+      },
+      "minItems": 1
+    },
+    "dataset_or_scenario_coverage": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceCoverage"
+      },
+      "minItems": 1
+    },
+    "metric_outcomes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/metricOutcome"
+      },
+      "minItems": 1
+    },
+    "resource_measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latency", "storage", "compute", "token_cost"],
+      "properties": {
+        "latency": {
+          "$ref": "#/$defs/resourceMeasurement"
+        },
+        "storage": {
+          "$ref": "#/$defs/resourceMeasurement"
+        },
+        "compute": {
+          "$ref": "#/$defs/resourceMeasurement"
+        },
+        "token_cost": {
+          "$ref": "#/$defs/resourceMeasurement"
+        }
+      }
+    },
+    "rejection_criteria_assessments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rejectionAssessment"
+      },
+      "minItems": 1
+    },
+    "failure_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "failure_categories", "analysis", "retention_decision"],
+      "properties": {
+        "status": {
+          "enum": ["NOT_PERFORMED", "IN_PROGRESS", "COMPLETE"]
+        },
+        "failure_categories": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ADMISSION_ERROR",
+              "ENCODING_ERROR",
+              "RETRIEVAL_ERROR",
+              "CONSOLIDATION_ERROR",
+              "CONTRADICTION_ERROR",
+              "FORGETTING_ERROR",
+              "DELETION_ERROR",
+              "PROVENANCE_ERROR",
+              "SECURITY_FAILURE",
+              "PRIVACY_FAILURE",
+              "MEASUREMENT_FAILURE",
+              "INFRASTRUCTURE_FAILURE",
+              "OTHER"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "analysis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retention_decision": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "robustness_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "boundary_cases", "adversarial_cases", "distribution_shifts", "summary"],
+      "properties": {
+        "status": {
+          "enum": ["NOT_EVALUATED", "PLANNED", "PARTIAL", "COMPLETE"]
+        },
+        "boundary_cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/caseAssessment"
+          }
+        },
+        "adversarial_cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/caseAssessment"
+          }
+        },
+        "distribution_shifts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/caseAssessment"
+          }
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "security_and_privacy_review": {
+      "$ref": "#/$defs/securityAndPrivacyReview"
+    },
+    "independent_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evaluators",
+        "validation_mode",
+        "materials",
+        "deviations",
+        "claim_outcomes",
+        "artifacts",
+        "summary"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["NOT_REQUESTED", "PENDING", "PARTIAL", "COMPLETED", "FAILED"]
+        },
+        "evaluators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/validationEvaluator"
+          },
+          "uniqueItems": true
+        },
+        "validation_mode": {
+          "enum": [
+            "NOT_SELECTED",
+            "DOCUMENTATION_REVIEW_ONLY",
+            "REEXECUTION",
+            "REPLICATION",
+            "REANALYSIS",
+            "ADVERSARIAL_REPRODUCTION",
+            "MULTI_METHOD"
+          ]
+        },
+        "materials": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "deviations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_outcomes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/validationClaimOutcome"
+          }
+        },
+        "artifacts": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "COMPLETED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "evaluators": {
+                "contains": {
+                  "properties": {
+                    "relationship_to_originators": {
+                      "enum": ["INDEPENDENT_DIFFERENT_TEAM", "EXTERNAL_INDEPENDENT"]
+                    },
+                    "conflict_of_interest": {
+                      "properties": {
+                        "status": {
+                          "enum": ["NONE_DECLARED", "MANAGED"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["relationship_to_originators", "conflict_of_interest"]
+                },
+                "minContains": 1
+              },
+              "validation_mode": {
+                "enum": [
+                  "REEXECUTION",
+                  "REPLICATION",
+                  "REANALYSIS",
+                  "ADVERSARIAL_REPRODUCTION",
+                  "MULTI_METHOD"
+                ]
+              },
+              "materials": {
+                "minItems": 1
+              },
+              "claim_outcomes": {
+                "minItems": 1
+              },
+              "artifacts": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_REQUESTED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "evaluators": {
+                "maxItems": 0
+              },
+              "validation_mode": {
+                "const": "NOT_SELECTED"
+              },
+              "materials": {
+                "maxItems": 0
+              },
+              "deviations": {
+                "maxItems": 0
+              },
+              "claim_outcomes": {
+                "maxItems": 0
+              },
+              "artifacts": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["decision_status", "decision_action"]
+          },
+          "then": {
+            "properties": {
+              "resulting_evidence_profile": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "prerequisite_evidence": {
+      "type": "object",
+      "description": "Explicit evidence-chain references used when recommending high maturity states. Empty arrays mean the prerequisite has not been demonstrated.",
+      "additionalProperties": false,
+      "required": [
+        "benchmark_evidence",
+        "robustness_evidence",
+        "security_review_evidence",
+        "independent_validation_evidence",
+        "product_validation_evidence",
+        "operational_cost_evidence",
+        "operational_testing_evidence",
+        "governance_approval_evidence",
+        "monitoring_evidence",
+        "rollback_evidence",
+        "incident_response_evidence",
+        "deletion_evidence"
+      ],
+      "properties": {
+        "benchmark_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "robustness_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "security_review_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "independent_validation_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "product_validation_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "operational_cost_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "operational_testing_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "governance_approval_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "monitoring_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "rollback_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "incident_response_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "deletion_evidence": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/limitation"
+      },
+      "minItems": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifactReference"
+      },
+      "minItems": 1
+    },
+    "recommended_next_experiment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "future_corpusstudio_integration_implications": {
+      "$ref": "#/$defs/corpusStudioImplications"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "record_status": {
+            "const": "DRAFT"
+          }
+        },
+        "required": ["record_status"]
+      },
+      "then": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "decision_status": {
+                "const": "PENDING"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_version": {
+            "const": 1
+          }
+        },
+        "required": ["record_version"]
+      },
+      "then": {
+        "properties": {
+          "amendment": {
+            "properties": {
+              "kind": {
+                "const": "INITIAL"
+              },
+              "supersedes_record_version": {
+                "type": "null"
+              },
+              "supersedes_artifact_digest": {
+                "type": "null"
+              },
+              "rationale": {
+                "type": "null"
+              },
+              "changed_fields": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "amendment": {
+            "properties": {
+              "kind": {
+                "const": "SUPERSEDING_RECORD"
+              },
+              "supersedes_record_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "supersedes_artifact_digest": {
+                "$ref": "#/$defs/recordedDigest"
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "changed_fields": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "research_layer": {
+            "const": "LAYER_3_FUTURE_CORPUSSTUDIO_INTEGRATION"
+          }
+        },
+        "required": ["research_layer"]
+      },
+      "then": {
+        "required": ["future_corpusstudio_integration_implications"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "decision_status": {
+                "enum": ["ACCEPTED", "REJECTED"]
+              }
+            },
+            "required": ["decision_status"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "record_status": {
+            "const": "PUBLISHED"
+          },
+          "evidence_decision": {
+            "properties": {
+              "decision_artifacts": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      },
+      "else": {}
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "HYPOTHESIS"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "assessment": {
+            "enum": ["NOT_EVALUATED", "INCONCLUSIVE"]
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedHypothesisGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "PROTOTYPE"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "runs": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "COMPLETED"
+                }
+              },
+              "required": ["status"]
+            },
+            "minContains": 1
+          },
+          "artifacts": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "role": {
+                      "const": "PROTOTYPE_IMPLEMENTATION"
+                    },
+                    "digest": {
+                      "properties": {
+                        "status": {
+                          "enum": ["RECORDED", "VERIFIED"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["role", "digest"]
+                },
+                "minContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "role": {
+                      "const": "INTERFACE_AND_CONFIGURATION_DOCUMENTATION"
+                    }
+                  },
+                  "required": ["role"]
+                },
+                "minContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "role": {
+                      "const": "BASIC_CORRECTNESS_TEST_RESULTS"
+                    },
+                    "digest": {
+                      "properties": {
+                        "status": {
+                          "enum": ["RECORDED", "VERIFIED"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["role", "digest"]
+                },
+                "minContains": 1
+              }
+            ]
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedPrototypeGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "REPLICATED"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "runs": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "COMPLETED"
+                }
+              },
+              "required": ["status"]
+            },
+            "minContains": 2
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedReplicatedGate"
+              }
+            }
+          }
+        }
+      },
+      "else": {}
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "REPLICATED"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "runs": {
+            "contains": {
+              "properties": {
+                "run_kind": {
+                  "const": "REPLICATION"
+                },
+                "status": {
+                  "const": "COMPLETED"
+                }
+              },
+              "required": ["run_kind", "status"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "BENCHMARKED"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "claim": {
+            "properties": {
+              "assessment_status": {
+                "enum": ["SUPPORTED", "NOT_SUPPORTED", "MIXED", "INCONCLUSIVE", "REFUTED"]
+              }
+            }
+          },
+          "result_classification": {
+            "enum": ["POSITIVE", "NEGATIVE", "NULL", "MIXED"]
+          },
+          "assessment": {
+            "enum": [
+              "SUPPORTS_CLAIM",
+              "DOES_NOT_SUPPORT_CLAIM",
+              "PARTIALLY_SUPPORTS_CLAIM",
+              "INCONCLUSIVE"
+            ]
+          },
+          "runs": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "COMPLETED"
+                }
+              },
+              "required": ["status"]
+            },
+            "minContains": 1
+          },
+          "baseline_comparisons": {
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "EVALUATED"
+                },
+                "candidate_value": {
+                  "not": {
+                    "type": "null"
+                  }
+                },
+                "baseline_value": {
+                  "not": {
+                    "type": "null"
+                  }
+                }
+              },
+              "required": ["status", "candidate_value", "baseline_value"]
+            },
+            "minContains": 1
+          },
+          "dataset_or_scenario_coverage": {
+            "contains": {
+              "properties": {
+                "role": {
+                  "const": "HELD_OUT_TEST"
+                },
+                "status": {
+                  "const": "COMPLETE"
+                },
+                "cases_evaluated": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "source_artifact": {
+                  "$ref": "#/$defs/immutableArtifactReference"
+                }
+              },
+              "required": ["role", "status", "cases_evaluated", "source_artifact"]
+            },
+            "minContains": 1
+          },
+          "metric_outcomes": {
+            "items": {
+              "properties": {
+                "status": {
+                  "enum": ["MEASURED", "NOT_APPLICABLE"]
+                }
+              },
+              "required": ["status"]
+            },
+            "contains": {
+              "properties": {
+                "status": {
+                  "const": "MEASURED"
+                }
+              },
+              "required": ["status"]
+            },
+            "minContains": 1
+          },
+          "resource_measurements": {
+            "properties": {
+              "latency": {
+                "properties": {
+                  "status": {
+                    "enum": ["MEASURED", "NOT_APPLICABLE"]
+                  }
+                }
+              },
+              "storage": {
+                "properties": {
+                  "status": {
+                    "enum": ["MEASURED", "NOT_APPLICABLE"]
+                  }
+                }
+              },
+              "compute": {
+                "properties": {
+                  "status": {
+                    "enum": ["MEASURED", "NOT_APPLICABLE"]
+                  }
+                }
+              },
+              "token_cost": {
+                "properties": {
+                  "status": {
+                    "enum": ["MEASURED", "NOT_APPLICABLE"]
+                  }
+                }
+              }
+            }
+          },
+          "failure_analysis": {
+            "properties": {
+              "status": {
+                "const": "COMPLETE"
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedBenchmarkedGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "ROBUSTNESS_TESTED"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "robustness_assessment": {
+            "properties": {
+              "status": {
+                "const": "COMPLETE"
+              },
+              "boundary_cases": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/completedCaseAssessment"
+                }
+              },
+              "adversarial_cases": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/completedCaseAssessment"
+                }
+              },
+              "distribution_shifts": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/completedCaseAssessment"
+                }
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedRobustnessGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "SECURITY_REVIEWED"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "security_and_privacy_review": {
+            "properties": {
+              "status": {
+                "const": "COMPLETE"
+              },
+              "controls_evaluated": {
+                "minItems": 1
+              },
+              "deletion_verification": {
+                "enum": ["VERIFIED", "FAILED", "NOT_APPLICABLE"]
+              },
+              "cross_user_isolation": {
+                "enum": ["VERIFIED", "FAILED", "NOT_APPLICABLE"]
+              },
+              "findings": {
+                "minItems": 1
+              },
+              "review_artifacts": {
+                "minItems": 1
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedSecurityReviewGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "enum": ["INDEPENDENTLY_VALIDATED", "INTEGRATION_CANDIDATE", "PRODUCTION_READY"]
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "independent_validation": {
+            "properties": {
+              "status": {
+                "const": "COMPLETED"
+              },
+              "evaluators": {
+                "contains": {
+                  "properties": {
+                    "relationship_to_originators": {
+                      "enum": ["INDEPENDENT_DIFFERENT_TEAM", "EXTERNAL_INDEPENDENT"]
+                    },
+                    "conflict_of_interest": {
+                      "properties": {
+                        "status": {
+                          "enum": ["NONE_DECLARED", "MANAGED"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["relationship_to_originators", "conflict_of_interest"]
+                },
+                "minContains": 1
+              },
+              "validation_mode": {
+                "enum": [
+                  "REEXECUTION",
+                  "REPLICATION",
+                  "REANALYSIS",
+                  "ADVERSARIAL_REPRODUCTION",
+                  "MULTI_METHOD"
+                ]
+              },
+              "materials": {
+                "minItems": 1
+              },
+              "claim_outcomes": {
+                "minItems": 1
+              },
+              "artifacts": {
+                "minItems": 1
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedIndependentValidationGate"
+              },
+              "reviewers": {
+                "contains": {
+                  "properties": {
+                    "relationship_to_originators": {
+                      "enum": ["INDEPENDENT_DIFFERENT_TEAM", "EXTERNAL_INDEPENDENT"]
+                    },
+                    "conflict_of_interest": {
+                      "properties": {
+                        "status": {
+                          "enum": ["NONE_DECLARED", "MANAGED"]
+                        }
+                      }
+                    }
+                  },
+                  "required": ["relationship_to_originators", "conflict_of_interest"]
+                },
+                "minContains": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "enum": ["INTEGRATION_CANDIDATE", "PRODUCTION_READY"]
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "required": ["future_corpusstudio_integration_implications"],
+        "properties": {
+          "research_layer": {
+            "const": "LAYER_3_FUTURE_CORPUSSTUDIO_INTEGRATION"
+          },
+          "security_and_privacy_review": {
+            "properties": {
+              "status": {
+                "const": "COMPLETE"
+              },
+              "deletion_verification": {
+                "const": "VERIFIED"
+              },
+              "cross_user_isolation": {
+                "const": "VERIFIED"
+              },
+              "controls_evaluated": {
+                "minItems": 1
+              },
+              "review_artifacts": {
+                "minItems": 1
+              }
+            }
+          },
+          "prerequisite_evidence": {
+            "properties": {
+              "benchmark_evidence": {
+                "minItems": 1
+              },
+              "robustness_evidence": {
+                "minItems": 1
+              },
+              "security_review_evidence": {
+                "minItems": 1
+              },
+              "independent_validation_evidence": {
+                "minItems": 1
+              },
+              "operational_cost_evidence": {
+                "minItems": 1
+              },
+              "governance_approval_evidence": {
+                "minItems": 1
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedIntegrationCandidateGate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_decision": {
+            "properties": {
+              "state_under_decision": {
+                "const": "PRODUCTION_READY"
+              },
+              "decision_status": {
+                "const": "ACCEPTED"
+              },
+              "decision_action": {
+                "const": "AWARD"
+              }
+            },
+            "required": ["state_under_decision", "decision_status", "decision_action"]
+          }
+        },
+        "required": ["evidence_decision"]
+      },
+      "then": {
+        "properties": {
+          "prerequisite_evidence": {
+            "properties": {
+              "product_validation_evidence": {
+                "minItems": 1
+              },
+              "operational_testing_evidence": {
+                "minItems": 1
+              },
+              "governance_approval_evidence": {
+                "minItems": 1
+              },
+              "monitoring_evidence": {
+                "minItems": 1
+              },
+              "rollback_evidence": {
+                "minItems": 1
+              },
+              "incident_response_evidence": {
+                "minItems": 1
+              },
+              "deletion_evidence": {
+                "minItems": 1
+              }
+            }
+          },
+          "evidence_decision": {
+            "properties": {
+              "gate_assessments": {
+                "$ref": "#/$defs/satisfiedProductionReadyGate"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "evidenceAmendment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "supersedes_record_version",
+        "supersedes_artifact_digest",
+        "rationale",
+        "changed_fields"
+      ],
+      "properties": {
+        "kind": {
+          "enum": ["INITIAL", "SUPERSEDING_RECORD"]
+        },
+        "supersedes_record_version": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "supersedes_artifact_digest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rationale": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "changed_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "evidenceDecision": {
+      "type": "object",
+      "description": "One bounded decision for one evidence label. Labels form an evidence profile, not a total maturity ordering.",
+      "additionalProperties": false,
+      "required": [
+        "existing_awarded_evidence_profile",
+        "resulting_evidence_profile",
+        "state_under_decision",
+        "claim_scope",
+        "decision_status",
+        "decision_action",
+        "effect_summary",
+        "gate_assessments",
+        "reviewers",
+        "decision_authority",
+        "rationale",
+        "decision_artifacts",
+        "decided_at"
+      ],
+      "properties": {
+        "existing_awarded_evidence_profile": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/awardedProfileEntry"
+          }
+        },
+        "resulting_evidence_profile": {
+          "type": "array",
+          "description": "The complete bounded profile after applying the final action. For PENDING decisions this is the proposed profile and awards nothing.",
+          "items": {
+            "$ref": "#/$defs/awardedProfileEntry"
+          }
+        },
+        "state_under_decision": {
+          "$ref": "#/$defs/evidenceState"
+        },
+        "claim_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_status": {
+          "enum": ["PENDING", "ACCEPTED", "REJECTED"]
+        },
+        "decision_action": {
+          "oneOf": [
+            {
+              "enum": ["AWARD", "DENY", "RETAIN", "QUALIFY", "WITHDRAW"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effect_summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gate_assessments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/gateAssessment"
+          }
+        },
+        "reviewers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/decisionReviewer"
+          },
+          "uniqueItems": true
+        },
+        "decision_authority": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "rationale": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "decision_artifacts": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        "decided_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decision_status": {
+                "const": "PENDING"
+              }
+            },
+            "required": ["decision_status"]
+          },
+          "then": {
+            "properties": {
+              "decision_authority": {
+                "type": "null"
+              },
+              "decision_action": {
+                "type": "null"
+              },
+              "decision_artifacts": {
+                "maxItems": 0
+              },
+              "reviewers": {
+                "maxItems": 0
+              },
+              "decided_at": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "decision_authority": {
+                "type": "string"
+              },
+              "decision_action": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "gate_assessments": {
+                "minItems": 1
+              },
+              "reviewers": {
+                "minItems": 1
+              },
+              "decision_artifacts": {
+                "minItems": 1
+              },
+              "decided_at": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decision_status": {
+                "const": "ACCEPTED"
+              }
+            },
+            "required": ["decision_status"]
+          },
+          "then": {
+            "properties": {
+              "decision_action": {
+                "enum": ["AWARD", "RETAIN", "QUALIFY", "WITHDRAW"]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decision_status": {
+                "const": "REJECTED"
+              }
+            },
+            "required": ["decision_status"]
+          },
+          "then": {
+            "properties": {
+              "decision_action": {
+                "const": "DENY"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "gateAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "outcome", "rationale", "evidence_artifacts"],
+      "properties": {
+        "gate_id": {
+          "enum": [
+            "HYPOTHESIS_GATE",
+            "PROTOTYPE_GATE",
+            "REPLICATED_GATE",
+            "BENCHMARKED_GATE",
+            "ROBUSTNESS_TESTED_GATE",
+            "SECURITY_REVIEWED_GATE",
+            "INDEPENDENTLY_VALIDATED_GATE",
+            "INTEGRATION_CANDIDATE_GATE",
+            "PRODUCTION_READY_GATE"
+          ]
+        },
+        "outcome": {
+          "enum": ["SATISFIED", "NOT_SATISFIED", "NOT_APPLICABLE", "NOT_EVALUATED"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_artifacts": {
+          "$ref": "#/$defs/artifactReferenceArray"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "SATISFIED"
+              }
+            },
+            "required": ["outcome"]
+          },
+          "then": {
+            "properties": {
+              "evidence_artifacts": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "satisfiedHypothesisGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "HYPOTHESIS_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedPrototypeGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "PROTOTYPE_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedReplicatedGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "REPLICATED_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedBenchmarkedGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "BENCHMARKED_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedRobustnessGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "ROBUSTNESS_TESTED_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedSecurityReviewGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "SECURITY_REVIEWED_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedIndependentValidationGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "INDEPENDENTLY_VALIDATED_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedIntegrationCandidateGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "INTEGRATION_CANDIDATE_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "satisfiedProductionReadyGate": {
+      "type": "array",
+      "contains": {
+        "properties": {
+          "gate_id": {
+            "const": "PRODUCTION_READY_GATE"
+          },
+          "outcome": {
+            "const": "SATISFIED"
+          }
+        },
+        "required": ["gate_id", "outcome"]
+      },
+      "minContains": 1
+    },
+    "decisionReviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer_id",
+        "display_name_or_pseudonym",
+        "relationship_to_originators",
+        "conflict_of_interest"
+      ],
+      "properties": {
+        "reviewer_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name_or_pseudonym": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_to_originators": {
+          "$ref": "#/$defs/reviewerRelationship"
+        },
+        "conflict_of_interest": {
+          "$ref": "#/$defs/conflictOfInterest"
+        }
+      }
+    },
+    "validationEvaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluator_id",
+        "display_name_or_pseudonym",
+        "relationship_to_originators",
+        "conflict_of_interest"
+      ],
+      "properties": {
+        "evaluator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name_or_pseudonym": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_to_originators": {
+          "$ref": "#/$defs/reviewerRelationship"
+        },
+        "conflict_of_interest": {
+          "$ref": "#/$defs/conflictOfInterest"
+        }
+      }
+    },
+    "reviewerRelationship": {
+      "enum": [
+        "ORIGINATING_AUTHOR",
+        "COAUTHOR_OR_COLLABORATOR",
+        "SAME_RESEARCH_TEAM",
+        "INDEPENDENT_DIFFERENT_TEAM",
+        "EXTERNAL_INDEPENDENT"
+      ]
+    },
+    "conflictOfInterest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "details"],
+      "properties": {
+        "status": {
+          "enum": ["UNASSESSED", "NONE_DECLARED", "DISCLOSED", "MANAGED"]
+        },
+        "details": {
+          "type": ["string", "null"],
+          "minLength": 1
+        }
+      }
+    },
+    "validationClaimOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "outcome", "rationale", "evidence_artifacts"],
+      "properties": {
+        "claim_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "outcome": {
+          "enum": ["CONFIRMED", "NOT_CONFIRMED", "PARTIAL", "INCONCLUSIVE", "REFUTED"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_artifacts": {
+          "$ref": "#/$defs/nonEmptyArtifactReferenceArray"
+        }
+      }
+    },
+    "awardedProfileEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "claim_id", "claim_scope", "qualification", "decision_record"],
+      "properties": {
+        "state": {
+          "$ref": "#/$defs/evidenceState"
+        },
+        "claim_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "claim_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qualification": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "decision_record": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/artifactReference"
+            },
+            {
+              "properties": {
+                "digest": {
+                  "properties": {
+                    "status": {
+                      "enum": ["RECORDED", "VERIFIED"]
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "mechanismVersionReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism_id", "mechanism_version", "mechanism_artifact"],
+      "properties": {
+        "mechanism_id": {
+          "$ref": "#/$defs/mechanismId"
+        },
+        "mechanism_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mechanism_artifact": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/artifactReference"
+            },
+            {
+              "properties": {
+                "digest": {
+                  "properties": {
+                    "status": {
+                      "enum": ["RECORDED", "VERIFIED"]
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "artifactReferenceArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/immutableArtifactReference"
+      }
+    },
+    "nonEmptyArtifactReferenceArray": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/artifactReferenceArray"
+        },
+        {
+          "minItems": 1
+        }
+      ]
+    },
+    "localId": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9._-]{1,127}$"
+    },
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^LCMRP-EVID-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "experimentId": {
+      "type": "string",
+      "pattern": "^LCMRP-EXP-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "mechanismId": {
+      "type": "string",
+      "pattern": "^LCMRP-MECH-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "researchLayer": {
+      "enum": [
+        "LAYER_1_FOUNDATIONAL_RESEARCH",
+        "LAYER_2_PRODUCT_INDEPENDENT_REFERENCE_IMPLEMENTATION",
+        "LAYER_3_FUTURE_CORPUSSTUDIO_INTEGRATION"
+      ]
+    },
+    "evidenceState": {
+      "enum": [
+        "HYPOTHESIS",
+        "PROTOTYPE",
+        "REPLICATED",
+        "BENCHMARKED",
+        "ROBUSTNESS_TESTED",
+        "SECURITY_REVIEWED",
+        "INDEPENDENTLY_VALIDATED",
+        "INTEGRATION_CANDIDATE",
+        "PRODUCTION_READY"
+      ]
+    },
+    "runRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "run_kind",
+        "status",
+        "protocol_artifact",
+        "control_condition_ids",
+        "randomness",
+        "model_provenance",
+        "environment_provenance",
+        "configuration_artifacts",
+        "output_artifacts",
+        "notes"
+      ],
+      "properties": {
+        "run_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "run_kind": {
+          "enum": ["ORIGINAL", "REPLICATION"]
+        },
+        "status": {
+          "enum": ["PLANNED", "RUNNING", "COMPLETED", "INVALIDATED", "ABORTED"]
+        },
+        "protocol_artifact": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/artifactReference"
+            },
+            {
+              "properties": {
+                "digest": {
+                  "properties": {
+                    "status": {
+                      "enum": ["RECORDED", "VERIFIED"]
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "control_condition_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/localId"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "randomness": {
+          "$ref": "#/$defs/randomness"
+        },
+        "model_provenance": {
+          "$ref": "#/$defs/modelProvenanceSet"
+        },
+        "environment_provenance": {
+          "$ref": "#/$defs/environmentProvenance"
+        },
+        "configuration_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactReference"
+          },
+          "minItems": 1
+        },
+        "output_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactReference"
+          }
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "COMPLETED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "required": ["started_at", "finished_at"],
+            "properties": {
+              "configuration_artifacts": {
+                "$ref": "#/$defs/nonEmptyArtifactReferenceArray"
+              },
+              "output_artifacts": {
+                "$ref": "#/$defs/nonEmptyArtifactReferenceArray"
+              },
+              "environment_provenance": {
+                "properties": {
+                  "capture_status": {
+                    "enum": ["RECORDED", "VERIFIED"]
+                  },
+                  "hardware": {
+                    "minItems": 1
+                  },
+                  "software": {
+                    "minItems": 1
+                  },
+                  "environment_artifact": {
+                    "$ref": "#/$defs/immutableArtifactReference"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "baselineComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_id",
+        "metric_ids",
+        "status",
+        "candidate_value",
+        "baseline_value",
+        "uncertainty",
+        "interpretation"
+      ],
+      "properties": {
+        "baseline_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "metric_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/localId"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": ["NOT_EVALUATED", "EVALUATED", "INVALIDATED"]
+        },
+        "candidate_value": {
+          "type": ["number", "string", "boolean", "null"]
+        },
+        "baseline_value": {
+          "type": ["number", "string", "boolean", "null"]
+        },
+        "uncertainty": {
+          "type": ["string", "null"]
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_EVALUATED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "candidate_value": {
+                "type": "null"
+              },
+              "baseline_value": {
+                "type": "null"
+              },
+              "uncertainty": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sourceCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "role", "status", "cases_planned", "cases_evaluated", "source_artifact"],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "role": {
+          "enum": [
+            "DEVELOPMENT",
+            "VALIDATION",
+            "HELD_OUT_TEST",
+            "ADVERSARIAL",
+            "ROBUSTNESS",
+            "OTHER"
+          ]
+        },
+        "status": {
+          "enum": ["PLANNED", "PARTIAL", "COMPLETE", "INVALIDATED"]
+        },
+        "cases_planned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cases_evaluated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        }
+      }
+    },
+    "metricOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric_id", "status", "value", "unit", "sample_count", "uncertainty", "justification", "evidence_artifact"],
+      "properties": {
+        "metric_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "status": {
+          "enum": ["NOT_MEASURED", "NOT_APPLICABLE", "MEASURED", "INVALIDATED"]
+        },
+        "value": {
+          "type": ["number", "string", "boolean", "null"]
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sample_count": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "uncertainty": {
+          "type": ["string", "null"]
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": ["NOT_MEASURED", "NOT_APPLICABLE"]
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "sample_count": {
+                "type": "null"
+              },
+              "uncertainty": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "MEASURED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "not": {
+                  "type": "null"
+                }
+              },
+              "sample_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "evidence_artifact": {
+                "$ref": "#/$defs/immutableArtifactReference"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "resourceMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value", "unit", "method"],
+      "properties": {
+        "status": {
+          "enum": ["NOT_MEASURED", "NOT_APPLICABLE", "MEASURED", "INVALIDATED"]
+        },
+        "value": {
+          "type": ["number", "null"]
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": ["NOT_MEASURED", "NOT_APPLICABLE"]
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rejectionAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["criterion_id", "status", "rationale"],
+      "properties": {
+        "criterion_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "status": {
+          "enum": ["NOT_EVALUATED", "NOT_TRIGGERED", "TRIGGERED", "INDETERMINATE"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "caseAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "status", "outcome", "artifact"],
+      "properties": {
+        "case_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "status": {
+          "enum": ["PLANNED", "PASSED", "FAILED", "INCONCLUSIVE", "INVALIDATED"]
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifactReference"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": ["PASSED", "FAILED", "INCONCLUSIVE"]
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "artifact": {
+                "$ref": "#/$defs/immutableArtifactReference"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "completedCaseAssessment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/caseAssessment"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["PASSED", "FAILED", "INCONCLUSIVE"]
+            },
+            "artifact": {
+              "$ref": "#/$defs/immutableArtifactReference"
+            }
+          },
+          "required": ["status", "artifact"]
+        }
+      ]
+    },
+    "securityAndPrivacyReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "threat_model_scope",
+        "assets",
+        "actors",
+        "trust_boundaries",
+        "adversary_capabilities",
+        "oracle_and_tool_access",
+        "side_channels_and_leakage",
+        "adversary_success_criterion",
+        "authority_and_trust_assumptions",
+        "risks",
+        "findings",
+        "controls_evaluated",
+        "residual_risks",
+        "deletion_verification",
+        "cross_user_isolation",
+        "review_artifacts"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["NOT_REVIEWED", "PLANNED", "PARTIAL", "COMPLETE"]
+        },
+        "threat_model_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "trust_boundaries": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "adversary_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "oracle_and_tool_access": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowed", "denied", "assumptions"],
+          "properties": {
+            "allowed": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "denied": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "assumptions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "side_channels_and_leakage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["in_scope", "out_of_scope", "leakage_assumptions"],
+          "properties": {
+            "in_scope": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "out_of_scope": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "leakage_assumptions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "adversary_success_criterion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_and_trust_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "controls_evaluated": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "residual_risks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "deletion_verification": {
+          "enum": ["NOT_EVALUATED", "PARTIAL", "VERIFIED", "FAILED", "NOT_APPLICABLE"]
+        },
+        "cross_user_isolation": {
+          "enum": ["NOT_EVALUATED", "PARTIAL", "VERIFIED", "FAILED", "NOT_APPLICABLE"]
+        },
+        "review_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactReference"
+          }
+        }
+      }
+    },
+    "randomness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicability", "seed_policy", "seeds", "determinism_notes"],
+      "properties": {
+        "applicability": {
+          "enum": ["STOCHASTIC", "DETERMINISTIC"]
+        },
+        "seed_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seeds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "uniqueItems": true
+        },
+        "determinism_notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "const": "STOCHASTIC"
+              }
+            },
+            "required": ["applicability"]
+          },
+          "then": {
+            "properties": {
+              "seeds": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "seeds": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "modelProvenanceSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicability", "rationale", "models"],
+      "properties": {
+        "applicability": {
+          "enum": ["APPLICABLE", "NOT_APPLICABLE"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/modelProvenance"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "const": "APPLICABLE"
+              }
+            },
+            "required": ["applicability"]
+          },
+          "then": {
+            "properties": {
+              "models": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "models": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "modelProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "role", "version_or_revision", "source", "configuration_artifact", "weights_artifact"],
+      "properties": {
+        "model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_or_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        },
+        "weights_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        }
+      }
+    },
+    "environmentProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capture_status", "operating_system", "hardware", "software", "environment_artifact"],
+      "properties": {
+        "capture_status": {
+          "enum": ["PLANNED", "RECORDED", "VERIFIED"]
+        },
+        "operating_system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hardware": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "software": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "version"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "environment_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        }
+      }
+    },
+    "limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["limitation_id", "description", "risk_if_ignored", "next_check"],
+      "properties": {
+        "limitation_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "risk_if_ignored": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "artifactReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "role", "locator", "digest"],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "immutableArtifactReference": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/artifactReference"
+        },
+        {
+          "properties": {
+            "digest": {
+              "$ref": "#/$defs/recordedDigest"
+            }
+          }
+        }
+      ]
+    },
+    "recordedDigest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/digest"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["RECORDED", "VERIFIED"]
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "status", "value"],
+      "properties": {
+        "algorithm": {
+          "enum": ["sha256", "sha384", "sha512", "blake3"]
+        },
+        "status": {
+          "enum": ["PENDING", "RECORDED", "VERIFIED"]
+        },
+        "value": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PENDING"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "enum": ["sha256", "blake3"]
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "const": "sha384"
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{96}$"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "const": "sha512"
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{128}$"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "corpusStudioImplications": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["section_title", "status_label", "disclaimer", "implications"],
+      "properties": {
+        "section_title": {
+          "const": "Future CorpusStudio Integration Implications"
+        },
+        "status_label": {
+          "const": "RESEARCH-TO-PRODUCT HYPOTHESIS"
+        },
+        "disclaimer": {
+          "const": "Content in this section is provisional and does not constitute an architectural decision, implementation commitment, roadmap recommendation, or claim of production readiness."
+        },
+        "implications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["implication", "independent_validation_required"],
+            "properties": {
+              "implication": {
+                "type": "string",
+                "minLength": 1
+              },
+              "independent_validation_required": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              }
+            }
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

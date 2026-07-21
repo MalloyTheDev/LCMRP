@@ -1,0 +1,754 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lcmrp:schema:mechanism-registry:0.1.0",
+  "title": "LCMRP Mechanism Registry",
+  "description": "Product-independent registry of versioned memory research mechanisms and their bounded evidence profiles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_type", "entries"],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "registry_type": {
+      "const": "mechanism_registry"
+    },
+    "registry_record_id": {
+      "type": "string",
+      "pattern": "^LCMRP-MECHREG-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "record_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/mechanismEntry"
+      }
+    }
+  },
+  "$defs": {
+    "localId": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9._-]{1,127}$"
+    },
+    "mechanismId": {
+      "type": "string",
+      "pattern": "^LCMRP-MECH-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "researchLayer": {
+      "enum": [
+        "LAYER_1_FOUNDATIONAL_RESEARCH",
+        "LAYER_2_PRODUCT_INDEPENDENT_REFERENCE_IMPLEMENTATION",
+        "LAYER_3_FUTURE_CORPUSSTUDIO_INTEGRATION"
+      ]
+    },
+    "evidenceState": {
+      "enum": [
+        "HYPOTHESIS",
+        "PROTOTYPE",
+        "REPLICATED",
+        "BENCHMARKED",
+        "ROBUSTNESS_TESTED",
+        "SECURITY_REVIEWED",
+        "INDEPENDENTLY_VALIDATED",
+        "INTEGRATION_CANDIDATE",
+        "PRODUCTION_READY"
+      ]
+    },
+    "mechanismEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mechanism_id",
+        "mechanism_version",
+        "supersedes_mechanism_version",
+        "supersedes_artifact_digest",
+        "entry_status",
+        "name",
+        "summary",
+        "research_layer",
+        "hypotheses",
+        "memory_lifecycle_stages",
+        "interface_contract",
+        "independence_declaration",
+        "evaluation_plan",
+        "awarded_evidence_profile",
+        "states_under_investigation",
+        "security_and_privacy_analysis",
+        "limitations",
+        "definition_artifact",
+        "implementation_artifacts",
+        "registered_at"
+      ],
+      "properties": {
+        "mechanism_id": {
+          "$ref": "#/$defs/mechanismId"
+        },
+        "mechanism_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "supersedes_mechanism_version": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "supersedes_artifact_digest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/recordedOrVerifiedDigest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entry_status": {
+          "enum": ["PROPOSED", "ACTIVE", "SUPERSEDED", "RETIRED", "REJECTED"]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "research_layer": {
+          "$ref": "#/$defs/researchLayer"
+        },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hypothesis"
+          },
+          "minItems": 1
+        },
+        "memory_lifecycle_stages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ADMISSION",
+              "ENCODING",
+              "DEDUPLICATION",
+              "CONSOLIDATION",
+              "ABSTRACTION",
+              "RETRIEVAL",
+              "UPDATING",
+              "RECONSOLIDATION",
+              "DECAY",
+              "ARCHIVAL",
+              "DELETION"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "interface_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inputs", "outputs", "state_changes", "failure_signals", "replaceable_components"],
+          "properties": {
+            "inputs": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            },
+            "outputs": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            },
+            "state_changes": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            },
+            "failure_signals": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            },
+            "replaceable_components": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        },
+        "independence_declaration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assumes_specific_vector_database",
+            "assumes_specific_model_vendor",
+            "assumes_specific_embedding_model",
+            "assumes_specific_application_schema",
+            "assumes_corpusstudio_repository_or_domain",
+            "assumes_continuous_cloud_connectivity",
+            "assumes_unlimited_compute_or_storage",
+            "declared_architectural_assumptions"
+          ],
+          "properties": {
+            "assumes_specific_vector_database": {
+              "const": false
+            },
+            "assumes_specific_model_vendor": {
+              "const": false
+            },
+            "assumes_specific_embedding_model": {
+              "const": false
+            },
+            "assumes_specific_application_schema": {
+              "const": false
+            },
+            "assumes_corpusstudio_repository_or_domain": {
+              "const": false
+            },
+            "assumes_continuous_cloud_connectivity": {
+              "const": false
+            },
+            "assumes_unlimited_compute_or_storage": {
+              "const": false
+            },
+            "declared_architectural_assumptions": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        },
+        "evaluation_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baseline_ids",
+            "dataset_or_scenario_ids",
+            "metric_ids",
+            "rejection_criteria",
+            "required_provenance"
+          ],
+          "properties": {
+            "baseline_ids": {
+              "$ref": "#/$defs/localIdArray"
+            },
+            "dataset_or_scenario_ids": {
+              "$ref": "#/$defs/localIdArray"
+            },
+            "metric_ids": {
+              "$ref": "#/$defs/localIdArray"
+            },
+            "rejection_criteria": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            },
+            "required_provenance": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["random_seeds", "models", "environment", "artifact_digests"],
+              "properties": {
+                "random_seeds": {
+                  "const": true
+                },
+                "models": {
+                  "const": true
+                },
+                "environment": {
+                  "const": true
+                },
+                "artifact_digests": {
+                  "const": true
+                }
+              }
+            }
+          }
+        },
+        "awarded_evidence_profile": {
+          "type": "array",
+          "description": "Accepted bounded evidence labels; order has no maturity meaning.",
+          "items": {
+            "$ref": "#/$defs/awardedEvidenceEntry"
+          }
+        },
+        "states_under_investigation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceState"
+          },
+          "uniqueItems": true
+        },
+        "security_and_privacy_analysis": {
+          "$ref": "#/$defs/securityAndPrivacyAnalysis"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/limitation"
+          },
+          "minItems": 1
+        },
+        "definition_artifact": {
+          "$ref": "#/$defs/artifactReference"
+        },
+        "implementation_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifactReference"
+          }
+        },
+        "future_corpusstudio_integration_implications": {
+          "$ref": "#/$defs/corpusStudioImplications"
+        },
+        "registered_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mechanism_version": {
+                "const": 1
+              }
+            },
+            "required": ["mechanism_version"]
+          },
+          "then": {
+            "properties": {
+              "supersedes_mechanism_version": {
+                "type": "null"
+              },
+              "supersedes_artifact_digest": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "supersedes_mechanism_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "supersedes_artifact_digest": {
+                "$ref": "#/$defs/recordedOrVerifiedDigest"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "research_layer": {
+                "const": "LAYER_3_FUTURE_CORPUSSTUDIO_INTEGRATION"
+              }
+            },
+            "required": ["research_layer"]
+          },
+          "then": {
+            "required": ["future_corpusstudio_integration_implications"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "research_layer": {
+                "enum": [
+                  "LAYER_1_FOUNDATIONAL_RESEARCH",
+                  "LAYER_2_PRODUCT_INDEPENDENT_REFERENCE_IMPLEMENTATION"
+                ]
+              }
+            },
+            "required": ["research_layer"]
+          },
+          "then": {
+            "properties": {
+              "states_under_investigation": {
+                "not": {
+                  "contains": {
+                    "enum": ["INTEGRATION_CANDIDATE", "PRODUCTION_READY"]
+                  }
+                }
+              },
+              "awarded_evidence_profile": {
+                "not": {
+                  "contains": {
+                    "properties": {
+                      "state": {
+                        "enum": ["INTEGRATION_CANDIDATE", "PRODUCTION_READY"]
+                      }
+                    },
+                    "required": ["state"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "hypothesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hypothesis_id", "statement", "falsifiable_prediction", "null_hypothesis", "assumptions"],
+      "properties": {
+        "hypothesis_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "falsifiable_prediction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "null_hypothesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assumptions": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "awardedEvidenceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "claim_scope", "evidence_record"],
+      "properties": {
+        "state": {
+          "$ref": "#/$defs/evidenceState"
+        },
+        "claim_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_record": {
+          "$ref": "#/$defs/immutableArtifactReference"
+        }
+      }
+    },
+    "securityAndPrivacyAnalysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "threat_model_scope",
+        "assets",
+        "actors",
+        "trust_boundaries",
+        "adversary_capabilities",
+        "oracle_and_tool_access",
+        "side_channels_and_leakage",
+        "adversary_success_criterion",
+        "authority_boundaries",
+        "identified_risks",
+        "planned_controls",
+        "residual_risks",
+        "deletion_requirements"
+      ],
+      "properties": {
+        "threat_model_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assets": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "actors": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "trust_boundaries": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "adversary_capabilities": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "oracle_and_tool_access": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowed", "denied", "assumptions"],
+          "properties": {
+            "allowed": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "denied": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "assumptions": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        },
+        "side_channels_and_leakage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["in_scope", "out_of_scope", "leakage_assumptions"],
+          "properties": {
+            "in_scope": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "out_of_scope": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "leakage_assumptions": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        },
+        "adversary_success_criterion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_boundaries": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "identified_risks": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "planned_controls": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "residual_risks": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "deletion_requirements": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["limitation_id", "description", "risk_if_ignored", "next_check"],
+      "properties": {
+        "limitation_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "risk_if_ignored": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "nonEmptyStringArray": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringArray"
+        },
+        {
+          "minItems": 1
+        }
+      ]
+    },
+    "localIdArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/localId"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "artifactReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "role", "locator", "digest"],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/localId"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "immutableArtifactReference": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/artifactReference"
+        },
+        {
+          "properties": {
+            "digest": {
+              "properties": {
+                "status": {
+                  "enum": ["RECORDED", "VERIFIED"]
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "status", "value"],
+      "properties": {
+        "algorithm": {
+          "enum": ["sha256", "sha384", "sha512", "blake3"]
+        },
+        "status": {
+          "enum": ["PENDING", "RECORDED", "VERIFIED"]
+        },
+        "value": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PENDING"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "enum": ["sha256", "blake3"]
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "const": "sha384"
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{96}$"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "algorithm": {
+                      "const": "sha512"
+                    }
+                  },
+                  "required": ["algorithm"]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[a-f0-9]{128}$"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "recordedOrVerifiedDigest": {
+      "description": "A materialized digest suitable for immutable lineage. PENDING and null values are prohibited.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/digest"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": ["RECORDED", "VERIFIED"]
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "corpusStudioImplications": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["section_title", "status_label", "disclaimer", "implications"],
+      "properties": {
+        "section_title": {
+          "const": "Future CorpusStudio Integration Implications"
+        },
+        "status_label": {
+          "const": "RESEARCH-TO-PRODUCT HYPOTHESIS"
+        },
+        "disclaimer": {
+          "const": "Content in this section is provisional and does not constitute an architectural decision, implementation commitment, roadmap recommendation, or claim of production readiness."
+        },
+        "implications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["implication", "independent_validation_required"],
+            "properties": {
+              "implication": {
+                "type": "string",
+                "minLength": 1
+              },
+              "independent_validation_required": {
+                "$ref": "#/$defs/nonEmptyStringArray"
+              }
+            }
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

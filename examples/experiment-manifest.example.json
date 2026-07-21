@@ -1,0 +1,406 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "experiment_manifest",
+  "manifest_record_id": "LCMRP-EXPMAN-9999-SYNTHETIC-SELECTIVE-RETENTION",
+  "record_version": 1,
+  "immutable_record_notice": "Once frozen, this manifest record must not be modified. Any amendment must create a new record version that references the superseded record.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": [],
+    "result_accessed_before_amendment": false,
+    "post_result_change_disclosure": null
+  },
+  "preregistration": {
+    "status": "DRAFT",
+    "frozen_at": null,
+    "external_registration_envelope": {
+      "status": "NOT_CREATED",
+      "envelope_id": null,
+      "locator": null
+    },
+    "result_access_status": "NOT_STARTED",
+    "result_access_started_at": null
+  },
+  "analysis_mode": "CONFIRMATORY",
+  "experiment_id": "LCMRP-EXP-9999-SYNTHETIC-SELECTIVE-RETENTION",
+  "title": "Example Selective Admission Held-Out Evaluation",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "lifecycle_status": "DRAFT",
+  "research_question": "Under preregistered synthetic conditions, can a provenance-aware admission gate reduce later retrieval of irrelevant events without materially reducing source-sensitive recall?",
+  "hypothesis": {
+    "statement": "The example selective admission mechanism may outperform a store-all baseline on the joint retention criterion defined in this manifest.",
+    "falsifiable_prediction": "Across the fixed seed set on the held-out suite, the candidate must reduce irrelevant-event retrieval rate by at least 20 percent relative to the store-all baseline while its source-sensitive recall is no more than 0.02 below that baseline.",
+    "null_hypothesis": "The candidate fails at least one component of the preregistered joint criterion relative to the store-all baseline.",
+    "independent_variables": [
+      "Memory admission policy"
+    ],
+    "dependent_variables": [
+      "Irrelevant-event retrieval rate",
+      "Source-sensitive recall"
+    ],
+    "assumptions": [
+      "Relevance labels are fixed before held-out evaluation.",
+      "Candidate and baseline receive identical event and query sequences.",
+      "The synthetic generator contains no personal data."
+    ]
+  },
+  "mechanism_versions": [
+    {
+      "mechanism_id": "LCMRP-MECH-9999-SYNTHETIC-ADMISSION-GATE",
+      "mechanism_version": 1,
+      "mechanism_artifact": {
+        "artifact_id": "ARTIFACT-MECHANISM-REGISTRY-SNAPSHOT",
+        "role": "VERSIONED_MECHANISM_DEFINITION",
+        "locator": "examples/mechanism-registry.example.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "RECORDED",
+          "value": "9e447f9c6ddd082417ab34573ac5a5e3e7a332f7eab18cd5a3e1cc5aa6946971"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "experimental_design": {
+    "design_type": "Paired controlled synthetic scenario evaluation",
+    "unit_of_analysis": "One scenario seed evaluated under both candidate and baseline policies",
+    "procedure": [
+      "Generate development and held-out scenarios from separately versioned configurations.",
+      "Replay each scenario byte-identically through the candidate and store-all policies.",
+      "Issue the preregistered retrieval requests and record metric inputs before aggregate analysis.",
+      "Evaluate rejection criteria before considering any evidence-state decision."
+    ],
+    "controls": [
+      "Identical scenario bytes, retrieval requests, seed set, resource limits, and scoring code across candidate and baseline"
+    ],
+    "ablation_plan": [
+      {
+        "ablation_id": "ABLATION-NO-PROVENANCE",
+        "component_removed_or_changed": "Remove provenance features from the admission decision while preserving the remaining policy.",
+        "rationale": "Test whether provenance contributes to the proposed effect rather than merely accompanying another policy feature."
+      }
+    ],
+    "boundary_and_adversarial_tests": [
+      {
+        "test_id": "TEST-PERSISTENT-INJECTION",
+        "category": "SECURITY",
+        "description": "Submit an irrelevant event containing an instruction that requests persistent storage and future execution.",
+        "expected_safe_behavior": "The in-band instruction cannot override the admission policy or user scope."
+      },
+      {
+        "test_id": "TEST-CONTRADICTORY-PROVENANCE",
+        "category": "ADVERSARIAL",
+        "description": "Provide mutually inconsistent source assertions for a candidate event.",
+        "expected_safe_behavior": "The mechanism emits an explicit ambiguity or rejection signal and does not silently elevate confidence."
+      }
+    ],
+    "stopping_rules": [
+      "Stop and invalidate the affected run if candidate and baseline inputs differ.",
+      "Stop for security review if a test crosses a declared user-scope boundary."
+    ]
+  },
+  "baselines": [
+    {
+      "baseline_id": "BASELINE-STORE-ALL",
+      "name": "Store-all baseline",
+      "description": "Admit every syntactically valid event within the declared user scope.",
+      "rationale": "Provides a simple persistent-memory comparison without selective admission.",
+      "configuration_artifact": {
+        "artifact_id": "ARTIFACT-BASELINE-CONFIG",
+        "role": "PLANNED_BASELINE_CONFIGURATION",
+        "locator": "experiments/LCMRP-EXP-9999-SYNTHETIC/config/baseline.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "datasets_or_scenarios": [
+    {
+      "source_id": "SCENARIO-DEV-SYNTHETIC",
+      "kind": "SYNTHETIC_GENERATOR",
+      "name": "Example development scenario generator",
+      "version": "planned-v0.1",
+      "role": "DEVELOPMENT",
+      "description": "Planned synthetic event streams with relevance, provenance, scope, and retrieval-query annotations.",
+      "provenance": {
+        "artifact_id": "ARTIFACT-DEV-GENERATOR",
+        "role": "PLANNED_SCENARIO_GENERATOR",
+        "locator": "benchmarks/selective-retention/dev-generator.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/json"
+      },
+      "license_or_terms": "Project-authored synthetic fixtures; terms to be recorded before freeze.",
+      "sensitivity_classification": "SYNTHETIC_NO_PERSONAL_DATA"
+    },
+    {
+      "source_id": "SCENARIO-HELDOUT-SYNTHETIC",
+      "kind": "SCENARIO_SUITE",
+      "name": "Example held-out selective-retention suite",
+      "version": "planned-v0.1",
+      "role": "HELD_OUT_TEST",
+      "description": "Planned held-out synthetic scenarios kept inaccessible until the manifest is frozen.",
+      "provenance": {
+        "artifact_id": "ARTIFACT-HELDOUT-SUITE",
+        "role": "PLANNED_HELD_OUT_SCENARIOS",
+        "locator": "benchmarks/selective-retention/heldout.jsonl",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/jsonl"
+      },
+      "license_or_terms": "Project-authored synthetic fixtures; terms to be recorded before freeze.",
+      "sensitivity_classification": "SYNTHETIC_NO_PERSONAL_DATA"
+    }
+  ],
+  "held_out_evaluation": {
+    "applicability": "APPLICABLE",
+    "rationale": "A separately frozen held-out suite is required to distinguish protocol development from evaluation.",
+    "source_ids": [
+      "SCENARIO-HELDOUT-SYNTHETIC"
+    ]
+  },
+  "metrics": [
+    {
+      "metric_id": "METRIC-IRRELEVANT-RETRIEVAL",
+      "name": "Irrelevant-event retrieval rate",
+      "operational_definition": "Fraction of retrieval requests for which at least one scenario-labeled irrelevant event appears in the returned set.",
+      "direction": "LOWER_IS_BETTER",
+      "unit": "proportion",
+      "aggregation": "Mean across held-out scenarios, reported per seed and with a preregistered interval estimate.",
+      "success_criterion": "Candidate relative reduction is at least 20 percent versus store-all on the held-out aggregate."
+    },
+    {
+      "metric_id": "METRIC-SOURCE-RECALL",
+      "name": "Source-sensitive recall",
+      "operational_definition": "Fraction of required relevant facts returned with the scenario-declared source identity intact.",
+      "direction": "HIGHER_IS_BETTER",
+      "unit": "proportion",
+      "aggregation": "Mean across held-out scenarios, reported per seed and with a preregistered interval estimate.",
+      "success_criterion": "Candidate is no more than 0.02 below store-all on the held-out aggregate."
+    }
+  ],
+  "reproducibility": {
+    "randomness": {
+      "applicability": "STOCHASTIC",
+      "seed_policy": "Use the complete fixed seed set for every candidate, baseline, and ablation condition.",
+      "seeds": [
+        104729,
+        130363,
+        155921
+      ],
+      "determinism_notes": "Scenario generation is intended to be deterministic per seed; runtime nondeterminism must be logged and measured."
+    },
+    "model_provenance": {
+      "applicability": "NOT_APPLICABLE",
+      "rationale": "This example protocol evaluates a deterministic rule-based reference mechanism without a learned model.",
+      "models": []
+    },
+    "environment_provenance": {
+      "capture_status": "PLANNED",
+      "operating_system": "TO_BE_CAPTURED_AT_EXECUTION",
+      "hardware": [],
+      "software": [],
+      "environment_artifact": {
+        "artifact_id": "ARTIFACT-ENVIRONMENT-LOCK",
+        "role": "PLANNED_ENVIRONMENT_PROVENANCE",
+        "locator": "experiments/LCMRP-EXP-9999-SYNTHETIC/environment.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/json"
+      }
+    },
+    "configuration_artifacts": [
+      {
+        "artifact_id": "ARTIFACT-EXPERIMENT-CONFIG",
+        "role": "PLANNED_EXPERIMENT_CONFIGURATION",
+        "locator": "experiments/LCMRP-EXP-9999-SYNTHETIC/config/experiment.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/json"
+      }
+    ],
+    "replication_criteria": [
+      "A replication must use the frozen protocol, exact source artifacts, declared seed set, and independently captured environment provenance.",
+      "Per-seed metric inputs and aggregate calculations must be available for recomputation."
+    ]
+  },
+  "analysis_plan": {
+    "comparison_method": "Paired candidate-minus-baseline comparisons by scenario and seed, evaluated against the joint success criterion.",
+    "uncertainty_method": "Report preregistered interval estimates across the fixed seed set without treating seeds as independent real-world users.",
+    "missing_data_policy": "Do not impute missing outcomes; mark the run incomplete and apply the stopping or invalidation rule.",
+    "multiple_comparison_policy": "The two primary metrics form one joint criterion; ablations and security probes are reported separately as exploratory or safety analyses.",
+    "qualitative_analysis": "Classify retrieval, provenance, admission, and security failures using preregistered categories while retaining raw case identifiers."
+  },
+  "rejection_criteria": [
+    {
+      "criterion_id": "REJECT-JOINT-CRITERION",
+      "condition": "Either primary success criterion fails on the held-out aggregate under the complete valid seed set.",
+      "decision": "REJECT_HYPOTHESIS",
+      "rationale": "The hypothesis is explicitly conjunctive and must not be accepted from improvement on only one metric."
+    },
+    {
+      "criterion_id": "INVALIDATE-INPUT-MISMATCH",
+      "condition": "Candidate and baseline receive non-identical scenario or query bytes.",
+      "decision": "INVALIDATE_RUN",
+      "rationale": "An input mismatch destroys the paired comparison."
+    }
+  ],
+  "security_and_privacy_analysis": {
+    "threat_model_scope": "Admission inputs, policy configuration, decision outputs, logs, user-scope binding, and downstream storage eligibility in the example harness.",
+    "assets": [
+      {
+        "asset_id": "ASSET-EVENT-CONFIDENTIALITY",
+        "description": "Candidate event content and associated provenance",
+        "sensitivity": "CONFIDENTIAL"
+      },
+      {
+        "asset_id": "ASSET-POLICY-INTEGRITY",
+        "description": "Admission policy and user-scope authorization state",
+        "sensitivity": "RESTRICTED"
+      }
+    ],
+    "actors": [
+      {
+        "actor_id": "ACTOR-AUTHORIZED-USER",
+        "role": "Defines memory scope and authorized policy context",
+        "trust_level": "TRUSTED"
+      },
+      {
+        "actor_id": "ACTOR-EVENT-SOURCE",
+        "role": "Submits candidate events that may contain hostile content",
+        "trust_level": "UNTRUSTED"
+      },
+      {
+        "actor_id": "ACTOR-RUNTIME",
+        "role": "Evaluates policy and enforces typed scope boundaries",
+        "trust_level": "PARTIALLY_TRUSTED"
+      }
+    ],
+    "trust_boundaries": [
+      {
+        "boundary_id": "BOUNDARY-INGESTION",
+        "description": "Untrusted event source to admission runtime",
+        "assumptions": [
+          "All event content and in-band instructions are adversary-controlled."
+        ]
+      },
+      {
+        "boundary_id": "BOUNDARY-STORAGE",
+        "description": "Admission runtime to persistent storage eligibility interface",
+        "assumptions": [
+          "The storage adapter enforces the typed user scope supplied by the harness."
+        ]
+      }
+    ],
+    "adversary_capabilities": [
+      "Submit repeated crafted events, conflicting provenance assertions, and in-band persistence instructions.",
+      "Observe admission outcomes and response timing for adversary-submitted events."
+    ],
+    "oracle_and_tool_access": {
+      "allowed": [
+        "Admission decision oracle for events submitted within the adversary's own synthetic scope"
+      ],
+      "denied": [
+        "Direct policy-state mutation and access to another user's scope"
+      ],
+      "assumptions": [
+        "No external tools are available to the candidate event during policy evaluation."
+      ]
+    },
+    "side_channels_and_leakage": {
+      "in_scope": [
+        "Decision reason codes, timing, and diagnostic-log content"
+      ],
+      "out_of_scope": [
+        "Physical compromise of the evaluation host"
+      ],
+      "leakage_assumptions": [
+        "The harness does not expose process memory or other users' logs to the adversary."
+      ]
+    },
+    "adversary_success_criterion": "Cause unauthorized persistent admission, cross user scope, retain rejected sensitive content, forge provenance acceptance, or infer protected policy state beyond declared outputs.",
+    "data_sensitivity": "Synthetic fixtures only in this example; the mechanism is nevertheless evaluated against confidential-content handling semantics.",
+    "authority_boundaries": [
+      "Only the user-scoped policy authority may authorize persistence.",
+      "The mechanism cannot override deletion, expand scope, or reinterpret in-band text as authority."
+    ],
+    "identified_risks": [
+      {
+        "risk_id": "RISK-PERSISTENT-INJECTION",
+        "category": "PERSISTENT_PROMPT_INJECTION",
+        "description": "Hostile content attempts to make its own instructions persistent.",
+        "impact_if_realized": "Future retrieval could repeatedly reactivate attacker-controlled instructions."
+      },
+      {
+        "risk_id": "RISK-CROSS-USER",
+        "category": "CROSS_USER_LEAKAGE",
+        "description": "Incorrect scope binding admits or retrieves content across user boundaries.",
+        "impact_if_realized": "One user may influence or infer another user's memory state."
+      }
+    ],
+    "planned_controls": [
+      "Typed scope validation before admission",
+      "Out-of-band policy authority separated from event content",
+      "Reason-coded decisions and content-minimized diagnostic logs"
+    ],
+    "residual_risks": [
+      "Semantically deceptive but policy-conforming content may remain difficult to classify."
+    ],
+    "deletion_requirements": [
+      "Rejected content must not survive in persistent logs.",
+      "Accepted records must retain user-scoped deletion handles and verifiable tombstone outcomes."
+    ]
+  },
+  "limitations": [
+    {
+      "limitation_id": "LIMIT-SYNTHETIC-ONLY",
+      "description": "This planned example uses only synthetic scenarios.",
+      "risk_if_ignored": "A benchmark result could be overgeneralized to natural conversations or real users.",
+      "next_check": "Design a separately governed external-validity study only after the synthetic protocol is stable."
+    },
+    {
+      "limitation_id": "LIMIT-NO-LEARNED-MODEL",
+      "description": "The example isolates a rule-based admission mechanism and does not evaluate learned admission policies.",
+      "risk_if_ignored": "Conclusions could be incorrectly attributed to model-based systems.",
+      "next_check": "Compare replaceable learned and deterministic policy components in a later preregistered experiment."
+    }
+  ],
+  "target_evidence_state": {
+    "state_under_investigation": "BENCHMARKED",
+    "award_requires_separate_evidence_record": true,
+    "rationale": "The planned experiment is designed to produce baseline-comparison evidence, but this draft manifest does not award or imply the BENCHMARKED label."
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ARTIFACT-PROTOCOL-BUNDLE",
+      "role": "PLANNED_FROZEN_PROTOCOL_BUNDLE",
+      "locator": "experiments/LCMRP-EXP-9999-SYNTHETIC/protocol/",
+      "digest": {
+        "algorithm": "sha256",
+        "status": "PENDING",
+        "value": null
+      },
+      "media_type": "application/vnd.lcmrp.protocol+directory"
+    }
+  ],
+  "created_at": "2026-07-20T00:00:00Z"
+}

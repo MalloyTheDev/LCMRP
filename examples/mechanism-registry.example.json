@@ -1,0 +1,175 @@
+{
+  "schema_version": "0.1.0",
+  "registry_type": "mechanism_registry",
+  "registry_record_id": "LCMRP-MECHREG-9999-SYNTHETIC-EXAMPLE",
+  "record_version": 1,
+  "created_at": "2026-07-20T00:00:00Z",
+  "entries": [
+    {
+      "mechanism_id": "LCMRP-MECH-9999-SYNTHETIC-ADMISSION-GATE",
+      "mechanism_version": 1,
+      "supersedes_mechanism_version": null,
+      "supersedes_artifact_digest": null,
+      "entry_status": "PROPOSED",
+      "name": "Example Selective Admission Gate",
+      "summary": "Example-only proposed mechanism that assigns an admission decision to a candidate event before persistent storage. No effectiveness claim or empirical result is recorded.",
+      "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+      "hypotheses": [
+        {
+          "hypothesis_id": "HYP-SELECTIVE-ADMISSION",
+          "statement": "A provenance-aware admission policy may reduce later retrieval of deliberately irrelevant events while preserving source-sensitive recall under declared test conditions.",
+          "falsifiable_prediction": "On preregistered held-out synthetic scenarios, the candidate policy must improve irrelevant-event retrieval rate relative to the store-all baseline without exceeding the declared non-inferiority margin for source-sensitive recall; otherwise the hypothesis is not supported.",
+          "null_hypothesis": "The candidate policy does not satisfy both the irrelevant-event and source-sensitive-recall criteria relative to the store-all baseline.",
+          "assumptions": [
+            "Scenario relevance labels are specified before evaluation.",
+            "Candidate and baseline receive identical event streams and retrieval requests."
+          ]
+        }
+      ],
+      "memory_lifecycle_stages": [
+        "ADMISSION"
+      ],
+      "interface_contract": {
+        "inputs": [
+          "Candidate event, provenance, scope, timestamp, and declared policy context"
+        ],
+        "outputs": [
+          "Admission decision, reason code, confidence representation, and policy version"
+        ],
+        "state_changes": [
+          "An accepted event becomes eligible for encoding; rejection does not create persistent memory state"
+        ],
+        "failure_signals": [
+          "Malformed provenance, unavailable policy, ambiguous authority, or invalid scope"
+        ],
+        "replaceable_components": [
+          "Policy evaluator, storage adapter, feature extractor, and confidence estimator"
+        ]
+      },
+      "independence_declaration": {
+        "assumes_specific_vector_database": false,
+        "assumes_specific_model_vendor": false,
+        "assumes_specific_embedding_model": false,
+        "assumes_specific_application_schema": false,
+        "assumes_corpusstudio_repository_or_domain": false,
+        "assumes_continuous_cloud_connectivity": false,
+        "assumes_unlimited_compute_or_storage": false,
+        "declared_architectural_assumptions": [
+          "Events expose stable provenance and scope fields.",
+          "Policy decisions can be logged without storing rejected event content."
+        ]
+      },
+      "evaluation_plan": {
+        "baseline_ids": [
+          "BASELINE-STORE-ALL"
+        ],
+        "dataset_or_scenario_ids": [
+          "SCENARIO-DEV-SYNTHETIC",
+          "SCENARIO-HELDOUT-SYNTHETIC"
+        ],
+        "metric_ids": [
+          "METRIC-IRRELEVANT-RETRIEVAL",
+          "METRIC-SOURCE-RECALL"
+        ],
+        "rejection_criteria": [
+          "Reject the hypothesis if either preregistered joint success condition fails on the held-out suite.",
+          "Invalidate a run if candidate and baseline do not receive byte-identical scenario inputs."
+        ],
+        "required_provenance": {
+          "random_seeds": true,
+          "models": true,
+          "environment": true,
+          "artifact_digests": true
+        }
+      },
+      "awarded_evidence_profile": [],
+      "states_under_investigation": [
+        "HYPOTHESIS"
+      ],
+      "security_and_privacy_analysis": {
+        "threat_model_scope": "Example scope: admission inputs, policy configuration, decision logs, and downstream storage eligibility.",
+        "assets": [
+          "Candidate event confidentiality",
+          "Provenance integrity",
+          "User-scoped admission policy integrity"
+        ],
+        "actors": [
+          "Authorized user",
+          "Memory runtime",
+          "Untrusted event source",
+          "Operator with declared administrative authority"
+        ],
+        "trust_boundaries": [
+          "Untrusted event source to admission policy",
+          "Admission policy to persistent storage adapter"
+        ],
+        "adversary_capabilities": [
+          "Submit crafted event content and forged in-band instructions",
+          "Repeat candidate events to attempt policy evasion"
+        ],
+        "oracle_and_tool_access": {
+          "allowed": [
+            "Observe admission or rejection for adversary-submitted events"
+          ],
+          "denied": [
+            "Read other users' event content or policy state"
+          ],
+          "assumptions": [
+            "The test harness enforces user-scope isolation outside the mechanism under test."
+          ]
+        },
+        "side_channels_and_leakage": {
+          "in_scope": [
+            "Decision reason codes and response timing"
+          ],
+          "out_of_scope": [
+            "Physical host compromise"
+          ],
+          "leakage_assumptions": [
+            "Logs are visible only to principals authorized for the same user scope."
+          ]
+        },
+        "adversary_success_criterion": "Cause unauthorized persistent admission, infer protected policy or event information, or affect another user's memory scope.",
+        "authority_boundaries": [
+          "The mechanism proposes an admission outcome but cannot expand user scope or override deletion authority."
+        ],
+        "identified_risks": [
+          "Persistent prompt injection through admitted content",
+          "Sensitive-data retention caused by an erroneous admission",
+          "Cross-user leakage caused by incorrect scope binding"
+        ],
+        "planned_controls": [
+          "Typed scope checks, provenance validation, reason-coded policy decisions, and append-only decision audit records"
+        ],
+        "residual_risks": [
+          "Semantically deceptive content may evade a policy despite valid provenance."
+        ],
+        "deletion_requirements": [
+          "Rejected content must not be copied into persistent diagnostic logs.",
+          "Accepted records must retain a deletion handle tied to user scope."
+        ]
+      },
+      "limitations": [
+        {
+          "limitation_id": "LIMIT-SYNTHETIC-TRANSFER",
+          "description": "The initial scenarios are synthetic and cannot establish performance on natural longitudinal conversations.",
+          "risk_if_ignored": "A benchmark-specific policy could be mistaken for a generally effective admission mechanism.",
+          "next_check": "Define a separately governed, privacy-reviewed naturalistic evaluation after synthetic protocol validation."
+        }
+      ],
+      "definition_artifact": {
+        "artifact_id": "ARTIFACT-MECH-DEFINITION",
+        "role": "PLANNED_MECHANISM_DEFINITION",
+        "locator": "specifications/LCMRP-MECH-9999-SYNTHETIC-ADMISSION-GATE.v1.json",
+        "digest": {
+          "algorithm": "sha256",
+          "status": "PENDING",
+          "value": null
+        },
+        "media_type": "application/json"
+      },
+      "implementation_artifacts": [],
+      "registered_at": "2026-07-20T00:00:00Z"
+    }
+  ]
+}
