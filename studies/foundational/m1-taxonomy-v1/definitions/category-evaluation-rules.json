@@ -1,0 +1,308 @@
+{
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-CATEGORY-RULES",
+  "artifact_version": 1,
+  "artifact_status": "DRAFT_FREEZE_INTENT",
+  "subject_binding": {
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "locator": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
+    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+  },
+  "rule_source": "This artifact operationalizes the exact candidate subject without replacing, correcting, or extending it. Where this artifact and the subject differ, the subject controls and the discrepancy is a protocol defect.",
+  "term_scope": {
+    "declared_term_count": 33,
+    "term_ids": [
+      "LCMRP-TAX-ENT-001@0.1",
+      "LCMRP-TAX-ENT-002@0.1",
+      "LCMRP-TAX-ENT-003@0.1",
+      "LCMRP-TAX-ENT-004@0.1",
+      "LCMRP-TAX-ENT-005@0.1",
+      "LCMRP-TAX-ENT-006@0.1",
+      "LCMRP-TAX-ENT-007@0.1",
+      "LCMRP-TAX-ENT-008@0.1",
+      "LCMRP-TAX-ROL-001@0.1",
+      "LCMRP-TAX-ROL-002@0.1",
+      "LCMRP-TAX-ROL-003@0.1",
+      "LCMRP-TAX-ROL-004@0.1",
+      "LCMRP-TAX-ROL-005@0.1",
+      "LCMRP-TAX-OPS-001@0.1",
+      "LCMRP-TAX-OPS-002@0.1",
+      "LCMRP-TAX-OPS-003@0.1",
+      "LCMRP-TAX-OPS-004@0.1",
+      "LCMRP-TAX-OPS-005@0.1",
+      "LCMRP-TAX-OPS-006@0.1",
+      "LCMRP-TAX-OPS-007@0.1",
+      "LCMRP-TAX-OPS-008@0.1",
+      "LCMRP-TAX-OPS-009@0.1",
+      "LCMRP-TAX-OPS-010@0.1",
+      "LCMRP-TAX-OPS-011@0.1",
+      "LCMRP-TAX-OPS-012@0.1",
+      "LCMRP-TAX-OPS-013@0.1",
+      "LCMRP-TAX-EPI-001@0.1",
+      "LCMRP-TAX-EPI-002@0.1",
+      "LCMRP-TAX-EPI-003@0.1",
+      "LCMRP-TAX-GOV-001@0.1",
+      "LCMRP-TAX-GOV-002@0.1",
+      "LCMRP-TAX-GOV-003@0.1",
+      "LCMRP-TAX-GOV-004@0.1"
+    ],
+    "required_checks_per_term": [
+      "The exact versioned candidate ID is unique within the subject.",
+      "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable."
+    ]
+  },
+  "competency_questions": [
+    {
+      "question_id": "CQ-01-CONTEXTUAL-ROLE-CHANGE",
+      "question": "Can one representation play episodic and semantic roles at different times without changing content?"
+    },
+    {
+      "question_id": "CQ-02-ENCODING-ADMISSION",
+      "question": "What record distinguishes encoding from admission and rejection?"
+    },
+    {
+      "question_id": "CQ-03-RETRIEVAL-NONENTAILMENTS",
+      "question": "Can a retrieved object remain unused, irrelevant, false, or policy-ineligible for another actor?"
+    },
+    {
+      "question_id": "CQ-04-TRANSFORMATION-DISCRIMINATION",
+      "question": "When does a changed representation count as update, abstraction, consolidation, or reconsolidation?"
+    },
+    {
+      "question_id": "CQ-05-IDENTITY-GOVERNANCE",
+      "question": "Can byte-identical objects remain distinct because provenance or governance differs?"
+    },
+    {
+      "question_id": "CQ-06-TEMPORAL-CONFLICT",
+      "question": "Can two claims disagree without conflicting because their validity intervals do not overlap?"
+    },
+    {
+      "question_id": "CQ-07-CONFIDENCE-CONTEXT",
+      "question": "What must be recorded before a confidence value is interpretable?"
+    },
+    {
+      "question_id": "CQ-08-UNCERTAINTY-FORM",
+      "question": "Can uncertainty be represented without forcing it into one scalar?"
+    },
+    {
+      "question_id": "CQ-09-SCOPED-AUTHORITY",
+      "question": "Which actor is authorized for one operation, target, purpose, and time, and what happens when authorities conflict?"
+    },
+    {
+      "question_id": "CQ-10-DELETION-CLOSURE",
+      "question": "What exact closure and exceptions are covered by a deletion-success claim?"
+    },
+    {
+      "question_id": "CQ-11-PROVENANCE-FORGERY",
+      "question": "Does a complete-looking provenance trace remain challengeable as forged or incomplete?"
+    },
+    {
+      "question_id": "CQ-12-ORGANIZATION-COMPETITION",
+      "question": "Which constructed cases force Organization K and Organization R to different identity or cardinality decisions?"
+    }
+  ],
+  "observable_distinctions": [
+    {
+      "distinction_id": "DIST-01-ENCODING-ADMISSION",
+      "left": "LCMRP-TAX-OPS-001@0.1",
+      "right": "LCMRP-TAX-OPS-002@0.1"
+    },
+    {
+      "distinction_id": "DIST-02-ADMISSION-TRUTH-ASSESSMENT",
+      "left": "LCMRP-TAX-OPS-002@0.1",
+      "right": "LCMRP-TAX-EPI-001@0.1"
+    },
+    {
+      "distinction_id": "DIST-03-RETRIEVAL-USE",
+      "left": "LCMRP-TAX-OPS-003@0.1",
+      "right": "task-observed use"
+    },
+    {
+      "distinction_id": "DIST-04-RETRIEVAL-RELEVANCE",
+      "left": "LCMRP-TAX-OPS-003@0.1",
+      "right": "task-relative relevance"
+    },
+    {
+      "distinction_id": "DIST-05-UPDATE-IN-PLACE-MUTATION",
+      "left": "LCMRP-TAX-OPS-004@0.1",
+      "right": "unversioned in-place mutation"
+    },
+    {
+      "distinction_id": "DIST-06-CONSOLIDATION-ABSTRACTION",
+      "left": "LCMRP-TAX-OPS-005@0.1",
+      "right": "LCMRP-TAX-OPS-006@0.1"
+    },
+    {
+      "distinction_id": "DIST-07-UPDATE-RECONSOLIDATION",
+      "left": "LCMRP-TAX-OPS-004@0.1",
+      "right": "LCMRP-TAX-OPS-007@0.1"
+    },
+    {
+      "distinction_id": "DIST-08-DEDUPLICATION-DELETION",
+      "left": "LCMRP-TAX-OPS-008@0.1",
+      "right": "LCMRP-TAX-OPS-012@0.1"
+    },
+    {
+      "distinction_id": "DIST-09-DECAY-POLICY-CHANGE",
+      "left": "LCMRP-TAX-OPS-009@0.1",
+      "right": "policy-mediated priority change"
+    },
+    {
+      "distinction_id": "DIST-10-FORGETTING-ARCHIVAL",
+      "left": "LCMRP-TAX-OPS-010@0.1",
+      "right": "LCMRP-TAX-OPS-011@0.1"
+    },
+    {
+      "distinction_id": "DIST-11-FORGETTING-DELETION",
+      "left": "LCMRP-TAX-OPS-010@0.1",
+      "right": "LCMRP-TAX-OPS-012@0.1"
+    },
+    {
+      "distinction_id": "DIST-12-ARCHIVAL-DELETION",
+      "left": "LCMRP-TAX-OPS-011@0.1",
+      "right": "LCMRP-TAX-OPS-012@0.1"
+    },
+    {
+      "distinction_id": "DIST-13-CONFIDENCE-CORRECTNESS",
+      "left": "LCMRP-TAX-EPI-001@0.1",
+      "right": "claim correctness"
+    },
+    {
+      "distinction_id": "DIST-14-UNCERTAINTY-LOW-CONFIDENCE",
+      "left": "LCMRP-TAX-EPI-002@0.1",
+      "right": "low scalar confidence"
+    },
+    {
+      "distinction_id": "DIST-15-PROVENANCE-AUTHENTICITY",
+      "left": "LCMRP-TAX-GOV-002@0.1",
+      "right": "provenance authenticity assessment"
+    },
+    {
+      "distinction_id": "DIST-16-CONFLICT-TEMPORAL-SUCCESSION",
+      "left": "LCMRP-TAX-EPI-003@0.1",
+      "right": "non-overlapping temporal succession"
+    },
+    {
+      "distinction_id": "DIST-17-AUTHORITY-ACTOR-IDENTITY",
+      "left": "LCMRP-TAX-GOV-001@0.1",
+      "right": "LCMRP-TAX-ENT-006@0.1"
+    },
+    {
+      "distinction_id": "DIST-18-PROSPECTIVE-PROCEDURAL",
+      "left": "LCMRP-TAX-ROL-004@0.1",
+      "right": "LCMRP-TAX-ROL-003@0.1"
+    },
+    {
+      "distinction_id": "DIST-19-EPISODIC-SEMANTIC",
+      "left": "LCMRP-TAX-ROL-001@0.1",
+      "right": "LCMRP-TAX-ROL-002@0.1"
+    },
+    {
+      "distinction_id": "DIST-20-WORKING-PERSISTENCE",
+      "left": "LCMRP-TAX-ROL-005@0.1",
+      "right": "durable persistence"
+    }
+  ],
+  "organizations": [
+    {
+      "organization_id": "ORGANIZATION-K",
+      "name": "Stable kind-first partition",
+      "coding_commitments": [
+        "Every admitted memory series receives exactly one primary functional kind from EPISODIC, SEMANTIC, PROCEDURAL, or PROSPECTIVE.",
+        "The primary kind remains stable for the series.",
+        "Cross-primary-kind use requires a new series or separately admitted derivative.",
+        "WORKING is an availability tier rather than a primary kind.",
+        "Mixed inputs are split or assigned one declared primary kind with secondary annotations."
+      ]
+    },
+    {
+      "organization_id": "ORGANIZATION-R",
+      "name": "Contextual role-first relation",
+      "coding_commitments": [
+        "Functional categories relate an object version to query or task, actor, purpose, and time.",
+        "One object may play zero, one, or multiple roles.",
+        "Context-only role change does not create a new object version.",
+        "A reproducible role assignment requires the complete declared context tuple.",
+        "Representational kind and lifecycle state remain separate axes."
+      ]
+    }
+  ],
+  "integrity_constraints": [
+    {
+      "constraint_id": "IC-01-EXACT-SUBJECT",
+      "rule": "Every coding judgment binds the exact subject version and verified raw-byte digest."
+    },
+    {
+      "constraint_id": "IC-02-NO-IMPLEMENTATION-ASSUMPTION",
+      "rule": "No general category or decision may require a storage engine, model, embedding, vendor, application, product, or continuous network service."
+    },
+    {
+      "constraint_id": "IC-03-NO-EXHAUSTIVENESS-INFERENCE",
+      "rule": "No category set is treated as exhaustive without the frozen coverage argument."
+    },
+    {
+      "constraint_id": "IC-04-NO-FORCED-CLASSIFICATION",
+      "rule": "Ambiguous, multiple, none-declared, challenged, and invalid classifications remain representable."
+    },
+    {
+      "constraint_id": "IC-05-ADMISSION-NONENTAILMENT",
+      "rule": "Admission does not entail truth, relevance, confidence, authenticity, consent, or unrestricted authority."
+    },
+    {
+      "constraint_id": "IC-06-RETRIEVAL-NONENTAILMENT",
+      "rule": "Retrieval does not entail use, relevance, correctness, eligibility for another actor, or successful recall."
+    },
+    {
+      "constraint_id": "IC-07-PROVENANCE-NONENTAILMENT",
+      "rule": "A connected provenance trace does not entail completeness or authenticity."
+    },
+    {
+      "constraint_id": "IC-08-CONFIDENCE-NONENTAILMENT",
+      "rule": "Confidence does not entail correctness or calibrated probability."
+    },
+    {
+      "constraint_id": "IC-09-SCOPED-AUTHORITY",
+      "rule": "Actor identity alone never creates universal authority; authority remains scoped by operation, target, purpose, time, and basis."
+    },
+    {
+      "constraint_id": "IC-10-VERSIONED-CHANGE",
+      "rule": "A content or governance change never silently mutates an exact admitted version or erases predecessor lineage."
+    },
+    {
+      "constraint_id": "IC-11-DELETION-SCOPE",
+      "rule": "Deletion success identifies target closure, system boundary, derivatives, replicas, backups, residues, exceptions, and verification or remains incomplete."
+    },
+    {
+      "constraint_id": "IC-12-BIOLOGICAL-BOUNDARY",
+      "rule": "Shared vocabulary never entails shared biological substrate, capacity, causal process, phenomenology, or functional equivalence."
+    }
+  ],
+  "baseline_definitions": [
+    {
+      "baseline_id": "BASELINE-CHARTER-TOPIC-LIST",
+      "definition": "The Program Charter's unversioned representative topic list, evaluated with the same term-contract rubric where a matched field exists.",
+      "limitation": "It is a program-scope list, not a candidate taxonomy and was not intended to satisfy the rubric."
+    },
+    {
+      "baseline_id": "BASELINE-SINGLE-STABLE-PARTITION",
+      "definition": "One series-stable episodic, semantic, procedural, or prospective label with no contextual role relation and working treated only as a tier.",
+      "limitation": "This deliberately narrow construction tests whether retaining Organization R adds inspectable commitments; it is not a survey of all stable partitions."
+    },
+    {
+      "baseline_id": "BASELINE-FLAT-PAYLOAD-TIMESTAMP-RECORD",
+      "definition": "A record containing only identity, payload, and one timestamp, with no separate provenance, authority, confidence, uncertainty, lifecycle, or deletion-scope structures.",
+      "limitation": "This weak baseline tests declared structural expressiveness only and cannot support a claim of superiority over mature alternatives."
+    }
+  ],
+  "coding_semantics": {
+    "SATISFIED": "The frozen subject and supplied case facts answer the exact rubric cell without an undeclared assumption; this is bounded structural satisfaction only.",
+    "CHALLENGED": "A frozen fact contradicts, collapses, or cannot be represented by the candidate commitment under test.",
+    "AMBIGUOUS": "Two or more materially different codings remain supported after applying the exact frozen text.",
+    "NOT_APPLICABLE": "The rubric cell is outside the declared unit's scope, with a cited reason permitted by the protocol.",
+    "INVALID_CASE": "The case is internally contradictory, malformed, or lacks a fact required to evaluate its assigned question."
+  },
+  "interpretation_boundary": "A coding value is an adjudicated structural judgment, not an empirical observation about deployed systems or people and not evidence that the candidate is correct, complete, adopted, safe, useful, biologically valid, or implementation-ready."
+}
