@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_freeze_attestation",
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-FREEZE-ATTESTATION",
+  "artifact_version": 1,
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "study_record_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "frozen_at": "2026-07-21T21:28:00Z",
+  "registration_authority": "LCMRP-ROOT-STEWARD-FREEZE-2026-07-21",
+  "results_accessed_before_freeze": false,
+  "author_package_revision": "ee7d6a089dc05ab2cdad7726a930ee722a904100",
+  "review": {
+    "authoring_lane": "LCMRP-M1-TAXONOMY-PROTOCOL-AUTHORING-LANE",
+    "verification_lane": "LCMRP-M1-STUDY-FREEZE-VERIFICATION-LANE",
+    "steward_review": "LCMRP-ROOT-STEWARD",
+    "relationship": "Internal agent-assisted protocol and contract review; not independent scientific validation"
+  },
+  "frozen_scope": {
+    "planned_analysis_count": 5,
+    "planned_output_count": 5,
+    "existing_planned_output_count": 0,
+    "output_state": "ABSENT_AT_FREEZE",
+    "case_sources": {
+      "positive": 20,
+      "negative": 12,
+      "held_out": 16
+    },
+    "execution_intake_required_before_coding": true
+  },
+  "claim_boundary": [
+    "This attestation freezes a preregistration and does not report a research result.",
+    "No taxonomy adoption, validation, finding, closeout, mechanism evidence label, or M1 completion follows from freeze.",
+    "Future execution must preserve negative, null, contradictory, halted, invalid, and not-run dispositions."
+  ]
+}
