@@ -62,7 +62,7 @@ The M1 dry-run tests treat both bundles as isolated, synthetic program-infrastru
 - one terminal atomic record per planned analysis and set-equal closeout ledgers;
 - disjoint bundle identities and one active version per governed record;
 - explicit non-evidentiary markers, no human data, and no mechanism maturity effect;
-- no dry-run-derived production entry: only the two separately admitted, exact real subjects may appear in the foundational-subject registry, and the other six production registries remain empty; and
+- no dry-run-derived production entry: only the two separately admitted exact subjects and the two separately frozen exact real studies may appear in their production registries, while the five result/mechanism registries remain empty; and
 - rejection of digest substitution, cross-bundle identity substitution, missing, duplicate, or extra closeout rows, profile swaps, false completion rhetoric, production-registry contamination, and multiple active versions.
 
 Bundle-native semantic replay and serialization checks supplement these tests. They do not prove taxonomy quality, formal soundness, external validity, independent validation, or M1 completion.
@@ -74,10 +74,24 @@ The subject-admission tests treat registration as an identity and provenance act
 - exactly two `ACTIVE` version-1 subjects with unique IDs, stable series, correct kinds, null supersession, safe locators, and exact verified raw-byte digests;
 - exact agreement among the registry, candidate bytes, and final reviewed dossier bindings;
 - `NOT_APPLICABLE` mechanism maturity and no adoption, validation, study-completion, evidence, or product-readiness claim;
-- empty foundational-study, research-finding, foundational-closeout, experiment, mechanism, and evidence registries; and
+- exactly the two reviewed frozen studies may follow the subject registrations, while research-finding, foundational-closeout, experiment, mechanism, and evidence registries remain empty; and
 - rejection of digest substitution, kind or locator swaps, duplicate active lineage, false validation or completion rhetoric, and accidental study or evidence entries.
 
 These checks show that the two candidates are addressable for later governed studies. They do not establish taxonomy quality, formal consistency, scientific validity, adoption, independent validation, or M1 completion.
+
+## M1 study-freeze boundary expectations
+
+The study-freeze tests treat both real studies as unexecuted Layer 1 preregistrations. They require:
+
+- exactly two `ACTIVE`, `FROZEN`, version-1 studies, each resolving one exact registered subject and its declared method profile;
+- immutable raw-byte bindings for the subject, method profile, protocol, freeze attestation, sources, configurations, environment, and profile-specific formal or category artifacts;
+- five distinct planned taxonomy outputs and seven distinct planned formal-analysis outputs, all retaining `PENDING` null digests and absent paths;
+- `results_accessed_before_freeze: false`, an exact common freeze authority and timestamp, and no execution-result fields in either manifest;
+- no taxonomy execution intake and no formal analyzer execution before a separately governed execution increment;
+- empty research-finding, foundational-closeout, experiment, mechanism, and evidence registries and record areas; and
+- rejection of digest substitution, identity cross-binding, path escape, duplicate outputs, result leakage, false completion or evidence claims, and product-specific contamination.
+
+These checks establish preregistration integrity and containment only. They do not evaluate the taxonomy, prove the formal model, publish a finding, close either study, award mechanism maturity, or complete M1.
 
 ## Interpretation limits
 
