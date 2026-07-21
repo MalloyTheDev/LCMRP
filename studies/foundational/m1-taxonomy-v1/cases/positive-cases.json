@@ -1,0 +1,219 @@
+{
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-POSITIVE-CASES",
+  "artifact_version": 1,
+  "artifact_status": "DRAFT_FREEZE_INTENT",
+  "source_id": "SOURCE-M1-TAXONOMY-POSITIVE",
+  "source_role": "POSITIVE_CASES",
+  "case_set_notice": "Synthetic development constructions, not observations, results, evidence, or expected favorable outcomes. The source role means only that each case supplies fields intended to exercise one declared distinction.",
+  "subject_binding": {
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+  },
+  "construction_rule": "Before freeze, construct one minimal paired or controlled record description for each of the subject's 20 declared observable distinctions. Include only facts needed to evaluate the prompt. After freeze, do not amend a case in response to coding difficulty.",
+  "human_data_status": "No human subjects or participant data; all names, events, times, content, policies, and actors are fictional.",
+  "blind_packet_rule": "Primary adjudicators receive only case_id, facts, and evaluation_prompt under a pseudonym; source_role, selection_rationale, and stress_targets are withheld until initial ledgers are locked.",
+  "cases": [
+    {
+      "case_id": "CASE-POS-001-ENCODING-ADMISSION",
+      "facts": [
+        "A signed input event E1 is transformed by operation X1 into candidate C1 with explicit lineage.",
+        "A policy-mediated decision D1 later rejects C1; C1 never receives admitted status."
+      ],
+      "evaluation_prompt": "Code whether the exact candidate vocabulary can represent the transformation and the later decision as distinct processes without changing the facts.",
+      "stress_targets": ["DIST-01-ENCODING-ADMISSION", "CQ-02-ENCODING-ADMISSION"],
+      "selection_rationale": "Paired process facts vary admission outcome while preserving an encoded candidate."
+    },
+    {
+      "case_id": "CASE-POS-002-ADMISSION-EPISTEMIC",
+      "facts": [
+        "Candidate C2 is admitted under a retention policy by actor A2.",
+        "The carried claim remains explicitly unresolved and has no confidence assessment."
+      ],
+      "evaluation_prompt": "Code whether admission and epistemic assessment remain separately representable.",
+      "stress_targets": ["DIST-02-ADMISSION-TRUTH-ASSESSMENT", "IC-05-ADMISSION-NONENTAILMENT"],
+      "selection_rationale": "Admission is held while epistemic support is absent."
+    },
+    {
+      "case_id": "CASE-POS-003-RETRIEVAL-USE",
+      "facts": [
+        "Query Q3 returns objects O31 and O32 after an eligibility check.",
+        "The downstream task record cites O31 and contains no use reference to O32."
+      ],
+      "evaluation_prompt": "Code whether returned membership and observed task use remain separate facts.",
+      "stress_targets": ["DIST-03-RETRIEVAL-USE", "CQ-03-RETRIEVAL-NONENTAILMENTS"],
+      "selection_rationale": "The result set contains an object not recorded as used."
+    },
+    {
+      "case_id": "CASE-POS-004-RETRIEVAL-RELEVANCE",
+      "facts": [
+        "Query Q4 asks for today's access code and returns O41 and O42.",
+        "O41 carries today's code; O42 carries an expired cafeteria menu and remains eligible under the broad request filter."
+      ],
+      "evaluation_prompt": "Code whether retrieval can be recorded without making relevance true by definition.",
+      "stress_targets": ["DIST-04-RETRIEVAL-RELEVANCE", "IC-06-RETRIEVAL-NONENTAILMENT"],
+      "selection_rationale": "Eligibility and task relevance are deliberately not identical."
+    },
+    {
+      "case_id": "CASE-POS-005-UPDATE-VERSIONING",
+      "facts": [
+        "Version V1 states that a room opens at 08:00.",
+        "Authorized operation U5 creates V2 stating 08:30, names V1 as predecessor, and retains V1 unchanged and referencable."
+      ],
+      "evaluation_prompt": "Code whether the candidate distinguishes a successor update from silent in-place mutation.",
+      "stress_targets": ["DIST-05-UPDATE-IN-PLACE-MUTATION", "IC-10-VERSIONED-CHANGE"],
+      "selection_rationale": "Both predecessor preservation and changed successor content are explicit."
+    },
+    {
+      "case_id": "CASE-POS-006-CONSOLIDATION-ABSTRACTION",
+      "facts": [
+        "Operation J6 combines two meeting records into one joint representation and retains every detail from both inputs.",
+        "Operation A6 derives a separate summary, declares that attendee-level particulars are omitted, and links to both inputs."
+      ],
+      "evaluation_prompt": "Code whether the two derivations can receive distinct descriptions without assuming either is preferable.",
+      "stress_targets": ["DIST-06-CONSOLIDATION-ABSTRACTION", "CQ-04-TRANSFORMATION-DISCRIMINATION"],
+      "selection_rationale": "The omission declaration varies while source lineage remains present."
+    },
+    {
+      "case_id": "CASE-POS-007-UPDATE-RECONSOLIDATION",
+      "facts": [
+        "U7 creates a changed successor from V7 with predecessor lineage and no recorded prior retrieval.",
+        "R7 creates an otherwise comparable changed successor after logged retrieval event E7 and incorporates separately identified context N7 with lineage to both."
+      ],
+      "evaluation_prompt": "Code whether the recorded causal retrieval and new-context facts distinguish the two transformations.",
+      "stress_targets": ["DIST-07-UPDATE-RECONSOLIDATION", "CQ-04-TRANSFORMATION-DISCRIMINATION"],
+      "selection_rationale": "Causal retrieval evidence is the controlled difference."
+    },
+    {
+      "case_id": "CASE-POS-008-DEDUPLICATION-DELETION",
+      "facts": [
+        "Objects O81 and O82 are declared byte-equivalent under comparison rule R8.",
+        "A disposition links them as equivalents while retaining both objects and records no deletion request or operation."
+      ],
+      "evaluation_prompt": "Code whether equivalence identification can remain distinct from deletion.",
+      "stress_targets": ["DIST-08-DEDUPLICATION-DELETION", "CQ-05-IDENTITY-GOVERNANCE"],
+      "selection_rationale": "Equivalence is present while destructive action is absent."
+    },
+    {
+      "case_id": "CASE-POS-009-DECAY-POLICY-CHANGE",
+      "facts": [
+        "In record D91, a declared time-conditioned decay rule changes priority from 0.8 to 0.5 after 30 days while policy version P1 is unchanged.",
+        "In record D92, priority changes from 0.8 to 0.5 immediately when policy P1 is superseded by P2; no decay rule fires."
+      ],
+      "evaluation_prompt": "Code whether the candidate can preserve the different causal attributions.",
+      "stress_targets": ["DIST-09-DECAY-POLICY-CHANGE"],
+      "selection_rationale": "The same numeric change has different declared causes."
+    },
+    {
+      "case_id": "CASE-POS-010-FORGETTING-ARCHIVAL",
+      "facts": [
+        "Operation F10 reduces an object's ordinary influence for actor A10 but states no recovery path.",
+        "Operation H10 retains a second object in a lower-default-access state and declares a recovery path and policy."
+      ],
+      "evaluation_prompt": "Code whether ordinary influence reduction and governed archival remain distinguishable.",
+      "stress_targets": ["DIST-10-FORGETTING-ARCHIVAL"],
+      "selection_rationale": "Recovery-path and archive-state facts vary."
+    },
+    {
+      "case_id": "CASE-POS-011-FORGETTING-DELETION",
+      "facts": [
+        "Object O111 is suppressed from ordinary retrieval under a declared forgetting policy but remains recoverable by an authorized audit actor.",
+        "Object O112 is targeted by a scoped deletion operation whose record claims governed-interface non-reconstructability within the stated closure."
+      ],
+      "evaluation_prompt": "Code whether reduced ordinary availability and scoped non-reconstructability remain distinct.",
+      "stress_targets": ["DIST-11-FORGETTING-DELETION"],
+      "selection_rationale": "Authorized recovery is available in one construction and claimed unavailable in the other."
+    },
+    {
+      "case_id": "CASE-POS-012-ARCHIVAL-DELETION",
+      "facts": [
+        "Archived object O121 retains payload bytes and a policy-governed recovery condition.",
+        "Deletion-target object O122 has a declared closure, exceptions, operation record, and verification claim; no governed recovery path is declared."
+      ],
+      "evaluation_prompt": "Code whether retained recoverability and scoped deletion outcome can be represented separately.",
+      "stress_targets": ["DIST-12-ARCHIVAL-DELETION", "CQ-10-DELETION-CLOSURE"],
+      "selection_rationale": "The constructions differ on retained payload and recovery."
+    },
+    {
+      "case_id": "CASE-POS-013-CONFIDENCE-CORRECTNESS",
+      "facts": [
+        "Assessor A13 assigns claim C131 confidence 0.95 on a declared scale and method; an independent stipulated fact says C131 is false.",
+        "The same assessor assigns claim C132 confidence 0.25; an independent stipulated fact says C132 is true."
+      ],
+      "evaluation_prompt": "Code whether confidence records and stipulated correctness can coexist without logical collapse.",
+      "stress_targets": ["DIST-13-CONFIDENCE-CORRECTNESS", "CQ-07-CONFIDENCE-CONTEXT"],
+      "selection_rationale": "Confidence and correctness vary independently in the construction."
+    },
+    {
+      "case_id": "CASE-POS-014-UNCERTAINTY-CONFIDENCE",
+      "facts": [
+        "Assessment U141 states low support of 0.2 for one precise claim under a named method.",
+        "Assessment U142 lists three unresolved interpretations and an unknown validity interval without assigning a scalar confidence."
+      ],
+      "evaluation_prompt": "Code whether the two assessment forms remain structurally distinct.",
+      "stress_targets": ["DIST-14-UNCERTAINTY-LOW-CONFIDENCE", "CQ-08-UNCERTAINTY-FORM"],
+      "selection_rationale": "One record is scalar support; the other is a set of unresolved alternatives and bounds."
+    },
+    {
+      "case_id": "CASE-POS-015-PROVENANCE-AUTHENTICITY",
+      "facts": [
+        "Trace T15 is connected from source through two transformations to object O15 and attributes every edge.",
+        "A separate verification record challenges one attributed source signature as forged."
+      ],
+      "evaluation_prompt": "Code whether connected trace structure can coexist with a challenged authenticity assessment.",
+      "stress_targets": ["DIST-15-PROVENANCE-AUTHENTICITY", "CQ-11-PROVENANCE-FORGERY"],
+      "selection_rationale": "Trace connectivity and source authenticity are separately stipulated."
+    },
+    {
+      "case_id": "CASE-POS-016-CONFLICT-TIME",
+      "facts": [
+        "Claim C161 says a gate is open and is valid from 08:00 through 09:00.",
+        "Claim C162 says the gate is closed and is valid from 10:00 through 11:00 under the same interpretation."
+      ],
+      "evaluation_prompt": "Code whether incompatible wording with non-overlapping validity intervals can remain distinct from claim conflict.",
+      "stress_targets": ["DIST-16-CONFLICT-TEMPORAL-SUCCESSION", "CQ-06-TEMPORAL-CONFLICT"],
+      "selection_rationale": "Interpretation is shared while validity intervals do not overlap."
+    },
+    {
+      "case_id": "CASE-POS-017-AUTHORITY-ACTOR",
+      "facts": [
+        "Actor A17 has a grant to archive object class X for audit purpose P from day 1 through day 30.",
+        "The same actor has no recorded grant to delete class X, use another purpose, or act after day 30."
+      ],
+      "evaluation_prompt": "Code whether actor identity can be held constant while authority varies by operation, purpose, target, and time.",
+      "stress_targets": ["DIST-17-AUTHORITY-ACTOR-IDENTITY", "CQ-09-SCOPED-AUTHORITY"],
+      "selection_rationale": "Identity is fixed and the grant dimensions are bounded."
+    },
+    {
+      "case_id": "CASE-POS-018-PROSPECTIVE-PROCEDURAL",
+      "facts": [
+        "Object O181 contains an atemporal three-step restart procedure with no unresolved trigger or monitoring state.",
+        "Object O182 records an unresolved 09:00 trigger, an intended call action, monitoring participation, and incomplete status."
+      ],
+      "evaluation_prompt": "Code whether procedural constraint and prospective monitoring can be distinguished.",
+      "stress_targets": ["DIST-18-PROSPECTIVE-PROCEDURAL"],
+      "selection_rationale": "Action structure is present in both, while unresolved trigger and monitoring are present in only one."
+    },
+    {
+      "case_id": "CASE-POS-019-EPISODIC-SEMANTIC",
+      "facts": [
+        "One unchanged object states that a shop closes at 17:00 and links to the visit at which it was learned.",
+        "Task T191 asks for the general closing time; task T192 asks for reconstruction of the particular learning visit."
+      ],
+      "evaluation_prompt": "Code how each candidate organization represents functional classification across the two task contexts.",
+      "stress_targets": ["DIST-19-EPISODIC-SEMANTIC", "CQ-01-CONTEXTUAL-ROLE-CHANGE", "CQ-12-ORGANIZATION-COMPETITION"],
+      "selection_rationale": "Content is fixed while query purpose changes."
+    },
+    {
+      "case_id": "CASE-POS-020-WORKING-PERSISTENCE",
+      "facts": [
+        "Durable object O201 is loaded into active task T20 until handoff condition H20.",
+        "Task-local object O202 exists only within T20 and has the same handoff condition."
+      ],
+      "evaluation_prompt": "Code whether working role and durable persistence can vary independently.",
+      "stress_targets": ["DIST-20-WORKING-PERSISTENCE"],
+      "selection_rationale": "Task scope is shared and persistence differs."
+    }
+  ],
+  "interpretation_boundary": "A case can challenge the candidate, be ambiguous, or be invalid. Its presence does not predict a coding value and successful coding would not establish semantic or external validity."
+}

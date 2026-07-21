@@ -1,0 +1,207 @@
+{
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-HELD-OUT-CASES",
+  "artifact_version": 1,
+  "artifact_status": "DRAFT_FREEZE_INTENT",
+  "source_id": "SOURCE-M1-TAXONOMY-HELD-OUT",
+  "source_role": "HELD_OUT_EVALUATION",
+  "case_set_notice": "Synthetic held-out and adversarial constructions, not observations, secret test data, results, evidence, or expected dispositions. Held-out means these bytes may not be used to revise the method, category rules, hypotheses, thresholds, or confirmatory decision rules after freeze.",
+  "subject_binding": {
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+  },
+  "selection_rule": "Before freeze, construct four organization-competition cases and twelve boundary, authority, provenance, privacy, deletion, conflict, or corruption cases from the subject's open obligations. Include no expected classification. Freeze all cases with the method and analyze every case after freeze.",
+  "holdout_limit": "The set is repository-visible and was designed from the candidate. It is held out only from post-freeze development; it is not independently sampled, representative, natural, or concealed from protocol authors.",
+  "human_data_status": "No human subjects or participant data; all content is fictional.",
+  "blind_packet_rule": "Primary adjudicators receive only case_id, facts, and evaluation_prompt under a pseudonym; source_role, selection_rationale, stress_targets, and organization_case flag are withheld until initial ledgers are locked.",
+  "cases": [
+    {
+      "case_id": "CASE-HOLD-001-COMPLETED-REMINDER",
+      "facts": [
+        "One unchanged object says to submit a permit at 09:00 and includes an unresolved-trigger state before 09:00.",
+        "After recorded completion, a later task asks the same actor to reconstruct what occurred; no object content changes between tasks."
+      ],
+      "evaluation_prompt": "Produce separate Organization K and Organization R encodings for identity, cardinality, context, and functional classification, citing only frozen commitments.",
+      "stress_targets": ["ORGANIZATION-K", "ORGANIZATION-R", "CQ-01-CONTEXTUAL-ROLE-CHANGE", "CQ-12-ORGANIZATION-COMPETITION"],
+      "organization_case": true,
+      "selection_rationale": "Functional use changes after trigger completion while bytes remain fixed."
+    },
+    {
+      "case_id": "CASE-HOLD-002-SIGNED-COMPOSITE",
+      "facts": [
+        "One indivisible signed document contains an ordered repair procedure and a narrative of the incident in which the procedure was learned.",
+        "Splitting the bytes would break the original signature, but derived objects could retain lineage to the signed source."
+      ],
+      "evaluation_prompt": "Produce separate Organization K and Organization R encodings and record every identity, cardinality, provenance, and classification cost left unresolved.",
+      "stress_targets": ["ORGANIZATION-K", "ORGANIZATION-R", "CQ-12-ORGANIZATION-COMPETITION"],
+      "organization_case": true,
+      "selection_rationale": "Composite content creates an identity and provenance cost for forced splitting."
+    },
+    {
+      "case_id": "CASE-HOLD-003-SOURCE-SENSITIVE-GENERAL-CLAIM",
+      "facts": [
+        "One object states that a ferry departs at 17:00 and links to the particular trip where the schedule was learned.",
+        "One task asks for the general schedule; a later task asks who was present when that information was learned."
+      ],
+      "evaluation_prompt": "Produce separate Organization K and Organization R encodings for both task contexts without adding object facts.",
+      "stress_targets": ["ORGANIZATION-K", "ORGANIZATION-R", "DIST-19-EPISODIC-SEMANTIC"],
+      "organization_case": true,
+      "selection_rationale": "The same content is used for a general answer and event reconstruction."
+    },
+    {
+      "case_id": "CASE-HOLD-004-DURABLE-POLICY-IN-ACTIVE-TASK",
+      "facts": [
+        "A durable policy object constrains a short active review task and has an explicit task handoff condition.",
+        "The policy remains durably admitted after the task ends and its content never changes."
+      ],
+      "evaluation_prompt": "Produce separate Organization K and Organization R encodings for procedural and working classifications and identity count.",
+      "stress_targets": ["ORGANIZATION-K", "ORGANIZATION-R", "DIST-20-WORKING-PERSISTENCE"],
+      "organization_case": true,
+      "selection_rationale": "Durability and active-task use coexist."
+    },
+    {
+      "case_id": "CASE-HOLD-005-EQUIVALENT-CONTENT-DIFFERENT-DUTIES",
+      "facts": [
+        "Objects O51 and O52 carry byte-identical claims.",
+        "They have different sources, consent records, authority bases, retention periods, and deletion obligations."
+      ],
+      "evaluation_prompt": "Code whether equivalence, object identity, provenance, and governance can be represented without erasing the differences.",
+      "stress_targets": ["CQ-05-IDENTITY-GOVERNANCE", "IC-07-PROVENANCE-NONENTAILMENT", "IC-11-DELETION-SCOPE"],
+      "organization_case": false,
+      "selection_rationale": "Content equality is held while governance differs."
+    },
+    {
+      "case_id": "CASE-HOLD-006-TEMPORAL-CLAIM-REVERSAL",
+      "facts": [
+        "Claim C61 says access is permitted and is valid through 2026-08-31.",
+        "Claim C62 says access is denied and is valid beginning 2026-09-01 under the same interpretation.",
+        "A query asks whether the claims conflict without specifying a query time."
+      ],
+      "evaluation_prompt": "Code the candidate's treatment of temporal succession, missing query time, and conflict without supplying new facts.",
+      "stress_targets": ["DIST-16-CONFLICT-TEMPORAL-SUCCESSION", "CQ-06-TEMPORAL-CONFLICT"],
+      "organization_case": false,
+      "selection_rationale": "Validity intervals are adjacent and query context is incomplete."
+    },
+    {
+      "case_id": "CASE-HOLD-007-DELETION-RETENTION-CONTEST",
+      "facts": [
+        "Actor A71 presents a scoped deletion request over object series S71.",
+        "A separately recorded retention obligation requires limited audit information until a future condition.",
+        "Both records name authority bases, but the construction provides no rule ranking them."
+      ],
+      "evaluation_prompt": "Code whether the candidate can preserve contested authority, scope, and unresolved disposition without silently selecting a winner.",
+      "stress_targets": ["CQ-09-SCOPED-AUTHORITY", "CQ-10-DELETION-CLOSURE", "IC-09-SCOPED-AUTHORITY"],
+      "organization_case": false,
+      "selection_rationale": "Two scoped authority bases conflict and no adjudication rule is supplied."
+    },
+    {
+      "case_id": "CASE-HOLD-008-SENSITIVE-TOMBSTONE",
+      "facts": [
+        "A deletion process removes payload content within its declared scope.",
+        "Its retained audit tombstone exposes that a fictional person attended a sensitive clinic and is reconstructable through ordinary governed audit access.",
+        "The deletion scope mentions audit residue but provides no minimization criterion."
+      ],
+      "evaluation_prompt": "Code deletion scope, residue, privacy exposure, and whether a success claim remains bounded by the supplied facts.",
+      "stress_targets": ["IC-11-DELETION-SCOPE", "CQ-10-DELETION-CLOSURE"],
+      "organization_case": false,
+      "selection_rationale": "Auditability and sensitive metadata minimization are in tension."
+    },
+    {
+      "case_id": "CASE-HOLD-009-ROUTINELY-ACCESSED-ARCHIVE",
+      "facts": [
+        "Object O9 is labeled archived and has a declared privileged recovery route.",
+        "A privileged actor retrieves O9 during every routine task under a standing purpose grant.",
+        "Other actors cannot retrieve O9."
+      ],
+      "evaluation_prompt": "Code whether lower-default-access archival is reproducible without specifying the reference actor and purpose.",
+      "stress_targets": ["DIST-10-FORGETTING-ARCHIVAL", "DIST-12-ARCHIVAL-DELETION", "IC-09-SCOPED-AUTHORITY"],
+      "organization_case": false,
+      "selection_rationale": "Availability differs sharply by actor and purpose."
+    },
+    {
+      "case_id": "CASE-HOLD-010-NONDISCLOSING-RETRIEVAL-DENIAL",
+      "facts": [
+        "A query receives an empty result because policy denies the requesting actor access.",
+        "The interface is prohibited from revealing whether matching objects exist.",
+        "The internal policy decision is auditable by a different authorized actor."
+      ],
+      "evaluation_prompt": "Code retrieval, authority, absence, denial, and uncertainty without disclosing a prohibited existence fact to the requester.",
+      "stress_targets": ["CQ-03-RETRIEVAL-NONENTAILMENTS", "CQ-08-UNCERTAINTY-FORM", "IC-06-RETRIEVAL-NONENTAILMENT"],
+      "organization_case": false,
+      "selection_rationale": "An empty response has a policy cause but must not reveal existence."
+    },
+    {
+      "case_id": "CASE-HOLD-011-POISONED-RECONSOLIDATION",
+      "facts": [
+        "Trusted object V11 is retrieved into a context containing a malicious untrusted instruction.",
+        "A changed successor includes content from both V11 and the instruction and records lineage to both.",
+        "A downstream rule proposes inheriting V11's trust assessment unchanged."
+      ],
+      "evaluation_prompt": "Code reconsolidation, provenance, authority, and trust-assessment boundaries without assuming lineage implies authenticity or authorization.",
+      "stress_targets": ["DIST-07-UPDATE-RECONSOLIDATION", "IC-07-PROVENANCE-NONENTAILMENT", "IC-09-SCOPED-AUTHORITY"],
+      "organization_case": false,
+      "selection_rationale": "A derived successor has mixed-trust inputs and a proposed inherited assessment."
+    },
+    {
+      "case_id": "CASE-HOLD-012-REARRIVAL-AFTER-DELETION",
+      "facts": [
+        "Object series S12 is deleted within a declared governed scope and its old identity remains tombstoned.",
+        "Later, byte-identical content arrives from an independent source event with different provenance and authority context.",
+        "No rule states whether semantic continuity should be inferred."
+      ],
+      "evaluation_prompt": "Code candidate identity, admission, provenance, deletion, and unresolved continuity without treating byte equality as automatic resurrection or automatic difference.",
+      "stress_targets": ["CQ-05-IDENTITY-GOVERNANCE", "IC-10-VERSIONED-CHANGE", "IC-11-DELETION-SCOPE"],
+      "organization_case": false,
+      "selection_rationale": "Content equality recurs after a deletion under new provenance."
+    },
+    {
+      "case_id": "CASE-HOLD-013-GROUP-AND-MEMBER-PREFERENCE",
+      "facts": [
+        "A group-level object records preference P13 at time T1 under an aggregation rule whose version is named.",
+        "One member records a conflicting individual preference at later time T2.",
+        "The query context does not say whether the requested target is the group or the member."
+      ],
+      "evaluation_prompt": "Code actor identity, context, conflict, temporal scope, and uncertainty without inventing an aggregation or priority rule.",
+      "stress_targets": ["CQ-06-TEMPORAL-CONFLICT", "CQ-09-SCOPED-AUTHORITY", "IC-04-NO-FORCED-CLASSIFICATION"],
+      "organization_case": false,
+      "selection_rationale": "Target identity and preference aggregation are unresolved."
+    },
+    {
+      "case_id": "CASE-HOLD-014-HIGH-CONFIDENCE-FORGED-TRACE",
+      "facts": [
+        "Assessment A14 assigns high confidence to claim C14 based on a connected provenance trace.",
+        "A later cryptographic check challenges a source signature in that trace.",
+        "The confidence method did not include cryptographic verification."
+      ],
+      "evaluation_prompt": "Code confidence, correctness, provenance structure, authenticity challenge, and temporal update obligations as separate targets.",
+      "stress_targets": ["DIST-13-CONFIDENCE-CORRECTNESS", "DIST-15-PROVENANCE-AUTHENTICITY", "CQ-07-CONFIDENCE-CONTEXT", "CQ-11-PROVENANCE-FORGERY"],
+      "organization_case": false,
+      "selection_rationale": "A confidence assessment predates an authenticity challenge outside its method."
+    },
+    {
+      "case_id": "CASE-HOLD-015-MULTIFORM-UNCERTAINTY",
+      "facts": [
+        "Claim C15 has a precise confidence value on one declared scale.",
+        "Its actor identity is unresolved between two candidates, its validity end is bounded only by a range, and its source trace is incomplete.",
+        "A consumer requests one scalar that combines all three uncertainties."
+      ],
+      "evaluation_prompt": "Code whether the candidate preserves the distinct uncertainty targets and whether the requested scalar is determined by the supplied facts.",
+      "stress_targets": ["DIST-14-UNCERTAINTY-LOW-CONFIDENCE", "CQ-08-UNCERTAINTY-FORM"],
+      "organization_case": false,
+      "selection_rationale": "Three different uncertainty kinds coexist with a separate precise confidence record."
+    },
+    {
+      "case_id": "CASE-HOLD-016-OVERLAPPING-DECAY-AND-POLICY",
+      "facts": [
+        "An object's priority declines after 30 days under declared decay rule D16.",
+        "At the same transaction time, policy P16 also changes the object's priority multiplier.",
+        "The resulting record contains one final priority and no causal decomposition."
+      ],
+      "evaluation_prompt": "Code whether decay and policy-change contributions can be distinguished from the available record and retain unresolved attribution when necessary.",
+      "stress_targets": ["DIST-09-DECAY-POLICY-CHANGE", "IC-04-NO-FORCED-CLASSIFICATION"],
+      "organization_case": false,
+      "selection_rationale": "Two candidate causes coincide and the record omits decomposition."
+    }
+  ],
+  "interpretation_boundary": "These cases test only predeclared structural commitments. They cannot establish external robustness, privacy effectiveness, security, representativeness, safety, adoption, or mechanism maturity."
+}
