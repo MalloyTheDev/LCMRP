@@ -1,0 +1,339 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_manifest",
+  "study_record_id": "LCMRP-FSTUDYREC-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+  "record_version": 1,
+  "immutable_record_notice": "Once frozen, this study manifest is immutable. Changes require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": [],
+    "result_accessed_before_amendment": false,
+    "post_result_change_disclosure": null
+  },
+  "preregistration": {
+    "status": "FROZEN",
+    "results_accessed_before_freeze": false,
+    "frozen_at": "2026-07-21T12:00:00Z",
+    "registration_authority": "LCMRP-SYNTHETIC-DRY-RUN-FIXTURE-AUTHORITY",
+    "freeze_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-FREEZE-RECEIPT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:freeze-receipt:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/protocol/freeze-receipt.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "d4fc6421cbdd7122e02e52f17e3fe74d8edba175dbbbb228a9b9cc464dc645b0",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "record_status": "FROZEN",
+  "study_id": "LCMRP-FSTUDY-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "subject": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "MEMORY_TAXONOMY",
+    "subject_id": "LCMRP-FSUBJ-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "subject_version": 1,
+    "name": "SYNTHETIC-DRY-RUN kind-first and role-first taxonomy comparison",
+    "definition": "A constructed comparison subject containing two deliberately competing candidate organizations: Organization K assigns one series-stable primary functional kind, while Organization R assigns contextual, potentially many-valued functional roles.",
+    "boundary": "The subject is limited to deterministic serialization of constructed cases. It does not establish category truth, completeness, utility, biological validity, external validity, mechanism effectiveness, or adoption readiness.",
+    "definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-TAXONOMY-SUBJECT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:taxonomy-subject-definition:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/definitions/subject-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "960e4729ebe96f86073fe2d0230d6ee41dda38564b44998ab4efa93835e12e23",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "primary_method_profile": {
+    "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+    "profile_id": "LCMRP-MPROF-9901-SYNTHETIC-DRY-RUN-STRUCTURAL",
+    "profile_series": "LCMRP-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+    "profile_version": 1,
+    "profile_definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:structural-method-profile:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/definitions/method-profile.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "d777d28756b261aa4899b5cf25e8fb6ca46c4b9e7ff8d49f6162d51e8f1e3ad5",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "category_definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-CATEGORY-DEFINITIONS",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:category-definitions:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/definitions/category-definitions.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "3b9987c6d4e840c905beffbd0711612604d6038b915f7dd8612d3106622478d1",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "competency_questions": [
+      "Can the contract retain the different identity and cardinality commitments of Organization K and Organization R for every constructed boundary case?",
+      "Can the contract preserve explicit constraint failures and an unexecuted analysis without converting either into favorable evidence?"
+    ],
+    "integrity_constraints": [
+      "Each constructed case has one Organization K disposition and one Organization R disposition or an explicit NOT_DETERMINED value.",
+      "Organization K never records two primary kinds for one series without a split or declared primary kind.",
+      "Organization R never records a reproducible role without its declared context tuple.",
+      "A COMPLETED disposition is interpreted only as serialization execution and never as research evidence."
+    ],
+    "positive_case_source_ids": [
+      "SOURCE-SYNTHETIC-DRY-RUN-POSITIVE"
+    ],
+    "negative_case_source_ids": [
+      "SOURCE-SYNTHETIC-DRY-RUN-NEGATIVE"
+    ],
+    "adjudication_method": "Apply exact frozen strings and cardinality rules in deterministic case order; retain NOT_DETERMINED rather than infer missing content.",
+    "coverage_rule": "Process every positive, negative, and boundary case for both candidate organizations and retain an entry for every case-organization pair."
+  },
+  "research_question": "Can the foundational-study contract serialize the distinct kind-first and role-first commitments across fixed positive, negative, and boundary constructions?",
+  "hypothesis": {
+    "claim": "The frozen fixture rules are sufficient to serialize an organization-specific disposition for every frozen constructed case.",
+    "competing_explanation": "The organizations collapse under serialization because their different words do not produce different identity, cardinality, context, or classification commitments.",
+    "predicted_observation": "Every case receives bounded dispositions and at least one boundary construction retains different Organization K and Organization R commitments.",
+    "falsifier": "A case cannot be serialized without an undeclared inference, required coverage is absent, or every boundary case produces indistinguishable commitments."
+  },
+  "analyses": [
+    {
+      "analysis_id": "ANALYSIS-SYNTHETIC-ORG-COMPARISON",
+      "analysis_mode": "CONFIRMATORY",
+      "question": "Does the deterministic serialization retain a disposition for each case and distinct commitments where the constructed input declares them?",
+      "method": "Traverse the frozen case order, apply each organization rule independently, and emit the exact identity, cardinality, context, and classification commitment strings.",
+      "decision_rule": "Mark fixture serialization complete only if all eight cases have both organization entries; mark the fixture claim inconclusive if success depends on pre-authored expectations rather than independent observation.",
+      "planned_output_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-ORG-COMPARISON-OUTPUT",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:organization-comparison-output:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/reports/organization-comparison-output.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "required_terminal_dispositions": [
+        "COMPLETED",
+        "NOT_RUN",
+        "HALTED",
+        "INVALID"
+      ]
+    },
+    {
+      "analysis_id": "ANALYSIS-SYNTHETIC-BOUNDARY-ADJUDICATION",
+      "analysis_mode": "EXPLORATORY",
+      "question": "Would independent adjudicators reproduce the constructed boundary dispositions under blinded application of the exact rules?",
+      "method": "Obtain independent blinded classifications and preserve disagreements; the dry-run fixture intentionally provides no adjudicators and therefore must not execute this method.",
+      "decision_rule": "Record NOT_RUN when no independent adjudicators or approved evaluation protocol are present; do not fabricate agreement values.",
+      "planned_output_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-BOUNDARY-ADJUDICATION-OUTPUT",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:boundary-adjudication-output:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/reports/boundary-adjudication-output.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "PENDING",
+          "value": null,
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      },
+      "required_terminal_dispositions": [
+        "COMPLETED",
+        "NOT_RUN",
+        "HALTED",
+        "INVALID"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "SOURCE-SYNTHETIC-DRY-RUN-POSITIVE",
+      "source_kind": "SYNTHETIC_CASE_SET",
+      "role": "POSITIVE_CASES",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-POSITIVE-CASES",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:case-set:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/cases/positive-cases.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "e0f0975498eded6b24052c81ad60bdb31f521dd3e57c7ca967601dd51a749216",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    },
+    {
+      "source_id": "SOURCE-SYNTHETIC-DRY-RUN-NEGATIVE",
+      "source_kind": "SYNTHETIC_CASE_SET",
+      "role": "NEGATIVE_CASES",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-NEGATIVE-CASES",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:case-set:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/cases/negative-cases.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "afc4f37eab9432186cc64011fcf6c603543fe90c669f2a628c8e894327a03a7b",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    },
+    {
+      "source_id": "SOURCE-SYNTHETIC-DRY-RUN-BOUNDARY",
+      "source_kind": "SYNTHETIC_CASE_SET",
+      "role": "HELD_OUT_EVALUATION",
+      "human_subjects_involved": false,
+      "provenance_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-BOUNDARY-CASES",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:case-set:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/cases/boundary-cases.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "4d33b3d321041c9984ddea51f154d60c15ef6514c9058578978b9959d532d2b0",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "reproducibility": {
+    "source_revision": "SYNTHETIC-DRY-RUN-BUNDLE-9901-V1",
+    "environment_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-ENVIRONMENT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:environment:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/protocol/environment.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "48f99ee4e24dfd49e56a897ef65af7caf64308cd01a9d73ed2b46dfe54c2a995",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    },
+    "configuration_artifacts": [
+      {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-CONFIGURATION",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:synthetic-dry-run:configuration:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/protocol/configuration.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "c53d410f9623d3ef1d0d3c166eafcadfa7e1cb8b7178ea6bde8a9eafcfb2ae81",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    ],
+    "replication_criteria": [
+      "A separate execution using the exact frozen raw bytes emits the same eight-case ledger in the same order.",
+      "The two organization rules are applied independently and missing context remains explicit.",
+      "The reproduction states that deterministic fixture completion is non-evidentiary."
+    ]
+  },
+  "rejection_criteria": [
+    {
+      "criterion_id": "REJECT-SYNTHETIC-SERIALIZATION-COVERAGE",
+      "condition": "Any frozen case lacks either an Organization K or Organization R disposition.",
+      "disposition": "REJECT_CLAIM",
+      "rationale": "Complete pairwise serialization is the exact bounded fixture claim."
+    },
+    {
+      "criterion_id": "INVALIDATE-SYNTHETIC-BINDING",
+      "condition": "Any exact subject, profile, source, protocol, configuration, or manifest digest fails.",
+      "disposition": "INVALIDATE_ANALYSIS",
+      "rationale": "A mutated fixture cannot be interpreted as the frozen dry run."
+    },
+    {
+      "criterion_id": "HALT-SYNTHETIC-UNDECLARED-INFERENCE",
+      "condition": "Processing requires inventing a missing context, label, or organization rule.",
+      "disposition": "HALT_STUDY",
+      "rationale": "The fixture preserves unknowns rather than fabricating an evaluative result."
+    }
+  ],
+  "ethics_scope": {
+    "human_subjects_involved": false,
+    "human_participant_data_involved": false,
+    "rationale": "Every case and output is artificial; no person, participant, user record, or human-derived dataset is used."
+  },
+  "security_and_privacy_analysis": {
+    "assets": [
+      "Exact subject, method-profile, category-rule, case, protocol, output, and disposition bytes"
+    ],
+    "threats": [
+      "Fixture substitution",
+      "Digest mismatch",
+      "Over-interpretation of serialization completion as evidence"
+    ],
+    "controls": [
+      "Recorded raw-byte SHA-256 bindings",
+      "Exact identity and analysis ledgers",
+      "Repeated SYNTHETIC-DRY-RUN NON-EVIDENTIARY notices"
+    ],
+    "data_retention_and_deletion": "Retain the full artificial bundle, including the NOT_RUN disposition. Regeneration replaces no frozen bytes and must create a new versioned family.",
+    "residual_risks": [
+      "SHA-256 integrity does not prove authorship, semantic validity, independence, or scientific merit.",
+      "Readers may overlook the explicit non-evidentiary boundary."
+    ]
+  },
+  "limitations": [
+    "The cases encode their expected organization commitments, so successful serialization is tautological contract coverage.",
+    "There is no natural, representative, independently authored, or statistically sampled case set.",
+    "The independent-adjudication analysis is intentionally NOT_RUN.",
+    "No scientific, novelty, adoption, validation, implementation, or mechanism maturity claim is supported."
+  ],
+  "mechanism_maturity_boundary": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "rationale": "This is a mechanism-free synthetic taxonomy contract dry run."
+  },
+  "protocol_artifact": {
+    "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STUDY-PROTOCOL",
+    "artifact_version": 1,
+    "schema_id": "urn:lcmrp:synthetic-dry-run:taxonomy-study-protocol:0.1.0",
+    "locator": "examples/m1-dry-runs/taxonomy/protocol/study-protocol.md",
+    "digest": {
+      "algorithm": "SHA-256",
+      "status": "VERIFIED",
+      "value": "52b1a36ed6bbd5dd09bc07992b71aab48811010bc54db37e69331ea1e2128197",
+      "scope": "RAW_FILE_BYTES"
+    },
+    "media_type": "text/markdown"
+  },
+  "created_at": "2026-07-21T12:00:00Z"
+}

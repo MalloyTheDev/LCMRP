@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "research_finding_record",
+  "record_id": "LCMRP-FINDREC-9901-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN",
+  "record_version": 1,
+  "immutable_record_notice": "Once published, this finding record is immutable. Corrections, reinterpretations, retractions, or new dispositions require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": []
+  },
+  "record_status": "PUBLISHED",
+  "finding_id": "LCMRP-FIND-9901-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_reference": {
+    "study_id": "LCMRP-FSTUDY-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "study_record_id": "LCMRP-FSTUDYREC-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "study_record_version": 1,
+    "manifest_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STUDY-MANIFEST",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/records/foundational/studies/study-manifest.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "20ec7eab3376f3b1a72c0c623a0688595a03873d60594a03efa66ee1837b56b4",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "subject_reference": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "MEMORY_TAXONOMY",
+    "subject_id": "LCMRP-FSUBJ-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "subject_series": "LCMRP-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "subject_version": 1,
+    "definition_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-TAXONOMY-SUBJECT",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:taxonomy-subject-definition:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/definitions/subject-definition.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "960e4729ebe96f86073fe2d0230d6ee41dda38564b44998ab4efa93835e12e23",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "primary_method_profile_reference": {
+    "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+    "profile_id": "LCMRP-MPROF-9901-SYNTHETIC-DRY-RUN-STRUCTURAL",
+    "profile_series": "LCMRP-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+    "profile_version": 1,
+    "profile_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:synthetic-dry-run:structural-method-profile:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/definitions/method-profile.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "d777d28756b261aa4899b5cf25e8fb6ca46c4b9e7ff8d49f6162d51e8f1e3ad5",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "analysis_reference": {
+    "analysis_id": "ANALYSIS-SYNTHETIC-BOUNDARY-ADJUDICATION",
+    "analysis_mode": "EXPLORATORY"
+  },
+  "claim": {
+    "claim_id": "CLAIM-SYNTHETIC-DRY-RUN-ADJUDICATOR-AGREEMENT",
+    "statement": "Independent adjudicators would reproduce the constructed boundary dispositions under blinded use of the frozen rules.",
+    "scope": "Only the exact frozen boundary cases and profile; no broader population or natural category claim."
+  },
+  "terminal_disposition": "NOT_RUN",
+  "result_classification": "NOT_OBSERVED",
+  "claim_assessment": "NOT_ASSESSED",
+  "result_assessment_orthogonality_notice": "Result classification and claim assessment are independent fields. A POSITIVE, NEGATIVE, NULL, or MIXED result does not determine whether the scoped claim is supported.",
+  "finding_statement": "SYNTHETIC-DRY-RUN NON-EVIDENTIARY: independent adjudication was intentionally not run, so no agreement observation or claim assessment exists.",
+  "uncertainty": "Agreement, disagreement patterns, semantic reproducibility, and evaluator sensitivity are entirely unobserved.",
+  "raw_output_artifacts": [],
+  "deviations": [],
+  "failures": [
+    "No independent adjudicator, blinded evaluation protocol, or approved evaluator provenance was supplied; the preregistered decision rule therefore requires NOT_RUN."
+  ],
+  "limitations": [
+    "NOT_RUN supplies no evidence for or against adjudicator agreement.",
+    "The separately retained disposition narrative is documentation, not a raw result artifact.",
+    "No independent validation or human evaluation occurred."
+  ],
+  "mechanism_maturity_effect": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "awarded_mechanism_evidence_labels": [],
+    "rationale": "This terminal disposition belongs to a mechanism-free synthetic taxonomy dry run."
+  },
+  "recommended_next_step": "Preregister an independently governed adjudication study before obtaining evaluator classifications.",
+  "created_at": "2026-07-21T12:31:00Z"
+}

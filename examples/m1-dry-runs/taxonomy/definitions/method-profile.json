@@ -1,0 +1,20 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN NON-EVIDENTIARY: method-profile serialization fixture only.",
+  "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+  "artifact_version": 1,
+  "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+  "profile_id": "LCMRP-MPROF-9901-SYNTHETIC-DRY-RUN-STRUCTURAL",
+  "profile_series": "LCMRP-SYNTHETIC-DRY-RUN-STRUCTURAL-PROFILE",
+  "profile_version": 1,
+  "unit_of_analysis": "One constructed case paired with one candidate organization rule.",
+  "procedure": [
+    "Read only the frozen constructed-case fields.",
+    "Apply the Organization K rule without importing an Organization R assumption.",
+    "Apply the Organization R rule without importing an Organization K assumption.",
+    "Record identity, cardinality, context, and classification commitments separately.",
+    "Retain constraint failures, unresolved classifications, and non-execution dispositions."
+  ],
+  "adjudication": "Deterministic field matching against the frozen category rules; no participant judgment, model inference, or external source is used.",
+  "coverage": "Include at least one straightforward positive case for each organization, one deliberately invalid or underspecified case, and all declared boundary cases.",
+  "interpretation_boundary": "A serialized match is a fixture-processing outcome, not evidence that either organization is correct or preferable."
+}

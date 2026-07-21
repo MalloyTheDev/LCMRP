@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_record_index",
+  "registry_type": "foundational_study_registry",
+  "entries": [
+    {
+      "record_id": "LCMRP-FSTUDYREC-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+      "record_version": 1,
+      "artifact_type": "foundational_study_manifest",
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "artifact_path": "records/foundational/studies/study-manifest.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "20ec7eab3376f3b1a72c0c623a0688595a03873d60594a03efa66ee1837b56b4",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T12:01:00Z"
+    }
+  ]
+}
