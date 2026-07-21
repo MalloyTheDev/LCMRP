@@ -22,3 +22,4 @@ A repository review is not automatically an independent validation. Each review 
 - [M1 formal-model execution-readiness review — 2026-07-21](M1_FORMAL_MODEL_EXECUTION_READINESS_2026-07-21.md) records conditional readiness for a separate governed analyzer-execution increment without executing the analyzer or interpreting results.
 - [M1 study-execution adversarial review — 2026-07-21](M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md) tests the two blocked-not-run states without treating either as a scientific result.
 - [M1 study-execution decision — 2026-07-21](M1_STUDY_EXECUTION_DECISION_2026-07-21.md) records the steward disposition, publication chain, and next governed repair boundary.
+- [M1 launch-continuation triage — 2026-07-21](M1_LAUNCH_CONTINUATION_TRIAGE_2026-07-21.md) consolidates the blocked taxonomy and formal-model continuation state without creating findings, closeouts, evidence labels, or an M1 completion decision.
