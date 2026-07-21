@@ -2,11 +2,11 @@
 
 ## Status
 
-**Milestone state:** In progress — exact candidate subjects registered; substantive protocols not frozen  
+**Milestone state:** In progress — two substantive protocols frozen; analyses not executed  
 Applicable layer: Layer 1 — Foundational Research  
 **Mechanism evidence label:** Not applicable  
 **Scientific findings asserted:** None  
-**Version:** 0.1-launch  
+**Version:** 0.1-study-freeze  
 **Launch date:** 2026-07-21
 
 M1 begins the governed investigation of a product-independent vocabulary and formal object model for lifelong machine memory. This document authorizes candidate-definition, structural-evaluation, and formal-analysis work only. It does not adopt a taxonomy, establish that the formal model is sound, validate a memory mechanism, or authorize an implementation.
@@ -37,8 +37,8 @@ The milestone succeeds only if later governed analyses can reject or revise its 
 | [Candidate Memory Taxonomy v0.1](../taxonomy/MEMORY_TAXONOMY_v0.1.md) | Define versioned candidate terms, orthogonal axes, competing organizations, observable distinctions, and boundary cases. | Exact bytes registered as `LCMRP-FSUBJ-0001-MEMORY-TAXONOMY` v1; still a candidate | Completeness, external validity, biological fidelity, validation, or adoption. |
 | [Candidate Formal Memory Object Model v0.1](../taxonomy/FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) | State typed entities, relations, operations, invariants, conjectures, countermodels, and missing proof obligations. | Exact bytes registered as `LCMRP-FSUBJ-0002-FORMAL-MEMORY-OBJECT-MODEL` v1; still a candidate | Consistency, soundness, realizability, mechanism effectiveness, validation, or security. |
 | [Prior Art and Competing Taxonomies](../taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) | Map candidate definitions to relevant research traditions and expose competing organizations and unresolved transfer assumptions. | Scoped research input; not a systematic evidence synthesis | Novelty, exhaustive coverage, or adoption of a source taxonomy. |
-| Structural/taxonomy study protocol | Preregister an evaluation under the accepted `STRUCTURAL_OR_TAXONOMY_EVALUATION` profile. | Not yet frozen | A scientific result before atomic findings and closeout. |
-| Formal-analysis study protocol | Preregister an evaluation under the accepted `FORMAL_ANALYSIS` profile. | Not yet frozen | A proof or validity result before the declared verification work. |
+| [Structural/taxonomy study protocol](../../studies/foundational/m1-taxonomy-v1/protocol-v1.md) | Preregister an evaluation under the accepted `STRUCTURAL_OR_TAXONOMY_EVALUATION` profile. | `FROZEN`; five planned analyses; no output or finding | A scientific result before atomic findings and closeout. |
+| [Formal-analysis study protocol](../../studies/foundational/m1-formal-model-v1/protocol-v1.md) | Preregister an evaluation under the accepted `FORMAL_ANALYSIS` profile. | `FROZEN`; seven planned analyses; analyzer not executed | A proof or validity result before the declared verification work. |
 | [Non-evidentiary contract dry runs](../../examples/m1-dry-runs/) | Exercise subject, study, finding, and closeout paths using synthetic inputs before a real study is accepted. | Two isolated fixture families prepared and internally adversarially reviewed | Registration, replication, scientific validity, candidate adoption, or evidence. |
 | [Dry-run adversarial review](../../reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) | Test digest, identity, lifecycle, closeout, production-registry, and claim-boundary failures. | Conditional internal pass; external reproduction not performed | Independent scientific validation or M1 completion. |
 | Independent boundary review of later substantive findings | Assess product independence, claim discipline, ambiguity, and untested obligations after real governed analyses exist. | Not started | Scientific validation by itself. |
@@ -128,7 +128,7 @@ These are objectives to be tested by future frozen studies. They are not results
 3. Run the two synthetic, non-evidentiary contract dry runs recommended by the Foundational Study Contract. **Prepared and internally reviewed; acceptance remains infrastructure-only.**
 4. Resolve any contract defects by versioned supersession; do not rewrite frozen records.
 5. Register the exact candidate taxonomy and formal model as separate foundational subjects if the dry runs show the record path is usable. **Completed for identity and provenance only; no study or evidence effect.**
-6. Freeze one structural/taxonomy protocol and one formal-analysis protocol with explicit analyses, baselines, rejection criteria, tools, and immutable artifacts.
+6. Freeze one structural/taxonomy protocol and one formal-analysis protocol with explicit analyses, baselines, rejection criteria, tools, and immutable artifacts. **Completed as preregistration only; all outputs remain absent.**
 7. Publish one atomic finding or terminal disposition per planned analysis, including null, halted, invalid, and contradictory outcomes.
 8. Close each study only when its immutable all-analysis ledger is complete.
 9. Commission an independent review of claims, counterexamples, product independence, and unresolved risks.
@@ -136,11 +136,11 @@ These are objectives to be tested by future frozen studies. They are not results
 
 ## M1 exit criteria
 
-M1 is not complete. Registration completes a prerequisite, not an exit criterion: the registered subjects have not yet been bound to, or evaluated by, the required frozen studies. Every exit criterion therefore remains unchecked.
+M1 is not complete. The two protocol-definition criteria are satisfied by exact frozen preregistrations, but neither study has been executed and no candidate has received a disposition. All result, closeout, independent-review, and completion criteria remain unchecked.
 
 - [ ] The exact taxonomy and formal-model subject versions evaluated in M1 are immutable and digest-bound in the foundational-subject registry.
-- [ ] A frozen `STRUCTURAL_OR_TAXONOMY_EVALUATION` study tests the declared competency questions, integrity constraints, positive and negative cases, adjudication method, and coverage rule.
-- [ ] A frozen `FORMAL_ANALYSIS` study declares its formal system, assumptions, propositions, consistency method, intended entailments, non-entailments, countermodel search, and immutable tool provenance.
+- [x] A frozen `STRUCTURAL_OR_TAXONOMY_EVALUATION` study tests the declared competency questions, integrity constraints, positive and negative cases, adjudication method, and coverage rule.
+- [x] A frozen `FORMAL_ANALYSIS` study declares its formal system, assumptions, propositions, consistency method, intended entailments, non-entailments, countermodel search, and immutable tool provenance.
 - [ ] Both studies publish exactly one active atomic finding or terminal disposition for every planned analysis and have valid immutable closeouts.
 - [ ] M1-O1 through M1-O6 each receive an explicit retain, narrow, supersede, or reject disposition linked to the applicable findings.
 - [ ] The competing taxonomy organizations are evaluated as genuinely competing, with mixed-role and role-changing counterexamples preserved.
@@ -194,6 +194,6 @@ Mathematical entities such as sets, relations, operations, payloads, scores, and
 
 M1 launch artifacts are candidate research inputs. They carry no Charter mechanism evidence label, make no empirical finding, and confer no maturity state. The words “defined,” “modeled,” and “represented” in these documents describe the contents of a proposal, not demonstrated properties of a running system or the world.
 
-The synthetic dry runs created no production foundational-subject, study, finding, closeout, experiment, mechanism, or evidence registry entry. Their bundle-local lifecycle records and indexes remain examples only. A separate reviewed admission increment has registered the exact taxonomy and formal-model bytes as two `ACTIVE` Layer 1 foundational subjects. That identity action is not derived from a dry-run outcome and creates no adoption, study, finding, closeout, experiment, mechanism, evidence, or maturity effect. The other six production registries remain empty.
+The synthetic dry runs created no production registry entry; their bundle-local lifecycle records and indexes remain examples only. Separate reviewed increments registered the exact taxonomy and formal-model bytes as two `ACTIVE` Layer 1 subjects and froze two `ACTIVE` study preregistrations. Those actions are not derived from a dry-run outcome and create no adoption, finding, closeout, experiment, mechanism, evidence, or maturity effect. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
 
 Negative, null, contradictory, invalid, and halted analyses are acceptable outcomes and must be retained. Completion of every checkbox would establish only the bounded M1 study dispositions actually reported; it would not establish production readiness or automatic readiness for Layer 2.
