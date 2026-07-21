@@ -274,6 +274,101 @@ class M1LaunchAdversarialTests(unittest.TestCase):
                     f"{relative} falsely represents M1 as complete",
                 )
 
+
+    def test_04_m1_foundation_exit_and_stop_criteria_remain_open_and_actionable(self) -> None:
+        foundation = self._doc(FOUNDATION)
+
+        def assert_exit_and_stop_criteria_are_valid(document: str, *, label: str) -> None:
+            exit_section = _find_section(
+                document,
+                r"^exit criteria$",
+                r"^launch exit criteria$",
+                r"^m1 exit criteria$",
+            )
+            self.assertIsNotNone(
+                exit_section,
+                f"{label} needs an exit-criteria section",
+            )
+            assert exit_section is not None
+            exit_heading, exit_body = exit_section
+            exit_prose = _without_fenced_code(exit_body)
+            unchecked_exit_items = re.findall(r"(?im)^\s*-\s*\[ \]\s+\S.*$", exit_prose)
+            checked_exit_items = re.findall(r"(?im)^\s*-\s*\[[xX]\]\s+\S.*$", exit_prose)
+            self.assertGreaterEqual(
+                _word_count(exit_body),
+                40,
+                f"section '{exit_heading.title}' in {label} is not substantive",
+            )
+            self.assertGreaterEqual(
+                len(unchecked_exit_items),
+                2,
+                f"section '{exit_heading.title}' in {label} must list multiple unchecked exit criteria",
+            )
+            self.assertEqual(
+                [],
+                checked_exit_items,
+                f"section '{exit_heading.title}' in {label} must not contain checked exit criteria",
+            )
+
+            stop_section = _find_section(
+                document,
+                r"^stop criteria$",
+                r"^rejection criteria$",
+                r"^stop or rejection rules$",
+                r"^stop, rejection, and reset criteria$",
+            )
+            self.assertIsNotNone(
+                stop_section,
+                f"{label} needs a stop/rejection section",
+            )
+            assert stop_section is not None
+            stop_heading, stop_body = stop_section
+            stop_prose = _without_fenced_code(stop_body)
+            self.assertGreaterEqual(
+                _word_count(stop_body),
+                40,
+                f"section '{stop_heading.title}' in {label} is not substantive",
+            )
+            self.assertGreaterEqual(
+                _structured_items(stop_body),
+                2,
+                f"section '{stop_heading.title}' in {label} must enumerate multiple stop/rejection items",
+            )
+            self.assertRegex(
+                stop_prose,
+                r"(?i)\b(?:stop|reject|rejection|fail|failure|pause|halt)\b",
+                f"section '{stop_heading.title}' in {label} must use explicit stop/reject/fail wording",
+            )
+
+        assert_exit_and_stop_criteria_are_valid(foundation, label=FOUNDATION)
+
+        checked_exit_mutation = re.sub(
+            r"(?m)^(\s*-\s*)\[ \](\s+\S.*)$",
+            r"\1[x]\2",
+            foundation,
+            count=1,
+        )
+        with self.assertRaises(AssertionError):
+            assert_exit_and_stop_criteria_are_valid(
+                checked_exit_mutation,
+                label="mutation with checked exit criterion",
+            )
+
+        removed_stop_language_mutation = re.sub(
+            r"(?is)(## Stop, rejection, and reset criteria\n)(.*?)(?=\n## \S|\Z)",
+            "\\1\n"
+            "Criteria needing later review:\n\n"
+            "- The exact subject, study, profile, finding, or artifact digest cannot be resolved through the accepted contracts.\n"
+            "- Material contradictory, null, negative, or invalid outcomes are omitted from the record.\n",
+            foundation,
+            count=1,
+        )
+        with self.assertRaises(AssertionError):
+            assert_exit_and_stop_criteria_are_valid(
+                removed_stop_language_mutation,
+                label="mutation without explicit stop/rejection wording",
+            )
+
     def test_04_launch_artifacts_make_no_validation_novelty_or_adoption_claim(self) -> None:
         unsafe_claims = (
             re.compile(
