@@ -50,11 +50,10 @@ EXPECTED_SUBJECTS = {
     },
 }
 
-NON_SUBJECT_REGISTRIES = (
+DOWNSTREAM_RESULT_REGISTRIES = (
     "registry/mechanisms.yaml",
     "registry/experiments.yaml",
     "registry/evidence.yaml",
-    "registry/foundational-studies.yaml",
     "registry/research-findings.yaml",
     "registry/foundational-study-closeouts.yaml",
 )
@@ -62,7 +61,6 @@ NON_SUBJECT_REGISTRIES = (
 CANONICAL_RECORD_DIRECTORIES = (
     "records/experiments",
     "records/evidence",
-    "records/foundational/studies",
     "records/foundational/findings",
     "records/foundational/closeouts",
 )
@@ -233,7 +231,8 @@ class M1SubjectAdmissionTests(unittest.TestCase):
         cls.registry = load_yaml(SUBJECT_REGISTRY)
         cls.schema = load_json(SUBJECT_SCHEMA)
         cls.non_subject_registries = {
-            relative: load_yaml(ROOT / relative) for relative in NON_SUBJECT_REGISTRIES
+            relative: load_yaml(ROOT / relative)
+            for relative in DOWNSTREAM_RESULT_REGISTRIES
         }
 
     def test_registry_is_schema_valid_and_contains_exactly_reviewed_pair(self) -> None:
@@ -297,7 +296,7 @@ class M1SubjectAdmissionTests(unittest.TestCase):
                     "the dossier's one final registry specimen must exactly match production",
                 )
 
-    def test_non_subject_registries_and_real_record_areas_remain_empty(self) -> None:
+    def test_result_registries_and_result_record_areas_remain_empty(self) -> None:
         for relative, registry in self.non_subject_registries.items():
             with self.subTest(registry=relative):
                 self.assertEqual([], registry.get("entries"))
@@ -379,8 +378,8 @@ class M1SubjectAdmissionTests(unittest.TestCase):
                 errors = _admission_errors(mutated)
                 self.assertTrue(any("false validation" in error for error in errors), errors)
 
-    def test_accidental_study_finding_closeout_or_evidence_effect_is_rejected(self) -> None:
-        for relative in NON_SUBJECT_REGISTRIES:
+    def test_accidental_finding_closeout_or_evidence_effect_is_rejected(self) -> None:
+        for relative in DOWNSTREAM_RESULT_REGISTRIES:
             with self.subTest(registry=relative):
                 contaminated = copy.deepcopy(self.non_subject_registries)
                 contaminated[relative]["entries"] = [{"unexpected": "admission side effect"}]

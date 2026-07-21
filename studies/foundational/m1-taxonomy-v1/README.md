@@ -1,16 +1,16 @@
 # M1 taxonomy structural-study package v1
 
 Applicable layer: Layer 1 — Foundational Research  
-Package status: `DRAFT` / `NOT FROZEN` / `NOT EXECUTED`  
+Package status: `FROZEN PREREGISTRATION` / `NOT EXECUTED`  
 Study: `LCMRP-FSTUDY-0001-M1-TAXONOMY`  
 Study record: `LCMRP-FSTUDYREC-0001-M1-TAXONOMY@1`  
 Primary profile: `LCMRP-MPROF-0001-M1-STRUCTURAL-TAXONOMY@1`  
 Subject: `LCMRP-FSUBJ-0001-MEMORY-TAXONOMY@1`  
 Mechanism evidence labels: Not applicable
 
-This directory is a freeze-intent package for a mechanism-free structural evaluation of the exact registered Candidate Memory Taxonomy v0.1. It contains a human-readable protocol, a schema-conforming draft manifest, an operational method profile, category-evaluation rules, constructed case sources, and reproducibility declarations.
+This directory retains the reviewed draft history and the separately frozen preregistration for a mechanism-free structural evaluation of the exact registered Candidate Memory Taxonomy v0.1. It contains the immutable protocol and freeze attestation alongside the non-authoritative draft manifest, operational method profile, category-evaluation rules, constructed case sources, and reproducibility declarations.
 
-Nothing in this directory is a frozen study, execution record, finding, closeout, validation, adoption decision, evidence award, or implementation recommendation. No planned analysis has been run. No result or expected favorable outcome is encoded in the case artifacts. The words `positive`, `negative`, and `held-out` identify source roles required by the study contract; they do not state how a case will be classified.
+The frozen protocol and attestation establish preregistration only. Nothing in this directory is an execution record, finding, closeout, validation, adoption decision, evidence award, or implementation recommendation. No planned analysis has been run. No result or expected favorable outcome is encoded in the case artifacts. The words `positive`, `negative`, and `held-out` identify source roles required by the study contract; they do not state how a case will be classified.
 
 ## Exact subject binding
 
@@ -29,6 +29,8 @@ Registration fixes identity and provenance only. This package does not adopt the
 
 - `protocol-draft.md` — complete DRAFT protocol using the Foundational Study Contract reporting structure.
 - `manifest-draft.json` — non-authoritative DRAFT study manifest; local freeze-intent artifacts deliberately retain `PENDING` digests until final review. It is neither a canonical record nor eligible for the production study index.
+- `protocol-v1.md` — immutable `FROZEN` protocol derived from the reviewed draft without rewriting draft history.
+- `freeze-attestation.json` — authority, timestamp, author-package revision, no-prior-result-access assertion, and absent-output inventory.
 - `definitions/method-profile.json` — versioned structural/taxonomy method definition and adjudication contract.
 - `definitions/category-evaluation-rules.json` — exact term scope, competency questions, organizations, distinctions, integrity constraints, and coding semantics.
 - `cases/positive-cases.json` — constructed development cases that expose declared distinctions without expected dispositions.
@@ -37,11 +39,11 @@ Registration fixes identity and provenance only. This package does not adopt the
 - `reproducibility/environment.json` — runtime, dependency, locale, network, and human-analysis environment requirements.
 - `reproducibility/configuration.json` — evaluator isolation, deterministic case ordering, metrics, output, and retention configuration.
 
-The five planned output locators under `outputs/` do not exist. Creating an output before freeze is an integrity failure, not progress.
+The five planned output locators under `outputs/` do not exist. Creating an output outside a separately governed execution increment is an integrity failure, not progress.
 
-## Freeze boundary
+## Completed freeze boundary
 
-The package may become `FROZEN` only through a separately reviewed action that performs all of the following in order:
+The separately reviewed freeze action was required to perform all of the following in order:
 
 1. confirm that the subject registry resolves the exact subject ID, series, version, locator, and digest above;
 2. assign a named freeze authority and bind the exact eligibility, isolation, and conflict criteria for later adjudicators; adjudicator identities need not and must not be invented to complete freeze;
@@ -53,7 +55,7 @@ The package may become `FROZEN` only through a separately reviewed action that p
 8. change the manifest and protocol status to `FROZEN` without altering their substantive commitments; and
 9. validate the frozen manifest against JSON Schema Draft 2020-12 and independently recompute every digest.
 
-Any substantive change discovered during freeze review remains permissible only while this record is DRAFT and requires recomputing the complete inventory. Any change after freeze requires a superseding study-record version linked to the prior raw-byte digest. Confirmatory analysis may not begin until the frozen study is accepted into the study registry.
+The draft files preserve the authoring state. Any change to the frozen protocol or bound inputs now requires a superseding study-record version linked to the prior raw-byte digest. Confirmatory analysis may begin only in a separate governed execution increment after the execution-intake requirements are satisfied.
 
 ## Execution boundary
 
@@ -63,7 +65,7 @@ Before any case packet, peer code, planned output, or result is accessed, an imm
 
 Case-set roles, selection rationales, and file paths are hidden from primary adjudicators during initial coding. A deterministic pseudonym and ordering procedure is declared in the configuration. Independent codes and rationales are locked before reconciliation. Disagreements, ambiguity, null outcomes, protocol deviations, invalid work, and non-execution are retained.
 
-## Local checks permitted while DRAFT
+## Integrity checks that are not analyses
 
 The following checks are design-time integrity checks, not planned analyses or findings:
 

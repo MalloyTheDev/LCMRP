@@ -36,6 +36,10 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Formal-Model Subject Admission Dossier](reviews/M1_FORMAL_MODEL_SUBJECT_ADMISSION_2026-07-21.md) reviews the exact formal-model bytes for identity-only registration.
 - [M1 Subject-Admission Adversarial Review](reviews/M1_SUBJECT_ADMISSION_ADVERSARIAL_REVIEW_2026-07-21.md) records cross-binding and mutation-test results for the two real subject entries.
 - [M1 Subject-Admission Decision](reviews/M1_SUBJECT_ADMISSION_DECISION_2026-07-21.md) records the final steward judgment and the limits of registration.
+- [M1 Taxonomy Frozen Protocol](studies/foundational/m1-taxonomy-v1/protocol-v1.md) preregisters five structural/taxonomy analyses without executing them.
+- [M1 Formal-Model Frozen Protocol](studies/foundational/m1-formal-model-v1/protocol-v1.md) preregisters seven bounded formal analyses while leaving the analyzer unexecuted.
+- [M1 Study-Freeze Adversarial Review](reviews/M1_STUDY_FREEZE_ADVERSARIAL_REVIEW_2026-07-21.md) records exact-byte, mutation, output-absence, and registry-containment gates.
+- [M1 Study-Freeze Decision](reviews/M1_STUDY_FREEZE_DECISION_2026-07-21.md) records the steward acceptance boundary and remaining execution obligations.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -43,7 +47,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [`schemas/`](schemas/) contains versioned JSON Schema Draft 2020-12 contracts.
 - [`examples/`](examples/) contains explicitly non-evidentiary example records.
 - [`templates/`](templates/) contains proposal, protocol, report, foundational closeout, and threat-model structures.
-- [`registry/`](registry/) contains mechanism, experiment, evidence, foundational-subject, foundational-study, research-finding, and foundational-closeout indexes. The foundational-subject registry identifies two exact M1 candidate artifacts; the other six production registries remain empty. Subject registration is provenance, not research evidence.
+- [`registry/`](registry/) contains mechanism, experiment, evidence, foundational-subject, foundational-study, research-finding, and foundational-closeout indexes. Two exact subjects and two frozen preregistrations are active; the five result/mechanism registries remain empty. Subject registration and study freeze are provenance and governance actions, not research evidence.
 - [`records/`](records/) defines the immutable record layout used once experiments and evidence exist.
 - [`references/`](references/) defines source-verification and citation-recording rules.
 
@@ -51,9 +55,9 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 ## Current phase
 
-**M1 launched — Layer 1 taxonomy and formal-model work in progress**
+**M1 in progress — two Layer 1 study protocols frozen; analyses not started**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. Two isolated synthetic dry runs exercise the accepted Layer 1 record paths only as non-evidentiary fixtures. The exact current candidate bytes are now registered as two `ACTIVE` Layer 1 foundational subjects so later studies can bind them without ambiguity. Registration does not adopt or validate either candidate, create a study or finding, award evidence, or establish that a memory mechanism is ready for use. The other six production registries remain empty, no substantive study is frozen, and M1 remains incomplete.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 now has two exact `ACTIVE` subjects and two exact `FROZEN` Layer 1 preregistrations: one structural/taxonomy study and one bounded formal-analysis study. Every planned output remains absent, the formal analyzer has not run, and no finding or closeout exists. Freeze does not adopt or validate either candidate, prove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
 
 ## License
 
