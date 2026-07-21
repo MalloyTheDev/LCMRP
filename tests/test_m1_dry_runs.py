@@ -100,6 +100,11 @@ ADMITTED_REAL_SUBJECT_IDS = {
     "LCMRP-FSUBJ-0002-FORMAL-MEMORY-OBJECT-MODEL",
 }
 
+ADMITTED_REAL_STUDY_RECORD_IDS = {
+    "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+    "LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL",
+}
+
 HIGH_LEVEL_ID_FIELDS = {
     "subject_id",
     "study_id",
@@ -904,6 +909,25 @@ def production_registry_errors(documents: Mapping[str, Any]) -> list[str]:
                 for value in _iter_strings(entry)
             ):
                 errors.append(f"{relative}: contains a synthetic dry-run subject")
+        elif relative == "registry/foundational-studies.yaml":
+            record_ids = {
+                entry.get("record_id")
+                for entry in entries
+                if isinstance(entry, Mapping)
+            }
+            if (
+                len(entries) != len(ADMITTED_REAL_STUDY_RECORD_IDS)
+                or record_ids != ADMITTED_REAL_STUDY_RECORD_IDS
+                or any(
+                    SYNTHETIC_ID.search(value)
+                    for entry in entries
+                    for value in _iter_strings(entry)
+                )
+            ):
+                errors.append(
+                    f"{relative}: production registry was populated by a dry run "
+                    "or an unauthorized real study"
+                )
         elif entries:
             errors.append(f"{relative}: production registry was populated by a dry run")
     return errors
