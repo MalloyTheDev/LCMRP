@@ -1,0 +1,46 @@
+{
+  "artifact_id": "LCMRP-ARTIFACT-0002-M1-FMO-TOOL-PROVENANCE",
+  "artifact_version": 1,
+  "study_id": "LCMRP-FSTUDY-0002-M1-FORMAL-MODEL",
+  "profile_id": "LCMRP-MPROF-0002-M1-FORMAL-ANALYSIS",
+  "tool_status": "PLANNED-EXACT-TOOLCHAIN-NOT-EXECUTED",
+  "analyzer": {
+    "locator": "studies/foundational/m1-formal-model-v1/analyze_fmo_kernel.py",
+    "raw_byte_sha256": "957573ab5abd2f2b73d4272a4549145d28e99e3ceaa52f2d26d99939a10e5a72",
+    "language": "Python 3",
+    "required_runtime": "CPython 3.12.13",
+    "dependencies": "Python standard library only",
+    "semantic_method": "Deterministic exhaustive enumeration of the frozen finite Boolean modules and query-local projections, with complete retained assignments for models, counterexamples, and witnesses.",
+    "execution_guard": "Refuses any manifest that is not FROZEN, lacks no-prior-result-access attestation, fails exact study/subject/profile identity checks, or has a mismatched immutable artifact digest.",
+    "write_policy": "Creates one new JSON output with exclusive-create mode; refuses overwrite."
+  },
+  "runtime": {
+    "python_implementation": "CPython",
+    "python_version": "3.12.13",
+    "platform_reference": "Linux 6.12.13 x86_64"
+  },
+  "integrity_tools": {
+    "digest_algorithm": "SHA-256",
+    "digest_scope": "RAW_FILE_BYTES",
+    "digest_implementations": [
+      "CPython 3.12.13 hashlib.sha256",
+      "GNU coreutils sha256sum 9.4"
+    ],
+    "schema_dialect": "JSON Schema Draft 2020-12",
+    "schema_validator": "jsonschema 4.25.1 from the repository development environment; validation is not part of the semantic analyzer"
+  },
+  "external_services": {
+    "network_calls": 0,
+    "model_calls": 0,
+    "external_solver_calls": 0,
+    "cloud_service_calls": 0
+  },
+  "data_boundary": {
+    "human_subjects": false,
+    "human_participant_data": false,
+    "personal_data_expected": false,
+    "secrets_expected": false
+  },
+  "verification_boundary": "Successful parsing, compilation, schema validation, execution, exhaustive enumeration, or absence of a bounded counterexample does not validate all FMO-0.1. The separately retained semantic-validity adjudication is mandatory and can invalidate any machine analysis.",
+  "architecture_boundary": "This study-local tool provenance selects no model, embedding, storage, retrieval, vendor, application schema, continuous service, or general LCMRP implementation architecture."
+}
