@@ -1,8 +1,8 @@
-# M0 contract tests
+# Research contract and M1 launch tests
 
 **Artifact classification:** program infrastructure supporting all three research layers; this document and the test suite are not research evidence.
 
-The M0 tests check whether repository artifacts satisfy declared structural and governance contracts. A passing test suite does not establish that a memory mechanism works, validate a research finding, award an evidence label, or demonstrate product readiness.
+The tests check whether repository artifacts satisfy declared structural and governance contracts, including the M1 launch boundaries. A passing test suite does not establish that a memory mechanism works, validate a taxonomy or formal model, validate a research finding, award an evidence label, or demonstrate product readiness.
 
 ## Run the suite
 
@@ -37,6 +37,21 @@ The mechanism-free Layer 1 contracts are tested as a separate artifact family. T
 - continued validity of the existing mechanism-oriented example family.
 
 Negative fixtures mutate synthetic examples in memory. They are deliberately non-evidence and must not be registered as research records.
+
+## M1 launch boundary expectations
+
+The M1 launch tests treat the taxonomy, prior-art map, and formal object model as unvalidated Layer 1 candidates. They require:
+
+- exactly one Layer 1 declaration per substantive launch artifact;
+- an in-progress milestone with unchecked exit criteria and explicit stop or rejection rules;
+- competing taxonomy organizations, observable distinctions, edge cases, and unresolved obligations;
+- product-independent authority, provenance, confidence, uncertainty, deletion, time, and lifecycle semantics;
+- a typed formal model with declared operations, invariants, intended non-entailments, countermodels, and missing proof obligations;
+- no mechanism maturity award, adoption claim, novelty claim, or fabricated finding;
+- no product, model-provider, storage-provider, or CorpusStudio architecture assumption; and
+- unchanged empty production registries.
+
+These are launch-contract checks, not validation of the candidate definitions or their supporting sources.
 
 ## Interpretation limits
 

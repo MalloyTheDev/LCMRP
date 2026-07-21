@@ -8,3 +8,5 @@ A repository review is not automatically an independent validation. Each review 
 - [M0 foundational contract review — 2026-07-21](M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md) reviews the mechanism-free Layer 1 contract and its remaining real-registration blockers.
 - [M0 final adversarial review — 2026-07-21](M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md) records the final technical-infrastructure verdict, corrected false accepts, validation results, and post-M0 scientific limitations.
 - [M0 completion decision — 2026-07-21](M0_COMPLETION_DECISION_2026-07-21.md) records the governance acceptance, exit-criterion evidence, compatibility impact, and post-M0 obligations.
+- [M1 launch adversarial review — 2026-07-21](M1_LAUNCH_ADVERSARIAL_REVIEW_2026-07-21.md) tests the initial Layer 1 taxonomy and formal-model package for claim, product-independence, completeness, and boundary failures.
+- [M1 launch decision — 2026-07-21](M1_LAUNCH_DECISION_2026-07-21.md) records the final launch judgment, exact limitations, and still-open M1 exit obligations.
