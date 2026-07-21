@@ -20,11 +20,14 @@ Both commands must pass. The repository validator exercises whole-tree discovery
 The mechanism-free Layer 1 contracts are tested as a separate artifact family. The tests require:
 
 - a valid foundational study manifest and research finding with no mechanism under evaluation;
-- exact, immutable study and subject identity bindings in a finding;
+- exact, immutable study, subject, and method-profile identity and artifact bindings in a finding;
+- foundational-subject registry uniqueness, stable-series, supersession, and exact active-study resolution;
 - exactly one immutable, versioned primary method profile, with its method-specific obligations enforced;
 - explicit applicability values and internally consistent applicable/not-applicable payloads;
 - per-analysis confirmatory or exploratory classification and transparent post-result profile/amendment changes;
-- retained terminal dispositions for every planned analysis, including null, invalid, halted, and not-run work;
+- retained terminal dispositions including null, invalid, halted, and not-run work;
+- an immutable closeout that set-equals every frozen planned analysis to exactly one active published finding, while allowing partial studies to remain open;
+- canonical, path-safe subject, study, finding, and closeout registry entries with digest-linked lineage;
 - no mechanism maturity award, evidence decision, or implied evidence-profile effect from a general finding;
 - rejection of human-subject work until a separately approved governance contract exists;
 - rejection of Layer 3 or CorpusStudio integration fields in Layer 1 artifacts;

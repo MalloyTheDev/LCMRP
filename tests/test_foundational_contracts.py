@@ -624,18 +624,45 @@ class FoundationalBindingValidatorTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
+            subject_bytes = (
+                ROOT / "examples/fixtures/synthetic-foundational-subject-definition.json"
+            ).read_bytes()
+            profile_bytes = (
+                ROOT / "examples/fixtures/synthetic-structural-taxonomy-profile.json"
+            ).read_bytes()
+            (root / "subject.json").write_bytes(subject_bytes)
+            (root / "profile.json").write_bytes(profile_bytes)
+            study["subject"]["definition_artifact"]["locator"] = "subject.json"
+            study["subject"]["definition_artifact"]["digest"] = make_digest(
+                "RECORDED",
+                hashlib.sha256(subject_bytes).hexdigest(),
+            )
+            study["primary_method_profile"]["profile_definition_artifact"][
+                "locator"
+            ] = "profile.json"
+            study["primary_method_profile"]["profile_definition_artifact"][
+                "digest"
+            ] = make_digest(
+                "RECORDED",
+                hashlib.sha256(profile_bytes).hexdigest(),
+            )
             study_path = root / "study.json"
             study_bytes = json.dumps(study, indent=2).encode("utf-8") + b"\n"
             study_path.write_bytes(study_bytes)
             digest = hashlib.sha256(study_bytes).hexdigest()
-            for parent, artifact_field in (
-                ("study_reference", "manifest_artifact"),
-                ("subject_reference", "definition_artifact"),
-                ("primary_method_profile_reference", "profile_artifact"),
-            ):
-                artifact = finding[parent][artifact_field]
-                artifact["locator"] = "study.json"
-                artifact["digest"] = make_digest("RECORDED", digest)
+            finding["study_reference"]["manifest_artifact"]["locator"] = "study.json"
+            finding["study_reference"]["manifest_artifact"]["digest"] = make_digest(
+                "RECORDED",
+                digest,
+            )
+            finding["subject_reference"]["definition_artifact"] = copy.deepcopy(
+                study["subject"]["definition_artifact"]
+            )
+            finding["primary_method_profile_reference"]["profile_artifact"] = (
+                copy.deepcopy(
+                    study["primary_method_profile"]["profile_definition_artifact"]
+                )
+            )
             if mutate is not None:
                 mutate(finding)
             (root / "finding.json").write_text(

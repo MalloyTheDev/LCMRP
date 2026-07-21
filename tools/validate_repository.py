@@ -45,6 +45,8 @@ REQUIRED_PATHS = (
     "schemas/evidence-record.schema.json",
     "schemas/foundational-study-manifest.schema.json",
     "schemas/research-finding-record.schema.json",
+    "schemas/foundational-study-closeout.schema.json",
+    "schemas/foundational-subject-registry.schema.json",
     "schemas/foundational-record-index.schema.json",
     "schemas/mechanism-registry.schema.json",
     "schemas/record-index.schema.json",
@@ -53,12 +55,17 @@ REQUIRED_PATHS = (
     "examples/evidence-record.example.json",
     "examples/foundational-study-manifest.example.json",
     "examples/research-finding-record.example.json",
+    "examples/foundational-study-closeout.example.json",
+    "examples/foundational-subject-registry.example.json",
     "examples/foundational-record-index.example.json",
     "examples/mechanism-registry.example.json",
     "templates/research-proposal.md",
     "templates/README.md",
     "templates/experiment-protocol.md",
     "templates/experiment-report.md",
+    "templates/foundational-study-protocol.md",
+    "templates/foundational-finding-report.md",
+    "templates/foundational-study-closeout.md",
     "templates/threat-model.md",
     "registry/mechanisms.yaml",
     "registry/README.md",
@@ -66,11 +73,15 @@ REQUIRED_PATHS = (
     "registry/evidence.yaml",
     "registry/foundational-studies.yaml",
     "registry/research-findings.yaml",
+    "registry/foundational-study-closeouts.yaml",
+    "registry/foundational-subjects.yaml",
     "records/README.md",
     "references/README.md",
     "reviews/README.md",
     "reviews/M0_BOUNDARY_REVIEW_2026-07-20.md",
     "reviews/M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md",
+    "reviews/M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md",
+    "reviews/M0_COMPLETION_DECISION_2026-07-21.md",
     "tests/README.md",
     "tests/test_foundational_contracts.py",
 )
@@ -81,6 +92,8 @@ REGISTRIES = {
     "registry/evidence.yaml": "evidence_registry",
     "registry/foundational-studies.yaml": "foundational_study_registry",
     "registry/research-findings.yaml": "research_finding_registry",
+    "registry/foundational-study-closeouts.yaml": "foundational_study_closeout_registry",
+    "registry/foundational-subjects.yaml": "foundational_subject_registry",
 }
 
 CHARTER_INVARIANTS = (
@@ -332,6 +345,68 @@ def _resolve_local_artifact(root: Path, locator: str) -> Path | None:
     return candidate
 
 
+def _artifact_binding_differences(
+    reference: Any,
+    expected: Any,
+) -> list[str]:
+    """Return exact immutable-artifact fields that differ.
+
+    Artifact identity is more than the surrounding subject/profile identifier.
+    The locator, media/schema identity, version, and raw-byte digest must all bind
+    to the same exact artifact.
+    """
+
+    if not isinstance(reference, Mapping) or not isinstance(expected, Mapping):
+        return ["artifact"]
+
+    differences: list[str] = []
+    for field in (
+        "artifact_id",
+        "artifact_version",
+        "schema_id",
+        "locator",
+        "media_type",
+    ):
+        if reference.get(field) != expected.get(field):
+            differences.append(field)
+
+    reference_digest = reference.get("digest")
+    expected_digest = expected.get("digest")
+    if not isinstance(reference_digest, Mapping) or not isinstance(expected_digest, Mapping):
+        differences.append("digest")
+        return differences
+    for field in ("algorithm", "value", "scope"):
+        if reference_digest.get(field) != expected_digest.get(field):
+            differences.append(f"digest.{field}")
+    return differences
+
+
+def _registry_artifact_binding_differences(
+    reference: Any,
+    entry: Any,
+) -> list[str]:
+    """Compare an in-record immutable artifact reference with an index entry."""
+
+    if not isinstance(reference, Mapping) or not isinstance(entry, Mapping):
+        return ["artifact"]
+    differences: list[str] = []
+    if reference.get("artifact_version") != entry.get("record_version"):
+        differences.append("artifact_version")
+    if reference.get("schema_id") != entry.get("schema_id"):
+        differences.append("schema_id")
+    if reference.get("locator") != entry.get("artifact_path"):
+        differences.append("locator")
+    reference_digest = reference.get("digest")
+    entry_digest = entry.get("artifact_digest")
+    if not isinstance(reference_digest, Mapping) or not isinstance(entry_digest, Mapping):
+        differences.append("digest")
+    else:
+        for field in ("algorithm", "value", "scope"):
+            if reference_digest.get(field) != entry_digest.get(field):
+                differences.append(f"digest.{field}")
+    return differences
+
+
 def _validate_foundational_finding_binding(
     root: Path,
     label: str,
@@ -356,7 +431,13 @@ def _validate_foundational_finding_binding(
         manifest_path = _resolve_local_artifact(root, locator)
     except RepositoryValidationError as exc:
         return [f"{label}: finding binding cannot resolve study manifest: {exc}"]
+    binding_required = (
+        finding.get("record_status") == "PUBLISHED"
+        or finding.get("terminal_disposition") == "COMPLETED"
+    )
     if manifest_path is None or not manifest_path.is_file():
+        if binding_required:
+            return [f"{label}: finding binding requires a resolvable study manifest"]
         return []
     try:
         manifest = load_json(manifest_path)
@@ -408,6 +489,14 @@ def _validate_foundational_finding_binding(
             "subject_version",
         ):
             compare(subject_reference.get(field), manifest_subject.get(field), f"subject.{field}")
+        for field in _artifact_binding_differences(
+            subject_reference.get("definition_artifact"),
+            manifest_subject.get("definition_artifact"),
+        ):
+            errors.append(
+                f"{label}: finding binding mismatch for "
+                f"subject.definition_artifact.{field}"
+            )
 
     profile_reference = finding.get("primary_method_profile_reference")
     manifest_profile = manifest.get("primary_method_profile")
@@ -423,6 +512,14 @@ def _validate_foundational_finding_binding(
                 profile_reference.get(reference_field),
                 manifest_profile.get(manifest_field),
                 f"primary_method_profile.{reference_field}",
+            )
+        for field in _artifact_binding_differences(
+            profile_reference.get("profile_artifact"),
+            manifest_profile.get("profile_definition_artifact"),
+        ):
+            errors.append(
+                f"{label}: finding binding mismatch for "
+                f"primary_method_profile.profile_artifact.{field}"
             )
 
     analysis_reference = finding.get("analysis_reference")
@@ -445,6 +542,185 @@ def _validate_foundational_finding_binding(
                 analysis_reference.get("analysis_mode"),
                 matching_analysis.get("analysis_mode"),
                 "analysis.analysis_mode",
+            )
+
+    return errors
+
+
+def _validate_foundational_closeout_binding(
+    root: Path,
+    label: str,
+    closeout: Mapping[str, Any],
+) -> list[str]:
+    """Resolve a closeout to one exact frozen study and its exact findings."""
+
+    if closeout.get("artifact_type") != "foundational_study_closeout":
+        return []
+
+    errors: list[str] = []
+    published = closeout.get("record_status") == "PUBLISHED"
+    study_reference = closeout.get("study_reference")
+    if not isinstance(study_reference, Mapping):
+        return errors
+    manifest_reference = study_reference.get("manifest_artifact")
+    if not isinstance(manifest_reference, Mapping):
+        return errors
+    manifest_locator = manifest_reference.get("locator")
+    if not isinstance(manifest_locator, str):
+        return errors
+
+    try:
+        manifest_path = _resolve_local_artifact(root, manifest_locator)
+    except RepositoryValidationError as exc:
+        return [f"{label}: closeout cannot resolve study manifest: {exc}"]
+    if manifest_path is None or not manifest_path.is_file():
+        if published:
+            errors.append(f"{label}: published closeout study manifest is unavailable")
+        return errors
+    try:
+        manifest = load_json(manifest_path)
+    except RepositoryValidationError:
+        return errors
+    if not isinstance(manifest, Mapping) or manifest.get("artifact_type") != "foundational_study_manifest":
+        return [f"{label}: closeout target is not a foundational study manifest"]
+
+    def compare(actual: Any, expected: Any, field: str) -> None:
+        if actual != expected:
+            errors.append(f"{label}: closeout binding mismatch for {field}")
+
+    compare(study_reference.get("study_id"), manifest.get("study_id"), "study_id")
+    compare(
+        study_reference.get("study_record_id"),
+        manifest.get("study_record_id"),
+        "study_record_id",
+    )
+    compare(
+        study_reference.get("study_record_version"),
+        manifest.get("record_version"),
+        "study_record_version",
+    )
+    if published and manifest.get("record_status") != "FROZEN":
+        errors.append(f"{label}: published closeout requires a FROZEN study manifest")
+
+    manifest_analyses = manifest.get("analyses")
+    dispositions = closeout.get("analysis_dispositions")
+    if not isinstance(manifest_analyses, list) or not isinstance(dispositions, list):
+        return errors
+
+    expected_modes = {
+        analysis.get("analysis_id"): analysis.get("analysis_mode")
+        for analysis in manifest_analyses
+        if isinstance(analysis, Mapping)
+    }
+    disposition_ids = [
+        disposition.get("analysis_id")
+        for disposition in dispositions
+        if isinstance(disposition, Mapping)
+    ]
+    if len(disposition_ids) != len(set(disposition_ids)):
+        errors.append(f"{label}: closeout analysis disposition IDs must be unique")
+    if published and set(disposition_ids) != set(expected_modes):
+        errors.append(
+            f"{label}: published closeout analysis IDs must exactly equal the "
+            "frozen study analysis IDs"
+        )
+
+    referenced_findings: set[tuple[Any, Any]] = set()
+    for index, disposition in enumerate(dispositions):
+        if not isinstance(disposition, Mapping):
+            continue
+        analysis_id = disposition.get("analysis_id")
+        if analysis_id in expected_modes:
+            compare(
+                disposition.get("analysis_mode"),
+                expected_modes.get(analysis_id),
+                f"analysis_dispositions/{index}/analysis_mode",
+            )
+        finding_key = (
+            disposition.get("finding_record_id"),
+            disposition.get("finding_record_version"),
+        )
+        if finding_key in referenced_findings:
+            errors.append(f"{label}: closeout cannot reuse one finding record")
+        referenced_findings.add(finding_key)
+
+        finding_reference = disposition.get("finding_artifact")
+        if not isinstance(finding_reference, Mapping):
+            continue
+        finding_locator = finding_reference.get("locator")
+        if not isinstance(finding_locator, str):
+            continue
+        try:
+            finding_path = _resolve_local_artifact(root, finding_locator)
+        except RepositoryValidationError as exc:
+            errors.append(f"{label}: closeout cannot resolve finding: {exc}")
+            continue
+        if finding_path is None or not finding_path.is_file():
+            if published:
+                errors.append(
+                    f"{label}: published closeout finding is unavailable for {analysis_id!r}"
+                )
+            continue
+        try:
+            finding = load_json(finding_path)
+        except RepositoryValidationError:
+            continue
+        if not isinstance(finding, Mapping) or finding.get("artifact_type") != "research_finding_record":
+            errors.append(
+                f"{label}: closeout finding target is not a research finding record"
+            )
+            continue
+        compare(
+            disposition.get("finding_id"),
+            finding.get("finding_id"),
+            f"analysis_dispositions/{index}/finding_id",
+        )
+        compare(
+            disposition.get("finding_record_id"),
+            finding.get("record_id"),
+            f"analysis_dispositions/{index}/finding_record_id",
+        )
+        compare(
+            disposition.get("finding_record_version"),
+            finding.get("record_version"),
+            f"analysis_dispositions/{index}/finding_record_version",
+        )
+        compare(
+            disposition.get("terminal_disposition"),
+            finding.get("terminal_disposition"),
+            f"analysis_dispositions/{index}/terminal_disposition",
+        )
+        finding_analysis = finding.get("analysis_reference")
+        if isinstance(finding_analysis, Mapping):
+            compare(
+                analysis_id,
+                finding_analysis.get("analysis_id"),
+                f"analysis_dispositions/{index}/analysis_id",
+            )
+            compare(
+                disposition.get("analysis_mode"),
+                finding_analysis.get("analysis_mode"),
+                f"analysis_dispositions/{index}/finding_analysis_mode",
+            )
+        finding_study = finding.get("study_reference")
+        if isinstance(finding_study, Mapping):
+            for field in ("study_id", "study_record_id", "study_record_version"):
+                compare(
+                    finding_study.get(field),
+                    study_reference.get(field),
+                    f"analysis_dispositions/{index}/finding_study.{field}",
+                )
+            for field in _artifact_binding_differences(
+                finding_study.get("manifest_artifact"),
+                manifest_reference,
+            ):
+                errors.append(
+                    f"{label}: closeout binding mismatch for "
+                    f"analysis_dispositions/{index}/finding_study.manifest_artifact.{field}"
+                )
+        if published and finding.get("record_status") != "PUBLISHED":
+            errors.append(
+                f"{label}: published closeout requires a PUBLISHED finding for {analysis_id!r}"
             )
 
     return errors
@@ -562,6 +838,13 @@ def validate_local_artifact_references(root: Path) -> list[str]:
                     document,
                 )
             )
+            errors.extend(
+                _validate_foundational_closeout_binding(
+                    root,
+                    relative_document,
+                    document,
+                )
+            )
 
         mechanism_versions = document.get("mechanism_versions") if isinstance(document, Mapping) else None
         if not isinstance(mechanism_versions, list):
@@ -614,11 +897,14 @@ def validate_registry_entry_semantics(registry: Any, label: str) -> list[str]:
     registry_type = registry.get("registry_type")
     if registry_type == "mechanism_registry":
         id_field, version_field = "mechanism_id", "mechanism_version"
+    elif registry_type == "foundational_subject_registry":
+        id_field, version_field = "subject_id", "subject_version"
     elif registry_type in {
         "experiment_registry",
         "evidence_registry",
         "foundational_study_registry",
         "research_finding_registry",
+        "foundational_study_closeout_registry",
     }:
         id_field, version_field = "record_id", "record_version"
     else:
@@ -635,6 +921,112 @@ def validate_registry_entry_semantics(registry: Any, label: str) -> list[str]:
                 f"{label}:entries/{index}: duplicate {id_field}/{version_field}: {key!r}"
             )
         keyed_entries[key] = entry
+
+    if registry_type == "foundational_subject_registry":
+        active_by_subject: dict[Any, int] = {}
+        subject_series: dict[Any, Any] = {}
+        subject_kinds: dict[Any, Any] = {}
+        series_owner: dict[Any, Any] = {}
+        for index, entry in enumerate(registry["entries"]):
+            if not isinstance(entry, Mapping):
+                continue
+            subject_id = entry.get("subject_id")
+            series = entry.get("subject_series")
+            kind = entry.get("subject_kind")
+            version = entry.get("subject_version")
+            if subject_id in subject_series and subject_series[subject_id] != series:
+                errors.append(
+                    f"{label}:entries/{index}: subject series must remain stable across versions"
+                )
+            subject_series.setdefault(subject_id, series)
+            if subject_id in subject_kinds and subject_kinds[subject_id] != kind:
+                errors.append(
+                    f"{label}:entries/{index}: subject kind must remain stable across versions"
+                )
+            subject_kinds.setdefault(subject_id, kind)
+            if series in series_owner and series_owner[series] != subject_id:
+                errors.append(
+                    f"{label}:entries/{index}: subject series cannot identify multiple subject IDs"
+                )
+            series_owner.setdefault(series, subject_id)
+            if entry.get("entry_status") == "ACTIVE":
+                active_by_subject[subject_id] = active_by_subject.get(subject_id, 0) + 1
+
+            definition_artifact = entry.get("definition_artifact")
+            if (
+                isinstance(definition_artifact, Mapping)
+                and isinstance(version, int)
+                and definition_artifact.get("artifact_version") != version
+            ):
+                errors.append(
+                    f"{label}:entries/{index}: definition artifact version must equal subject version"
+                )
+            if not isinstance(version, int) or version <= 1:
+                continue
+            previous_version = entry.get("supersedes_subject_version")
+            if not isinstance(previous_version, int) or previous_version >= version:
+                errors.append(
+                    f"{label}:entries/{index}: superseded subject version must be lower than the new version"
+                )
+                continue
+            previous = keyed_entries.get((subject_id, previous_version))
+            if previous is None:
+                errors.append(
+                    f"{label}:entries/{index}: superseded subject version is absent from registry"
+                )
+                continue
+            previous_artifact = previous.get("definition_artifact")
+            previous_digest = (
+                previous_artifact.get("digest")
+                if isinstance(previous_artifact, Mapping)
+                else None
+            )
+            supersedes_digest = entry.get("supersedes_definition_digest")
+            if (
+                isinstance(previous_digest, Mapping)
+                and isinstance(supersedes_digest, Mapping)
+                and previous_digest.get("value") != supersedes_digest.get("value")
+            ):
+                errors.append(
+                    f"{label}:entries/{index}: supersession digest does not match prior subject definition artifact"
+                )
+
+        for subject_id, count in active_by_subject.items():
+            if count > 1:
+                errors.append(
+                    f"{label}: subject {subject_id!r} has more than one ACTIVE version"
+                )
+        return errors
+
+    if registry_type in {
+        "experiment_registry",
+        "evidence_registry",
+        "foundational_study_registry",
+        "research_finding_registry",
+        "foundational_study_closeout_registry",
+    }:
+        active_versions: dict[Any, int] = {}
+        for entry in registry["entries"]:
+            if isinstance(entry, Mapping) and entry.get("registry_status") == "ACTIVE":
+                record_id = entry.get("record_id")
+                active_versions[record_id] = active_versions.get(record_id, 0) + 1
+        for record_id, count in active_versions.items():
+            if count > 1:
+                errors.append(
+                    f"{label}: record {record_id!r} has more than one ACTIVE version"
+                )
+
+    if registry_type == "mechanism_registry":
+        active_mechanisms: dict[Any, int] = {}
+        for entry in registry["entries"]:
+            if isinstance(entry, Mapping) and entry.get("entry_status") == "ACTIVE":
+                mechanism_id = entry.get("mechanism_id")
+                active_mechanisms[mechanism_id] = active_mechanisms.get(mechanism_id, 0) + 1
+        for mechanism_id, count in active_mechanisms.items():
+            if count > 1:
+                errors.append(
+                    f"{label}: mechanism {mechanism_id!r} has more than one ACTIVE version"
+                )
 
     if registry_type != "mechanism_registry":
         return errors
@@ -675,6 +1067,286 @@ def validate_registry_entry_semantics(registry: Any, label: str) -> list[str]:
     return errors
 
 
+def _load_registry_if_present(root: Path, relative: str) -> Mapping[str, Any] | None:
+    path = root / relative
+    if not path.is_file():
+        return None
+    try:
+        registry = load_yaml(path)
+    except RepositoryValidationError:
+        return None
+    return registry if isinstance(registry, Mapping) else None
+
+
+def _load_indexed_artifact(
+    root: Path,
+    entry: Mapping[str, Any],
+) -> Mapping[str, Any] | None:
+    path_value = entry.get("artifact_path")
+    if not isinstance(path_value, str):
+        return None
+    path = (root / path_value).resolve()
+    try:
+        path.relative_to(root.resolve())
+    except ValueError:
+        return None
+    if not path.is_file():
+        return None
+    try:
+        artifact = load_json(path)
+    except RepositoryValidationError:
+        return None
+    return artifact if isinstance(artifact, Mapping) else None
+
+
+def _validate_foundational_registry_relationships(root: Path) -> list[str]:
+    """Validate subject, study, finding, and closeout registry relationships."""
+
+    errors: list[str] = []
+    experiment_registry = _load_registry_if_present(root, "registry/experiments.yaml")
+    evidence_registry = _load_registry_if_present(root, "registry/evidence.yaml")
+    subject_registry = _load_registry_if_present(root, "registry/foundational-subjects.yaml")
+    study_registry = _load_registry_if_present(root, "registry/foundational-studies.yaml")
+    finding_registry = _load_registry_if_present(root, "registry/research-findings.yaml")
+    closeout_registry = _load_registry_if_present(
+        root,
+        "registry/foundational-study-closeouts.yaml",
+    )
+
+    subject_entries: dict[tuple[Any, Any], Mapping[str, Any]] = {}
+    if isinstance(subject_registry, Mapping) and isinstance(subject_registry.get("entries"), list):
+        for entry in subject_registry["entries"]:
+            if isinstance(entry, Mapping):
+                subject_entries[(entry.get("subject_id"), entry.get("subject_version"))] = entry
+
+    active_studies: dict[tuple[Any, Any], tuple[Mapping[str, Any], Mapping[str, Any]]] = {}
+    profile_artifacts: dict[tuple[Any, Any, Any], Mapping[str, Any]] = {}
+    if isinstance(study_registry, Mapping) and isinstance(study_registry.get("entries"), list):
+        for index, entry in enumerate(study_registry["entries"]):
+            if not isinstance(entry, Mapping):
+                continue
+            study = _load_indexed_artifact(root, entry)
+            if study is None:
+                continue
+            if entry.get("registry_status") == "ACTIVE":
+                study_key = (entry.get("record_id"), entry.get("record_version"))
+                active_studies[study_key] = (entry, study)
+            if study.get("record_status") != "FROZEN":
+                continue
+
+            subject = study.get("subject")
+            if isinstance(subject, Mapping):
+                subject_key = (subject.get("subject_id"), subject.get("subject_version"))
+                registered_subject = subject_entries.get(subject_key)
+                if registered_subject is None:
+                    errors.append(
+                        f"registry/foundational-studies.yaml:entries/{index}: indexed frozen "
+                        "study subject ID/version is absent from foundational-subjects.yaml"
+                    )
+                else:
+                    for field in (
+                        "target_type",
+                        "subject_kind",
+                        "subject_id",
+                        "subject_series",
+                        "subject_version",
+                        "name",
+                        "definition",
+                        "boundary",
+                    ):
+                        if subject.get(field) != registered_subject.get(field):
+                            errors.append(
+                                f"registry/foundational-studies.yaml:entries/{index}: "
+                                f"registered subject mismatch for {field}"
+                            )
+                    for field in _artifact_binding_differences(
+                        subject.get("definition_artifact"),
+                        registered_subject.get("definition_artifact"),
+                    ):
+                        errors.append(
+                            f"registry/foundational-studies.yaml:entries/{index}: "
+                            f"registered subject definition artifact mismatch for {field}"
+                        )
+
+            profile = study.get("primary_method_profile")
+            if isinstance(profile, Mapping):
+                profile_key = (
+                    profile.get("profile_id"),
+                    profile.get("profile_series"),
+                    profile.get("profile_version"),
+                )
+                profile_artifact = profile.get("profile_definition_artifact")
+                existing_artifact = profile_artifacts.get(profile_key)
+                if isinstance(existing_artifact, Mapping):
+                    differences = _artifact_binding_differences(
+                        profile_artifact,
+                        existing_artifact,
+                    )
+                    if differences:
+                        errors.append(
+                            f"registry/foundational-studies.yaml:entries/{index}: exact "
+                            "method profile identity resolves to divergent definition artifacts"
+                        )
+                elif isinstance(profile_artifact, Mapping):
+                    profile_artifacts[profile_key] = profile_artifact
+
+    active_findings: dict[tuple[Any, Any], tuple[Mapping[str, Any], Mapping[str, Any]]] = {}
+    finding_analysis_keys: dict[tuple[Any, Any, Any], list[int]] = {}
+    if isinstance(finding_registry, Mapping) and isinstance(finding_registry.get("entries"), list):
+        for index, entry in enumerate(finding_registry["entries"]):
+            if not isinstance(entry, Mapping) or entry.get("registry_status") != "ACTIVE":
+                continue
+            finding = _load_indexed_artifact(root, entry)
+            if finding is None:
+                continue
+            finding_key = (entry.get("record_id"), entry.get("record_version"))
+            active_findings[finding_key] = (entry, finding)
+            study_reference = finding.get("study_reference")
+            analysis_reference = finding.get("analysis_reference")
+            if isinstance(study_reference, Mapping) and isinstance(analysis_reference, Mapping):
+                study_key = (
+                    study_reference.get("study_record_id"),
+                    study_reference.get("study_record_version"),
+                )
+                if study_key not in active_studies:
+                    errors.append(
+                        f"registry/research-findings.yaml:entries/{index}: ACTIVE finding "
+                        "must reference an ACTIVE frozen study record"
+                    )
+                else:
+                    study_entry, _study = active_studies[study_key]
+                    for field in _registry_artifact_binding_differences(
+                        study_reference.get("manifest_artifact"),
+                        study_entry,
+                    ):
+                        errors.append(
+                            f"registry/research-findings.yaml:entries/{index}: ACTIVE "
+                            f"finding study index binding mismatch for {field}"
+                        )
+                analysis_key = (
+                    study_reference.get("study_record_id"),
+                    study_reference.get("study_record_version"),
+                    analysis_reference.get("analysis_id"),
+                )
+                finding_analysis_keys.setdefault(analysis_key, []).append(index)
+
+    for analysis_key, indexes in finding_analysis_keys.items():
+        if len(indexes) > 1:
+            errors.append(
+                "registry/research-findings.yaml: more than one ACTIVE finding exists "
+                f"for exact study analysis {analysis_key!r}"
+            )
+
+    active_closeout_studies: dict[tuple[Any, Any], list[int]] = {}
+    if isinstance(closeout_registry, Mapping) and isinstance(closeout_registry.get("entries"), list):
+        for index, entry in enumerate(closeout_registry["entries"]):
+            if not isinstance(entry, Mapping) or entry.get("registry_status") != "ACTIVE":
+                continue
+            closeout = _load_indexed_artifact(root, entry)
+            if closeout is None:
+                continue
+            study_reference = closeout.get("study_reference")
+            if not isinstance(study_reference, Mapping):
+                continue
+            study_key = (
+                study_reference.get("study_record_id"),
+                study_reference.get("study_record_version"),
+            )
+            active_closeout_studies.setdefault(study_key, []).append(index)
+            indexed_study = active_studies.get(study_key)
+            if indexed_study is None:
+                errors.append(
+                    f"registry/foundational-study-closeouts.yaml:entries/{index}: ACTIVE "
+                    "closeout must reference an ACTIVE frozen study record"
+                )
+            else:
+                study_entry, _study = indexed_study
+                differences = _registry_artifact_binding_differences(
+                    study_reference.get("manifest_artifact"),
+                    study_entry,
+                )
+                for field in differences:
+                    errors.append(
+                        f"registry/foundational-study-closeouts.yaml:entries/{index}: "
+                        f"closeout study index binding mismatch for {field}"
+                    )
+
+            dispositions = closeout.get("analysis_dispositions")
+            if not isinstance(dispositions, list):
+                continue
+            for disposition_index, disposition in enumerate(dispositions):
+                if not isinstance(disposition, Mapping):
+                    continue
+                finding_key = (
+                    disposition.get("finding_record_id"),
+                    disposition.get("finding_record_version"),
+                )
+                indexed_finding = active_findings.get(finding_key)
+                if indexed_finding is None:
+                    errors.append(
+                        f"registry/foundational-study-closeouts.yaml:entries/{index}: "
+                        f"analysis_dispositions/{disposition_index} must resolve to an "
+                        "ACTIVE published finding"
+                    )
+                    continue
+                finding_entry, _finding = indexed_finding
+                differences = _registry_artifact_binding_differences(
+                    disposition.get("finding_artifact"),
+                    finding_entry,
+                )
+                for field in differences:
+                    errors.append(
+                        f"registry/foundational-study-closeouts.yaml:entries/{index}: "
+                        f"analysis_dispositions/{disposition_index} finding index binding "
+                        f"mismatch for {field}"
+                    )
+
+    for study_key, indexes in active_closeout_studies.items():
+        if len(indexes) > 1:
+            errors.append(
+                "registry/foundational-study-closeouts.yaml: more than one ACTIVE closeout "
+                f"exists for exact study record {study_key!r}"
+            )
+
+    for relative_directory, registry, registry_label in (
+        ("records/experiments", experiment_registry, "registry/experiments.yaml"),
+        ("records/evidence", evidence_registry, "registry/evidence.yaml"),
+        (
+            "records/foundational/studies",
+            study_registry,
+            "registry/foundational-studies.yaml",
+        ),
+        (
+            "records/foundational/findings",
+            finding_registry,
+            "registry/research-findings.yaml",
+        ),
+        (
+            "records/foundational/closeouts",
+            closeout_registry,
+            "registry/foundational-study-closeouts.yaml",
+        ),
+    ):
+        indexed_paths: set[str] = set()
+        if isinstance(registry, Mapping) and isinstance(registry.get("entries"), list):
+            indexed_paths = {
+                entry.get("artifact_path")
+                for entry in registry["entries"]
+                if isinstance(entry, Mapping) and isinstance(entry.get("artifact_path"), str)
+            }
+        directory = root / relative_directory
+        if not directory.is_dir():
+            continue
+        for artifact_path in sorted(directory.rglob("*.json")):
+            relative_path = artifact_path.relative_to(root).as_posix()
+            if relative_path not in indexed_paths:
+                errors.append(
+                    f"{registry_label}: canonical record is not indexed: {relative_path}"
+                )
+
+    return errors
+
+
 def validate_registries(root: Path) -> list[str]:
     errors: list[str] = []
     try:
@@ -688,6 +1360,8 @@ def validate_registries(root: Path) -> list[str]:
         "evidence_registry": root / "schemas/record-index.schema.json",
         "foundational_study_registry": root / "schemas/foundational-record-index.schema.json",
         "research_finding_registry": root / "schemas/foundational-record-index.schema.json",
+        "foundational_study_closeout_registry": root / "schemas/foundational-record-index.schema.json",
+        "foundational_subject_registry": root / "schemas/foundational-subject-registry.schema.json",
     }
     artifact_schemas: dict[str, Any] = {}
     for schema_path in sorted((root / "schemas").glob("*.schema.json")):
@@ -757,7 +1431,36 @@ def validate_registries(root: Path) -> list[str]:
             "evidence_registry",
             "foundational_study_registry",
             "research_finding_registry",
+            "foundational_study_closeout_registry",
         }:
+            if expected_type == "foundational_subject_registry" and isinstance(
+                registry.get("entries"), list
+            ):
+                for index, entry in enumerate(registry["entries"]):
+                    if not isinstance(entry, Mapping):
+                        continue
+                    artifact = entry.get("definition_artifact")
+                    if not isinstance(artifact, Mapping):
+                        continue
+                    locator = artifact.get("locator")
+                    digest = artifact.get("digest")
+                    if not isinstance(locator, str) or not isinstance(digest, Mapping):
+                        continue
+                    try:
+                        definition_path = _resolve_local_artifact(root, locator)
+                    except RepositoryValidationError as exc:
+                        errors.append(f"{relative}:entries/{index}: {exc}")
+                        continue
+                    if definition_path is None or not definition_path.is_file():
+                        errors.append(
+                            f"{relative}:entries/{index}: missing subject definition: {locator}"
+                        )
+                        continue
+                    actual = hashlib.sha256(definition_path.read_bytes()).hexdigest()
+                    if digest.get("value") != actual:
+                        errors.append(
+                            f"{relative}:entries/{index}: subject definition SHA-256 does not match raw file bytes"
+                        )
             continue
         if not isinstance(registry.get("entries"), list):
             continue
@@ -802,6 +1505,7 @@ def validate_registries(root: Path) -> list[str]:
                 "evidence_registry": "record_id",
                 "foundational_study_registry": "study_record_id",
                 "research_finding_registry": "record_id",
+                "foundational_study_closeout_registry": "record_id",
             }[expected_type]
             if artifact.get(record_id_field) != entry.get("record_id"):
                 errors.append(f"{relative}:entries/{index}: record_id does not match artifact")
@@ -825,6 +1529,14 @@ def validate_registries(root: Path) -> list[str]:
             ):
                 errors.append(
                     f"{relative}:entries/{index}: ACTIVE research finding must be PUBLISHED"
+                )
+            if (
+                expected_type == "foundational_study_closeout_registry"
+                and entry.get("registry_status") == "ACTIVE"
+                and artifact.get("record_status") != "PUBLISHED"
+            ):
+                errors.append(
+                    f"{relative}:entries/{index}: ACTIVE foundational study closeout must be PUBLISHED"
                 )
 
             record_version = artifact.get("record_version")
@@ -861,6 +1573,68 @@ def validate_registries(root: Path) -> list[str]:
                             errors.append(
                                 f"{relative}:entries/{index}: supersession digest does not match prior registry entry"
                             )
+                        if expected_type in {
+                            "foundational_study_registry",
+                            "research_finding_registry",
+                            "foundational_study_closeout_registry",
+                        }:
+                            previous_path_value = previous_entry.get("artifact_path")
+                            if isinstance(previous_path_value, str):
+                                previous_path = (root / previous_path_value).resolve()
+                                if previous_path.is_file():
+                                    try:
+                                        previous_artifact = load_json(previous_path)
+                                    except RepositoryValidationError:
+                                        previous_artifact = None
+                                    if isinstance(previous_artifact, Mapping):
+                                        if expected_type == "foundational_study_registry":
+                                            if previous_artifact.get("study_id") != artifact.get("study_id"):
+                                                errors.append(
+                                                    f"{relative}:entries/{index}: superseding study must retain study_id"
+                                                )
+                                        elif expected_type == "research_finding_registry":
+                                            if previous_artifact.get("finding_id") != artifact.get("finding_id"):
+                                                errors.append(
+                                                    f"{relative}:entries/{index}: superseding finding must retain finding_id"
+                                                )
+                                            previous_study = previous_artifact.get("study_reference")
+                                            current_study = artifact.get("study_reference")
+                                            previous_analysis = previous_artifact.get("analysis_reference")
+                                            current_analysis = artifact.get("analysis_reference")
+                                            if isinstance(previous_study, Mapping) and isinstance(current_study, Mapping):
+                                                for field in (
+                                                    "study_id",
+                                                    "study_record_id",
+                                                    "study_record_version",
+                                                ):
+                                                    if previous_study.get(field) != current_study.get(field):
+                                                        errors.append(
+                                                            f"{relative}:entries/{index}: superseding finding must retain exact study target"
+                                                        )
+                                                        break
+                                            if isinstance(previous_analysis, Mapping) and isinstance(current_analysis, Mapping):
+                                                if previous_analysis.get("analysis_id") != current_analysis.get("analysis_id"):
+                                                    errors.append(
+                                                        f"{relative}:entries/{index}: superseding finding must retain analysis target"
+                                                    )
+                                        else:
+                                            if previous_artifact.get("closeout_id") != artifact.get("closeout_id"):
+                                                errors.append(
+                                                    f"{relative}:entries/{index}: superseding closeout must retain closeout_id"
+                                                )
+                                            previous_study = previous_artifact.get("study_reference")
+                                            current_study = artifact.get("study_reference")
+                                            if isinstance(previous_study, Mapping) and isinstance(current_study, Mapping):
+                                                for field in (
+                                                    "study_id",
+                                                    "study_record_id",
+                                                    "study_record_version",
+                                                ):
+                                                    if previous_study.get(field) != current_study.get(field):
+                                                        errors.append(
+                                                            f"{relative}:entries/{index}: superseding closeout must retain exact study target"
+                                                        )
+                                                        break
 
             schema_id = entry.get("schema_id")
             schema = artifact_schemas.get(schema_id) if isinstance(schema_id, str) else None
@@ -876,6 +1650,7 @@ def validate_registries(root: Path) -> list[str]:
                 errors.append(
                     f"{relative}:entries/{index}:{artifact_path_value}:{location}: {error.message}"
                 )
+    errors.extend(_validate_foundational_registry_relationships(root))
     return errors
 
 
