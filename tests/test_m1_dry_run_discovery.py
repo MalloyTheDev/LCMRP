@@ -58,7 +58,7 @@ class M1DryRunDiscoveryTests(unittest.TestCase):
             errors,
         )
 
-    def test_untyped_support_fixture_is_parsed_but_not_forced_into_a_schema(self) -> None:
+    def test_missing_dry_run_artifact_type_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / "schemas").mkdir()
@@ -71,7 +71,37 @@ class M1DryRunDiscoveryTests(unittest.TestCase):
 
             errors = validate_schemas_and_examples(root)
 
-        self.assertEqual([], errors)
+        self.assertTrue(
+            any(
+                "examples/m1-dry-runs/synthetic/case-set.json" in error
+                and "artifact_type" in error
+                and "<missing>" in error
+                for error in errors
+            ),
+            errors,
+        )
+
+    def test_unsupported_dry_run_artifact_type_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "schemas").mkdir()
+            bundle = root / "examples/m1-dry-runs/synthetic"
+            bundle.mkdir(parents=True)
+            (bundle / "study-manifest.json").write_text(
+                json.dumps({"artifact_type": "foundational_study_manfiest"}),
+                encoding="utf-8",
+            )
+
+            errors = validate_schemas_and_examples(root)
+
+        self.assertTrue(
+            any(
+                "examples/m1-dry-runs/synthetic/study-manifest.json" in error
+                and "foundational_study_manfiest" in error
+                for error in errors
+            ),
+            errors,
+        )
 
 
 if __name__ == "__main__":
