@@ -50,9 +50,9 @@ The work was split into three non-overlapping lanes: taxonomy admission, formal-
 
 ## Fail-closed correction during review
 
-Independent verification initially rejected the integration draft because the two dossier specimens and registry draft used different `schema_id`, name, definition, and boundary values. That was a real cross-binding defect. The originating agents revised only their own dossiers to add an explicit final reviewed binding, and the steward required exact agreement before acceptance. The earlier proposals remain visible as review history but are expressly superseded by each dossier's final binding for this admission.
+The separate verification lane initially rejected the integration draft because the two dossier specimens and registry draft used different `schema_id`, name, definition, and boundary values. That was a real cross-binding defect. The originating agents revised only their own dossiers to add an explicit final reviewed binding, and the steward required exact agreement before acceptance. The earlier proposals remain visible as review history but are expressly superseded by each dossier's final binding for this admission.
 
-This correction is evidence that the review gates detected one integration defect. It is not evidence that every possible registry, scientific, security, or governance defect has been detected.
+This correction documents that the review gates detected one integration defect. It is not research evidence and does not show that every possible registry, scientific, security, or governance defect has been detected.
 
 ## Validation disposition
 
@@ -65,15 +65,14 @@ Publication is conditional on all of the following passing on the exact final pu
 - adversarial mutations for digest substitution, kind swap, path escape, duplicate active lineage, false validation/adoption/completion claims, and accidental study or evidence entries; and
 - GitHub Actions for the exact reviewed commit.
 
-Exact command results, test counts, pull-request identities, commit hashes, and Actions runs will be bound in the publication record below before the final integration pull request is merged.
+Exact command results, test counts, pull-request identities, commit hashes, and completed Actions runs are bound below where they can be known without self-reference. The final integration head and its Actions run are pinned in pull request #12 and in the merge operation's expected-head check: embedding the commit that contains this paragraph, or the workflow run created by that commit, inside the same commit would be self-referential.
 
 ## Publication record
 
-- Taxonomy admission pull request: **TO BE BOUND BEFORE FINAL MERGE**
-- Formal-model admission pull request: **TO BE BOUND BEFORE FINAL MERGE**
-- Subject-admission integration pull request: **TO BE BOUND BEFORE FINAL MERGE**
-- Exact local validation: **TO BE BOUND BEFORE FINAL MERGE**
-- Exact-head GitHub Actions: **TO BE BOUND BEFORE FINAL MERGE**
+- Taxonomy admission: [pull request #10](https://github.com/MalloyTheDev/LCMRP/pull/10), reviewed head `755c88026dce50f469abaa9cdfbc21286ecd64b7`, [Actions run 29867620226](https://github.com/MalloyTheDev/LCMRP/actions/runs/29867620226) passed, squash merge `ac6b805c07931e6526926a3a54f73606c684c715`.
+- Formal-model admission: [pull request #11](https://github.com/MalloyTheDev/LCMRP/pull/11), reviewed head `ca47a3633edefc0a2a93314ceddafbe7bcbb0f65`, [Actions run 29867754846](https://github.com/MalloyTheDev/LCMRP/actions/runs/29867754846) passed, squash merge `a9ed9d988f32a9fa60c6995c8100b9399c787db1`.
+- Subject-admission integration: [pull request #12](https://github.com/MalloyTheDev/LCMRP/pull/12), branch `agent/m1-subject-admission-integration`, base `a9ed9d988f32a9fa60c6995c8100b9399c787db1`, initial reviewed integration commit `9f5cdf84acce85cffebfffddf8afe72cc7b96fcc`. The final binding commit, exact-head Actions run, and merge result are recorded in the pull request and merge history under an expected-head check.
+- Exact local validation on the publication content: repository validator passed; complete unit/adversarial suite passed 130/130; dedicated subject-admission suite passed 12/12; Python compilation passed; `python -m pip check` reported no broken requirements; both candidate SHA-256 values matched the registry.
 
 ## Limitations and open obligations
 
