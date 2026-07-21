@@ -1,9 +1,18 @@
 # Memory Taxonomy and Formal Model
 
 **Layer:** Layer 1 — Foundational Research  
-**M0 status:** Structure established; no taxonomy has been validated or adopted.
+**M1 status:** Launched; candidate definitions and formal obligations are under review. No taxonomy or model has been validated or adopted.
 
 This workstream will define a product-independent vocabulary for memory objects, processes, lifecycle states, authority, provenance, confidence, and uncertainty. Its purpose is to make hypotheses and experiments comparable without allowing a storage product, model vendor, application schema, or biological metaphor to dictate the definitions.
+
+## M1 launch artifacts
+
+- [Prior Art and Competing Taxonomies](M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) maps primary-source inputs, incompatible classification choices, and unresolved research questions. It is a scoped research input, not a supported finding or claim of novelty.
+- [Memory Taxonomy v0.1 Candidate](MEMORY_TAXONOMY_v0.1.md) supplies falsifiable candidate definitions, orthogonal axes, observable distinctions, and boundary cases. It is not an adopted taxonomy.
+- [Formal Memory Object Model v0.1 Candidate](FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) supplies a candidate formal vocabulary, operations, invariants, conjectures, countermodels, and missing proof obligations. It is not a validated formal system.
+- [M1 Foundation](../program/M1_FOUNDATION.md) defines the milestone scope and exit criteria.
+
+No launch artifact is a registered study, published foundational finding, mechanism evidence record, or maturity decision. The production registries remain empty.
 
 ## Scope
 
@@ -63,6 +72,6 @@ A proof sketch is not a proof. An operational definition that is useful for one 
 6. Version the accepted definition; never silently rewrite a term used by a completed experiment.
 7. Record unresolved alternatives and empirical tests needed to choose among them.
 
-## M0 exit condition for this workstream
+## M1 launch condition for this workstream
 
-M0 establishes only the rules and location for future taxonomy work. A later milestone must define and review the initial terms, map their dependencies, and link each operational definition to candidate evaluation tasks before the taxonomy can guide experiments.
+M0 established the rules and location for this work. M1 begins by defining and challenging initial terms, mapping dependencies, comparing alternative organizations, and linking operational distinctions to candidate evaluation tasks. M1 remains in progress until its separately declared exit criteria are met; launch does not authorize the candidates to guide evidence claims as if they were validated.

@@ -1,4 +1,4 @@
-name: Validate M0 research contracts
+name: Validate LCMRP research contracts
 
 on:
   pull_request:

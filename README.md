@@ -14,6 +14,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 
 - [Program Charter v0.1](docs/program/PROGRAM_CHARTER_v0.1.md) defines the mission, constraints, workstreams, and reporting requirements.
 - [M0 Foundation](docs/program/M0_FOUNDATION.md) defines the current milestone, exclusions, exit criteria, and M1 entry gate.
+- [M1 Foundation](docs/program/M1_FOUNDATION.md) defines the active Layer 1 taxonomy and formal-model milestone, its launch scope, and its still-open exit criteria.
 - [Research Layers](docs/program/RESEARCH_LAYERS.md) defines how work is classified and kept product-independent.
 - [Foundational Study Contract v0.1](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md) defines mechanism-free Layer 1 study profiles and finding boundaries.
 - [Evidence Label Normalization](docs/program/EVIDENCE_LABELS.md) maps Charter display labels to their machine-readable tokens without changing their meaning.
@@ -25,6 +26,9 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M0 Foundational Contract Review](reviews/M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md) records the mechanism-free Layer 1 contract judgment and testing results.
 - [M0 Final Adversarial Review](reviews/M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md) records the completion-focused negative tests and technical verdict.
 - [M0 Completion Decision](reviews/M0_COMPLETION_DECISION_2026-07-21.md) records the exit-criterion evidence, governance acceptance, compatibility impact, and post-M0 limits.
+- [M1 Prior-Art and Competing-Taxonomies Map](docs/taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) records scoped research inputs and unresolved alternatives without adopting a taxonomy.
+- [Memory Taxonomy v0.1 Candidate](docs/taxonomy/MEMORY_TAXONOMY_v0.1.md) defines falsifiable candidate terms, axes, distinctions, and edge cases.
+- [Formal Memory Object Model v0.1 Candidate](docs/taxonomy/FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) defines the candidate objects, relations, operations, invariants, and open proof obligations.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -40,9 +44,9 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 ## Current phase
 
-**M0 complete — M1 entry gate open**
+**M1 launched — Layer 1 taxonomy and formal-model work in progress**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 may begin with product-independent memory taxonomy and formal-model work. M0 produced no scientific evidence and does not claim that any memory mechanism is validated or ready for product use.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. These launch artifacts are hypotheses and research inputs: they are not an adopted taxonomy, a validated formal model, a scientific finding, or evidence that any memory mechanism is ready for use.
 
 ## License
 

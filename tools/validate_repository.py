@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the M0 governance and reproducibility foundation.
+"""Validate LCMRP governance, reproducibility, and milestone contracts.
 
 This validator deliberately checks only research-program contracts. It does not
 evaluate memory mechanisms, scientific claims, or product readiness.
@@ -32,11 +32,15 @@ REQUIRED_PATHS = (
     ".github/workflows/validate-m0.yml",
     "docs/program/PROGRAM_CHARTER_v0.1.md",
     "docs/program/M0_FOUNDATION.md",
+    "docs/program/M1_FOUNDATION.md",
     "docs/program/RESEARCH_LAYERS.md",
     "docs/program/FOUNDATIONAL_STUDY_CONTRACT.md",
     "docs/program/EVIDENCE_LABELS.md",
     "docs/program/EVIDENCE_STATES.md",
     "docs/taxonomy/README.md",
+    "docs/taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md",
+    "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
+    "docs/taxonomy/FORMAL_MEMORY_OBJECT_MODEL_v0.1.md",
     "docs/benchmarks/README.md",
     "docs/experiments/README.md",
     "docs/security/README.md",
@@ -82,8 +86,11 @@ REQUIRED_PATHS = (
     "reviews/M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md",
     "reviews/M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md",
     "reviews/M0_COMPLETION_DECISION_2026-07-21.md",
+    "reviews/M1_LAUNCH_ADVERSARIAL_REVIEW_2026-07-21.md",
+    "reviews/M1_LAUNCH_DECISION_2026-07-21.md",
     "tests/README.md",
     "tests/test_foundational_contracts.py",
+    "tests/test_m1_launch.py",
 )
 
 REGISTRIES = {
@@ -1756,13 +1763,16 @@ def main(argv: list[str] | None = None) -> int:
 
     errors = validate_repository(args.root.resolve())
     if errors:
-        print(f"M0 validation failed with {len(errors)} error(s):", file=sys.stderr)
+        print(
+            f"LCMRP repository validation failed with {len(errors)} error(s):",
+            file=sys.stderr,
+        )
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
 
     print(
-        "M0 structural validation passed: required governance, schemas, examples, "
+        "LCMRP repository validation passed: required governance, schemas, examples, "
         "registries, serialized documents, and relative links satisfy the configured checks."
     )
     return 0
