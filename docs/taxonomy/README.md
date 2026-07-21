@@ -12,7 +12,7 @@ This workstream will define a product-independent vocabulary for memory objects,
 - [Formal Memory Object Model v0.1 Candidate](FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) supplies a candidate formal vocabulary, operations, invariants, conjectures, countermodels, and missing proof obligations. It is not a validated formal system.
 - [M1 Foundation](../program/M1_FOUNDATION.md) defines the milestone scope and exit criteria.
 
-No launch artifact is a registered study, published foundational finding, mechanism evidence record, or maturity decision. The foundational-subject registry now identifies the two exact candidate artifacts, but registration is not adoption, validation, a result, or evidence. The foundational-study, research-finding, foundational-closeout, experiment, mechanism, and evidence registries remain empty.
+No launch candidate is a published foundational finding, mechanism evidence record, or maturity decision. The foundational-subject registry identifies the two exact candidate artifacts, and the foundational-study registry now identifies two frozen Layer 1 preregistrations bound to them. Registration and freeze are not adoption, validation, a result, or evidence. The research-finding, foundational-closeout, experiment, mechanism, and evidence registries remain empty.
 
 ## Scope
 
