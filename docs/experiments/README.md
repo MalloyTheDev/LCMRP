@@ -1,7 +1,8 @@
 # Experimental Practice
 
 **Layer rule:** Each experiment declares exactly one applicable layer; cross-layer work uses separate linked artifacts  
-**M0 status:** Workflow and templates established; no experiment has been registered or executed.
+**M0 status:** Workflow and templates established.  
+**M1 status:** Two isolated synthetic contract dry runs exist; no real experiment or foundational study has been registered or executed.
 
 LCMRP experiments test bounded hypotheses under versioned conditions. They do not promote a mechanism automatically, and they retain negative, null, failed, invalid, and aborted outcomes as program evidence.
 
@@ -21,6 +22,8 @@ Use the files in `templates/` as the human-facing starting point. Machine-readab
 Taxonomy, formal-model, concept, and evaluation-construct studies must not invent a dummy mechanism or borrow a mechanism maturity label. Use the parallel [Foundational Study Contract v0.1](../program/FOUNDATIONAL_STUDY_CONTRACT.md), its versioned subject registry, study manifest, atomic research-finding record, and immutable all-analysis closeout.
 
 The v0.1 foundational path supports structural/taxonomy evaluation and formal analysis only. Its findings and closeouts cannot award or change a mechanism evidence profile. Controlled computational/empirical and evidence-synthesis profiles are future, separately versioned extensions; do not represent those methods under an inapplicable v0.1 profile.
+
+The [M1 dry-run examples](../../examples/m1-dry-runs/) exercise both accepted v0.1 paths from local subject registration through closeout. They are constructed, non-evidentiary fixtures with isolated indexes. Passing their schema, digest, graph-binding, and mutation checks establishes contract behavior only; it does not establish scientific validity, registration, replication, or completion of M1.
 
 ## Before execution
 

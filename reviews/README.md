@@ -10,3 +10,5 @@ A repository review is not automatically an independent validation. Each review 
 - [M0 completion decision — 2026-07-21](M0_COMPLETION_DECISION_2026-07-21.md) records the governance acceptance, exit-criterion evidence, compatibility impact, and post-M0 obligations.
 - [M1 launch adversarial review — 2026-07-21](M1_LAUNCH_ADVERSARIAL_REVIEW_2026-07-21.md) tests the initial Layer 1 taxonomy and formal-model package for claim, product-independence, completeness, and boundary failures.
 - [M1 launch decision — 2026-07-21](M1_LAUNCH_DECISION_2026-07-21.md) records the final launch judgment, exact limitations, and still-open M1 exit obligations.
+- [M1 dry-run adversarial review — 2026-07-21](M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) records the independent-in-process mutation tests for the two isolated synthetic contract bundles.
+- [M1 dry-run decision — 2026-07-21](M1_DRY_RUN_DECISION_2026-07-21.md) records the final infrastructure-only acceptance boundary and the M1 work that remains open.

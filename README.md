@@ -29,6 +29,9 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Prior-Art and Competing-Taxonomies Map](docs/taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) records scoped research inputs and unresolved alternatives without adopting a taxonomy.
 - [Memory Taxonomy v0.1 Candidate](docs/taxonomy/MEMORY_TAXONOMY_v0.1.md) defines falsifiable candidate terms, axes, distinctions, and edge cases.
 - [Formal Memory Object Model v0.1 Candidate](docs/taxonomy/FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) defines the candidate objects, relations, operations, invariants, and open proof obligations.
+- [M1 Synthetic Contract Dry Runs](examples/m1-dry-runs/) exercise the foundational subject-to-closeout record graph without registering a real study or producing evidence.
+- [M1 Dry-Run Adversarial Review](reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) records the separate mutation-test verdict and its limits.
+- [M1 Dry-Run Decision](reviews/M1_DRY_RUN_DECISION_2026-07-21.md) records the steward-level acceptance boundary for this M1 increment.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -46,7 +49,7 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 **M1 launched — Layer 1 taxonomy and formal-model work in progress**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. These launch artifacts are hypotheses and research inputs: they are not an adopted taxonomy, a validated formal model, a scientific finding, or evidence that any memory mechanism is ready for use.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has begun with product-independent candidate memory taxonomy and formal object-model artifacts. Two isolated synthetic dry runs now exercise the accepted Layer 1 record paths, but only as non-evidentiary fixtures. The candidates remain hypotheses and research inputs: they are not an adopted taxonomy, a validated formal model, a scientific finding, or evidence that any memory mechanism is ready for use. Production registries remain empty, and M1 remains incomplete.
 
 ## License
 

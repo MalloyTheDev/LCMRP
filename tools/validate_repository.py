@@ -63,6 +63,11 @@ REQUIRED_PATHS = (
     "examples/foundational-subject-registry.example.json",
     "examples/foundational-record-index.example.json",
     "examples/mechanism-registry.example.json",
+    "examples/m1-dry-runs/README.md",
+    "examples/m1-dry-runs/taxonomy/README.md",
+    "examples/m1-dry-runs/taxonomy/verify_bundle.py",
+    "examples/m1-dry-runs/formal-analysis/README.md",
+    "examples/m1-dry-runs/formal-analysis/validate_bundle.py",
     "templates/research-proposal.md",
     "templates/README.md",
     "templates/experiment-protocol.md",
@@ -88,9 +93,13 @@ REQUIRED_PATHS = (
     "reviews/M0_COMPLETION_DECISION_2026-07-21.md",
     "reviews/M1_LAUNCH_ADVERSARIAL_REVIEW_2026-07-21.md",
     "reviews/M1_LAUNCH_DECISION_2026-07-21.md",
+    "reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md",
+    "reviews/M1_DRY_RUN_DECISION_2026-07-21.md",
     "tests/README.md",
     "tests/test_foundational_contracts.py",
     "tests/test_m1_launch.py",
+    "tests/test_m1_dry_run_discovery.py",
+    "tests/test_m1_dry_runs.py",
 )
 
 REGISTRIES = {
@@ -116,6 +125,14 @@ TEMPLATE_INVARIANTS = (
     "Future CorpusStudio Integration Implications",
     "RESEARCH-TO-PRODUCT HYPOTHESIS",
 )
+
+M1_DRY_RUN_SCHEMA_BY_ARTIFACT_TYPE = {
+    "foundational_subject_registry": "schemas/foundational-subject-registry.schema.json",
+    "foundational_study_manifest": "schemas/foundational-study-manifest.schema.json",
+    "research_finding_record": "schemas/research-finding-record.schema.json",
+    "foundational_study_closeout": "schemas/foundational-study-closeout.schema.json",
+    "foundational_record_index": "schemas/foundational-record-index.schema.json",
+}
 
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 PINNED_REQUIREMENT = re.compile(r"^([A-Za-z0-9_.-]+)==([^\s;]+)$")
@@ -293,6 +310,46 @@ def validate_schemas_and_examples(root: Path) -> list[str]:
             load_json(example_path)
         except RepositoryValidationError as exc:
             errors.append(str(exc))
+
+    dry_run_root = root / "examples/m1-dry-runs"
+    if dry_run_root.is_dir():
+        for artifact_path in sorted(dry_run_root.rglob("*.json")):
+            artifact_relative = artifact_path.relative_to(root).as_posix()
+            try:
+                artifact = load_json(artifact_path)
+            except RepositoryValidationError as exc:
+                errors.append(str(exc))
+                continue
+            if not isinstance(artifact, Mapping):
+                continue
+            artifact_type = artifact.get("artifact_type")
+            schema_relative = M1_DRY_RUN_SCHEMA_BY_ARTIFACT_TYPE.get(artifact_type)
+            if schema_relative is None:
+                continue
+            schema = schemas.get(schema_relative)
+            if schema is None:
+                errors.append(
+                    f"{artifact_relative}: required dry-run schema is missing: "
+                    f"{schema_relative}"
+                )
+                continue
+            validator = Draft202012Validator(
+                schema,
+                format_checker=FormatChecker(),
+            )
+            for error in sorted(
+                validator.iter_errors(artifact),
+                key=lambda item: tuple(str(part) for part in item.path),
+            ):
+                location = "/".join(
+                    str(part) for part in error.absolute_path
+                ) or "<root>"
+                errors.append(
+                    f"{artifact_relative}:{location}: {error.message}"
+                )
+            errors.extend(
+                validate_registry_entry_semantics(artifact, artifact_relative)
+            )
 
     return errors
 

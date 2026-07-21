@@ -2,7 +2,7 @@
 
 ## Status
 
-**Milestone state:** Launch candidate  
+**Milestone state:** In progress — synthetic contract dry runs prepared  
 Applicable layer: Layer 1 — Foundational Research  
 **Mechanism evidence label:** Not applicable  
 **Scientific findings asserted:** None  
@@ -39,8 +39,9 @@ The milestone succeeds only if later governed analyses can reject or revise its 
 | [Prior Art and Competing Taxonomies](../taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) | Map candidate definitions to relevant research traditions and expose competing organizations and unresolved transfer assumptions. | Scoped research input; not a systematic evidence synthesis | Novelty, exhaustive coverage, or adoption of a source taxonomy. |
 | Structural/taxonomy study protocol | Preregister an evaluation under the accepted `STRUCTURAL_OR_TAXONOMY_EVALUATION` profile. | Not yet frozen | A scientific result before atomic findings and closeout. |
 | Formal-analysis study protocol | Preregister an evaluation under the accepted `FORMAL_ANALYSIS` profile. | Not yet frozen | A proof or validity result before the declared verification work. |
-| Non-evidentiary contract dry runs | Exercise subject, study, finding, and closeout paths using synthetic inputs before a real study is accepted. | Not started | Registration, replication, or evidence. |
-| Independent boundary review | Assess product independence, claim discipline, ambiguity, and untested obligations. | Not started | Scientific validation by itself. |
+| [Non-evidentiary contract dry runs](../../examples/m1-dry-runs/) | Exercise subject, study, finding, and closeout paths using synthetic inputs before a real study is accepted. | Two isolated fixture families prepared and internally adversarially reviewed | Registration, replication, scientific validity, candidate adoption, or evidence. |
+| [Dry-run adversarial review](../../reviews/M1_DRY_RUN_ADVERSARIAL_REVIEW_2026-07-21.md) | Test digest, identity, lifecycle, closeout, production-registry, and claim-boundary failures. | Conditional internal pass; external reproduction not performed | Independent scientific validation or M1 completion. |
+| Independent boundary review of later substantive findings | Assess product independence, claim discipline, ambiguity, and untested obligations after real governed analyses exist. | Not started | Scientific validation by itself. |
 
 The two candidate documents are inputs to future studies, not outputs of completed studies. If they are registered as foundational subjects, the registry entry and raw-byte digest must identify the exact reviewed versions.
 
@@ -124,7 +125,7 @@ These are objectives to be tested by future frozen studies. They are not results
 
 1. Stabilize candidate artifact identifiers and explicit version boundaries without calling the candidates adopted.
 2. Assemble constructed case sources that include positive, negative, ambiguous, cross-axis, temporal, authority-conflict, provenance-forgery, and deletion-scope cases.
-3. Run the two synthetic, non-evidentiary contract dry runs recommended by the Foundational Study Contract.
+3. Run the two synthetic, non-evidentiary contract dry runs recommended by the Foundational Study Contract. **Prepared and internally reviewed; acceptance remains infrastructure-only.**
 4. Resolve any contract defects by versioned supersession; do not rewrite frozen records.
 5. Register the exact candidate taxonomy and formal model as separate foundational subjects if the dry runs show the record path is usable.
 6. Freeze one structural/taxonomy protocol and one formal-analysis protocol with explicit analyses, baselines, rejection criteria, tools, and immutable artifacts.
@@ -193,6 +194,6 @@ Mathematical entities such as sets, relations, operations, payloads, scores, and
 
 M1 launch artifacts are candidate research inputs. They carry no Charter mechanism evidence label, make no empirical finding, and confer no maturity state. The words “defined,” “modeled,” and “represented” in these documents describe the contents of a proposal, not demonstrated properties of a running system or the world.
 
-Launching M1 creates no foundational-subject, study, finding, closeout, experiment, mechanism, or evidence registry entry. The production registries remain empty until separately reviewed, exact, digest-bound artifacts satisfy the accepted registration contracts.
+The synthetic dry runs create no production foundational-subject, study, finding, closeout, experiment, mechanism, or evidence registry entry. Their bundle-local lifecycle records and indexes are examples only. The production registries remain empty until separately reviewed, exact, digest-bound artifacts satisfy the accepted registration contracts.
 
 Negative, null, contradictory, invalid, and halted analyses are acceptable outcomes and must be retained. Completion of every checkbox would establish only the bounded M1 study dispositions actually reported; it would not establish production readiness or automatic readiness for Layer 2.

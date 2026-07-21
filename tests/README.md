@@ -53,6 +53,20 @@ The M1 launch tests treat the taxonomy, prior-art map, and formal object model a
 
 These are launch-contract checks, not validation of the candidate definitions or their supporting sources.
 
+## M1 dry-run boundary expectations
+
+The M1 dry-run tests treat both bundles as isolated, synthetic program-infrastructure fixtures. They require:
+
+- Draft 2020-12 validation for every schema-backed bundle record and index;
+- exact raw-byte SHA-256, subject, profile, study, finding, and closeout bindings;
+- one terminal atomic record per planned analysis and set-equal closeout ledgers;
+- disjoint bundle identities and one active version per governed record;
+- explicit non-evidentiary markers, no human data, and no mechanism maturity effect;
+- empty production registries; and
+- rejection of digest substitution, cross-bundle identity substitution, missing, duplicate, or extra closeout rows, profile swaps, false completion rhetoric, production-registry contamination, and multiple active versions.
+
+Bundle-native semantic replay and serialization checks supplement these tests. They do not prove taxonomy quality, formal soundness, external validity, independent validation, or M1 completion.
+
 ## Interpretation limits
 
 These checks establish only that encoded cases are accepted or rejected as intended by the current contracts. They do not prove that free-form prose is truthful, that a study is scientifically sound, that identities are controlled by real independent parties, or that every future bypass has been anticipated. Human review and independent scientific validation remain necessary.
