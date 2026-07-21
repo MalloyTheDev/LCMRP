@@ -5,7 +5,7 @@
 - **Decision class:** Program-infrastructure, schema, and registry-semantics acceptance
 - **Applicable layer:** Program infrastructure supporting all three research layers; not a research artifact
 - **Decision:** **ACCEPT M0 — Research Governance and Reproducibility Foundation**
-- **Effective condition:** This decision becomes effective when pull request [#3](https://github.com/MalloyTheDev/LCMRP/pull/3) is merged by the repository steward after the exact pull-request head passes the required GitHub Actions workflow
+- **Effective condition:** Satisfied. Pull request [#4](https://github.com/MalloyTheDev/LCMRP/pull/4) was merged by the repository steward at `0c9165587bdc50325522c7fbbf28e36eefc9eb23` after GitHub Actions [run 29853876546](https://github.com/MalloyTheDev/LCMRP/actions/runs/29853876546) passed on exact head `233b788ae567a8d9df2cf85d1132b66b649a0662`
 - **Scientific evidence produced or awarded:** None
 - **Independent scientific validation:** None claimed
 - **Mechanism maturity effect:** None
@@ -16,7 +16,7 @@ M0 establishes the governed infrastructure needed to begin later LCMRP research.
 
 Under [LCMRP Governance](../GOVERNANCE.md), the public repository owner is the initial program steward and sole maintainer until a superseding appointment is recorded. Schema and registry-history changes may be approved by that steward-maintainer through a public pull request containing rationale, compatibility impact, and validation.
 
-This decision records the final internal judgment prepared through separate research, implementation, and adversarial-testing arms. The work is originating, agent-assisted review and is not independent scientific validation. The steward account's merge of pull request #3 supplies the required public governance acceptance; merge authority does not award a scientific evidence state.
+This decision records the final internal judgment prepared through separate research, implementation, and adversarial-testing arms. The work is originating, agent-assisted review and is not independent scientific validation. The steward account's merge of pull request #4 supplies the required public governance acceptance; merge authority does not award a scientific evidence state.
 
 ## Governance objective
 
@@ -31,7 +31,7 @@ Accept the smallest product-independent foundation that makes the Program Charte
 
 ## Reviewed change
 
-The accepted candidate combines the initial M0 governance foundation with the mechanism-free Layer 1 contract completed in pull request #3. It adds or completes:
+The accepted candidate combines the initial M0 governance foundation, the mechanism-free Layer 1 contract completed in pull request #3, and the terminal-completeness and subject-registry delta accepted in pull request #4. It adds or completes:
 
 - a versioned foundational-subject registry with immutable definition identity and digest-linked supersession;
 - exact subject and method-profile artifact binding across studies and findings;
@@ -73,7 +73,7 @@ The real registries remain empty. Synthetic `9999` examples and fixtures are non
 | Product implications are isolated and labeled. | Pass | Charter and template invariants plus boundary tests. |
 | Duplicate JSON and YAML keys are rejected. | Pass | Parser tests and whole-tree validation. |
 | Relative Markdown links resolve. | Pass | Whole-tree link validation. |
-| Clean-checkout continuous integration passes. | Pass upon effective condition | Required exact-head GitHub Actions run on pull request #3; merge is prohibited by this decision until it passes. |
+| Clean-checkout continuous integration passes. | Pass | GitHub Actions run 29853876546 passed on pull request #4 exact head `233b788ae567a8d9df2cf85d1132b66b649a0662` before steward merge. |
 | Boundary review finds no memory implementation or product architecture in M0. | Pass | Initial boundary review and final adversarial review. |
 
 The final local gate passed structural validation, all **86/86** unit and adversarial tests, Python compilation, and dependency consistency. The [M0 Final Adversarial Review](M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md) records the false accepts found and corrected, test scope, limitations, and conditional technical PASS.
@@ -90,6 +90,6 @@ These limitations constrain what may be registered or claimed; they do not preve
 
 ## Final decision
 
-The candidate satisfies every applicable M0 exit criterion without crossing the Program Charter's product-independence or evidence boundaries. M0 is accepted effective on the conditioned merge of pull request #3. After that merge, the M1 entry gate is open for product-independent memory-taxonomy and formal-model work.
+The candidate satisfies every applicable M0 exit criterion without crossing the Program Charter's product-independence or evidence boundaries. The condition was satisfied by the exact-head validation and steward merge of pull request #4 on 2026-07-21. M0 is accepted, and the M1 entry gate is open for product-independent memory-taxonomy and formal-model work.
 
 This decision does not authorize a memory implementation, product integration, maturity promotion, or production claim.
