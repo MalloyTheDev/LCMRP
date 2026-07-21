@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_closeout",
+  "record_id": "LCMRP-FCLOSEREC-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+  "record_version": 1,
+  "immutable_record_notice": "Once published, this closeout is immutable. Corrections or retractions require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": []
+  },
+  "record_status": "PUBLISHED",
+  "closeout_id": "LCMRP-FCLOSE-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_reference": {
+    "study_id": "LCMRP-FSTUDY-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "study_record_id": "LCMRP-FSTUDYREC-9901-SYNTHETIC-DRY-RUN-TAXONOMY",
+    "study_record_version": 1,
+    "manifest_artifact": {
+      "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-STUDY-MANIFEST",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "examples/m1-dry-runs/taxonomy/records/foundational/studies/study-manifest.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "20ec7eab3376f3b1a72c0c623a0688595a03873d60594a03efa66ee1837b56b4",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "completion_scope": "EXACT_STUDY_RECORD_VERSION",
+  "completeness_assertion": "EXACTLY_ONE_PUBLISHED_FINDING_PER_PLANNED_ANALYSIS",
+  "analysis_dispositions": [
+    {
+      "analysis_id": "ANALYSIS-SYNTHETIC-ORG-COMPARISON",
+      "analysis_mode": "CONFIRMATORY",
+      "finding_id": "LCMRP-FIND-9901-SYNTHETIC-DRY-RUN-ORG-COMPARISON",
+      "finding_record_id": "LCMRP-FINDREC-9901-SYNTHETIC-DRY-RUN-ORG-COMPARISON",
+      "finding_record_version": 1,
+      "terminal_disposition": "COMPLETED",
+      "finding_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-ORG-COMPARISON-FINDING",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/records/foundational/findings/organization-comparison-finding.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "bbfff193d4a5d18cd38d67d2839f58a99f3515e8d960e7b995e0596c82b2d989",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    },
+    {
+      "analysis_id": "ANALYSIS-SYNTHETIC-BOUNDARY-ADJUDICATION",
+      "analysis_mode": "EXPLORATORY",
+      "finding_id": "LCMRP-FIND-9901-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN",
+      "finding_record_id": "LCMRP-FINDREC-9901-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN",
+      "finding_record_version": 1,
+      "terminal_disposition": "NOT_RUN",
+      "finding_artifact": {
+        "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN-FINDING",
+        "artifact_version": 1,
+        "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+        "locator": "examples/m1-dry-runs/taxonomy/records/foundational/findings/boundary-adjudication-disposition.json",
+        "digest": {
+          "algorithm": "SHA-256",
+          "status": "VERIFIED",
+          "value": "d2cc228fe58ab8ffdafe11c4aace28e3597424c27444697d301a7eea4a14b7f9",
+          "scope": "RAW_FILE_BYTES"
+        },
+        "media_type": "application/json"
+      }
+    }
+  ],
+  "closeout_report_artifact": {
+    "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-CLOSEOUT-REPORT",
+    "artifact_version": 1,
+    "schema_id": "urn:lcmrp:synthetic-dry-run:closeout-report:0.1.0",
+    "locator": "examples/m1-dry-runs/taxonomy/reports/closeout-report.md",
+    "digest": {
+      "algorithm": "SHA-256",
+      "status": "VERIFIED",
+      "value": "19662cc2ac115a788e62fd6b2b7f499997a6195544684ceac446ff2f1fa8e3a1",
+      "scope": "RAW_FILE_BYTES"
+    },
+    "media_type": "text/markdown"
+  },
+  "closeout_authority": "LCMRP-SYNTHETIC-DRY-RUN-FIXTURE-AUTHORITY",
+  "closed_at": "2026-07-21T13:00:00Z",
+  "limitations": [
+    "SYNTHETIC-DRY-RUN NON-EVIDENTIARY: closeout completeness is a serialization invariant, not a scientific conclusion.",
+    "The COMPLETED analysis is tautological fixture coverage and its claim assessment remains INCONCLUSIVE.",
+    "The NOT_RUN analysis supplies no observation or independent validation.",
+    "No mechanism, vendor, participant data, adoption decision, novelty claim, or evidence label is involved."
+  ],
+  "mechanism_maturity_effect": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "awarded_mechanism_evidence_labels": [],
+    "rationale": "This closeout asserts only that the synthetic exact-study ledger has one published terminal record per planned analysis."
+  },
+  "created_at": "2026-07-21T13:00:00Z"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_record_index",
+  "registry_type": "research_finding_registry",
+  "entries": [
+    {
+      "record_id": "LCMRP-FINDREC-9901-SYNTHETIC-DRY-RUN-ORG-COMPARISON",
+      "record_version": 1,
+      "artifact_type": "research_finding_record",
+      "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+      "artifact_path": "records/foundational/findings/organization-comparison-finding.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "bbfff193d4a5d18cd38d67d2839f58a99f3515e8d960e7b995e0596c82b2d989",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T12:40:00Z"
+    },
+    {
+      "record_id": "LCMRP-FINDREC-9901-SYNTHETIC-DRY-RUN-BOUNDARY-NOT-RUN",
+      "record_version": 1,
+      "artifact_type": "research_finding_record",
+      "schema_id": "urn:lcmrp:schema:research-finding-record:0.1.0",
+      "artifact_path": "records/foundational/findings/boundary-adjudication-disposition.json",
+      "artifact_digest": {
+        "algorithm": "SHA-256",
+        "value": "d2cc228fe58ab8ffdafe11c4aace28e3597424c27444697d301a7eea4a14b7f9",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "registry_status": "ACTIVE",
+      "registered_at": "2026-07-21T12:40:00Z"
+    }
+  ]
+}

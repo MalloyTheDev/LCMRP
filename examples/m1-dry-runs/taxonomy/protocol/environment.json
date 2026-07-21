@@ -1,0 +1,10 @@
+{
+  "fixture_notice": "SYNTHETIC-DRY-RUN NON-EVIDENTIARY: reproducibility environment declaration.",
+  "artifact_id": "ARTIFACT-SYNTHETIC-DRY-RUN-ENVIRONMENT",
+  "artifact_version": 1,
+  "runtime": "CPython 3.12.13",
+  "schema_validator": "jsonschema 4.25.1",
+  "schema_draft": "2020-12",
+  "execution_model": "Deterministic local file parsing and exact string/set comparison; no network, model, embedding, database, or implementation vendor is selected.",
+  "randomness": "None"
+}
