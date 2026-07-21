@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lcmrp:schema:foundational-record-index:0.1.0",
+  "title": "LCMRP Foundational Study and Finding Record Index",
+  "description": "Append-oriented index for immutable foundational-study manifests and mechanism-independent research-finding records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "registry_type", "entries"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "artifact_type": { "const": "foundational_record_index" },
+    "registry_type": { "enum": ["foundational_study_registry", "research_finding_registry"] },
+    "entries": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/recordReference" }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "registry_type": { "const": "foundational_study_registry" } },
+        "required": ["registry_type"]
+      },
+      "then": {
+        "properties": {
+          "entries": {
+            "items": {
+              "allOf": [
+                { "$ref": "#/$defs/recordReference" },
+                {
+                  "properties": {
+                    "record_id": {
+                      "pattern": "^LCMRP-FSTUDYREC-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+                    },
+                    "artifact_type": { "const": "foundational_study_manifest" },
+                    "schema_id": { "const": "urn:lcmrp:schema:foundational-study-manifest:0.1.0" },
+                    "artifact_path": {
+                      "pattern": "^records/foundational/studies/[A-Za-z0-9._/-]+\\.json$"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "entries": {
+            "items": {
+              "allOf": [
+                { "$ref": "#/$defs/recordReference" },
+                {
+                  "properties": {
+                    "record_id": {
+                      "pattern": "^LCMRP-FINDREC-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+                    },
+                    "artifact_type": { "const": "research_finding_record" },
+                    "schema_id": { "const": "urn:lcmrp:schema:research-finding-record:0.1.0" },
+                    "artifact_path": {
+                      "pattern": "^records/foundational/findings/[A-Za-z0-9._/-]+\\.json$"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "recordReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_version",
+        "artifact_type",
+        "schema_id",
+        "artifact_path",
+        "artifact_digest",
+        "registry_status",
+        "registered_at"
+      ],
+      "properties": {
+        "record_id": { "type": "string", "minLength": 1 },
+        "record_version": { "type": "integer", "minimum": 1 },
+        "artifact_type": { "enum": ["foundational_study_manifest", "research_finding_record"] },
+        "schema_id": { "type": "string", "minLength": 1 },
+        "artifact_path": { "type": "string", "minLength": 1 },
+        "artifact_digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value", "scope"],
+          "properties": {
+            "algorithm": { "const": "SHA-256" },
+            "value": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "scope": { "const": "RAW_FILE_BYTES" }
+          }
+        },
+        "registry_status": { "enum": ["ACTIVE", "SUPERSEDED", "RETRACTED"] },
+        "registered_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

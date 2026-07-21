@@ -9,6 +9,8 @@
 
 This review evaluates whether the proposed M0 repository foundation enforces the Program Charter's boundaries and prevents unsupported evidence claims. It does not evaluate a memory mechanism, reproduce an experiment, award an evidence label, or establish product readiness.
 
+> **Follow-up — 2026-07-21:** The mechanism-free foundational-study gap identified below was addressed by a parallel draft contract and reviewed in [M0 Foundational Contract Review](M0_FOUNDATIONAL_CONTRACT_REVIEW_2026-07-21.md). That follow-up retains additional blockers before M0 completion or real record registration; it does not retroactively change this review's original scope.
+
 ## Scope
 
 The review covers the candidate M0 charter, governance policies, research-layer and evidence-label rules, JSON Schemas, synthetic examples, empty registries, templates, repository validator, tests, and continuous-integration workflow.

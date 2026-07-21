@@ -29,7 +29,7 @@ Layer 1 and Layer 2 work must remain product-independent. CorpusStudio-specific 
 
 If CorpusStudio is discussed, isolate the discussion under **Future CorpusStudio Integration Implications**, place **RESEARCH-TO-PRODUCT HYPOTHESIS** immediately below the heading, and identify the validation still missing. Omit the section when there is no relevant implication.
 
-## Define the claim before the mechanism
+## Define the claim before the mechanism or study contract
 
 A mechanism contribution should make the following reviewable:
 
@@ -42,6 +42,8 @@ A mechanism contribution should make the following reviewable:
 7. Known limitations and unresolved obligations
 
 Do not describe a candidate contribution as novel or production-ready without the evidence required to support that statement.
+
+A mechanism-free Layer 1 taxonomy, formal-model, concept, or evaluation-construct study must use the [Foundational Study Contract](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md). Do not create a placeholder mechanism merely to satisfy the mechanism experiment schema, and do not apply a Charter mechanism maturity label to a foundational finding.
 
 ## Reproducibility requirements
 

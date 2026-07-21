@@ -16,6 +16,12 @@ LCMRP experiments test bounded hypotheses under versioned conditions. They do no
 
 Use the files in `templates/` as the human-facing starting point. Machine-readable schemas and registry entries supplement these documents; neither form replaces the other.
 
+## Mechanism-free foundational studies
+
+Taxonomy, formal-model, concept, and evaluation-construct studies must not invent a dummy mechanism or borrow a mechanism maturity label. Use the parallel [Foundational Study Contract v0.1](../program/FOUNDATIONAL_STUDY_CONTRACT.md), its study manifest, and its atomic research-finding record.
+
+The v0.1 foundational path supports structural/taxonomy evaluation and formal analysis only. Its findings cannot award or change a mechanism evidence profile. Controlled computational/empirical and evidence-synthesis profiles remain open contract work.
+
 ## Before execution
 
 An experiment is ready to run only when:

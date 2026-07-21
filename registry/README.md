@@ -13,3 +13,7 @@ The M0 registries intentionally contain no mechanism or experiment claims.
 The digest is external to the referenced record, so it is not self-referential. Any byte-level change creates a different digest. A semantic correction to a frozen or published record requires a new record version and index entry rather than rewriting the registered file.
 
 Repository validation checks the entry shape, safe path resolution, file existence, raw-byte digest, declared artifact identity, and conformance to the declared schema.
+
+## Foundational studies and findings
+
+[`foundational-record-index.schema.json`](../schemas/foundational-record-index.schema.json) defines the append-oriented indexes in `foundational-studies.yaml` and `research-findings.yaml`. Both indexes are empty: M0 registers no real study or finding. Exact finding-to-study subject fields are checked, but standalone subject-definition registry resolution remains an open obligation documented in the [Foundational Study Contract](../docs/program/FOUNDATIONAL_STUDY_CONTRACT.md).

@@ -46,6 +46,8 @@ Use the repository schemas and templates for substantive work. An experiment sho
 
 Raw results are immutable evidence inputs. Corrections or reinterpretations should create a new record linked to the superseded record rather than rewriting history.
 
+Mechanism-free Layer 1 taxonomy, formal-model, concept, and evaluation-construct studies use the parallel [Foundational Study Contract](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md). Do not invent a dummy mechanism, make `mechanism_versions` optional, or assign a Charter mechanism evidence label to a foundational research finding.
+
 ## Implementation boundaries
 
 - Keep reference implementations replaceable at storage, retrieval, model, and embedding boundaries where practical.

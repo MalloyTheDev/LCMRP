@@ -446,5 +446,60 @@ class LayerBoundaryGateTests(unittest.TestCase):
         self.assertTrue(errors_for("mechanism-registry", registry))
 
 
+class ExperimentManifestIntegrityTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.example = load_json("examples/experiment-manifest.example.json")
+
+    def test_draft_preregistration_cannot_claim_result_access(self) -> None:
+        manifest = copy.deepcopy(self.example)
+        manifest["preregistration"]["result_access_status"] = "STARTED"
+        manifest["preregistration"]["result_access_started_at"] = (
+            "2026-07-20T02:00:00Z"
+        )
+        self.assertTrue(errors_for("experiment-manifest", manifest))
+
+    def test_user_study_source_kind_is_not_available_without_governance(self) -> None:
+        manifest = copy.deepcopy(self.example)
+        manifest["datasets_or_scenarios"][0]["kind"] = "USER_STUDY"
+        self.assertTrue(errors_for("experiment-manifest", manifest))
+
+    def test_post_result_amendment_requires_disclosure_and_exploratory_mode(self) -> None:
+        manifest = copy.deepcopy(self.example)
+        manifest["record_version"] = 2
+        manifest["amendment"] = {
+            "kind": "POST_RESULT_AMENDMENT",
+            "supersedes_record_version": 1,
+            "supersedes_artifact_digest": {
+                "algorithm": "sha256",
+                "status": "RECORDED",
+                "value": "a" * 64,
+            },
+            "rationale": "Synthetic post-result mutation used only for schema testing.",
+            "changed_fields": ["analysis_plan"],
+            "result_accessed_before_amendment": True,
+            "post_result_change_disclosure": None,
+        }
+        manifest["preregistration"] = {
+            "status": "FROZEN",
+            "frozen_at": "2026-07-20T01:00:00Z",
+            "external_registration_envelope": {
+                "status": "REGISTERED",
+                "envelope_id": "SYNTHETIC-ENVELOPE",
+                "locator": "urn:lcmrp:test:registration-envelope",
+            },
+            "result_access_status": "STARTED",
+            "result_access_started_at": "2026-07-20T02:00:00Z",
+        }
+
+        self.assertTrue(errors_for("experiment-manifest", manifest))
+
+        manifest["analysis_mode"] = "EXPLORATORY"
+        manifest["amendment"]["post_result_change_disclosure"] = (
+            "Results were accessed before this synthetic analysis-plan change; "
+            "the amended analysis is exploratory."
+        )
+        self.assertEqual([], errors_for("experiment-manifest", manifest))
+
+
 if __name__ == "__main__":
     unittest.main()
