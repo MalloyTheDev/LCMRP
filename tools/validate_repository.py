@@ -147,6 +147,15 @@ TEMPLATE_INVARIANTS = (
     "RESEARCH-TO-PRODUCT HYPOTHESIS",
 )
 
+M1_DRY_RUN_UNTYPED_SUPPORT_DIRECTORIES = {
+    "artifacts",
+    "cases",
+    "definitions",
+    "outputs",
+    "protocol",
+    "reports",
+}
+
 M1_DRY_RUN_SCHEMA_BY_ARTIFACT_TYPE = {
     "foundational_subject_registry": "schemas/foundational-subject-registry.schema.json",
     "foundational_study_manifest": "schemas/foundational-study-manifest.schema.json",
@@ -346,6 +355,18 @@ def validate_schemas_and_examples(root: Path) -> list[str]:
             artifact_type = artifact.get("artifact_type")
             schema_relative = M1_DRY_RUN_SCHEMA_BY_ARTIFACT_TYPE.get(artifact_type)
             if schema_relative is None:
+                if "artifact_type" not in artifact and any(
+                    part in M1_DRY_RUN_UNTYPED_SUPPORT_DIRECTORIES
+                    for part in artifact_path.relative_to(dry_run_root).parts[:-1]
+                ):
+                    continue
+                unsupported_value = (
+                    repr(artifact_type) if "artifact_type" in artifact else "<missing>"
+                )
+                errors.append(
+                    f"{artifact_relative}: unsupported dry-run artifact_type: "
+                    f"{unsupported_value}"
+                )
                 continue
             schema = schemas.get(schema_relative)
             if schema is None:
