@@ -66,7 +66,7 @@ seven planned formal result paths remained absent before and after the probe.
 | `reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md` | Taxonomy non-case readiness review | `8ba23de9f72fc2bf33f1402f87d14479e4b9c0212ff3792a58060df6c82101ce` |
 | `studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json` | Formal guard-preflight attestation | `c3dcbf87d8c23a28ebbe377c3fe2300b9110bf17136c09f1855a8be380f62fc5` |
 | `studies/foundational/m1-formal-model-v1/execution/runtime-provenance.json` | Formal no-run runtime provenance | `2063dee7d84f800310536d379985833aa2d64e3d612658cb18e2ddf812fba6cf` |
-| `tests/test_m1_study_execution.py` | Independent execution/adversarial gate | `3d08d79781e82bf73a39e01e2cd5094bda2f19ae98255f59fa2f19f27d94420d` |
+| `tests/test_m1_study_execution.py` | Independent execution/adversarial gate | `277cc507ec449e6c645cb04020f57b6b04b7dd1ebad7c2de5bbd1d8a75a6e67e` |
 
 The frozen taxonomy and formal manifest digests remain respectively
 `01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139`
@@ -157,6 +157,17 @@ shared checkout and therefore did not independently reconstruct the claimed
 170-entry public tree or repeat the remote lookup. Those snapshot claims remain
 formal-lane provenance, not independently authenticated facts in this review.
 
+The first PR #18 clean-checkout Actions run, `29874337035`, correctly failed
+because the initial verification test compared the historical preflight's
+recorded Python executable and kernel release to the unrelated current CI
+runner. That was a portability defect in the verifier, not evidence that the
+historical record or frozen study had changed. The corrected gate requires the
+preflight and runtime-provenance records to agree exactly, binds their Python
+implementation/version and combined `OS kernel machine` to the frozen formal
+environment artifact, and requires a nonempty absolute executable path. It
+never compares historical provenance to the machine running the test. Run
+`29874337035` failed and is not cited as a passing workflow.
+
 ### Independently reproduced guard failure
 
 An independent YAML parse resolves exactly one active formal study entry and
@@ -241,6 +252,7 @@ human declaration is correct.
 | Root repository-wide suite before the latest ten taxonomy/formal gates | **158/158 passed** |
 | Final repository validator | Passed |
 | Final repository-wide rerun including all 24 execution gates | **168/168 passed in 2.946 seconds** |
+| PR #18 clean-checkout Actions run `29874337035` | **Failed; exposed and motivated the historical-runtime portability correction** |
 
 The verification lane intentionally did not run the repository-wide suite
 after the explicit no-taxonomy-case-access instruction because legacy freeze
@@ -282,6 +294,10 @@ time-bounded observation from that lane, not a permanent identity claim.
 11. Mutable milestone-status navigation can change during integration; only the
     frozen protocol's declared digest is stable, while current bytes must be
     recomputed rather than pinned by the execution test.
+12. Historical execution provenance must be checked against its paired record
+    and frozen environment, not against whichever local or CI host later runs
+    the verifier. The failed PR #18 run exposed this now-corrected portability
+    error; a new exact-head CI pass remains required.
 
 ## Recommended next governed increments
 
