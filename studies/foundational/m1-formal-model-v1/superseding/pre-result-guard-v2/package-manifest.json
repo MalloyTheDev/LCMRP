@@ -1,0 +1,42 @@
+{
+  "artifact_type": "foundational_study_pre_result_superseding_package_manifest",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "package_id": "M1-FMO-PRE-RESULT-GUARD-V2",
+  "study_id": "LCMRP-FSTUDY-0002-M1-FORMAL-MODEL",
+  "study_record_id": "LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL",
+  "package_status": "PREFLIGHT_PASSED_ANALYSIS_NOT_RUN",
+  "supersedes": {
+    "kind": "PRE_RESULT_EXECUTION_GUARD_CORRECTION",
+    "blocked_attestation_locator": "studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json",
+    "blocked_runtime_provenance_locator": "studies/foundational/m1-formal-model-v1/execution/runtime-provenance.json",
+    "blocker_id": "FMO-EXEC-PREFLIGHT-BLOCK-001",
+    "root_cause_field": "blocking_condition.root_cause"
+  },
+  "artifacts": [
+    {
+      "role": "corrected_analyzer_guard",
+      "locator": "studies/foundational/m1-formal-model-v1/superseding/pre-result-guard-v2/analyze_fmo_kernel.py",
+      "raw_byte_sha256": "95356a2ed130cc815899fe0562757041b89b8ae39e1d774cd75ca50f286c50a5"
+    },
+    {
+      "role": "updated_tool_provenance",
+      "locator": "studies/foundational/m1-formal-model-v1/superseding/pre-result-guard-v2/artifacts/tool-provenance.json",
+      "raw_byte_sha256": "272c33983e35c8a466bf5aea6c6abb451341a1400e3aea8e70f3ee5ce53e8f09"
+    },
+    {
+      "role": "governed_preflight_attestation",
+      "locator": "studies/foundational/m1-formal-model-v1/superseding/pre-result-guard-v2/execution/preflight-attestation.json",
+      "raw_byte_sha256": "6abc0e8ecb789a540eaef86a68a4e7763ee352cc7036c584a97a28b456897e2f"
+    }
+  ],
+  "execution_boundary": {
+    "preflight_only": true,
+    "analyzer_main_called": false,
+    "run_kernel_called": false,
+    "result_artifacts_created": 0,
+    "interpret_outputs": false,
+    "publish_findings": false,
+    "mark_m1_complete": false
+  }
+}
