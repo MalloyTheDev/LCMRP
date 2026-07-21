@@ -1,0 +1,139 @@
+{
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-NEGATIVE-CASES",
+  "artifact_version": 1,
+  "artifact_status": "DRAFT_FREEZE_INTENT",
+  "source_id": "SOURCE-M1-TAXONOMY-NEGATIVE",
+  "source_role": "NEGATIVE_CASES",
+  "case_set_notice": "Synthetic constraint-challenge constructions, not observations, results, evidence, or expected dispositions. A negative source role identifies deliberately missing, conflicting, or forbidden structure; it does not predetermine whether the candidate detects it.",
+  "subject_binding": {
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+  },
+  "construction_rule": "Before freeze, construct one bounded challenge for each profile integrity constraint. Do not attach an expected code. After freeze, retain every construction even if it exposes a method or subject defect.",
+  "human_data_status": "No human subjects or participant data; all content is fictional.",
+  "blind_packet_rule": "Primary adjudicators receive only case_id, facts, and evaluation_prompt under a pseudonym; source_role, selection_rationale, and stress_targets are withheld until initial ledgers are locked.",
+  "cases": [
+    {
+      "case_id": "CASE-NEG-001-SUBJECT-SUBSTITUTION",
+      "facts": [
+        "An evaluator packet names the registered subject ID and version.",
+        "The supplied definition bytes hash to 64 lowercase hexadecimal characters different from the registered raw-byte digest."
+      ],
+      "evaluation_prompt": "Code whether the study may proceed as evaluation of the declared exact subject.",
+      "stress_targets": ["IC-01-EXACT-SUBJECT"],
+      "selection_rationale": "Identity text matches while artifact identity does not."
+    },
+    {
+      "case_id": "CASE-NEG-002-VENDOR-DEPENDENT-CATEGORY",
+      "facts": [
+        "A proposed interpretation classifies an object as episodic only if it resides in a named vendor's vector database.",
+        "No candidate definition mentions that vendor or storage class."
+      ],
+      "evaluation_prompt": "Code the interpretation against the product-independence constraint.",
+      "stress_targets": ["IC-02-NO-IMPLEMENTATION-ASSUMPTION"],
+      "selection_rationale": "The classification introduces a named implementation dependency."
+    },
+    {
+      "case_id": "CASE-NEG-003-UNARGUED-EXHAUSTIVENESS",
+      "facts": [
+        "A coding rule requires every admitted object to receive exactly one label from the entire candidate term register.",
+        "The rule provides no coverage argument and does not permit none, multiple, or ambiguous values."
+      ],
+      "evaluation_prompt": "Code whether the rule is licensed by the exact candidate taxonomy.",
+      "stress_targets": ["IC-03-NO-EXHAUSTIVENESS-INFERENCE", "IC-04-NO-FORCED-CLASSIFICATION"],
+      "selection_rationale": "The construction turns a candidate vocabulary into an exhaustive partition without support."
+    },
+    {
+      "case_id": "CASE-NEG-004-FORCED-ROLE-WITHOUT-CONTEXT",
+      "facts": [
+        "One object is assigned EPISODIC and SEMANTIC labels.",
+        "Task or query, actor, purpose, and time are all omitted, and the record forbids an ambiguous or unknown code."
+      ],
+      "evaluation_prompt": "Code whether the candidate organizations can accept this as a reproducible classification without additional facts.",
+      "stress_targets": ["IC-04-NO-FORCED-CLASSIFICATION", "ORGANIZATION-R"],
+      "selection_rationale": "Context required by one organization is absent and forced classification is demanded."
+    },
+    {
+      "case_id": "CASE-NEG-005-ADMISSION-MAKES-TRUE",
+      "facts": [
+        "A rule states that every policy-admitted claim is true, relevant, consented to, and authorized for every actor.",
+        "The rule records no separate epistemic, relevance, consent, or authority assessment."
+      ],
+      "evaluation_prompt": "Code whether the implication is licensed by the candidate definitions.",
+      "stress_targets": ["IC-05-ADMISSION-NONENTAILMENT"],
+      "selection_rationale": "Several explicitly separated properties are inferred from admission alone."
+    },
+    {
+      "case_id": "CASE-NEG-006-RETRIEVAL-MAKES-USEFUL",
+      "facts": [
+        "A query returns object O6.",
+        "A rule marks O6 used, relevant, correct, and eligible for every other actor solely because it was returned."
+      ],
+      "evaluation_prompt": "Code whether the inferences follow from candidate retrieval.",
+      "stress_targets": ["IC-06-RETRIEVAL-NONENTAILMENT"],
+      "selection_rationale": "Retrieval is the only stated premise for four additional properties."
+    },
+    {
+      "case_id": "CASE-NEG-007-CONNECTED-MEANS-AUTHENTIC",
+      "facts": [
+        "A provenance graph is connected from a named source to object O7.",
+        "The graph contains an attributed edge known within the construction to be forged, but a rule declares the trace complete and authentic because it is connected."
+      ],
+      "evaluation_prompt": "Code whether connectivity supports the declared authenticity conclusion under the candidate.",
+      "stress_targets": ["IC-07-PROVENANCE-NONENTAILMENT"],
+      "selection_rationale": "Structural connectedness is made the sole authenticity criterion."
+    },
+    {
+      "case_id": "CASE-NEG-008-CONFIDENCE-MAKES-CORRECT",
+      "facts": [
+        "An assessor records confidence 1.0 for claim C8 on a declared scale.",
+        "A rule asserts that C8 must therefore be correct and calibrated without any separate evaluation."
+      ],
+      "evaluation_prompt": "Code whether the conclusion follows from the candidate confidence assessment.",
+      "stress_targets": ["IC-08-CONFIDENCE-NONENTAILMENT"],
+      "selection_rationale": "A contextual assessment is treated as truth and calibration evidence."
+    },
+    {
+      "case_id": "CASE-NEG-009-UNIVERSAL-ACTOR-AUTHORITY",
+      "facts": [
+        "Actor A9 has one time-bounded grant to archive object O9 for purpose P9.",
+        "A policy interpreter extends that grant to every operation, object, purpose, and future time because the actor ID is unchanged."
+      ],
+      "evaluation_prompt": "Code whether the authority extension is licensed by the candidate grant definition.",
+      "stress_targets": ["IC-09-SCOPED-AUTHORITY"],
+      "selection_rationale": "The construction collapses scoped authority into identity."
+    },
+    {
+      "case_id": "CASE-NEG-010-SILENT-MUTATION",
+      "facts": [
+        "Admitted exact version V10 is rewritten in place with different content.",
+        "No successor identity, predecessor link, change description, authority record, or original bytes remain."
+      ],
+      "evaluation_prompt": "Code whether the rewrite can satisfy the candidate update or continuity commitments.",
+      "stress_targets": ["IC-10-VERSIONED-CHANGE"],
+      "selection_rationale": "All declared versioned-change records are absent."
+    },
+    {
+      "case_id": "CASE-NEG-011-PARTIAL-DELETION-SUCCESS",
+      "facts": [
+        "A deletion operation removes an active-index entry and reports universal success.",
+        "A derivative summary, cache, backup, and reconstructable audit residue remain inside the declared governed boundary, and no exception or verification record names them."
+      ],
+      "evaluation_prompt": "Code whether the success claim is representable under the candidate deletion scope without narrowing or failure information.",
+      "stress_targets": ["IC-11-DELETION-SCOPE", "CQ-10-DELETION-CLOSURE"],
+      "selection_rationale": "The outcome claim exceeds the described operation and closure."
+    },
+    {
+      "case_id": "CASE-NEG-012-BIOLOGICAL-EQUIVALENCE",
+      "facts": [
+        "A persistent timestamped record is labeled episodic.",
+        "The label alone is used to assert shared neural substrate, subjective recollection, and causal equivalence with human episodic memory."
+      ],
+      "evaluation_prompt": "Code whether the biological conclusions are licensed by the candidate vocabulary.",
+      "stress_targets": ["IC-12-BIOLOGICAL-BOUNDARY"],
+      "selection_rationale": "A vocabulary label is the only stated premise for biological equivalence."
+    }
+  ],
+  "interpretation_boundary": "Challenge constructions test whether a boundary is expressible. Detecting a challenge does not validate the taxonomy; failing to detect one may challenge the subject, the method, or both."
+}
