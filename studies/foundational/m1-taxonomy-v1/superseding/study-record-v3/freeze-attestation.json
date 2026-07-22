@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_study_freeze_attestation",
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-FREEZE-ATTESTATION",
+  "artifact_version": 3,
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "study_record_version": 3,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "frozen_at": "2026-07-22T18:00:00Z",
+  "registration_authority": "LCMRP-ROOT-STEWARD-FREEZE-2026-07-22",
+  "results_accessed_before_freeze": false,
+  "supersedes": {
+    "prior_study_record_version": 2,
+    "prior_study_record_raw_byte_sha256": "3a9a1988ad64d864bd8140f2bfa6e5986e6f85fe57ad7209543fe5c117fb387e",
+    "method_change": "SOLO_HUMAN_WITH_AI_TOOLING_SUPERSESSION",
+    "abandoned_method": "TWO_PRIMARY_PLUS_TIE_HUMAN_ADJUDICATION"
+  },
+  "research_context_disclosure": {
+    "solo_researcher": true,
+    "ai_assistance": "TOOLING_AND_DRAFTING_ONLY_NOT_FINAL_CODER",
+    "dual_role_author_freeze_adjudicator_permitted": true,
+    "analysis_modes": "ALL_EXPLORATORY",
+    "independent_validation": false
+  },
+  "freeze_environment": {
+    "dependency_lockfile": {
+      "locator": "requirements-dev.lock",
+      "value": "cd65f68d7665b69512bd7be8843727bf565e0aebc229f4d76666edb308571fca",
+      "scope": "RAW_FILE_BYTES"
+    },
+    "platform_details": {
+      "execution_model": "SOLO_HUMAN_OFFLINE_STRUCTURAL_CODING_WITH_OPTIONAL_AI_TOOLING",
+      "language_model_as_final_adjudicator": false
+    },
+    "environment_artifact_digest": {
+      "locator": "studies/foundational/m1-taxonomy-v1/reproducibility/environment.json",
+      "value": "36d7abee18605177ac8e092a4733526f8ac3fbeb0ff2918638b6e9b2fe8ae56f"
+    }
+  },
+  "review": {
+    "relationship": "Solo steward freeze of disclosed method supersession; not independent scientific validation"
+  },
+  "frozen_scope": {
+    "planned_analysis_count": 5,
+    "planned_output_count": 5,
+    "existing_planned_output_count": 0,
+    "output_state": "ABSENT_AT_FREEZE",
+    "execution_intake_state": "ABSENT_AT_FREEZE",
+    "adjudicators_appointed": false,
+    "case_contents_accessed_for_this_freeze": false
+  },
+  "artifact_inventory": [
+    {
+      "role": "protocol_v3",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/protocol-v3.md",
+      "raw_byte_sha256": "84bdef836480fc52048bcde07a9618153ac1adb7ebada8a75a6514fd60703e52"
+    },
+    {
+      "role": "method_profile_v2",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/definitions/method-profile.json",
+      "raw_byte_sha256": "54dff8714d50bfb37d3025cd1e814490ed9cd3651e100c17d75acb0d88de30cb"
+    },
+    {
+      "role": "category_evaluation_rules",
+      "locator": "studies/foundational/m1-taxonomy-v1/definitions/category-evaluation-rules.json",
+      "raw_byte_sha256": "391f1e6857f5c802f1ec46f74c15b583780bf11d586fd8f5b99f8b110560c282"
+    },
+    {
+      "role": "subject_definition",
+      "locator": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
+      "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+    },
+    {
+      "role": "environment",
+      "locator": "studies/foundational/m1-taxonomy-v1/reproducibility/environment.json",
+      "raw_byte_sha256": "36d7abee18605177ac8e092a4733526f8ac3fbeb0ff2918638b6e9b2fe8ae56f"
+    },
+    {
+      "role": "configuration",
+      "locator": "studies/foundational/m1-taxonomy-v1/reproducibility/configuration.json",
+      "raw_byte_sha256": "23d61b1a7a45f9239e9ee329af44455096d3c81deabc440754516e01bffdc5ac"
+    },
+    {
+      "role": "dependency_lockfile",
+      "locator": "requirements-dev.lock",
+      "raw_byte_sha256": "cd65f68d7665b69512bd7be8843727bf565e0aebc229f4d76666edb308571fca"
+    },
+    {
+      "role": "case_source_metadata_binding_positive",
+      "locator": "studies/foundational/m1-taxonomy-v1/cases/positive-cases.json",
+      "raw_byte_sha256": "61412fb42208441f78927ac0ad3f579758a34591b6cb20bd8163648edcea424b",
+      "note": "Digest from prior metadata binding; case body not opened."
+    },
+    {
+      "role": "case_source_metadata_binding_negative",
+      "locator": "studies/foundational/m1-taxonomy-v1/cases/negative-cases.json",
+      "raw_byte_sha256": "6a546d401f8c412a6a15f3ae7e8f733924b46a145e7339d5d1d441e887d1ab4a",
+      "note": "Digest from prior metadata binding; case body not opened."
+    },
+    {
+      "role": "case_source_metadata_binding_held_out",
+      "locator": "studies/foundational/m1-taxonomy-v1/cases/held-out-cases.json",
+      "raw_byte_sha256": "e0f08002a9252ff1f1f4da119958c9d6a86f50cf3b3922672c9bffbf73c68c79",
+      "note": "Digest from prior metadata binding; case body not opened."
+    },
+    {
+      "role": "canonical_study_manifest_v3",
+      "locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v3.json",
+      "note": "Digest bound by ACTIVE registry entry."
+    }
+  ],
+  "claim_boundary": [
+    "This freeze adopts a disclosed solo+AI-tooling method; it does not invent multi-human adjudicators.",
+    "No case adjudication occurred at freeze.",
+    "AI is not authorized as final coding authority.",
+    "Not independent validation; not M1 completion."
+  ]
+}

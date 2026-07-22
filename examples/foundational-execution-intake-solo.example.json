@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_execution_intake_solo",
+  "artifact_id": "ARTIFACT-SYNTHETIC-SOLO-EXECUTION-INTAKE",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_id": "LCMRP-FSTUDY-9999-SYNTHETIC-MEMORY-TAXONOMY",
+  "study_record": {
+    "study_record_id": "LCMRP-FSTUDYREC-9999-SYNTHETIC-MEMORY-TAXONOMY",
+    "record_version": 3,
+    "manifest_locator": "examples/foundational-study-manifest.example.json",
+    "manifest_digest": {
+      "algorithm": "SHA-256",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "scope": "RAW_FILE_BYTES",
+      "status": "RECORDED"
+    }
+  },
+  "method_profile_version": 2,
+  "research_lead": {
+    "contributor_id": "SYNTHETIC-HUMAN-RESEARCH-LEAD",
+    "contributor_kind": "HUMAN_RESEARCH_CONTRIBUTOR",
+    "display_name": "Synthetic Solo Researcher",
+    "eligibility_declaration": "Synthetic fixture only.",
+    "conflict_declaration": "Synthetic fixture only.",
+    "isolation_declaration": "Synthetic fixture only.",
+    "no_prior_prohibited_access_declaration": "Synthetic fixture only.",
+    "accepts_exploratory_dual_role_limitations": true,
+    "is_protocol_author": true,
+    "is_freeze_authority": true
+  },
+  "ai_tooling_disclosure": {
+    "ai_used": true,
+    "ai_casts_final_codes": false,
+    "ai_roles_permitted": [
+      "FORMATTING",
+      "NAVIGATION",
+      "DRAFT_RATIONALE_PROPOSAL",
+      "DOCUMENTATION"
+    ],
+    "systems_or_models_note": "Synthetic example; not a real model commitment.",
+    "human_final_authority_assertion": "Human research lead retains final authority for every code and rationale."
+  },
+  "dual_role_disclosure": {
+    "author_or_freeze_dual_role": true,
+    "independent_validation": false,
+    "statement": "Synthetic solo fixture discloses dual role; not independent validation."
+  },
+  "results_accessed_before_intake": false,
+  "planned_outputs_absent": true,
+  "case_packets_accessed_before_intake": false,
+  "intake_timestamp": "2026-07-22T18:00:00Z",
+  "execution_authority": {
+    "name": "SYNTHETIC-EXECUTION-AUTHORITY",
+    "authority_basis": "Example fixture only."
+  },
+  "digest_binding": {
+    "mode": "EXTERNAL_DIGEST_RECEIPT",
+    "receipt_schema_id": "urn:lcmrp:schema:foundational-execution-intake-receipt:0.1.0",
+    "receipt_locator": "examples/foundational-execution-intake-receipt.example.json",
+    "forbidden_self_digest_of_entire_payload_file": true
+  },
+  "claim_boundary": [
+    "Synthetic non-evidence fixture.",
+    "Does not appoint a real adjudicator or authorize case access."
+  ],
+  "example_notice": "SYNTHETIC ONLY. Replace every field for a live solo intake."
+}

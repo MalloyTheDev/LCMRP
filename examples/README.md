@@ -6,7 +6,7 @@ An example must use conspicuous placeholder identifiers and must not be copied i
 
 Files under `examples/fixtures/` are digestable inputs used to test exact artifact binding. Their contents explicitly identify them as synthetic and non-evidentiary.
 
-The foundational execution-intake and intake-receipt examples demonstrate the external digest-receipt binding shape only. They do not appoint real adjudicators, create a live study intake, or authorize taxonomy execution.
+The foundational execution-intake and intake-receipt examples demonstrate the external digest-receipt binding shape only. The solo intake example demonstrates the solo-human + AI-tooling disclosure shape. They do not appoint real adjudicators, create a live study intake, or authorize taxonomy execution.
 
 ## M1 synthetic contract dry runs
 

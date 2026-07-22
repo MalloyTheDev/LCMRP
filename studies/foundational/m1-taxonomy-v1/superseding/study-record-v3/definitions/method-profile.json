@@ -1,0 +1,105 @@
+{
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-METHOD-PROFILE",
+  "artifact_version": 2,
+  "artifact_status": "FROZEN_OPERATIONAL_INPUT",
+  "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+  "profile_id": "LCMRP-MPROF-0001-M1-STRUCTURAL-TAXONOMY",
+  "profile_series": "LCMRP-M1-STRUCTURAL-TAXONOMY-PROFILE",
+  "profile_version": 2,
+  "applicable_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "supersedes_profile_version": 1,
+  "supersedes_profile_definition_digest": {
+    "algorithm": "SHA-256",
+    "value": "f87a1cac0d9ad1b1bd81b53acaaea10e9320932cec4201184cbb5b6c8f3e95e0",
+    "scope": "RAW_FILE_BYTES"
+  },
+  "research_context": {
+    "mode": "SOLO_RESEARCHER_WITH_AI_TOOLING",
+    "rationale": "The dual-primary human adjudication model cannot be truthfully staffed by a single researcher. This profile supersedes the two-primary-plus-tie design with a disclosed solo-human adjudication model and a non-adjudicative AI tooling role.",
+    "independent_inter_rater_reliability": "NOT_ESTIMABLE_SINGLE_CODER"
+  },
+  "subject_binding": {
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_series": "LCMRP-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "locator": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
+    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+  },
+  "immutability_policy": "Freezing binds these raw bytes. Later change requires a superseding study-record and profile version linked to the prior digest.",
+  "unit_of_analysis": "One predeclared term-contract row, distinction pair, organization-by-case encoding, or governance obligation evaluated against the exact subject and a frozen constructed case.",
+  "evaluator_roles": {
+    "research_lead_adjudicators": 1,
+    "tie_adjudicators": 0,
+    "primary_adjudicators": 0,
+    "ai_tooling_role": {
+      "permitted": true,
+      "casts_codes": false,
+      "may_propose_draft_rationales": true,
+      "may_generate_packets_or_formatting": true,
+      "final_code_authority": "HUMAN_RESEARCH_LEAD_ONLY",
+      "must_be_disclosed_in_intake_and_findings": true
+    },
+    "eligibility": [
+      "Exactly one human research-lead adjudicator is named in the immutable execution intake.",
+      "The research-lead adjudicator is a human, not an AI agent or model inference process.",
+      "AI systems may assist only as non-adjudicative tooling: formatting, navigation, draft text proposals, packet generation. AI must not be recorded as the final coding authority for any rubric cell.",
+      "Because this is a solo-research profile, the research lead may also be protocol author and freeze authority if and only if every analysis is EXPLORATORY and dual-role disclosure is recorded in the intake and every finding.",
+      "The research lead must declare any prior exposure to case packets, peer codes (if any), or planned outputs before intake."
+    ],
+    "conflict_rule": "Dual role (author/freeze authority AND adjudicator) is permitted only under this profile_version>=2 solo-research supersession, and only with EXPLORATORY analysis modes and explicit limitation language. It is not independent validation.",
+    "assignment_boundary": "Personnel/tooling assignment occurs only after a valid freeze of this profile and before coding, via immutable execution intake bound to the exact frozen manifest digest."
+  },
+  "coding_values": [
+    "SATISFIED",
+    "CHALLENGED",
+    "AMBIGUOUS",
+    "NOT_APPLICABLE",
+    "INVALID_CASE"
+  ],
+  "procedure": [
+    "Verify the subject, profile, category rules, cases, protocol, environment, configuration, and frozen manifest against their raw-byte SHA-256 values before any coding.",
+    "Before any case packet, planned output, or result access, publish and digest-lock the solo execution-intake payload plus external receipt naming the human research-lead adjudicator and disclosing AI tooling boundaries.",
+    "Generate evaluation packets using the deterministic ordering rule. Source-role blinding remains preferred when feasible for a solo coder; if blinding is incomplete, record the limitation.",
+    "For every assigned rubric cell, the human research lead records exactly one coding value, a citation to exact subject text, a case-fact citation, and a concise rationale. AI draft text may be used only if the human explicitly accepts or rewrites the final rationale and code.",
+    "Lock the single human ledger with a raw-byte digest before interpretation.",
+    "Do not compute two-coder Cohen's kappa; report single-coder completeness and explicit NON_ESTIMABLE inter-rater reliability.",
+    "Retain challenged, ambiguous, null, invalid, halted, and not-run outcomes.",
+    "Apply predeclared analysis-specific decision rules to the locked ledger; no result class automatically establishes claim support or rejection.",
+    "Publish at most one atomic finding or terminal disposition for each analysis ID under EXPLORATORY mode, then close out only with set equality across all five IDs."
+  ],
+  "blinding": {
+    "initially_hidden": [
+      "case-set source role when separable",
+      "case-set filename when separable",
+      "case selection rationale when separable"
+    ],
+    "necessarily_visible": [
+      "the exact candidate taxonomy",
+      "the frozen method and coding rules",
+      "the case facts and evaluation prompts",
+      "the bounded hypotheses being evaluated"
+    ],
+    "solo_limitation": "True dual-coder isolation is unavailable. Treat all results as exploratory structural self-application of the candidate by its research lead."
+  },
+  "adjudication_method": "Single human research-lead adjudicator codes all required cells and locks one raw-byte ledger. AI tooling may draft or format but must not cast final codes. No tie adjudicator. Inter-rater reliability is NOT_ESTIMABLE.",
+  "coverage_rule": "Evaluate all exact candidate term IDs, declared observable distinctions, both candidate organizations on organization-targeted cases, every case in each frozen source, competency questions, and profile integrity constraints as bound by the frozen category rules. Missing, duplicate, or extra units invalidate the affected analysis.",
+  "unknown_policy": "Use AMBIGUOUS when the exact subject and frozen facts permit multiple supported interpretations. Use INVALID_CASE only for malformed, contradictory, or non-evaluable case input. Never impute an omitted fact or force a favorable classification.",
+  "deviation_policy": "Record the deviation before continuing. A deviation that changes a confirmatory input, metric, threshold, or decision rule halts the affected analysis and requires a superseding record; it cannot be repaired in place.",
+  "reliability": {
+    "inter_rater": "NOT_ESTIMABLE_SINGLE_CODER",
+    "required_metrics": [
+      "fraction of required cells completed",
+      "category frequency table",
+      "count of AMBIGUOUS and INVALID_CASE cells"
+    ]
+  },
+  "output_requirements": [
+    "A complete unit-level ledger with exact subject and case citations",
+    "One locked human ledger and raw-byte digest",
+    "Disclosure of AI tooling use and dual-role author/adjudicator status",
+    "Explicit NOT_ESTIMABLE inter-rater reliability statement",
+    "A baseline comparison using matched rubric cells where defined",
+    "One analysis-scoped interpretation that states limitations and does not imply adoption or evidence maturity"
+  ],
+  "interpretation_boundary": "This profile can report bounded exploratory structural satisfaction, challenge, ambiguity, or invalidity only under solo self-application. It cannot establish inter-rater reliability, independent validation, category truth, completeness, external validity, safety, usefulness, implementation suitability, or any mechanism evidence label."
+}

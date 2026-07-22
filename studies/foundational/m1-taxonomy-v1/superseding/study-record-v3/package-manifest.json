@@ -1,0 +1,58 @@
+{
+  "artifact_type": "foundational_study_superseding_record_package_manifest",
+  "package_id": "M1-TAX-STUDY-RECORD-V3-SOLO-AI",
+  "slice_id": "M1-TAX-SOLO-AI-METHOD-V3-001",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "package_status": "FROZEN_SUPERSEDING_SOLO_AI_TOOLING_METHOD",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "supersedes": {
+    "study_record_version": 2,
+    "study_record_raw_byte_sha256": "3a9a1988ad64d864bd8140f2bfa6e5986e6f85fe57ad7209543fe5c117fb387e",
+    "method_change": "SOLO_HUMAN_WITH_AI_TOOLING"
+  },
+  "artifacts": [
+    {
+      "role": "canonical_study_manifest_v3",
+      "locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v3.json",
+      "raw_byte_sha256": "c7daa535fc800a6ef5e278777eae307cc9f0ce3402119e6e1e32f690c46460df"
+    },
+    {
+      "role": "protocol_v3",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/protocol-v3.md",
+      "raw_byte_sha256": "84bdef836480fc52048bcde07a9618153ac1adb7ebada8a75a6514fd60703e52"
+    },
+    {
+      "role": "method_profile_v2",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/definitions/method-profile.json",
+      "raw_byte_sha256": "54dff8714d50bfb37d3025cd1e814490ed9cd3651e100c17d75acb0d88de30cb"
+    },
+    {
+      "role": "freeze_attestation_v3",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/freeze-attestation.json",
+      "raw_byte_sha256": "115ecea6a926b8e200c2f326d76f56c8b86cc3e78d87882f253d32b2006501df"
+    }
+  ],
+  "execution_boundary": {
+    "frozen": true,
+    "registered_active": true,
+    "live_intake_created": false,
+    "case_contents_accessed": false,
+    "ai_final_coder": false,
+    "invented_human_adjudicators": false,
+    "planned_outputs_created": 0,
+    "execution_authorized": false
+  },
+  "claims_made": [
+    "Disclosed solo-human + AI-tooling method supersedes dual-primary human staffing as unexecutable here.",
+    "AI is not final coding authority.",
+    "All analyses EXPLORATORY under dual-role disclosure."
+  ],
+  "claims_explicitly_not_made": [
+    "Independent multi-rater validation",
+    "That AI adjudicated cases",
+    "Scientific adoption or mechanism maturity",
+    "M1 completion",
+    "Live intake or case coding yet performed"
+  ]
+}

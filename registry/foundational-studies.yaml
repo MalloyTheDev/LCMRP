@@ -23,8 +23,20 @@ entries:
       algorithm: SHA-256
       value: 3a9a1988ad64d864bd8140f2bfa6e5986e6f85fe57ad7209543fe5c117fb387e
       scope: RAW_FILE_BYTES
-    registry_status: ACTIVE
+    registry_status: SUPERSEDED
     registered_at: "2026-07-22T14:00:00Z"
+
+  - record_id: LCMRP-FSTUDYREC-0001-M1-TAXONOMY
+    record_version: 3
+    artifact_type: foundational_study_manifest
+    schema_id: urn:lcmrp:schema:foundational-study-manifest:0.1.0
+    artifact_path: records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v3.json
+    artifact_digest:
+      algorithm: SHA-256
+      value: c7daa535fc800a6ef5e278777eae307cc9f0ce3402119e6e1e32f690c46460df
+      scope: RAW_FILE_BYTES
+    registry_status: ACTIVE
+    registered_at: "2026-07-22T18:00:00Z"
 
   - record_id: LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL
     record_version: 1

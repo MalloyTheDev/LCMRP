@@ -50,6 +50,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Taxonomy Pre-Result Metadata and Intake-Contract Repair Package](reviews/M1_TAXONOMY_PRE_RESULT_REPAIR_PACKAGE_2026-07-22.md) records pre-result superseding obligations for taxonomy blockers B2–B6 without freeze, live intake, case access, or execution authority; residual human-contributor blocker B1 remains open.
 - [M1 Formal Study-Record v2 Supersession](reviews/M1_FORMAL_STUDY_RECORD_V2_SUPERSESSION_2026-07-22.md) freezes the formal version-2 preregistration that supersedes the blocked version-1 tool binding without executing the analyzer or creating results.
 - [M1 Taxonomy Study-Record v2 Freeze](reviews/M1_TAXONOMY_STUDY_RECORD_V2_FREEZE_2026-07-22.md) freezes taxonomy version-2 metadata repairs (B2–B6) while B1, case access, and execution remain closed.
+- [M1 Taxonomy Solo+AI Method v3](reviews/M1_TAXONOMY_SOLO_AI_METHOD_V3_2026-07-22.md) freezes a disclosed solo-human + AI-tooling adjudication method superseding multi-human staffing for truthful solo research (exploratory; no coding yet).
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -65,9 +66,9 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 ## Current phase
 
-**M1 in progress — taxonomy v2 frozen with residual human-intake gate B1; formal v2 frozen but analysis not run**
+**M1 in progress — taxonomy v3 solo+AI method frozen (intake/coding not started); formal v2 frozen but analysis not run**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has two exact `ACTIVE` subjects. Taxonomy version-1 is retained as `SUPERSEDED` historical provenance after a digest-linked version-2 freeze that repairs metadata/intake-contract blockers B2–B6; residual human-contributor blocker **B1** remains open, so execution intake and case adjudication are not authorized. Formal version-1 is likewise `SUPERSEDED` after a digest-linked version-2 freeze that binds the corrected analyzer guard; the configured analyzer command, `main`, and `run_kernel` have still not been invoked for semantic analysis. All planned outputs remain absent, and no finding or closeout exists. These states do not adopt or validate either candidate, prove or disprove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has two exact `ACTIVE` subjects. Taxonomy versions 1–2 are retained as `SUPERSEDED` historical provenance. Taxonomy version 3 freezes a disclosed **solo-human research-lead** adjudication method with optional **non-adjudicative AI tooling**, replacing unexecutable multi-human staffing for this solo research context; live intake and case coding have not started. Formal version-1 is `SUPERSEDED` after a digest-linked version-2 freeze that binds the corrected analyzer guard; the configured analyzer command, `main`, and `run_kernel` have still not been invoked for semantic analysis. All planned outputs remain absent, and no finding or closeout exists. These states do not adopt or validate either candidate, prove independent multi-rater reliability, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
 
 ## License
 
