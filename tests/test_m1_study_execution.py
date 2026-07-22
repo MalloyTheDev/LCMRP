@@ -849,10 +849,44 @@ def _formal_execution_metadata_errors() -> list[str]:
     if not isinstance(frozen_bindings, Mapping):
         errors.append("preflight lacks frozen bindings")
     else:
-        if frozen_bindings.get("registry_raw_byte_sha256") != _sha256(
-            ROOT / "registry/foundational-studies.yaml"
-        ):
-            errors.append("preflight registry digest mismatch")
+        live_registry_digest = _sha256(ROOT / "registry/foundational-studies.yaml")
+        recorded_registry_digest = frozen_bindings.get("registry_raw_byte_sha256")
+        if recorded_registry_digest != live_registry_digest:
+            # After a digest-linked formal supersession the live registry may
+            # advance while the blocked preflight remains bound to its historical
+            # registry snapshot. Allow that only when v1 is SUPERSEDED and a later
+            # ACTIVE formal version exists; never rewrite the preflight bytes.
+            registry = _load_yaml(Path("registry/foundational-studies.yaml"))
+            entries = registry.get("entries", []) if isinstance(registry, Mapping) else []
+            formal_entries = [
+                entry
+                for entry in entries
+                if isinstance(entry, Mapping)
+                and entry.get("record_id") == FORMAL_IDENTITIES["study_record_id"]
+            ]
+            v1 = next(
+                (
+                    entry
+                    for entry in formal_entries
+                    if entry.get("record_version") == 1
+                ),
+                None,
+            )
+            active_later = [
+                entry
+                for entry in formal_entries
+                if entry.get("registry_status") == "ACTIVE"
+                and isinstance(entry.get("record_version"), int)
+                and entry.get("record_version") > 1
+            ]
+            if not (
+                isinstance(v1, Mapping)
+                and v1.get("registry_status") == "SUPERSEDED"
+                and active_later
+                and isinstance(recorded_registry_digest, str)
+                and len(recorded_registry_digest) == 64
+            ):
+                errors.append("preflight registry digest mismatch")
         if frozen_bindings.get("canonical_manifest_raw_byte_sha256") != _sha256(
             ROOT / FORMAL_MANIFEST
         ):
@@ -1323,15 +1357,22 @@ class M1StudyExecutionTests(unittest.TestCase):
     ) -> None:
         registry = _load_yaml(Path("registry/foundational-studies.yaml"))
         entries = registry.get("entries", []) if isinstance(registry, Mapping) else []
-        formal_entry = next(
+        formal_v1_entry = next(
             entry
             for entry in entries
             if entry.get("record_id") == FORMAL_IDENTITIES["study_record_id"]
+            and entry.get("record_version") == 1
         )
-        self.assertEqual("ACTIVE", formal_entry["registry_status"])
+        # Version-1 remains historical provenance after supersession. ACTIVE may
+        # move to a later digest-linked record; the frozen v1 analyzer defect
+        # must still be independently reproducible against the v1 binding.
+        self.assertIn(
+            formal_v1_entry["registry_status"],
+            {"ACTIVE", "SUPERSEDED"},
+        )
         self.assertEqual(
             _sha256(ROOT / FORMAL_MANIFEST),
-            formal_entry["artifact_digest"]["value"],
+            formal_v1_entry["artifact_digest"]["value"],
         )
 
         spec = importlib.util.spec_from_file_location(
@@ -1344,13 +1385,21 @@ class M1StudyExecutionTests(unittest.TestCase):
         assert spec is not None and spec.loader is not None
         spec.loader.exec_module(module)
 
-        with self.assertRaisesRegex(
-            module.StudyGuardError,
-            r"canonical index entry lacks artifact_digest\.value",
-        ):
+        with self.assertRaises(module.StudyGuardError) as guard_failure:
             # Deliberately call only the failing index guard.  main() and
             # run_kernel() are never invoked, so no valuation or result exists.
             module.verify_manifest_index(ROOT.resolve(), (ROOT / FORMAL_MANIFEST))
+        # Historical fail-closed modes for the frozen v1 analyzer:
+        # 1) indentation-sensitive digest parse against a single ACTIVE entry; or
+        # 2) after supersession, more than one index entry for the same record_id.
+        message = str(guard_failure.exception)
+        self.assertTrue(
+            (
+                "canonical index entry lacks artifact_digest.value" in message
+                or "exactly one matching record entry" in message
+            ),
+            message,
+        )
 
         index_text = (ROOT / "registry/foundational-studies.yaml").read_text(
             encoding="utf-8"

@@ -1207,7 +1207,19 @@ class M1StudyFreezeTests(unittest.TestCase):
             if (ROOT / "records" / "foundational" / "studies").is_dir()
             else set()
         )
-        self.assertEqual(expected_files, actual_files)
+        # Version-1 freezes must remain present. Later digest-linked superseding
+        # records for the same study_record_id are allowed as additional files.
+        self.assertTrue(
+            expected_files.issubset(actual_files),
+            f"missing reviewed v1 study records: {expected_files - actual_files}",
+        )
+        for path in actual_files - expected_files:
+            name = path.name
+            self.assertRegex(
+                name,
+                r"^LCMRP-FSTUDYREC-000[12]-M1-(TAXONOMY|FORMAL-MODEL)-v([2-9]|[1-9][0-9]+)\.json$",
+                f"unexpected study record file: {path}",
+            )
         self.assert_baseline()
 
     def test_02_no_result_closeout_experiment_or_evidence_artifacts_exist(self) -> None:

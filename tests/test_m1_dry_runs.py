@@ -915,9 +915,15 @@ def production_registry_errors(documents: Mapping[str, Any]) -> list[str]:
                 for entry in entries
                 if isinstance(entry, Mapping)
             }
+            # Multiple versions of an admitted study_record_id are allowed
+            # (digest-linked supersession). Unauthorized IDs and synthetics are not.
             if (
-                len(entries) != len(ADMITTED_REAL_STUDY_RECORD_IDS)
-                or record_ids != ADMITTED_REAL_STUDY_RECORD_IDS
+                record_ids != ADMITTED_REAL_STUDY_RECORD_IDS
+                or any(
+                    not isinstance(entry, Mapping)
+                    or entry.get("record_id") not in ADMITTED_REAL_STUDY_RECORD_IDS
+                    for entry in entries
+                )
                 or any(
                     SYNTHETIC_ID.search(value)
                     for entry in entries
