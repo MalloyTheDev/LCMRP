@@ -19,14 +19,14 @@
   },
   "analyzer": {
     "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/analyze_fmo_kernel.py",
-    "raw_byte_sha256": "b1681a064b5786d84125322883596eeee6d63303de56ff56bcf3b67b18c8c257",
+    "raw_byte_sha256": "fe361ee38cc135755bd390b01d295aba62f90e4bbe92b4d5542f20d573ad9672",
     "language": "Python 3",
     "required_runtime": "CPython 3.12.13",
     "dependencies": "Python standard library only",
     "semantic_method": "Deterministic exhaustive enumeration of the frozen finite Boolean modules and query-local projections, with complete retained assignments for models, counterexamples, and witnesses.",
     "execution_guard": "Refuses any manifest that is not FROZEN, lacks no-prior-result-access attestation, fails exact study/subject/profile identity checks, lacks a unique ACTIVE registry binding for record version 2, or has a mismatched immutable artifact digest.",
     "write_policy": "Creates one new JSON output with exclusive-create mode; refuses overwrite.",
-    "guard_correction": "Active registry entry resolution no longer depends on a fixed indentation depth for artifact_digest.value and selects the unique ACTIVE entry when SUPERSEDED historical versions share the same record_id."
+    "guard_correction": "Active registry entry resolution no longer depends on a fixed indentation depth for artifact_digest.value and selects the unique ACTIVE entry when SUPERSEDED historical versions share the same record_id. Semantic-query relations are restricted to ENTAILMENT and NON_ENTAILMENT; unsupported values fail closed with ValueError before kernel classification."
   },
   "runtime": {
     "python_implementation": "CPython",

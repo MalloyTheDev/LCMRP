@@ -39,7 +39,7 @@
       "digest": {
         "algorithm": "SHA-256",
         "status": "VERIFIED",
-        "value": "31e943e2ed6d2cd590b7e8d89ba5aefd789722b0a695cd1b4fb995bb36a31358",
+        "value": "8446bc2553bb2120f4766b838bcc02ec989276df15a59196055ceae03e240552",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"
@@ -209,7 +209,7 @@
       "digest": {
         "algorithm": "SHA-256",
         "status": "VERIFIED",
-        "value": "1715cc56d2eed001e2aed4d849a64f65cb47dc4f362c4fee529e68e9b2440b0a",
+        "value": "ecc0b6298fccbc6dabaf50c9b792bb51d82542d0ae6fd0b9f39e79f0bf179e47",
         "scope": "RAW_FILE_BYTES"
       },
       "media_type": "application/json"

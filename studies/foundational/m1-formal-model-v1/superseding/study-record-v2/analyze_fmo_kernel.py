@@ -165,6 +165,11 @@ def find_query_witness(
     conclusion: Any,
     relation: str,
 ) -> dict[str, bool] | None:
+    if relation not in {"ENTAILMENT", "NON_ENTAILMENT"}:
+        raise ValueError(
+            f"unsupported relation: {relation!r}; expected 'ENTAILMENT' or "
+            f"'NON_ENTAILMENT'"
+        )
     declared = set(module["variables"])
     relevant = expression_variables(premise) | expression_variables(conclusion)
     for constraint in module["constraints"]:
@@ -438,19 +443,26 @@ def run_kernel(
     non_entailments: list[dict[str, Any]] = []
     for proposition in propositions["semantic_queries"]:
         module = modules[proposition["module_id"]]
+        relation = proposition["relation"]
+        if relation not in {"ENTAILMENT", "NON_ENTAILMENT"}:
+            raise ValueError(
+                f"unsupported proposition relation for "
+                f"{proposition.get('proposition_id')!r}: {relation!r}; "
+                f"expected 'ENTAILMENT' or 'NON_ENTAILMENT'"
+            )
         witness = find_query_witness(
             module,
             proposition["premise"],
             proposition["conclusion"],
-            proposition["relation"],
+            relation,
         )
         row = {
             "proposition_id": proposition["proposition_id"],
             "module_id": proposition["module_id"],
-            "relation": proposition["relation"],
+            "relation": relation,
             "counterexample_or_witness": witness,
         }
-        if proposition["relation"] == "ENTAILMENT":
+        if relation == "ENTAILMENT":
             row["holds_within_kernel"] = witness is None
             entailments.append(row)
         else:

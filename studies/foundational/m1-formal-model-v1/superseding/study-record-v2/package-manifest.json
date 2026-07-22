@@ -18,22 +18,22 @@
     {
       "role": "canonical_study_manifest_v2",
       "locator": "records/foundational/studies/LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL-v2.json",
-      "raw_byte_sha256": "85332f9a2966b1a047ab0d73c319e596e6950ccf472e2b86c0191580f876e692"
+      "raw_byte_sha256": "a737da8d0ce41e0574ebdbe9cb36db2f917e85caa06632858fed9080491ed749"
     },
     {
       "role": "corrected_analyzer",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/analyze_fmo_kernel.py",
-      "raw_byte_sha256": "b1681a064b5786d84125322883596eeee6d63303de56ff56bcf3b67b18c8c257"
+      "raw_byte_sha256": "fe361ee38cc135755bd390b01d295aba62f90e4bbe92b4d5542f20d573ad9672"
     },
     {
       "role": "tool_provenance_v2",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/artifacts/tool-provenance.json",
-      "raw_byte_sha256": "1715cc56d2eed001e2aed4d849a64f65cb47dc4f362c4fee529e68e9b2440b0a"
+      "raw_byte_sha256": "ecc0b6298fccbc6dabaf50c9b792bb51d82542d0ae6fd0b9f39e79f0bf179e47"
     },
     {
       "role": "freeze_attestation_v2",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/freeze-attestation.json",
-      "raw_byte_sha256": "31e943e2ed6d2cd590b7e8d89ba5aefd789722b0a695cd1b4fb995bb36a31358"
+      "raw_byte_sha256": "8446bc2553bb2120f4766b838bcc02ec989276df15a59196055ceae03e240552"
     }
   ],
   "execution_boundary": {

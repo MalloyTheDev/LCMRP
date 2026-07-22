@@ -48,12 +48,12 @@
     {
       "role": "corrected_analyzer",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/analyze_fmo_kernel.py",
-      "raw_byte_sha256": "b1681a064b5786d84125322883596eeee6d63303de56ff56bcf3b67b18c8c257"
+      "raw_byte_sha256": "fe361ee38cc135755bd390b01d295aba62f90e4bbe92b4d5542f20d573ad9672"
     },
     {
       "role": "tool_provenance",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/artifacts/tool-provenance.json",
-      "raw_byte_sha256": "1715cc56d2eed001e2aed4d849a64f65cb47dc4f362c4fee529e68e9b2440b0a"
+      "raw_byte_sha256": "ecc0b6298fccbc6dabaf50c9b792bb51d82542d0ae6fd0b9f39e79f0bf179e47"
     },
     {
       "role": "prior_v1_study_record",
