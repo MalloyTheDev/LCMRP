@@ -34,6 +34,11 @@
       "role": "freeze_attestation_v2",
       "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/freeze-attestation.json",
       "raw_byte_sha256": "8446bc2553bb2120f4766b838bcc02ec989276df15a59196055ceae03e240552"
+    },
+    {
+      "role": "post_merge_guard_preflight",
+      "locator": "studies/foundational/m1-formal-model-v1/superseding/study-record-v2/execution/preflight-attestation.json",
+      "raw_byte_sha256": "15cead0859382655ea0404e9ffc0433c6136fc348032e85de84d3b734e65e51a"
     }
   ],
   "execution_boundary": {
@@ -43,7 +48,8 @@
     "run_kernel_called": false,
     "result_artifacts_created": 0,
     "publish_findings": false,
-    "mark_m1_complete": false
+    "mark_m1_complete": false,
+    "post_merge_guard_preflight": "PREFLIGHT_PASSED_NO_ANALYSIS_EXECUTED"
   },
   "claims_made": [
     "Version-2 frozen preregistration supersedes version-1 with digest-linked amendment for the pre-result guard defect.",

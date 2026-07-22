@@ -36,13 +36,17 @@ The frozen version-1 analyzer guard rejected the schema-valid ACTIVE registry en
 
 Canonical record: `records/foundational/studies/LCMRP-FSTUDYREC-0002-M1-FORMAL-MODEL-v2.json`
 
+## Post-merge guard preflight
+
+`execution/preflight-attestation.json` records a later guard-only probe under dual-lane registry coexistence (`PREFLIGHT_PASSED_NO_ANALYSIS_EXECUTED`). It does not authorize analysis and does not rewrite version-1 blocked preflight bytes.
+
 ## Claims
 
 ### CLAIMS_MADE
 
 - Version-2 is a frozen superseding preregistration linked to the exact version-1 digest.
 - Guard-only index verification succeeds against the ACTIVE version-2 registry entry.
-- All seven planned formal outputs remain absent after freeze.
+- All seven planned formal outputs remain absent after freeze and after the post-merge guard preflight.
 
 ### CLAIMS_EXPLICITLY_NOT_MADE
 
