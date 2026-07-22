@@ -8,15 +8,19 @@ research finding, closeout, mechanism maturity effect, or M1 completion claim.
 from __future__ import annotations
 
 import copy
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
 import re
 from typing import Any, Iterable, Mapping
 import unittest
+from unittest.mock import patch
 
 from jsonschema import Draft202012Validator, FormatChecker
 import yaml
+
+from tools.taxonomy_case_access import build_study_access_catalog
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +56,23 @@ EXPECTED = {
             "SOURCE-M1-TAXONOMY-HELD-OUT",
             "SOURCE-M1-PROGRAM-CHARTER",
             "SOURCE-M1-PRIOR-ART",
+        },
+        "case_bindings": {
+            "SOURCE-M1-TAXONOMY-POSITIVE": (
+                "ARTIFACT-M1-TAXONOMY-POSITIVE-CASES",
+                "studies/foundational/m1-taxonomy-v1/cases/positive-cases.json",
+                "61412fb42208441f78927ac0ad3f579758a34591b6cb20bd8163648edcea424b",
+            ),
+            "SOURCE-M1-TAXONOMY-NEGATIVE": (
+                "ARTIFACT-M1-TAXONOMY-NEGATIVE-CASES",
+                "studies/foundational/m1-taxonomy-v1/cases/negative-cases.json",
+                "6a546d401f8c412a6a15f3ae7e8f733924b46a145e7339d5d1d441e887d1ab4a",
+            ),
+            "SOURCE-M1-TAXONOMY-HELD-OUT": (
+                "ARTIFACT-M1-TAXONOMY-HELD-OUT-CASES",
+                "studies/foundational/m1-taxonomy-v1/cases/held-out-cases.json",
+                "e0f08002a9252ff1f1f4da119958c9d6a86f50cf3b3922672c9bffbf73c68c79",
+            ),
         },
         "outputs": {
             "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT": (
@@ -276,6 +297,7 @@ def _artifact_reference_errors(
     label: str,
     *,
     immutable: bool,
+    verify_bytes: bool = True,
 ) -> list[str]:
     errors: list[str] = []
     if not isinstance(reference, Mapping):
@@ -298,7 +320,9 @@ def _artifact_reference_errors(
             errors.append(f"{label}: frozen input digest is not immutable")
         if not target.is_file():
             errors.append(f"{label}: frozen input artifact does not resolve")
-        elif digest.get("value") != hashlib.sha256(target.read_bytes()).hexdigest():
+        elif verify_bytes and digest.get("value") != hashlib.sha256(
+            target.read_bytes()
+        ).hexdigest():
             errors.append(f"{label}: raw-byte digest mismatch")
     else:
         if digest.get("status") != "PENDING" or digest.get("value") is not None:
@@ -382,6 +406,79 @@ def _planned_outputs(manifest: Mapping[str, Any]) -> list[tuple[str, Any]]:
     ]
 
 
+def _file_identity(path: Path) -> tuple[int, int] | None:
+    """Return a metadata-only filesystem identity without opening file content."""
+
+    try:
+        metadata = path.stat()
+    except OSError:
+        return None
+    return metadata.st_dev, metadata.st_ino
+
+
+@lru_cache(maxsize=1)
+def _authoritative_protected_case_artifacts() -> tuple[
+    frozenset[Path], frozenset[tuple[int, int]]
+]:
+    """Resolve immutable production opacity before any in-memory mutation."""
+
+    catalog = build_study_access_catalog(ROOT)
+    if catalog.errors:
+        raise RuntimeError(
+            "taxonomy case-access catalog is unavailable: "
+            + "; ".join(catalog.errors)
+        )
+
+    canonical_paths: set[Path] = set()
+    file_identities: set[tuple[int, int]] = set()
+    for artifact in catalog.case_artifacts:
+        path = _resolved_path(artifact.locator)
+        identity = _file_identity(path) if path is not None else None
+        if path is None or identity is None:
+            raise RuntimeError(
+                "authoritative taxonomy case artifact does not resolve safely: "
+                f"{artifact.locator}"
+            )
+        canonical_paths.add(path)
+        file_identities.add(identity)
+
+    expected_v1_paths: set[Path] = set()
+    for _artifact_id, locator, _digest in EXPECTED["taxonomy"][
+        "case_bindings"
+    ].values():
+        path = _resolved_path(locator)
+        if path is None:
+            raise RuntimeError(
+                "expected version-1 taxonomy case locator is unsafe: "
+                f"{locator}"
+            )
+        expected_v1_paths.add(path)
+    if not expected_v1_paths.issubset(canonical_paths):
+        raise RuntimeError(
+            "authoritative taxonomy case-access catalog omitted a reviewed "
+            "version-1 case artifact"
+        )
+    return frozenset(canonical_paths), frozenset(file_identities)
+
+
+def _is_authoritative_protected_case_path(path: Path) -> bool:
+    """Match canonical paths, symlink aliases, and hard-link identities."""
+
+    canonical_paths, file_identities = _authoritative_protected_case_artifacts()
+    canonical = path.resolve()
+    if canonical in canonical_paths:
+        return True
+    identity = _file_identity(canonical)
+    return identity is not None and identity in file_identities
+
+
+def _is_authoritative_protected_case_locator(locator: Any) -> bool:
+    """Classify a locator independently of mutable source role or kind."""
+
+    path = _resolved_path(locator)
+    return path is not None and _is_authoritative_protected_case_path(path)
+
+
 def _freeze_binding_errors(manifest: Mapping[str, Any], lane: str) -> list[str]:
     errors: list[str] = []
     preregistration = manifest.get("preregistration")
@@ -450,6 +547,8 @@ def _referenced_content_errors(
     seen: set[Path] = set()
     for label, reference in _immutable_references(manifest):
         if not isinstance(reference, Mapping):
+            continue
+        if _is_authoritative_protected_case_locator(reference.get("locator")):
             continue
         target = _resolved_path(reference.get("locator"))
         if target is None or not target.is_file() or target in seen:
@@ -792,18 +891,18 @@ def _freeze_errors(
 
     entries = study_registry.get("entries")
     entry_list = entries if isinstance(entries, list) else []
-    if len(entry_list) != 2:
-        errors.append("study registry must contain exactly two entries")
-    active_entries = [
+    reviewed_v1_entries = [
         entry
         for entry in entry_list
-        if isinstance(entry, Mapping) and entry.get("registry_status") == "ACTIVE"
+        if isinstance(entry, Mapping)
+        and entry.get("record_version") == 1
+        and entry.get("record_id") in {item["record_id"] for item in EXPECTED.values()}
     ]
-    if len(active_entries) != 2:
-        errors.append("study registry must contain exactly two ACTIVE entries")
+    if len(reviewed_v1_entries) != 2:
+        errors.append("study registry must retain the two reviewed version-1 entries")
     indexed_by_id = {
         entry.get("record_id"): entry
-        for entry in active_entries
+        for entry in reviewed_v1_entries
         if isinstance(entry.get("record_id"), str)
     }
     if set(indexed_by_id) != {item["record_id"] for item in EXPECTED.values()}:
@@ -939,9 +1038,19 @@ def _freeze_errors(
                 )
             )
         for label, reference in _immutable_references(manifest):
+            locator = (
+                reference.get("locator")
+                if isinstance(reference, Mapping)
+                else None
+            )
             errors.extend(
                 _artifact_reference_errors(
-                    reference, f"{lane}:{label}", immutable=True
+                    reference,
+                    f"{lane}:{label}",
+                    immutable=True,
+                    verify_bytes=(
+                        not _is_authoritative_protected_case_locator(locator)
+                    ),
                 )
             )
         errors.extend(_freeze_binding_errors(manifest, lane))
@@ -956,6 +1065,23 @@ def _freeze_errors(
         ]
         if set(lane_source_ids) != expected["source_ids"]:
             errors.append(f"{lane}: exact source-ID set mismatch")
+        expected_case_bindings = expected.get("case_bindings")
+        if isinstance(expected_case_bindings, Mapping):
+            actual_case_bindings = {
+                source.get("source_id"): (
+                    reference.get("artifact_id"),
+                    reference.get("locator"),
+                    digest.get("value") if isinstance(digest, Mapping) else None,
+                )
+                for source in source_list
+                if isinstance(source, Mapping)
+                for reference in [source.get("provenance_artifact")]
+                if isinstance(reference, Mapping)
+                for digest in [reference.get("digest")]
+                if source.get("source_id") in expected_case_bindings
+            }
+            if actual_case_bindings != expected_case_bindings:
+                errors.append(f"{lane}: exact protected case metadata binding mismatch")
         all_source_ids.extend(lane_source_ids)
         if lane == "formal":
             errors.extend(_formal_tool_provenance_errors(manifest))
@@ -982,18 +1108,21 @@ def _freeze_errors(
 
         index_entry = indexed_by_id.get(expected["record_id"])
         if not isinstance(index_entry, Mapping):
-            errors.append(f"{lane}: ACTIVE registry entry is missing")
+            errors.append(f"{lane}: reviewed version-1 registry entry is missing")
         else:
             comparisons = {
                 "record_version": 1,
                 "artifact_type": "foundational_study_manifest",
                 "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
                 "artifact_path": expected["path"],
-                "registry_status": "ACTIVE",
             }
             for field, value in comparisons.items():
                 if index_entry.get(field) != value:
                     errors.append(f"{lane}: study index mismatch for {field}")
+            if index_entry.get("registry_status") not in {"ACTIVE", "SUPERSEDED"}:
+                errors.append(
+                    f"{lane}: version-1 study index status is neither ACTIVE nor SUPERSEDED"
+                )
             path = _resolved_path(index_entry.get("artifact_path"))
             index_digest = index_entry.get("artifact_digest")
             if path is None or not path.is_file():
@@ -1125,9 +1254,67 @@ class M1StudyFreezeTests(unittest.TestCase):
         )
         self.assertTrue(any("digest" in error for error in self.errors(digest)))
 
+        case_digest = copy.deepcopy(self.manifests)
+        case_digest["taxonomy"]["sources"][0]["provenance_artifact"]["digest"][
+            "value"
+        ] = "0" * 64
+        case_errors = self.errors(case_digest)
+        self.assertTrue(
+            any("protected case metadata binding" in error for error in case_errors),
+            case_errors,
+        )
+
         escape = copy.deepcopy(self.manifests)
         escape["formal"]["protocol_artifact"]["locator"] = "../outside.md"
         self.assertTrue(any("unsafe" in error for error in self.errors(escape)))
+
+    def test_04b_compound_case_mutation_is_rejected_before_access(self) -> None:
+        self.assert_baseline()
+        _authoritative_protected_case_artifacts()
+        canonical_locator = EXPECTED["taxonomy"]["case_bindings"][
+            "SOURCE-M1-TAXONOMY-POSITIVE"
+        ][1]
+        equivalent_spellings = (
+            f"./{canonical_locator}",
+            canonical_locator.replace("/", "//", 1),
+        )
+        original_open = Path.open
+
+        for locator in equivalent_spellings:
+            with self.subTest(locator=locator):
+                mutated = copy.deepcopy(self.manifests)
+                source = next(
+                    item
+                    for item in mutated["taxonomy"]["sources"]
+                    if item["source_id"] == "SOURCE-M1-TAXONOMY-POSITIVE"
+                )
+                source["source_kind"] = "OTHER_NON_HUMAN_SOURCE"
+                source["role"] = "PRIOR_WORK"
+                reference = source["provenance_artifact"]
+                reference["artifact_id"] = "ARTIFACT-M1-TAXONOMY-MUTATED-SOURCE"
+                reference["locator"] = locator
+                reference["digest"]["value"] = "0" * 64
+                protected_opens: list[Path] = []
+
+                def guarded_open(path: Path, *args: Any, **kwargs: Any) -> Any:
+                    if _is_authoritative_protected_case_path(path):
+                        protected_opens.append(path)
+                        raise AssertionError(
+                            "freeze validation attempted to open protected case bytes"
+                        )
+                    return original_open(path, *args, **kwargs)
+
+                with patch.object(Path, "open", guarded_open):
+                    errors = self.errors(mutated)
+
+                self.assertTrue(
+                    any(
+                        "exact protected case metadata binding mismatch" in error
+                        for error in errors
+                    ),
+                    errors,
+                )
+                self.assertEqual([], protected_opens)
 
     def test_05_freeze_artifact_cross_lane_mismatch_is_rejected(self) -> None:
         self.assert_baseline()

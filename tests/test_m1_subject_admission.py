@@ -19,8 +19,6 @@ from jsonschema import Draft202012Validator, FormatChecker
 import yaml
 
 from tools.validate_repository import (
-    load_json,
-    load_yaml,
     validate_registry_entry_semantics,
 )
 
@@ -228,10 +226,10 @@ def _admission_errors(
 class M1SubjectAdmissionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.registry = load_yaml(SUBJECT_REGISTRY)
-        cls.schema = load_json(SUBJECT_SCHEMA)
+        cls.registry = yaml.safe_load(SUBJECT_REGISTRY.read_text(encoding="utf-8"))
+        cls.schema = json.loads(SUBJECT_SCHEMA.read_text(encoding="utf-8"))
         cls.non_subject_registries = {
-            relative: load_yaml(ROOT / relative)
+            relative: yaml.safe_load((ROOT / relative).read_text(encoding="utf-8"))
             for relative in DOWNSTREAM_RESULT_REGISTRIES
         }
 

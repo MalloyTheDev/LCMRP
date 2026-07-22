@@ -9,11 +9,33 @@ The tests check whether repository artifacts satisfy declared structural and gov
 After installing [`requirements-dev.txt`](../requirements-dev.txt), run:
 
 ```text
-python tools/validate_repository.py
-python -m unittest discover --start-directory tests --verbose
+python tests/run_no_case_access_gate.py -- python -m unittest tests.test_taxonomy_case_access_containment --verbose
+python tests/run_no_case_access_gate.py -- python tools/validate_repository.py
+python tests/run_no_case_access_gate.py -- python -m unittest discover --start-directory tests --verbose
 ```
 
-Both commands must pass. The repository validator exercises whole-tree discovery, JSON/YAML parsing, schemas, examples, registries, local artifact digests, governance invariants, and relative links. Unit tests add targeted positive and adversarial cases.
+All three commands must pass. The gate accepts a directly identified Python
+interpreter, denies all foundational-study body opens while the metadata-only
+catalog is bootstrapped, installs a process-level child audit hook, and
+terminates with status `97` before standard Python file APIs open a production
+taxonomy case file.
+Configured, inherited, and catalog-discovered protections are additive. The
+gate also blocks protected symlink and hard-link aliases, descriptor-relative
+`os.open`, interpreter options or environment changes that suppress the hook,
+and unguarded shell or non-Python descendants. The repository validator
+exercises whole-tree structural discovery, metadata JSON/YAML parsing, schemas,
+examples, registries, permitted local artifact digests, governance invariants,
+and relative links. Protected taxonomy case bodies and their recorded digests
+remain deferred. Unit tests add targeted positive and adversarial cases using
+synthetic temporary inputs.
+
+This tripwire is defense in depth for the repository's Python validation
+commands, not an operating-system sandbox. Direct native syscalls through FFI,
+pre-opened descriptors, hostile interpreter or dependency code that executes
+before `sitecustomize`, deliberate mutation through Python-object introspection,
+debuggers, and privileged external processes are outside its enforcement
+boundary. Non-Python validation tools remain forbidden unless a separately
+reviewed OS-level containment mechanism is introduced.
 
 ## Foundational-study boundary expectations
 
@@ -83,8 +105,8 @@ These checks show that the two candidates are addressable for later governed stu
 
 The study-freeze tests treat both real studies as unexecuted Layer 1 preregistrations. They require:
 
-- exactly two `ACTIVE`, `FROZEN`, version-1 studies, each resolving one exact registered subject and its declared method profile;
-- immutable raw-byte bindings for the subject, method profile, protocol, freeze attestation, sources, configurations, environment, and profile-specific formal or category artifacts;
+- retention of the two reviewed `FROZEN` version-1 records, each resolving one exact registered subject and its declared method profile, while the access catalog separately requires exactly one active head per taxonomy lineage;
+- immutable raw-byte bindings for the subject, method profile, protocol, freeze attestation, configurations, environment, and profile-specific formal or category artifacts, plus immutable metadata and structural-presence checks for protected taxonomy case sources without opening their bytes;
 - five distinct planned taxonomy outputs and seven distinct planned formal-analysis outputs, all retaining `PENDING` null digests and absent paths;
 - `results_accessed_before_freeze: false`, an exact common freeze authority and timestamp, and no execution-result fields in either manifest;
 - no taxonomy execution intake and no formal analyzer execution before a separately governed execution increment;
@@ -92,6 +114,41 @@ The study-freeze tests treat both real studies as unexecuted Layer 1 preregistra
 - rejection of digest substitution, identity cross-binding, path escape, duplicate outputs, result leakage, false completion or evidence claims, and product-specific contamination.
 
 These checks establish preregistration integrity and containment only. They do not evaluate the taxonomy, prove the formal model, publish a finding, close either study, award mechanism maturity, or complete M1.
+
+## Taxonomy case-access containment expectations
+
+Pre-intake validation may inspect authoritative case locators, artifact IDs,
+declared digest metadata, file type, link count, and structural presence. It may
+not parse, hash, render, search, or otherwise open production taxonomy case
+bodies. The containment tests require:
+
+- catalog bootstrap from the fixed foundational-study registry and every
+  indexed canonical manifest before any broad content scan;
+- metadata-driven case classification, including when the protected directory
+  is not named `cases`;
+- protection of all indexed historical versions, including superseded records,
+  with exactly one active taxonomy lineage head;
+- rejection of malformed bootstrap metadata, traversal, absolute paths, URLs,
+  backslashes, control or non-ASCII locator spellings, symlinks, hard-link
+  aliases, undeclared protected-root entries, broken predecessor digests,
+  duplicate active versions, and reused planned-output locators;
+- rejection before body access for compound classification mutations, unsafe
+  existing escape targets, invalid or forged access catalogs, and protected
+  output-namespace descendants;
+- rejection of non-authoritative or aliased requests to resolve protected
+  artifacts; exact retained `DRAFT` manifest mirrors are recognized only as
+  inert metadata and never as read authority;
+- additive process protection across historical/current catalog artifacts and
+  explicit roots, including hard-link and `dir_fd` aliases, while metadata-only
+  `stat`, `lstat`, and `readlink` operations remain available; and
+- explicit successful-validator output stating that case bodies were not
+  accessed and case-byte digest verification remains deferred.
+
+Synthetic fixtures demonstrate structural behavior only. They are not research
+evidence, do not represent real human contributors, do not repair the frozen
+study, and do not authorize case-byte verification, adjudication, planned-output
+creation, or execution. A later valid intake would still require separate,
+explicitly reviewed access and execution authority.
 
 ## M1 study-execution readiness expectations
 

@@ -6,9 +6,6 @@ import unittest
 from pathlib import Path
 
 from tools.validate_repository import (
-    RepositoryValidationError,
-    load_json,
-    load_yaml,
     validate_registries,
     validate_repository,
     validate_required_paths,
@@ -16,25 +13,30 @@ from tools.validate_repository import (
     validate_dependency_lock,
     validate_local_artifact_references,
     validate_registry_entry_semantics,
+    validate_serialized_documents,
 )
 
 
 class ParsingSafetyTests(unittest.TestCase):
     def test_duplicate_json_keys_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "duplicate.json"
+            root = Path(directory)
+            path = root / "duplicate.json"
             path.write_text('{"id": "first", "id": "second"}', encoding="utf-8")
 
-            with self.assertRaisesRegex(RepositoryValidationError, "duplicate JSON key"):
-                load_json(path)
+            errors = validate_serialized_documents(root)
+
+        self.assertTrue(any("duplicate JSON key" in error for error in errors), errors)
 
     def test_duplicate_yaml_keys_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "duplicate.yaml"
+            root = Path(directory)
+            path = root / "duplicate.yaml"
             path.write_text("schema_version: 1\nschema_version: 2\n", encoding="utf-8")
 
-            with self.assertRaisesRegex(RepositoryValidationError, "duplicate YAML key"):
-                load_yaml(path)
+            errors = validate_serialized_documents(root)
+
+        self.assertTrue(any("duplicate YAML key" in error for error in errors), errors)
 
 
 class RepositoryContractTests(unittest.TestCase):

@@ -184,7 +184,7 @@ class SyntheticFoundationalRepository:
     def _subject_entry(self):
         return {
             "target_type": "FOUNDATIONAL_SUBJECT",
-            "subject_kind": "MEMORY_TAXONOMY",
+            "subject_kind": "FORMAL_MEMORY_MODEL",
             "subject_id": "LCMRP-FSUBJ-9999-ADVERSARIAL",
             "subject_series": "LCMRP-ADVERSARIAL-SUBJECT",
             "subject_version": 1,
@@ -230,16 +230,46 @@ class SyntheticFoundationalRepository:
             "urn:lcmrp:test:immutable-input",
             "records/foundational/support/immutable-input.json",
         )
-        profile = study["primary_method_profile"]
-        profile["profile_definition_artifact"] = self._artifact(
-            "ARTIFACT-ADVERSARIAL-PROFILE",
-            1,
-            "urn:lcmrp:test:method-profile",
-            "records/foundational/profiles/profile-v1.json",
+        original_profile = study["primary_method_profile"]
+        formal_system_artifact = support_artifact(
+            "ARTIFACT-ADVERSARIAL-FORMAL-SYSTEM"
         )
-        profile["category_definition_artifact"] = support_artifact(
-            "ARTIFACT-ADVERSARIAL-CATEGORIES"
-        )
+        study["primary_method_profile"] = {
+            "profile_kind": "FORMAL_ANALYSIS",
+            "profile_id": original_profile["profile_id"],
+            "profile_series": original_profile["profile_series"],
+            "profile_version": original_profile["profile_version"],
+            "profile_definition_artifact": self._artifact(
+                "ARTIFACT-ADVERSARIAL-PROFILE",
+                1,
+                "urn:lcmrp:test:method-profile",
+                "records/foundational/profiles/profile-v1.json",
+            ),
+            "formal_system_artifact": formal_system_artifact,
+            "assumptions": ["Synthetic formal assumption for contract testing."],
+            "propositions": ["PROP-ADVERSARIAL-1"],
+            "consistency_or_satisfiability_checks": [
+                "Check the synthetic proposition set for consistency."
+            ],
+            "intended_entailments": [
+                "The synthetic assumption entails only its declared proposition."
+            ],
+            "non_entailments_or_countermodels": [
+                "Retain a synthetic countermodel for every undeclared entailment."
+            ],
+            "tool_provenance": support_artifact(
+                "ARTIFACT-ADVERSARIAL-TOOL-PROVENANCE"
+            ),
+            "proof_or_verification_method": (
+                "Synthetic contract-shape verification only; no proof claim."
+            ),
+            "semantic_validity_check": (
+                "Semantic validity remains outside this non-evidentiary fixture."
+            ),
+            "counterexample_search": (
+                "Enumerate synthetic counterexample rows without drawing a finding."
+            ),
+        }
         study["preregistration"] = {
             "status": "FROZEN",
             "results_accessed_before_freeze": False,
@@ -247,10 +277,15 @@ class SyntheticFoundationalRepository:
             "registration_authority": "SYNTHETIC-M0-TEST",
             "freeze_artifact": support_artifact("ARTIFACT-ADVERSARIAL-FREEZE"),
         }
-        for index, source in enumerate(study["sources"], 1):
-            source["provenance_artifact"] = support_artifact(
-                f"ARTIFACT-ADVERSARIAL-SOURCE-{index}"
-            )
+        study["sources"] = [
+            {
+                "source_id": "SOURCE-ADVERSARIAL-FORMAL-INPUT",
+                "source_kind": "FORMAL_SPECIFICATION",
+                "role": "FORMAL_INPUT",
+                "human_subjects_involved": False,
+                "provenance_artifact": copy.deepcopy(formal_system_artifact),
+            }
+        ]
         study["reproducibility"]["environment_artifact"] = support_artifact(
             "ARTIFACT-ADVERSARIAL-ENVIRONMENT"
         )
@@ -616,6 +651,9 @@ class FullLifecycleAdversarialTests(unittest.TestCase):
         other = copy.deepcopy(fixture.study)
         other["study_record_id"] = "LCMRP-FSTUDYREC-9999-ADVERSARIAL-OTHER"
         other["study_id"] = "LCMRP-FSTUDY-9999-ADVERSARIAL-OTHER"
+        other["primary_method_profile"]["profile_kind"] = (
+            "SYNTHETIC_UNSUPPORTED_PROFILE_KIND"
+        )
         other["primary_method_profile"]["profile_definition_artifact"] = fixture._artifact(
             "ARTIFACT-ADVERSARIAL-PROFILE",
             1,
