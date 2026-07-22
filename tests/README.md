@@ -43,7 +43,7 @@ Negative fixtures mutate synthetic examples in memory. They are deliberately non
 The M1 launch tests treat the taxonomy, prior-art map, and formal object model as unvalidated Layer 1 candidates. They require:
 
 - exactly one Layer 1 declaration per substantive launch artifact;
-- an in-progress milestone with unchecked exit criteria and explicit stop or rejection rules;
+- an in-progress milestone with multiple still-unchecked exit criteria, checked sub-gates allowed without implying milestone completion, and explicit stop or rejection rules;
 - competing taxonomy organizations, observable distinctions, edge cases, and unresolved obligations;
 - product-independent authority, provenance, confidence, uncertainty, deletion, time, and lifecycle semantics;
 - a typed formal model with declared operations, invariants, intended non-entailments, countermodels, and missing proof obligations;

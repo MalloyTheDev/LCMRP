@@ -69,4 +69,4 @@ Novelty must not be claimed until relevant keywords, adjacent terms, venues, sta
 
 ## Current status
 
-No sources are cataloged in M0. Adding a citation is a research action that requires verification and review; bootstrap documentation alone does not establish a literature claim.
+No sources are cataloged in this directory. The separate M1 prior-art map is a bounded, unregistered research input rather than a verified source catalog or evidence-synthesis finding. Adding a catalog entry is a research action that requires claim-level verification and review; bootstrap documentation, a link, or inclusion in the prior-art map alone does not establish a literature claim.
