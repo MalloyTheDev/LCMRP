@@ -294,6 +294,7 @@ class M1LaunchAdversarialTests(unittest.TestCase):
             exit_prose = _without_fenced_code(exit_body)
             unchecked_exit_items = re.findall(r"(?im)^\s*-\s*\[ \]\s+\S.*$", exit_prose)
             checked_exit_items = re.findall(r"(?im)^\s*-\s*\[[xX]\]\s+\S.*$", exit_prose)
+            all_exit_items = unchecked_exit_items + checked_exit_items
             self.assertGreaterEqual(
                 _word_count(exit_body),
                 40,
@@ -304,10 +305,23 @@ class M1LaunchAdversarialTests(unittest.TestCase):
                 2,
                 f"section '{exit_heading.title}' in {label} must list multiple unchecked exit criteria",
             )
-            self.assertEqual(
-                [],
-                checked_exit_items,
-                f"section '{exit_heading.title}' in {label} must not contain checked exit criteria",
+            self.assertGreaterEqual(
+                len(all_exit_items),
+                3,
+                f"section '{exit_heading.title}' in {label} must enumerate multiple exit criteria",
+            )
+            self.assertRegex(
+                exit_prose,
+                r"(?i)\b(?:m1\s+is\s+not\s+complete|"
+                r"m1\s+remains?\s+in[ -]progress|"
+                r"exit\s+(?:criteria|obligations)\s+remain\s+(?:open|unchecked))\b",
+                f"section '{exit_heading.title}' in {label} must state that M1 remains incomplete",
+            )
+            self.assertNotRegex(
+                exit_prose,
+                r"(?i)\bm1\s+(?:is|has\s+been)\s+(?:now\s+)?"
+                r"(?:complete|completed|closed|finished)\b",
+                f"section '{exit_heading.title}' in {label} must not claim M1 completion",
             )
 
             stop_section = _find_section(
@@ -342,28 +356,78 @@ class M1LaunchAdversarialTests(unittest.TestCase):
 
         assert_exit_and_stop_criteria_are_valid(foundation, label=FOUNDATION)
 
-        checked_exit_mutation = re.sub(
+        current_exit_section = _find_section(
+            foundation,
+            r"^exit criteria$",
+            r"^launch exit criteria$",
+            r"^m1 exit criteria$",
+        )
+        assert current_exit_section is not None
+        self.assertGreaterEqual(
+            len(re.findall(r"(?im)^\s*-\s*\[[xX]\]\s+\S.*$", current_exit_section[1])),
+            1,
+            "the current milestone fixture must exercise partial-progress checkbox semantics",
+        )
+
+        all_complete_mutation = re.sub(
             r"(?m)^(\s*-\s*)\[ \](\s+\S.*)$",
             r"\1[x]\2",
             foundation,
-            count=1,
         )
-        with self.assertRaises(AssertionError):
+        with self.assertRaisesRegex(AssertionError, "multiple unchecked exit criteria"):
             assert_exit_and_stop_criteria_are_valid(
-                checked_exit_mutation,
-                label="mutation with checked exit criterion",
+                all_complete_mutation,
+                label="mutation falsely marking every exit criterion complete",
+            )
+
+        hidden_open_obligations_mutation = re.sub(
+            r"(?m)^(\s*-\s*)\[ \](\s+\S.*)$",
+            r"\1\2",
+            foundation,
+        )
+        with self.assertRaisesRegex(AssertionError, "multiple unchecked exit criteria"):
+            assert_exit_and_stop_criteria_are_valid(
+                hidden_open_obligations_mutation,
+                label="mutation hiding open obligations as ordinary bullets",
+            )
+
+        false_completion_mutation = foundation.replace(
+            "M1 is not complete.",
+            "M1 is complete.",
+            1,
+        )
+        self.assertNotEqual(foundation, false_completion_mutation)
+        with self.assertRaisesRegex(AssertionError, "must state that M1 remains incomplete"):
+            assert_exit_and_stop_criteria_are_valid(
+                false_completion_mutation,
+                label="mutation falsely claiming M1 completion",
             )
 
         removed_stop_language_mutation = re.sub(
             r"(?is)(## Stop, rejection, and reset criteria\n)(.*?)(?=\n## \S|\Z)",
             "\\1\n"
-            "Criteria needing later review:\n\n"
-            "- The exact subject, study, profile, finding, or artifact digest cannot be resolved through the accepted contracts.\n"
-            "- Material contradictory, null, negative, or invalid outcomes are omitted from the record.\n",
+            "Conditions needing later governance attention:\n\n"
+            "- An unresolved subject, study, profile, finding, or artifact digest triggers a documented integrity assessment before additional substantive work proceeds, with the affected identity and scope preserved for review.\n"
+            "- Omitted contradictory, null, negative, invalid, or unexecuted outcomes trigger a retention audit that restores visibility without rewriting the underlying record or inventing a favorable disposition.\n"
+            "- Work requiring an unsupported method profile returns to separately versioned contract design with its assumptions, risks, and unperformed analyses recorded explicitly.\n",
             foundation,
             count=1,
         )
-        with self.assertRaises(AssertionError):
+        mutated_stop_section = _find_section(
+            removed_stop_language_mutation,
+            r"^stop criteria$",
+            r"^rejection criteria$",
+            r"^stop or rejection rules$",
+            r"^stop, rejection, and reset criteria$",
+        )
+        assert mutated_stop_section is not None
+        self.assertGreaterEqual(_word_count(mutated_stop_section[1]), 40)
+        self.assertGreaterEqual(_structured_items(mutated_stop_section[1]), 2)
+        self.assertNotRegex(
+            _without_fenced_code(mutated_stop_section[1]),
+            r"(?i)\b(?:stop|reject|rejection|fail|failure|pause|halt)\b",
+        )
+        with self.assertRaisesRegex(AssertionError, "must use explicit stop/reject/fail wording"):
             assert_exit_and_stop_criteria_are_valid(
                 removed_stop_language_mutation,
                 label="mutation without explicit stop/rejection wording",

@@ -13,7 +13,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 ## Start here
 
 - [Program Charter v0.1](docs/program/PROGRAM_CHARTER_v0.1.md) defines the mission, constraints, workstreams, and reporting requirements.
-- [M0 Foundation](docs/program/M0_FOUNDATION.md) defines the current milestone, exclusions, exit criteria, and M1 entry gate.
+- [M0 Foundation](docs/program/M0_FOUNDATION.md) records the completed infrastructure milestone, its exclusions and exit evidence, and the gate that opened M1.
 - [M1 Foundation](docs/program/M1_FOUNDATION.md) defines the active Layer 1 taxonomy and formal-model milestone, its launch scope, and its still-open exit criteria.
 - [Research Layers](docs/program/RESEARCH_LAYERS.md) defines how work is classified and kept product-independent.
 - [Foundational Study Contract v0.1](docs/program/FOUNDATIONAL_STUDY_CONTRACT.md) defines mechanism-free Layer 1 study profiles and finding boundaries.
@@ -27,6 +27,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M0 Final Adversarial Review](reviews/M0_FINAL_ADVERSARIAL_REVIEW_2026-07-21.md) records the completion-focused negative tests and technical verdict.
 - [M0 Completion Decision](reviews/M0_COMPLETION_DECISION_2026-07-21.md) records the exit-criterion evidence, governance acceptance, compatibility impact, and post-M0 limits.
 - [M1 Prior-Art and Competing-Taxonomies Map](docs/taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md) records scoped research inputs and unresolved alternatives without adopting a taxonomy.
+- [M1 Taxonomy-to-FMO Crosswalk Draft](docs/taxonomy/M1_TAXONOMY_TO_FMO_CROSSWALK_DRAFT_v0.1.md) preserves an unregistered mapping proposal outside the exact registered v1 subject bytes.
 - [Memory Taxonomy v0.1 Candidate](docs/taxonomy/MEMORY_TAXONOMY_v0.1.md) defines falsifiable candidate terms, axes, distinctions, and edge cases.
 - [Formal Memory Object Model v0.1 Candidate](docs/taxonomy/FORMAL_MEMORY_OBJECT_MODEL_v0.1.md) defines the candidate objects, relations, operations, invariants, and open proof obligations.
 - [M1 Synthetic Contract Dry Runs](examples/m1-dry-runs/) exercise the foundational subject-to-closeout record graph without registering a real study or producing evidence.
@@ -42,8 +43,10 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Study-Freeze Decision](reviews/M1_STUDY_FREEZE_DECISION_2026-07-21.md) records the steward acceptance boundary and remaining execution obligations.
 - [M1 Taxonomy Execution-Readiness Review](reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md) records the non-case preflight blockers that prevent taxonomy v1 execution.
 - [M1 Formal Execution Preflight](studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json) records the fail-closed guard defect discovered before the configured analyzer command ran.
+- [M1 Formal-Model Execution-Readiness Review](reviews/M1_FORMAL_MODEL_EXECUTION_READINESS_2026-07-21.md) records the formal v1 blocker, its non-result boundary, and the required governed supersession path.
 - [M1 Study-Execution Adversarial Review](reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md) independently tests containment and the two truthful blocked-not-run states.
 - [M1 Study-Execution Decision](reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md) records the steward disposition and required versioned supersession work.
+- [M1 Launch-Continuation Triage](reviews/M1_LAUNCH_CONTINUATION_TRIAGE_2026-07-21.md) is a historical consolidation of continuation prerequisites; later readiness records govern where its inventory has been superseded.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts

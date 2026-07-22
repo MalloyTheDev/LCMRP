@@ -2,7 +2,7 @@
 
 ## Supported research surface
 
-LCMRP is currently establishing its M0 research governance and reproducibility foundation. During this phase, the latest revision of the default branch is the supported security-review surface. No mechanism is implied to be safe for production deployment.
+LCMRP has completed its M0 research-governance and reproducibility foundation and is conducting incomplete Layer 1 M1 taxonomy and formal-model work. The latest revision of the default branch is the supported security-review surface. Neither a candidate, preregistration, blocked preflight, test, nor review implies that any mechanism is safe for production deployment.
 
 Experimental artifacts may intentionally model hostile inputs and failure cases. Their presence does not make them safe to run on private data, privileged systems, or production infrastructure.
 

@@ -2,7 +2,7 @@
 
 **Layer rule:** Each experiment declares exactly one applicable layer; cross-layer work uses separate linked artifacts  
 **M0 status:** Workflow and templates established.  
-**M1 status:** Two isolated synthetic contract dry runs exist; no real experiment or foundational study has been registered or executed.
+**M1 status:** Two isolated synthetic contract dry runs, two registered foundational subjects, and two frozen real foundational-study preregistrations exist. Neither real study executed; no experiment, research finding, closeout, mechanism, or evidence record is registered.
 
 LCMRP experiments test bounded hypotheses under versioned conditions. They do not promote a mechanism automatically, and they retain negative, null, failed, invalid, and aborted outcomes as program evidence.
 
