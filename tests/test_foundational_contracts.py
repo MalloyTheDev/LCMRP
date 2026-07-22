@@ -804,6 +804,16 @@ class FoundationalRegistryStatusValidatorTests(unittest.TestCase):
             (root / "registry").mkdir()
             if registry_type == "foundational_study_registry":
                 artifact = load_json("examples/foundational-study-manifest.example.json")
+                # This status-only fixture is deliberately outside the managed
+                # taxonomy case-access lane; profile-shape errors are immaterial
+                # to the ACTIVE-versus-DRAFT assertion below.
+                artifact["subject"]["subject_kind"] = "FORMAL_MEMORY_MODEL"
+                artifact["primary_method_profile"]["profile_kind"] = (
+                    "FORMAL_ANALYSIS"
+                )
+                artifact["primary_method_profile"].pop("positive_case_source_ids")
+                artifact["primary_method_profile"].pop("negative_case_source_ids")
+                artifact["sources"] = []
                 schema_name = "foundational-study-manifest.schema.json"
                 record_id = artifact["study_record_id"]
                 artifact_type = "foundational_study_manifest"

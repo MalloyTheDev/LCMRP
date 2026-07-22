@@ -30,8 +30,17 @@ jobs:
           python -m pip install --requirement requirements-dev.lock
           python -m pip check
 
-      - name: Validate repository contracts
-        run: python tools/validate_repository.py
+      - name: Run taxonomy case-access containment mutations
+        run: >
+          python tests/run_no_case_access_gate.py --
+          python -m unittest tests.test_taxonomy_case_access_containment --verbose
 
-      - name: Run validator tests
-        run: python -m unittest discover --start-directory tests --verbose
+      - name: Validate repository without taxonomy case access
+        run: >
+          python tests/run_no_case_access_gate.py --
+          python tools/validate_repository.py
+
+      - name: Run complete suite without taxonomy case access
+        run: >
+          python tests/run_no_case_access_gate.py --
+          python -m unittest discover --start-directory tests --verbose

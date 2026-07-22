@@ -8,6 +8,8 @@ evaluate memory mechanisms, scientific claims, or product readiness.
 from __future__ import annotations
 
 import argparse
+from contextvars import ContextVar
+from functools import wraps
 import hashlib
 import json
 import re
@@ -15,6 +17,19 @@ import sys
 from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
+
+try:
+    from .taxonomy_case_access import (
+        CatalogLoadError,
+        StudyAccessCatalog,
+        build_study_access_catalog,
+    )
+except ImportError:  # pragma: no cover - direct script execution
+    from taxonomy_case_access import (
+        CatalogLoadError,
+        StudyAccessCatalog,
+        build_study_access_catalog,
+    )
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -114,6 +129,7 @@ REQUIRED_PATHS = (
     "reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md",
     "reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md",
     "reviews/M1_LAUNCH_CONTINUATION_TRIAGE_2026-07-21.md",
+    "reviews/M1_TAXONOMY_AUTOMATED_CASE_ACCESS_CORRECTION_2026-07-22.md",
     "studies/foundational/m1-formal-model-v1/execution/preflight-execution-attestation.json",
     "studies/foundational/m1-formal-model-v1/execution/runtime-provenance.json",
     "tests/README.md",
@@ -124,6 +140,10 @@ REQUIRED_PATHS = (
     "tests/test_m1_subject_admission.py",
     "tests/test_m1_study_freeze.py",
     "tests/test_m1_study_execution.py",
+    "tests/test_taxonomy_case_access_containment.py",
+    "tests/run_no_case_access_gate.py",
+    "tests/support/no_case_access/sitecustomize.py",
+    "tools/taxonomy_case_access.py",
 )
 
 REGISTRIES = {
@@ -175,6 +195,128 @@ class RepositoryValidationError(ValueError):
     """Raised when a repository contract is malformed or violated."""
 
 
+_ACTIVE_ACCESS_CATALOG: ContextVar[StudyAccessCatalog | None] = ContextVar(
+    "active_taxonomy_access_catalog",
+    default=None,
+)
+_LAST_CASE_ACCESS_SUMMARY = ""
+
+_GOVERNED_HISTORICAL_DRAFT_IDENTITIES = frozenset(
+    {
+        (
+            "studies/foundational/m1-taxonomy-v1/manifest-draft.json",
+            "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+            "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+            1,
+        )
+    }
+)
+
+
+def _activate_access_catalog(
+    root: Path,
+    supplied: StudyAccessCatalog | None = None,
+) -> tuple[StudyAccessCatalog, Any]:
+    """Install one usable catalog or fail before the caller can read bodies."""
+
+    normalized_root = root.resolve()
+    active = _ACTIVE_ACCESS_CATALOG.get()
+
+    if supplied is not None:
+        if supplied.root != normalized_root:
+            raise RepositoryValidationError(
+                "taxonomy case-access catalog root does not match validation root"
+            )
+        try:
+            supplied.require_usable()
+        except CatalogLoadError as exc:
+            raise RepositoryValidationError(str(exc)) from exc
+
+    if active is None:
+        authoritative = build_study_access_catalog(normalized_root)
+        try:
+            authoritative.require_usable()
+        except CatalogLoadError as exc:
+            raise RepositoryValidationError(str(exc)) from exc
+        if supplied is not None and supplied != authoritative:
+            raise RepositoryValidationError(
+                "supplied taxonomy case-access catalog does not match freshly "
+                "resolved authoritative metadata"
+            )
+        catalog = authoritative
+    else:
+        if active.root != normalized_root:
+            raise RepositoryValidationError(
+                "active taxonomy case-access catalog root does not match validation root"
+            )
+        try:
+            active.require_usable()
+        except CatalogLoadError as exc:
+            raise RepositoryValidationError(str(exc)) from exc
+        if supplied is not None and supplied != active:
+            raise RepositoryValidationError(
+                "supplied taxonomy case-access catalog does not match the active "
+                "authoritative policy"
+            )
+        catalog = active
+
+    return catalog, _ACTIVE_ACCESS_CATALOG.set(catalog)
+
+
+def _requires_access_policy(function: Any) -> Any:
+    """Make a list-returning validation entrypoint safe when called directly."""
+
+    @wraps(function)
+    def guarded(root: Path, *args: Any, **kwargs: Any) -> list[str]:
+        try:
+            _catalog, token = _activate_access_catalog(root)
+        except RepositoryValidationError as exc:
+            return [str(exc)]
+        try:
+            return function(root, *args, **kwargs)
+        finally:
+            _ACTIVE_ACCESS_CATALOG.reset(token)
+
+    return guarded
+
+
+def _ensure_body_read_allowed(path: Path) -> StudyAccessCatalog:
+    catalog = _ACTIVE_ACCESS_CATALOG.get()
+    if catalog is None:
+        raise RepositoryValidationError(
+            "taxonomy case-access policy is unavailable; metadata body read denied"
+        )
+    try:
+        catalog.require_usable()
+    except CatalogLoadError as exc:
+        raise RepositoryValidationError(str(exc)) from exc
+    if catalog.protects_path(path):
+        try:
+            relative = path.resolve(strict=False).relative_to(catalog.root).as_posix()
+        except ValueError:
+            relative = str(path)
+        raise RepositoryValidationError(
+            "generic repository validation cannot access protected taxonomy "
+            f"case/output bytes: {relative}"
+        )
+    return catalog
+
+
+def _read_metadata_bytes(path: Path) -> bytes:
+    catalog = _ensure_body_read_allowed(path)
+    try:
+        return catalog.read_metadata_bytes(path)
+    except CatalogLoadError as exc:
+        raise RepositoryValidationError(f"{path}: {exc}") from exc
+
+
+def _read_metadata_text(path: Path, *, encoding: str = "utf-8") -> str:
+    try:
+        return _read_metadata_bytes(path).decode(encoding)
+    except (RepositoryValidationError, UnicodeDecodeError) as exc:
+        raise RepositoryValidationError(f"{path}: {exc}") from exc
+
+
 def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     for key, value in pairs:
@@ -188,9 +330,16 @@ def load_json(path: Path) -> Any:
     """Load JSON while rejecting duplicate object keys."""
 
     try:
-        with path.open("r", encoding="utf-8") as handle:
-            return json.load(handle, object_pairs_hook=_reject_duplicate_pairs)
-    except (OSError, json.JSONDecodeError, RepositoryValidationError) as exc:
+        raw = _read_metadata_bytes(path)
+        return json.loads(
+            raw.decode("utf-8"),
+            object_pairs_hook=_reject_duplicate_pairs,
+        )
+    except (
+        UnicodeDecodeError,
+        json.JSONDecodeError,
+        RepositoryValidationError,
+    ) as exc:
         raise RepositoryValidationError(f"{path}: {exc}") from exc
 
 
@@ -222,9 +371,8 @@ def load_yaml(path: Path) -> Any:
     )
 
     try:
-        with path.open("r", encoding="utf-8") as handle:
-            return yaml.load(handle, Loader=UniqueKeyLoader)
-    except (OSError, yaml.YAMLError, RepositoryValidationError) as exc:
+        return yaml.load(_read_metadata_text(path), Loader=UniqueKeyLoader)
+    except (yaml.YAMLError, RepositoryValidationError) as exc:
         raise RepositoryValidationError(f"{path}: {exc}") from exc
 
 
@@ -245,7 +393,12 @@ def _load_pinned_requirements(path: Path) -> tuple[dict[str, str], list[str]]:
     if not path.is_file():
         return pins, errors
 
-    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    try:
+        lines = _read_metadata_text(path).splitlines()
+    except RepositoryValidationError as exc:
+        return pins, [str(exc)]
+
+    for line_number, raw_line in enumerate(lines, 1):
         line = raw_line.strip()
         if not line or line.startswith("#"):
             continue
@@ -261,6 +414,7 @@ def _load_pinned_requirements(path: Path) -> tuple[dict[str, str], list[str]]:
     return pins, errors
 
 
+@_requires_access_policy
 def validate_dependency_lock(root: Path) -> list[str]:
     direct, errors = _load_pinned_requirements(root / "requirements-dev.txt")
     locked, lock_errors = _load_pinned_requirements(root / "requirements-dev.lock")
@@ -275,6 +429,7 @@ def validate_dependency_lock(root: Path) -> list[str]:
     return errors
 
 
+@_requires_access_policy
 def validate_schemas_and_examples(root: Path) -> list[str]:
     errors: list[str] = []
     try:
@@ -404,12 +559,33 @@ def _is_ignored_validation_path(path: Path, root: Path) -> bool:
     return any(part in {".git", ".venv", "__pycache__"} for part in relative_parts)
 
 
-def validate_serialized_documents(root: Path) -> list[str]:
-    """Parse every repository JSON/YAML document with duplicate-key rejection."""
+def validate_serialized_documents(
+    root: Path,
+    catalog: StudyAccessCatalog | None = None,
+) -> list[str]:
+    """Parse metadata documents while leaving protected case/output bodies opaque."""
+
+    try:
+        effective_catalog, token = _activate_access_catalog(root, catalog)
+    except RepositoryValidationError as exc:
+        return [str(exc)]
+    try:
+        return _validate_serialized_documents(root, effective_catalog)
+    finally:
+        _ACTIVE_ACCESS_CATALOG.reset(token)
+
+
+def _validate_serialized_documents(
+    root: Path,
+    catalog: StudyAccessCatalog,
+) -> list[str]:
+    """Policy-internal implementation for serialized metadata validation."""
 
     errors: list[str] = []
     for path in sorted(root.rglob("*.json")):
         if _is_ignored_validation_path(path, root):
+            continue
+        if catalog.protects_path(path):
             continue
         try:
             load_json(path)
@@ -423,6 +599,8 @@ def validate_serialized_documents(root: Path) -> list[str]:
     )
     for path in sorted(yaml_paths):
         if _is_ignored_validation_path(path, root):
+            continue
+        if catalog.protects_path(path):
             continue
         try:
             load_yaml(path)
@@ -451,6 +629,7 @@ def _resolve_local_artifact(root: Path, locator: str) -> Path | None:
         raise RepositoryValidationError(
             f"artifact locator escapes repository: {locator}"
         ) from exc
+    _ensure_body_read_allowed(candidate)
     return candidate
 
 
@@ -890,13 +1069,104 @@ def _validate_foundational_study_semantics(
     return errors
 
 
-def validate_local_artifact_references(root: Path) -> list[str]:
-    """Verify recorded local artifact digests and mechanism-version bindings."""
+def _protected_reference_is_authoritative(
+    mapping: Mapping[str, Any],
+    artifact: Any,
+    document_locator: str,
+) -> bool:
+    digest = mapping.get("digest")
+    digest_mapping = digest if isinstance(digest, Mapping) else {}
+    binding_key = (
+        mapping.get("artifact_id"),
+        mapping.get("artifact_version"),
+        mapping.get("schema_id"),
+        mapping.get("locator"),
+        mapping.get("media_type"),
+        digest_mapping.get("algorithm"),
+        digest_mapping.get("status"),
+        digest_mapping.get("value"),
+        digest_mapping.get("scope"),
+    )
+    return artifact.owner_manifest == document_locator and artifact.binding_key == binding_key
+
+
+def _protected_reference_is_inert_historical_draft(
+    document: Any,
+    mapping: Mapping[str, Any],
+    artifacts: tuple[Any, ...],
+    document_locator: str,
+) -> bool:
+    """Recognize the retained v1 draft without granting it read authority."""
+
+    if (
+        not isinstance(document, Mapping)
+        or document.get("artifact_type") != "foundational_study_manifest"
+        or document.get("record_status") != "DRAFT"
+        or (
+            document_locator,
+            document.get("study_id"),
+            document.get("study_record_id"),
+            document.get("record_version"),
+        )
+        not in _GOVERNED_HISTORICAL_DRAFT_IDENTITIES
+    ):
+        return False
+    preregistration = document.get("preregistration")
+    if not isinstance(preregistration, Mapping) or preregistration.get("status") != "DRAFT":
+        return False
+    digest = mapping.get("digest")
+    if not isinstance(digest, Mapping):
+        return False
+    candidate_identity = (
+        mapping.get("artifact_id"),
+        mapping.get("artifact_version"),
+        mapping.get("schema_id"),
+        mapping.get("locator"),
+        mapping.get("media_type"),
+    )
+    for artifact in artifacts:
+        if (
+            document.get("study_id") == artifact.study_id
+            and document.get("study_record_id") == artifact.study_record_id
+            and document.get("record_version") == artifact.record_version
+            and candidate_identity == artifact.binding_key[:5]
+            and digest.get("algorithm") == "SHA-256"
+            and digest.get("scope") == "RAW_FILE_BYTES"
+            and digest.get("status") == "PENDING"
+            and digest.get("value") is None
+        ):
+            return True
+    return False
+
+
+def validate_local_artifact_references(
+    root: Path,
+    catalog: StudyAccessCatalog | None = None,
+) -> list[str]:
+    """Apply the access policy for every local-reference validation route."""
+
+    try:
+        effective_catalog, token = _activate_access_catalog(root, catalog)
+    except RepositoryValidationError as exc:
+        return [str(exc)]
+    try:
+        return _validate_local_artifact_references(root, effective_catalog)
+    finally:
+        _ACTIVE_ACCESS_CATALOG.reset(token)
+
+
+def _validate_local_artifact_references(
+    root: Path,
+    catalog: StudyAccessCatalog,
+) -> list[str]:
+    """Verify metadata digests while deferring protected taxonomy case bytes."""
 
     errors: list[str] = []
     documents: list[tuple[Path, Any]] = []
     for path in sorted(root.rglob("*.json")):
         if _is_ignored_validation_path(path, root):
+            continue
+        if catalog.protects_path(path):
             continue
         try:
             documents.append((path, load_json(path)))
@@ -909,6 +1179,26 @@ def validate_local_artifact_references(root: Path) -> list[str]:
             locator = mapping.get("locator")
             digest = mapping.get("digest")
             if not isinstance(locator, str) or not isinstance(digest, Mapping):
+                continue
+            protected_matches = catalog.artifacts_for_locator(locator)
+            if protected_matches:
+                if not any(
+                    _protected_reference_is_authoritative(
+                        mapping,
+                        artifact,
+                        relative_document,
+                    )
+                    for artifact in protected_matches
+                ) and not _protected_reference_is_inert_historical_draft(
+                    document,
+                    mapping,
+                    protected_matches,
+                    relative_document,
+                ):
+                    errors.append(
+                        f"{relative_document}: non-authoritative reference to protected "
+                        f"taxonomy artifact: {locator}"
+                    )
                 continue
             status = digest.get("status")
             algorithm = digest.get("algorithm")
@@ -927,7 +1217,17 @@ def validate_local_artifact_references(root: Path) -> list[str]:
             if not artifact_path.is_file():
                 errors.append(f"{relative_document}: recorded artifact is missing: {locator}")
                 continue
-            actual = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+            if catalog.protects_path(artifact_path):
+                errors.append(
+                    f"{relative_document}: locator aliases a protected taxonomy artifact: "
+                    f"{locator}"
+                )
+                continue
+            try:
+                actual = hashlib.sha256(_read_metadata_bytes(artifact_path)).hexdigest()
+            except RepositoryValidationError as exc:
+                errors.append(f"{relative_document}: {exc}")
+                continue
             if expected != actual:
                 errors.append(
                     f"{relative_document}: recorded SHA-256 does not match {locator}"
@@ -1456,6 +1756,7 @@ def _validate_foundational_registry_relationships(root: Path) -> list[str]:
     return errors
 
 
+@_requires_access_policy
 def validate_registries(root: Path) -> list[str]:
     errors: list[str] = []
     try:
@@ -1565,7 +1866,13 @@ def validate_registries(root: Path) -> list[str]:
                             f"{relative}:entries/{index}: missing subject definition: {locator}"
                         )
                         continue
-                    actual = hashlib.sha256(definition_path.read_bytes()).hexdigest()
+                    try:
+                        actual = hashlib.sha256(
+                            _read_metadata_bytes(definition_path)
+                        ).hexdigest()
+                    except RepositoryValidationError as exc:
+                        errors.append(f"{relative}:entries/{index}: {exc}")
+                        continue
                     if digest.get("value") != actual:
                         errors.append(
                             f"{relative}:entries/{index}: subject definition SHA-256 does not match raw file bytes"
@@ -1595,7 +1902,13 @@ def validate_registries(root: Path) -> list[str]:
                 continue
 
             expected_digest = digest.get("value")
-            actual_digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+            try:
+                actual_digest = hashlib.sha256(
+                    _read_metadata_bytes(artifact_path)
+                ).hexdigest()
+            except RepositoryValidationError as exc:
+                errors.append(f"{relative}:entries/{index}: {exc}")
+                continue
             if expected_digest != actual_digest:
                 errors.append(
                     f"{relative}:entries/{index}: SHA-256 digest does not match raw file bytes"
@@ -1763,6 +2076,7 @@ def validate_registries(root: Path) -> list[str]:
     return errors
 
 
+@_requires_access_policy
 def validate_citation_metadata(root: Path) -> list[str]:
     errors: list[str] = []
     path = root / "CITATION.cff"
@@ -1788,11 +2102,16 @@ def validate_citation_metadata(root: Path) -> list[str]:
     return errors
 
 
+@_requires_access_policy
 def validate_policy_invariants(root: Path) -> list[str]:
     errors: list[str] = []
     charter_path = root / "docs/program/PROGRAM_CHARTER_v0.1.md"
     if charter_path.is_file():
-        charter = charter_path.read_text(encoding="utf-8")
+        try:
+            charter = _read_metadata_text(charter_path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            charter = ""
         for invariant in CHARTER_INVARIANTS:
             if invariant not in charter:
                 errors.append(f"program charter missing invariant: {invariant}")
@@ -1806,19 +2125,33 @@ def validate_policy_invariants(root: Path) -> list[str]:
         path = root / relative
         if not path.is_file():
             continue
-        content = path.read_text(encoding="utf-8")
+        try:
+            content = _read_metadata_text(path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            continue
         for invariant in TEMPLATE_INVARIANTS:
             if invariant not in content:
                 errors.append(f"{relative}: missing required boundary label: {invariant}")
     return errors
 
 
+@_requires_access_policy
 def validate_markdown_links(root: Path) -> list[str]:
     errors: list[str] = []
+    catalog = _ACTIVE_ACCESS_CATALOG.get()
+    if catalog is None:  # pragma: no cover - decorator invariant
+        return ["taxonomy case-access policy is unavailable"]
     for path in sorted(root.rglob("*.md")):
         if any(part.startswith(".") and part != ".github" for part in path.parts):
             continue
-        content = path.read_text(encoding="utf-8")
+        if catalog.protects_path(path):
+            continue
+        try:
+            content = _read_metadata_text(path)
+        except RepositoryValidationError as exc:
+            errors.append(str(exc))
+            continue
         for target in MARKDOWN_LINK.findall(content):
             target = target.strip().strip("<>")
             if not target or target.startswith(("#", "http://", "https://", "mailto:")):
@@ -1840,16 +2173,36 @@ def validate_markdown_links(root: Path) -> list[str]:
 def validate_repository(root: Path = ROOT) -> list[str]:
     """Return all discovered contract violations without stopping at the first."""
 
+    global _LAST_CASE_ACCESS_SUMMARY
+    root = root.resolve()
+    catalog = build_study_access_catalog(root)
+    unique_case_count = len({artifact.locator for artifact in catalog.case_artifacts})
+    _LAST_CASE_ACCESS_SUMMARY = (
+        f"{unique_case_count} registered taxonomy case artifact(s) are structurally "
+        "present. Their bodies were not accessed and their recorded digests were not "
+        "recomputed; case-byte verification is deferred to a governed post-intake gate."
+    )
+    if catalog.errors:
+        return [
+            *(f"taxonomy case-access catalog: {error}" for error in catalog.errors),
+            "taxonomy case-access policy is unavailable; all broad body-reading "
+            "validation was aborted before repository content scans",
+        ]
+
     errors: list[str] = []
-    errors.extend(validate_required_paths(root))
-    errors.extend(validate_dependency_lock(root))
-    errors.extend(validate_serialized_documents(root))
-    errors.extend(validate_local_artifact_references(root))
-    errors.extend(validate_schemas_and_examples(root))
-    errors.extend(validate_registries(root))
-    errors.extend(validate_citation_metadata(root))
-    errors.extend(validate_policy_invariants(root))
-    errors.extend(validate_markdown_links(root))
+    token = _ACTIVE_ACCESS_CATALOG.set(catalog)
+    try:
+        errors.extend(validate_required_paths(root))
+        errors.extend(validate_dependency_lock(root))
+        errors.extend(validate_serialized_documents(root, catalog))
+        errors.extend(validate_local_artifact_references(root, catalog))
+        errors.extend(validate_schemas_and_examples(root))
+        errors.extend(validate_registries(root))
+        errors.extend(validate_citation_metadata(root))
+        errors.extend(validate_policy_invariants(root))
+        errors.extend(validate_markdown_links(root))
+    finally:
+        _ACTIVE_ACCESS_CATALOG.reset(token)
     return errors
 
 
@@ -1877,6 +2230,7 @@ def main(argv: list[str] | None = None) -> int:
         "LCMRP repository validation passed: required governance, schemas, examples, "
         "registries, serialized documents, and relative links satisfy the configured checks."
     )
+    print(_LAST_CASE_ACCESS_SUMMARY)
     return 0
 
 
