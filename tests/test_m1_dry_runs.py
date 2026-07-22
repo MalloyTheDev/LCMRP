@@ -915,9 +915,15 @@ def production_registry_errors(documents: Mapping[str, Any]) -> list[str]:
                 for entry in entries
                 if isinstance(entry, Mapping)
             }
+            # Multiple versions of an admitted study_record_id are allowed
+            # (digest-linked supersession). Unauthorized IDs and synthetics are not.
             if (
-                len(entries) != len(ADMITTED_REAL_STUDY_RECORD_IDS)
-                or record_ids != ADMITTED_REAL_STUDY_RECORD_IDS
+                record_ids != ADMITTED_REAL_STUDY_RECORD_IDS
+                or any(
+                    not isinstance(entry, Mapping)
+                    or entry.get("record_id") not in ADMITTED_REAL_STUDY_RECORD_IDS
+                    for entry in entries
+                )
                 or any(
                     SYNTHETIC_ID.search(value)
                     for entry in entries
@@ -1072,6 +1078,52 @@ class M1DryRunAdversarialTests(unittest.TestCase):
         self.assertTrue(
             any("populated by a dry run" in error for error in errors),
             f"production registry mutation unexpectedly passed: {errors}",
+        )
+
+    def test_12b_production_registry_allows_multiple_versions_of_admitted_ids(
+        self,
+    ) -> None:
+        documents = copy.deepcopy(self.production_registries)
+        studies = documents["registry/foundational-studies.yaml"]
+        baseline = copy.deepcopy(studies["entries"][0])
+        self.assertIn(baseline.get("record_id"), ADMITTED_REAL_STUDY_RECORD_IDS)
+        superseding = copy.deepcopy(baseline)
+        superseding["record_version"] = int(baseline["record_version"]) + 1
+        superseding["registry_status"] = "ACTIVE"
+        baseline["registry_status"] = "SUPERSEDED"
+        studies["entries"] = [baseline, superseding] + [
+            entry
+            for entry in studies["entries"][1:]
+            if entry.get("record_id") != baseline.get("record_id")
+        ]
+        self.assertEqual([], production_registry_errors(documents))
+
+    def test_12c_production_registry_rejects_missing_admitted_study_id(self) -> None:
+        documents = copy.deepcopy(self.production_registries)
+        studies = documents["registry/foundational-studies.yaml"]
+        # Drop every entry for one admitted ID while keeping the other(s).
+        removed_id = next(iter(ADMITTED_REAL_STUDY_RECORD_IDS))
+        studies["entries"] = [
+            entry
+            for entry in studies["entries"]
+            if entry.get("record_id") != removed_id
+        ]
+        errors = production_registry_errors(documents)
+        self.assertTrue(
+            any("unauthorized real study" in error for error in errors),
+            errors,
+        )
+
+    def test_12d_production_registry_rejects_extra_non_admitted_study_id(self) -> None:
+        documents = copy.deepcopy(self.production_registries)
+        studies = documents["registry/foundational-studies.yaml"]
+        extra = copy.deepcopy(studies["entries"][0])
+        extra["record_id"] = "LCMRP-FSTUDYREC-9999-NOT-ADMITTED"
+        studies["entries"].append(extra)
+        errors = production_registry_errors(documents)
+        self.assertTrue(
+            any("unauthorized real study" in error for error in errors),
+            errors,
         )
 
     def test_13_more_than_one_active_record_version_is_rejected(self) -> None:

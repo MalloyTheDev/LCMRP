@@ -48,6 +48,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Study-Execution Decision](reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md) records the steward disposition and required versioned supersession work.
 - [M1 Launch-Continuation Triage](reviews/M1_LAUNCH_CONTINUATION_TRIAGE_2026-07-21.md) is a historical consolidation of continuation prerequisites; later readiness records govern where its inventory has been superseded.
 - [M1 Taxonomy Pre-Result Metadata and Intake-Contract Repair Package](reviews/M1_TAXONOMY_PRE_RESULT_REPAIR_PACKAGE_2026-07-22.md) records pre-result superseding obligations for taxonomy blockers B2–B6 without freeze, live intake, case access, or execution authority; residual human-contributor blocker B1 remains open.
+- [M1 Formal Study-Record v2 Supersession](reviews/M1_FORMAL_STUDY_RECORD_V2_SUPERSESSION_2026-07-22.md) freezes the formal version-2 preregistration that supersedes the blocked version-1 tool binding without executing the analyzer or creating results.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts
@@ -63,9 +64,9 @@ Repository validation is run with `python tools/validate_repository.py` after in
 
 ## Current phase
 
-**M1 in progress — both frozen v1 studies blocked at execution preflight; neither study ran**
+**M1 in progress — taxonomy v1 blocked at preflight; formal study record v2 frozen but analysis not run**
 
-The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has two exact `ACTIVE` subjects and two exact `FROZEN` Layer 1 version-1 preregistrations. A separately reviewed pre-execution increment found hard metadata, contributor-intake, and provenance blockers in taxonomy v1 and a fail-closed canonical-index parsing defect in the frozen formal v1 tool. No taxonomy case was adjudicated; the formal configured command, `main`, and `run_kernel` were not invoked. All 12 planned outputs remain absent, and no finding or closeout exists. Both v1 records require digest-linked supersession before execution. These blockers do not adopt or validate either candidate, prove or disprove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
+The accepted M0 foundation establishes the rules and records needed to distinguish hypotheses, implementations, experiments, evidence, and maturity claims. M1 has two exact `ACTIVE` subjects. Taxonomy version-1 remains the active frozen preregistration and is blocked on metadata, intake, and human-contributor obligations. Formal version-1 is retained as `SUPERSEDED` historical provenance after a digest-linked version-2 freeze that binds the corrected analyzer guard; the configured analyzer command, `main`, and `run_kernel` have still not been invoked for semantic analysis. All 12 planned outputs remain absent, and no finding or closeout exists. Taxonomy still requires its own version-2 supersession path before execution. These states do not adopt or validate either candidate, prove or disprove the formal model, award evidence, authorize product work, or complete M1. The mechanism, experiment, evidence, research-finding, and foundational-closeout registries remain empty.
 
 ## License
 

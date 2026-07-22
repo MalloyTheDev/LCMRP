@@ -45,7 +45,7 @@ Compilation, JSON parsing, JSON Schema validation, raw-byte digest verification,
 
 The frozen guard expects eight leading spaces before the active registry entry's `artifact_digest.value`; the schema-valid canonical YAML uses six. The resulting `StudyGuardError` occurred before `main` or `run_kernel` and therefore says nothing about satisfiability, entailment, non-entailment, invariants, authority, deletion, or the semantic mapping. All seven result paths remain absent.
 
-Because the analyzer is digest-bound by the active version-1 manifest, fixing its parser in place would rewrite the preregistration. Execution requires a separately reviewed version-2 tool and study record, linked by supersession, frozen while every result remains absent. The preflight metadata is governance infrastructure, not an atomic finding or terminal disposition.
+Because the analyzer is digest-bound by the version-1 manifest, fixing its parser in place would rewrite the preregistration. The superseding package under [`superseding/study-record-v2/`](superseding/study-record-v2/) freezes version-2 tool and study-record bindings while preserving version-1 bytes and keeping every result absent. Version-1 blocked preflight metadata remains historical evidence. Freeze of version 2 does not authorize analysis execution or publish a scientific result.
 
 ## Planned analysis outputs
 
