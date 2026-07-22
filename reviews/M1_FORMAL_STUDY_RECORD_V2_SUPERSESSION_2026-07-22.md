@@ -50,7 +50,7 @@
 
 ## Next gates
 
-1. Human merge review for this registry/freeze change
-2. Optional fresh preflight attestation under v2 (still without analysis)
+1. Human merge review for this registry/freeze change — **completed** on `main` via PR #29
+2. Optional fresh preflight attestation under v2 (still without analysis) — recorded in `M1_FORMAL_V2_GUARD_PREFLIGHT_2026-07-22.md` / `superseding/study-record-v2/execution/preflight-attestation.json` (engineering only)
 3. Separate execution authorization only if later explicitly approved
-4. Taxonomy lane remains independent
+4. Taxonomy residual B1 (humans + intake) remains an independent lane
