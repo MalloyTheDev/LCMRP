@@ -11,3 +11,5 @@ Mechanism-free Layer 1 work uses the machine-readable [Foundational Study Contra
 - [`foundational-study-closeout.md`](foundational-study-closeout.md) for the immutable all-analysis completion ledger.
 
 Do not force foundational work into a mechanism template, and do not use foundational templates to award a mechanism evidence label. Layer 1 foundational templates prohibit product-specific implications; any later product feasibility question requires a separate Layer 3 artifact.
+
+[`foundational-execution-intake.md`](foundational-execution-intake.md) is a pre-coding intake authoring aid that requires a separate external digest receipt. Completing the template does not freeze a study, appoint adjudicators, or authorize case access.

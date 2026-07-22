@@ -9,3 +9,5 @@ See [Foundational Study Contract v0.1](../docs/program/FOUNDATIONAL_STUDY_CONTRA
 Schema validity establishes structural conformance only. It does not establish that a hypothesis is sound, a protocol is adequate, a result is true, an evaluator is independent, or an evidence state has been earned.
 
 Schema versions and `$id` values are part of research provenance. A semantic change requires a new schema version. Existing evidence should continue to reference the schema under which it was recorded.
+
+`foundational-execution-intake.schema.json` and `foundational-execution-intake-receipt.schema.json` define a pre-coding intake **payload** and a separate external raw-byte digest **receipt**. The payload must not use a full-file self-digest as its sole binding. Schema presence does not create a live intake, appoint adjudicators, or authorize study execution.

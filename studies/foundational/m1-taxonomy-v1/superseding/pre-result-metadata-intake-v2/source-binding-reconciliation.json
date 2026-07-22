@@ -1,0 +1,117 @@
+{
+  "artifact_type": "foundational_study_pre_result_source_binding_reconciliation",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "package_id": "M1-TAX-PRE-RESULT-METADATA-INTAKE-V2",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "supersedes_study_record_version": 1,
+  "supersedes_study_record_digest": {
+    "algorithm": "SHA-256",
+    "value": "01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139",
+    "scope": "RAW_FILE_BYTES"
+  },
+  "package_status": "PRE_RESULT_REPAIR_DRAFT",
+  "blocker_ids": ["B2", "B3"],
+  "authority_review": "reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md",
+  "mutation_policy": "Version-1 protocol, manifest, and bound inputs are immutable historical records. This document proposes version-2 bindings only; it is not a freeze and not a registry entry.",
+  "observed_version_1_divergence": {
+    "protocol_source_ids": [
+      "SOURCE-M1-FOUNDATIONAL-CONTRACT",
+      "SOURCE-M1-MILESTONE",
+      "SOURCE-M1-PRIOR-ART",
+      "SOURCE-M1-PROGRAM-CHARTER",
+      "SOURCE-M1-TAXONOMY-POSITIVE",
+      "SOURCE-M1-TAXONOMY-NEGATIVE",
+      "SOURCE-M1-TAXONOMY-HELD-OUT"
+    ],
+    "canonical_manifest_source_ids": [
+      "SOURCE-M1-TAXONOMY-POSITIVE",
+      "SOURCE-M1-TAXONOMY-NEGATIVE",
+      "SOURCE-M1-TAXONOMY-HELD-OUT",
+      "SOURCE-M1-PROGRAM-CHARTER",
+      "SOURCE-M1-PRIOR-ART"
+    ],
+    "protocol_only_source_ids": [
+      "SOURCE-M1-FOUNDATIONAL-CONTRACT",
+      "SOURCE-M1-MILESTONE"
+    ],
+    "set_equality_required_by_protocol": true,
+    "current_set_equality": false
+  },
+  "proposed_version_2_source_set": {
+    "rule": "A future version-2 protocol and canonical manifest must declare identical complete source-ID sets before coding.",
+    "source_ids": [
+      "SOURCE-M1-FOUNDATIONAL-CONTRACT",
+      "SOURCE-M1-MILESTONE",
+      "SOURCE-M1-PRIOR-ART",
+      "SOURCE-M1-PROGRAM-CHARTER",
+      "SOURCE-M1-TAXONOMY-POSITIVE",
+      "SOURCE-M1-TAXONOMY-NEGATIVE",
+      "SOURCE-M1-TAXONOMY-HELD-OUT"
+    ],
+    "documentary_sources": [
+      {
+        "source_id": "SOURCE-M1-PROGRAM-CHARTER",
+        "locator": "docs/program/PROGRAM_CHARTER_v0.1.md",
+        "raw_byte_sha256_at_package_authoring": "bea7433324a3d5fc5b4b640bfd95840b58f3663d5b89e08f6f93714512cc9882",
+        "binding_policy": "Retain current locator; recompute digest at freeze time and require protocol/manifest agreement."
+      },
+      {
+        "source_id": "SOURCE-M1-FOUNDATIONAL-CONTRACT",
+        "locator": "docs/program/FOUNDATIONAL_STUDY_CONTRACT.md",
+        "raw_byte_sha256_at_package_authoring": "8334432023815c153879cbdeccb09df39ffe035b1c6fc9244f341ac153a3de61",
+        "binding_policy": "Must appear in both protocol and manifest source sets for version 2."
+      },
+      {
+        "source_id": "SOURCE-M1-PRIOR-ART",
+        "locator": "docs/taxonomy/M1_PRIOR_ART_AND_COMPETING_TAXONOMIES.md",
+        "raw_byte_sha256_at_package_authoring": "9f9c6393d5e972c23ced935b29854581ac39bd4932361540034f482796156b4c",
+        "binding_policy": "Retain current locator; recompute digest at freeze time."
+      }
+    ],
+    "case_source_ids": [
+      "SOURCE-M1-TAXONOMY-POSITIVE",
+      "SOURCE-M1-TAXONOMY-NEGATIVE",
+      "SOURCE-M1-TAXONOMY-HELD-OUT"
+    ],
+    "case_binding_policy": "Case locators and recorded digests remain governed by the frozen v1 metadata and the repository case-access containment policy. This package does not open case bodies and does not recompute case digests."
+  },
+  "milestone_binding_policy": {
+    "blocker_id": "B3",
+    "version_1_protocol_bound_digest": "473ea1b43eeac3661491d85008c898f2bd27b2c539bae4b901222563cc8654b6",
+    "version_1_protocol_locator": "docs/program/M1_FOUNDATION.md",
+    "digest_lineage_observed_in_repository_history": [
+      {
+        "raw_byte_sha256": "473ea1b43eeac3661491d85008c898f2bd27b2c539bae4b901222563cc8654b6",
+        "note": "Bytes bound by taxonomy protocol-v1; historically present at subject-admission integration revision 4a038b0ae4e7."
+      },
+      {
+        "raw_byte_sha256": "829307e4ebb128d3bcd95d110d93b37c38eaabab84d17f26939ccc7a0f757880",
+        "note": "Digest reported as current by the taxonomy execution-readiness review at study-freeze integration revision 51acfe3a8df8."
+      },
+      {
+        "raw_byte_sha256": "2e5a62ff882868ea8c1afe969597406a6b508288b97c4c023c3f4f842cca242d",
+        "note": "Current tip bytes at package baseline a4d027910beca3773342e960b7d125b5c4cb787e."
+      }
+    ],
+    "selected_version_2_policy": "TRANSPARENT_REBIND_CURRENT_WITH_DISCLOSURE",
+    "selected_policy_rationale": "The protocol's own consequence for an incorrect milestone source is to revise questions and thresholds before freeze. Because version 1 is already frozen, version 2 must not silently choose convenient bytes. Transparent rebinding of the current milestone document requires recomputing the digest at freeze, disclosing that post-freeze milestone edits occurred, and re-checking every competency question and threshold against the rebound text. Preserving a historical byte snapshot remains an alternative only if a later freeze package includes those exact bytes as an immutable bound artifact; this pre-result package does not invent a private shadow milestone.",
+    "proposed_version_2_binding": {
+      "source_id": "SOURCE-M1-MILESTONE",
+      "locator": "docs/program/M1_FOUNDATION.md",
+      "raw_byte_sha256_at_package_authoring": "2e5a62ff882868ea8c1afe969597406a6b508288b97c4c023c3f4f842cca242d",
+      "must_recompute_at_freeze": true,
+      "disclosure_required_in_superseding_amendment": true
+    },
+    "explicitly_rejected": [
+      "Silent selection of whichever M1_FOUNDATION.md bytes happen to exist at execution time without freeze rebinding.",
+      "Editing protocol-v1 or the version-1 canonical manifest in place to change the milestone digest."
+    ]
+  },
+  "claim_boundary": [
+    "This reconciliation is not a frozen protocol, canonical study record, finding, or execution authorization.",
+    "Case contents were not accessed while authoring this artifact.",
+    "No scientific claim about the candidate taxonomy is made or implied."
+  ]
+}

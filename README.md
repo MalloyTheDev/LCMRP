@@ -47,6 +47,7 @@ Any discussion of CorpusStudio is provisional, must be isolated under a section 
 - [M1 Study-Execution Adversarial Review](reviews/M1_STUDY_EXECUTION_ADVERSARIAL_REVIEW_2026-07-21.md) independently tests containment and the two truthful blocked-not-run states.
 - [M1 Study-Execution Decision](reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md) records the steward disposition and required versioned supersession work.
 - [M1 Launch-Continuation Triage](reviews/M1_LAUNCH_CONTINUATION_TRIAGE_2026-07-21.md) is a historical consolidation of continuation prerequisites; later readiness records govern where its inventory has been superseded.
+- [M1 Taxonomy Pre-Result Metadata and Intake-Contract Repair Package](reviews/M1_TAXONOMY_PRE_RESULT_REPAIR_PACKAGE_2026-07-22.md) records pre-result superseding obligations for taxonomy blockers B2–B6 without freeze, live intake, case access, or execution authority; residual human-contributor blocker B1 remains open.
 - [Agent Instructions](AGENTS.md) applies the same boundary and evidence rules to automated contributors.
 
 ## Research contracts

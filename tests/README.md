@@ -115,6 +115,27 @@ The study-freeze tests treat both real studies as unexecuted Layer 1 preregistra
 
 These checks establish preregistration integrity and containment only. They do not evaluate the taxonomy, prove the formal model, publish a finding, close either study, award mechanism maturity, or complete M1.
 
+## Taxonomy pre-result metadata and intake-contract repair expectations
+
+The pre-result repair tests cover
+`studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/`
+and the shared intake payload/receipt schemas. They require:
+
+- a package manifest linked to taxonomy study-record v1 digest
+  `01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139` with blockers
+  B2–B6 addressed and residual B1 explicit;
+- exact raw-byte digests for package and shared-contract artifacts;
+- unchanged protected version-1 taxonomy and formal study bytes, including the
+  formal pre-result guard package;
+- absence of live taxonomy intake, planned taxonomy outputs, and formal results;
+- intake schema rejection of full-file self-digest fields and agent-style
+  contributor IDs; and
+- empty research-finding, closeout, evidence, experiment, and mechanism registries.
+
+These checks establish pre-result repair packaging and claim boundaries only.
+They do not freeze a version-2 study, clear human adjudicator obligations,
+authorize case access, or evaluate the candidate taxonomy.
+
 ## Taxonomy case-access containment expectations
 
 Pre-intake validation may inspect authoritative case locators, artifact IDs,

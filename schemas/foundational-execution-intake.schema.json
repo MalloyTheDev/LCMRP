@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lcmrp:schema:foundational-execution-intake:0.1.0",
+  "title": "LCMRP Foundational Execution Intake Payload",
+  "description": "Machine shape for a mechanism-free foundational study execution-intake payload. The payload must not embed a SHA-256 of its own complete final raw bytes. Bind the payload with a separate foundational-execution-intake-receipt artifact. Schema validity is not scientific evidence, adjudicator eligibility, or execution authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "artifact_id",
+    "artifact_version",
+    "research_layer",
+    "study_id",
+    "study_record",
+    "roles",
+    "results_accessed_before_intake",
+    "planned_outputs_absent",
+    "intake_timestamp",
+    "execution_authority",
+    "digest_binding",
+    "claim_boundary"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "artifact_type": { "const": "foundational_execution_intake" },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9._-]{1,127}$"
+    },
+    "artifact_version": { "type": "integer", "minimum": 1 },
+    "research_layer": { "const": "LAYER_1_FOUNDATIONAL_RESEARCH" },
+    "study_id": {
+      "type": "string",
+      "pattern": "^LCMRP-FSTUDY-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "study_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "study_record_id",
+        "record_version",
+        "manifest_locator",
+        "manifest_digest"
+      ],
+      "properties": {
+        "study_record_id": {
+          "type": "string",
+          "pattern": "^LCMRP-FSTUDYREC-[0-9]{4}-[A-Z0-9][A-Z0-9._-]*$"
+        },
+        "record_version": { "type": "integer", "minimum": 1 },
+        "manifest_locator": { "type": "string", "minLength": 1 },
+        "manifest_digest": { "$ref": "#/$defs/rawByteDigest" }
+      }
+    },
+    "protocol_version_label": { "type": "string", "minLength": 1 },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "configuration_artifact_locator": { "type": "string", "minLength": 1 },
+    "roles": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/roleAssignment" }
+    },
+    "results_accessed_before_intake": { "const": false },
+    "planned_outputs_absent": { "const": true },
+    "case_packets_accessed_before_intake": { "const": false },
+    "intake_timestamp": { "type": "string", "format": "date-time" },
+    "execution_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "authority_basis"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "authority_basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "digest_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "receipt_schema_id", "forbidden_self_digest_of_entire_payload_file"],
+      "properties": {
+        "mode": { "const": "EXTERNAL_DIGEST_RECEIPT" },
+        "receipt_schema_id": {
+          "const": "urn:lcmrp:schema:foundational-execution-intake-receipt:0.1.0"
+        },
+        "receipt_locator": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository-relative locator of the external receipt once published."
+        },
+        "forbidden_self_digest_of_entire_payload_file": { "const": true }
+      }
+    },
+    "claim_boundary": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "example_notice": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required on synthetic examples; must not appear on a live governed intake without steward review of example leakage."
+    }
+  },
+  "allOf": [
+    {
+      "description": "Role codes must be exactly PRIMARY_1, PRIMARY_2, and TIE once each.",
+      "if": { "required": ["roles"] },
+      "then": {
+        "properties": {
+          "roles": {
+            "contains": {
+              "type": "object",
+              "properties": { "role": { "const": "PRIMARY_1" } },
+              "required": ["role"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "rawByteDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "value", "scope"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "value": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scope": { "const": "RAW_FILE_BYTES" },
+        "status": {
+          "type": "string",
+          "enum": ["RECORDED", "VERIFIED", "PENDING"]
+        }
+      }
+    },
+    "roleAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "contributor_id",
+        "contributor_kind",
+        "eligibility_declaration",
+        "isolation_declaration",
+        "conflict_declaration",
+        "no_prior_prohibited_access_declaration"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["PRIMARY_1", "PRIMARY_2", "TIE"]
+        },
+        "contributor_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!LCMRP-AGENT)(?!AGENT-)(?!MODEL-).+"
+        },
+        "contributor_kind": { "const": "HUMAN_RESEARCH_CONTRIBUTOR" },
+        "eligibility_declaration": { "type": "string", "minLength": 1 },
+        "isolation_declaration": { "type": "string", "minLength": 1 },
+        "conflict_declaration": { "type": "string", "minLength": 1 },
+        "no_prior_prohibited_access_declaration": { "type": "string", "minLength": 1 },
+        "not_protocol_author": { "const": true },
+        "not_freeze_authority": { "const": true }
+      }
+    }
+  }
+}
