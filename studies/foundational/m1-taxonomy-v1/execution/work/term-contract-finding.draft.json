@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "research_finding_record",
+  "record_id": "LCMRP-FINDREC-0001-M1-TAXONOMY-TERM-CONTRACT",
+  "record_version": 1,
+  "immutable_record_notice": "Once published, this finding record is immutable. Corrections, reinterpretations, retractions, or new dispositions require a new record version linked to the superseded raw-byte digest.",
+  "amendment": {
+    "kind": "INITIAL",
+    "supersedes_record_version": null,
+    "supersedes_artifact_digest": null,
+    "rationale": null,
+    "changed_fields": []
+  },
+  "record_status": "DRAFT",
+  "finding_id": "LCMRP-FIND-0001-M1-TAXONOMY-TERM-CONTRACT",
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_reference": {
+    "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+    "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+    "study_record_version": 3,
+    "manifest_artifact": {
+      "artifact_id": "ARTIFACT-M1-TAXONOMY-STUDY-RECORD-V3",
+      "artifact_version": 3,
+      "schema_id": "urn:lcmrp:schema:foundational-study-manifest:0.1.0",
+      "locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v3.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "c7daa535fc800a6ef5e278777eae307cc9f0ce3402119e6e1e32f690c46460df",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "subject_reference": {
+    "target_type": "FOUNDATIONAL_SUBJECT",
+    "subject_kind": "MEMORY_TAXONOMY",
+    "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
+    "subject_series": "LCMRP-MEMORY-TAXONOMY",
+    "subject_version": 1,
+    "definition_artifact": {
+      "artifact_id": "LCMRP-MEMORY-TAXONOMY",
+      "artifact_version": 1,
+      "schema_id": "urn:lcmrp:artifact-schema:markdown:1",
+      "locator": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "text/markdown"
+    }
+  },
+  "primary_method_profile_reference": {
+    "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
+    "profile_id": "LCMRP-MPROF-0001-M1-STRUCTURAL-TAXONOMY",
+    "profile_series": "LCMRP-M1-STRUCTURAL-TAXONOMY-PROFILE",
+    "profile_version": 2,
+    "profile_artifact": {
+      "artifact_id": "ARTIFACT-M1-TAXONOMY-METHOD-PROFILE",
+      "artifact_version": 2,
+      "schema_id": "urn:lcmrp:structural-method-profile:0.1.0",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/definitions/method-profile.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "54dff8714d50bfb37d3025cd1e814490ed9cd3651e100c17d75acb0d88de30cb",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  },
+  "analysis_reference": {
+    "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+    "analysis_mode": "EXPLORATORY"
+  },
+  "claim": {
+    "claim_id": "CLAIM-M1-TAXONOMY-TERM-CONTRACT",
+    "statement": "All 33 exact candidate terms have bounded, versioned, challengeable contracts without implementation dependence or unsupported exhaustiveness.",
+    "scope": "EXPLORATORY solo term-contract analysis only under taxonomy study-record v3 / method profile v2; not multi-rater validation; not full-study hypothesis; not taxonomy adoption."
+  },
+  "terminal_disposition": "COMPLETED",
+  "result_classification": "INCONCLUSIVE",
+  "claim_assessment": "INCONCLUSIVE",
+  "result_assessment_orthogonality_notice": "Result classification and claim assessment are independent fields. A POSITIVE, NEGATIVE, NULL, or MIXED result does not determine whether the scoped claim is supported.",
+  "finding_statement": "Solo human research-lead adjudication completed 165 term-contract cells (33 terms × 5 checks). Codes: 149 SATISFIED, 16 AMBIGUOUS (all CHECK-CHALLENGEABLE). No CHALLENGED or INVALID cells. Human accepted all provisional AI-drafted codes unchanged. Because material ambiguity remains on challengeability for 16 terms and inter-rater reliability is not estimable under the solo method, confirmatory support thresholds are not met. Disposition is COMPLETED with INCONCLUSIVE result and claim assessment.",
+  "uncertainty": "Challengeability judgments that are ambiguous from the subject table alone may resolve differently under multi-rater review or richer distinction evidence. Single-coder design prevents estimation of agreement or Cohen's kappa.",
+  "raw_output_artifacts": [
+    {
+      "artifact_id": "ARTIFACT-M1-TAXONOMY-TERM-CONTRACT-LEDGER-V3",
+      "artifact_version": 3,
+      "schema_id": "urn:lcmrp:taxonomy-analysis-ledger:0.1.0",
+      "locator": "studies/foundational/m1-taxonomy-v1/execution/work/term-contract-ledger.locked.json",
+      "digest": {
+        "algorithm": "SHA-256",
+        "status": "VERIFIED",
+        "value": "bbfd9b72c9d55450d4cdca0bd6f6b0c27deef0b99f8e3475c669a12a6de30997",
+        "scope": "RAW_FILE_BYTES"
+      },
+      "media_type": "application/json"
+    }
+  ],
+  "deviations": [
+    "Method profile is solo researcher with AI tooling (not multi-human independent adjudication).",
+    "Human accepted all provisional AI-drafted codes in one batch without cell-level revision."
+  ],
+  "failures": [],
+  "limitations": [
+    "Inter-rater reliability is NOT_ESTIMABLE_SINGLE_CODER; confirmatory agreement/kappa thresholds cannot be met.",
+    "16 AMBIGUOUS CHECK-CHALLENGEABLE cells retain material ambiguity.",
+    "Dual-role research lead is protocol author and freeze authority; results are exploratory self-application only.",
+    "Competency questions CQ-01..CQ-12 were not re-closed as a separate scored sub-ledger in this analysis.",
+    "This draft finding is not yet registered in registry/research-findings.yaml and is not a closeout.",
+    "Locked ledger is held under execution/work, not yet at the frozen planned-output locator, because the case-access catalog still forbids planned-output existence without a bootstrap-safe authorization attestation."
+  ],
+  "mechanism_maturity_effect": {
+    "applicability": "NOT_APPLICABLE",
+    "mechanism_under_evaluation": false,
+    "may_award_mechanism_evidence_labels": false,
+    "may_change_mechanism_evidence_profile": false,
+    "awarded_mechanism_evidence_labels": [],
+    "rationale": "Foundational taxonomy structural evaluation does not evaluate or award mechanism evidence labels."
+  },
+  "recommended_next_step": "Proceed to ANALYSIS-M1-TAXONOMY-ORGANIZATION-COMPETITION under the same solo exploratory method, or optionally re-open the 16 AMBIGUOUS challengeability cells with richer distinction evidence before multi-rater upgrade.",
+  "created_at": "2026-07-22T20:00:00Z"
+}

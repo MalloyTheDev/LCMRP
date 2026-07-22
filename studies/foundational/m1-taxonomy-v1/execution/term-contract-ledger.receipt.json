@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_execution_intake_receipt",
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-TERM-CONTRACT-LEDGER-V3-RECEIPT",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "payload_locator": "studies/foundational/m1-taxonomy-v1/execution/work/term-contract-ledger.locked.json",
+  "payload_digest": {
+    "algorithm": "SHA-256",
+    "value": "bbfd9b72c9d55450d4cdca0bd6f6b0c27deef0b99f8e3475c669a12a6de30997",
+    "scope": "RAW_FILE_BYTES",
+    "status": "VERIFIED"
+  },
+  "binding_mode": "EXTERNAL_DIGEST_RECEIPT",
+  "recorded_at": "2026-07-22T20:00:01Z",
+  "claim_boundary": [
+    "External raw-byte receipt for locked term-contract ledger (execution workspace copy).",
+    "Planned-output path not materialized: catalog still forbids unauthorized planned outputs.",
+    "Not a finding registration or closeout."
+  ]
+}

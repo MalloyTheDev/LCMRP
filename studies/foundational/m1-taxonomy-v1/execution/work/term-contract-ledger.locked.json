@@ -1,0 +1,3379 @@
+{
+  "artifact_type": "taxonomy_analysis_ledger",
+  "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "study_record_version": 3,
+  "analysis_mode": "EXPLORATORY",
+  "method_profile_version": 2,
+  "ledger_status": "LOCKED",
+  "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+  "intake_artifact_id": "ARTIFACT-M1-TAXONOMY-SOLO-INTAKE",
+  "intake_payload_digest": "929b91025df641388b4a79c71cfa6e50ed5827b741c9d18f727f13b03355c7de",
+  "created_at": "2026-07-22T19:05:00Z",
+  "ai_tooling": {
+    "drafted_provisional_codes": true,
+    "final_authority": "HUMAN_RESEARCH_LEAD",
+    "human_accepted_all_provisional_codes_unchanged": true,
+    "note": "AI drafted provisional codes; human accepted every cell without revision on 2026-07-22."
+  },
+  "reliability": {
+    "inter_rater": "NOT_ESTIMABLE_SINGLE_CODER",
+    "cells_total": 165,
+    "cells_provisional": 0,
+    "cells_accepted": 165,
+    "cells_revised": 0,
+    "raw_exact_agreement": null,
+    "cohens_kappa": null,
+    "reliability_thresholds_met": false,
+    "note": "Solo coder design: inter-rater reliability is not estimable; confirmatory support thresholds requiring agreement/kappa cannot be met."
+  },
+  "cells": [
+    {
+      "unit_id": "LCMRP-TAX-ENT-001@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-001@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-001@0.1 appears once in declared term_scope and subject table with label **Source event** — entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-001@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-001@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-001@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-001@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-001@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-001@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-001@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-001@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-002@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-002@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-002@0.1 appears once in declared term_scope and subject table with label **Memory candidate** — entity/state bearer.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-002@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-002@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-002@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-002@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-002@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-002@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-002@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-002@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-003@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-003@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-003@0.1 appears once in declared term_scope and subject table with label **Memory object version** — entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-003@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-003@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-003@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-003@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-003@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-003@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-003@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-003@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-004@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-004@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-004@0.1 appears once in declared term_scope and subject table with label **Memory series** — relation-defined entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-004@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-004@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-004@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-004@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-004@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-004@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-004@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-004@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-005@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-005@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-005@0.1 appears once in declared term_scope and subject table with label **Claim** — informational entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-005@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-005@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-005@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-005@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-005@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-005@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-005@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-005@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-006@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-006@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-006@0.1 appears once in declared term_scope and subject table with label **Actor** — governance entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-006@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-006@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-006@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-006@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-006@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-006@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-006@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-006@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-007@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-007@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-007@0.1 appears once in declared term_scope and subject table with label **Policy statement** — governance entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-007@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-007@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-007@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-007@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-007@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-007@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-007@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-007@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-008@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-008@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ENT-008@0.1 appears once in declared term_scope and subject table with label **Provenance assertion** — informational entity.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-008@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-008@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-008@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-008@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-008@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-008@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ENT-008@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ENT-008@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ENT-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-001@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-001@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ROL-001@0.1 appears once in declared term_scope and subject table with label **Episodic role** — functional role.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-001@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-001@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-001@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-001@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-001@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-001@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-001@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-001@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-002@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-002@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ROL-002@0.1 appears once in declared term_scope and subject table with label **Semantic role** — functional role.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-002@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-002@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-002@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-002@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-002@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-002@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-002@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-002@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-003@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-003@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ROL-003@0.1 appears once in declared term_scope and subject table with label **Procedural role** — functional role.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-003@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-003@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-003@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-003@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-003@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-003@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-003@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-003@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-004@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-004@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ROL-004@0.1 appears once in declared term_scope and subject table with label **Prospective role** — functional role.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-004@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-004@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-004@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-004@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-004@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-004@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-004@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-004@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-005@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-005@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-ROL-005@0.1 appears once in declared term_scope and subject table with label **Working role** — functional role.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-005@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-005@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-005@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-005@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-005@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-005@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-ROL-005@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-ROL-005@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-ROL-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-001@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-001@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-001@0.1 appears once in declared term_scope and subject table with label **Encoding** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-001@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-001@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-001@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-001@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-001@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-001@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-001@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-001@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-002@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-002@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-002@0.1 appears once in declared term_scope and subject table with label **Admission** — governed process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-002@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-002@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-002@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-002@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-002@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-002@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-002@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-002@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-003@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-003@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-003@0.1 appears once in declared term_scope and subject table with label **Retrieval** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-003@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-003@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-003@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-003@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-003@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-003@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-003@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-003@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-004@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-004@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-004@0.1 appears once in declared term_scope and subject table with label **Update** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-004@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-004@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-004@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-004@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-004@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-004@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-004@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-004@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-005@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-005@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-005@0.1 appears once in declared term_scope and subject table with label **Consolidation** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-005@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-005@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-005@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-005@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-005@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-005@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-005@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-005@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-005@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-006@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-006@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-006@0.1 appears once in declared term_scope and subject table with label **Abstraction** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-006@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-006@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-006@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-006@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-006@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-006@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-006@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-006@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-006@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-007@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-007@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-007@0.1 appears once in declared term_scope and subject table with label **Reconsolidation** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-007@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-007@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-007@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-007@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-007@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-007@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-007@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-007@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-007@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-008@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-008@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-008@0.1 appears once in declared term_scope and subject table with label **Deduplication** — process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-008@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-008@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-008@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-008@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-008@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-008@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-008@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-008@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-008@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-009@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-009@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-009@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-009@0.1 appears once in declared term_scope and subject table with label **Decay** — process/effect.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-009@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-009@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-009@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-009@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-009@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-009@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-009@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-009@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-009@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-009@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-009@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-009@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-010@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-010@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-010@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-010@0.1 appears once in declared term_scope and subject table with label **Forgetting** — governed process/effect.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-010@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-010@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-010@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-010@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-010@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-010@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-010@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-010@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-010@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-010@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-010@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-010@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-011@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-011@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-011@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-011@0.1 appears once in declared term_scope and subject table with label **Archival** — governed process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-011@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-011@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-011@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-011@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-011@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-011@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-011@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-011@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-011@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-011@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-011@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-011@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-012@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-012@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-012@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-012@0.1 appears once in declared term_scope and subject table with label **Deletion** — governed process and scoped outcome.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-012@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-012@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-012@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-012@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-012@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-012@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-012@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-012@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-012@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-012@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-012@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-012@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-013@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-013@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-013@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-OPS-013@0.1 appears once in declared term_scope and subject table with label **Conflict detection** — analysis process.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-013@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-013@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-013@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-013@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-013@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-013@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-013@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-013@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-013@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-OPS-013@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-OPS-013@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-OPS-013@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-001@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-001@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-EPI-001@0.1 appears once in declared term_scope and subject table with label **Confidence assessment** — contextual assessment.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-001@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-001@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-001@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-001@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-001@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-001@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-001@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-001@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-002@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-002@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-EPI-002@0.1 appears once in declared term_scope and subject table with label **Uncertainty description** — contextual assessment.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-002@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-002@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-002@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-002@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-002@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-002@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-002@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-002@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Adjacent distinction, counterexample, or unresolved/edge language makes the term challengeable.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-003@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-003@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-EPI-003@0.1 appears once in declared term_scope and subject table with label **Claim conflict** — contextual relation.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-003@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-003@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-003@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-003@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-003@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-003@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-EPI-003@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-EPI-003@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-EPI-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-001@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-001@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-GOV-001@0.1 appears once in declared term_scope and subject table with label **Authority grant** — governance relation.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-001@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-001@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-001@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-001@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-001@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-001@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-001@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-001@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-001@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-002@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-002@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-GOV-002@0.1 appears once in declared term_scope and subject table with label **Provenance trace** — derived informational structure.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-002@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-002@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-002@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-002@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-002@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-002@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-002@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-002@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-002@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-003@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-003@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-GOV-003@0.1 appears once in declared term_scope and subject table with label **Deletion scope** — governance structure.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-003@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-003@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-003@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-003@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-003@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-003@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-003@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-003@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-003@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-004@0.1::CHECK-UNIQUE-ID",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-004@0.1",
+      "check_id": "CHECK-UNIQUE-ID",
+      "check_text": "The exact versioned candidate ID is unique within the subject.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Term ID LCMRP-TAX-GOV-004@0.1 appears once in declared term_scope and subject table with label **Retention obligation** — governance constraint.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-004@0.1::CHECK-BOUNDED-DEF-NO-IMPL",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-004@0.1",
+      "check_id": "CHECK-BOUNDED-DEF-NO-IMPL",
+      "check_text": "The bounded definition states what is included without relying on a named implementation, vendor, application, or product.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Bounded definition states inclusion without an obvious named product/vendor/storage engine.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-004@0.1::CHECK-NECESSARY-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-004@0.1",
+      "check_id": "CHECK-NECESSARY-STATUS",
+      "check_text": "Necessary-condition status is explicitly Proposed or Unknown and does not silently become a universal truth claim.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Necessary-condition status is explicitly Proposed or Unknown in the subject table.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-004@0.1::CHECK-SUFFICIENT-STATUS",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-004@0.1",
+      "check_id": "CHECK-SUFFICIENT-STATUS",
+      "check_text": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown and does not imply external validity.",
+      "code": "SATISFIED",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Sufficient-condition status is explicitly Proposed, structurally scoped, or Unknown.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    },
+    {
+      "unit_id": "LCMRP-TAX-GOV-004@0.1::CHECK-CHALLENGEABLE",
+      "analysis_id": "ANALYSIS-M1-TAXONOMY-TERM-CONTRACT",
+      "term_id": "LCMRP-TAX-GOV-004@0.1",
+      "check_id": "CHECK-CHALLENGEABLE",
+      "check_text": "At least one adjacent distinction, counterexample, edge case, or unresolved obligation makes the term challengeable.",
+      "code": "AMBIGUOUS",
+      "exact_subject_citation": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md#term-table:LCMRP-TAX-GOV-004@0.1",
+      "case_fact_citation": "NOT_APPLICABLE_TERM_CONTRACT_SUBJECT_ONLY",
+      "rationale": "Challengeability not obvious from table cells alone; human should confirm adjacent distinction elsewhere in subject.",
+      "adjudicator_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+      "status": "HUMAN_ACCEPTED",
+      "ai_drafted": true,
+      "human_accept": {
+        "mode": "ACCEPT_ALL_PROVISIONAL_CODES_UNCHANGED",
+        "accepted_at": "2026-07-22T20:00:00Z",
+        "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+        "note": "Human research lead instructed accept all provisional codes without revision."
+      }
+    }
+  ],
+  "competency_questions_note": "CQ-01..CQ-12 remain bound by category rules; term-contract analysis focuses on 33 term IDs × 5 checks. CQs may be cited in interpretation after human accept.",
+  "lock": {
+    "locked": true,
+    "locked_at": "2026-07-22T20:00:00Z",
+    "locked_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+    "digest_binding": {
+      "mode": "EXTERNAL_DIGEST_RECEIPT",
+      "receipt_locator": "studies/foundational/m1-taxonomy-v1/execution/term-contract-ledger.receipt.json",
+      "forbidden_self_digest_of_entire_payload_file": true
+    },
+    "raw_byte_sha256": null,
+    "instruction": "Whole-file digest is recorded only in the external receipt."
+  },
+  "claim_boundary": [
+    "Locked exploratory solo term-contract ledger under taxonomy study-record v3 / method profile v2.",
+    "Not multi-rater independent validation.",
+    "Not taxonomy adoption, mechanism evidence, product integration, or M1 completion.",
+    "Human accepted all provisional AI-drafted codes unchanged; 16 AMBIGUOUS challengeability cells retained."
+  ],
+  "planned_output_locator_when_locked": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/outputs/term-contract-ledger.json",
+  "storage_note": "Locked exploratory ledger held under execution/work until a bootstrap-safe output-authorization attestation allows materialization at the planned-output locator. Not multi-rater validation; not taxonomy adoption.",
+  "human_accept_batch": {
+    "mode": "ACCEPT_ALL",
+    "instruction": "accept all",
+    "accepted_at": "2026-07-22T20:00:00Z",
+    "accepted_by": "LCMRP-HUMAN-MALLOYTHEDEV",
+    "cells_accepted": 165,
+    "cells_revised": 0,
+    "codes_unchanged": true
+  },
+  "code_frequencies": {
+    "SATISFIED": 149,
+    "AMBIGUOUS": 16
+  },
+  "decision_rule_assessment": {
+    "support_criteria_met": false,
+    "reject_criteria_met": false,
+    "reasons_not_support": [
+      "16 cells remain AMBIGUOUS (all CHECK-CHALLENGEABLE); support requires all five checks satisfied for all 33 terms.",
+      "Inter-rater reliability not estimable under solo method; confirmatory agreement/kappa thresholds cannot be satisfied.",
+      "Competency-question full answerability was not separately re-adjudicated as a closed term-contract sub-ledger."
+    ],
+    "recommended_result_classification": "INCONCLUSIVE",
+    "recommended_claim_assessment": "INCONCLUSIVE"
+  },
+  "planned_output_locator_when_registered": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v3/outputs/term-contract-ledger.json"
+}

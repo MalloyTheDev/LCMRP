@@ -612,13 +612,40 @@ def _valid_taxonomy_solo_intake_errors(document: Mapping[str, Any]) -> list[str]
 
 
 def _solo_provisional_work_errors(document: Mapping[str, Any], path: Path) -> list[str]:
-    """Provisional workspace must stay unlocked until human accept."""
+    """Workspace may hold handoff, draft findings, or post-accept locked ledgers.
+
+    Planned-output paths under study-record-v3/outputs/ remain forbidden until a
+    bootstrap-safe authorization attestation exists. Locked copies may therefore
+    live under execution/work/*.locked.json after human accept.
+    """
     errors: list[str] = []
+    # Handoff documents after accept-all are allowed without cell payloads.
+    if document.get("handoff_status") == "SUPERSEDED_BY_LOCKED_OUTPUT":
+        return errors
+    # Draft findings in the workspace must not claim PUBLISHED registration.
+    if document.get("artifact_type") == "research_finding_record":
+        if document.get("record_status") not in {None, "DRAFT"}:
+            errors.append(
+                f"solo workspace finding is not DRAFT: {path.as_posix()}"
+            )
+        return errors
+    # Explicit post-accept locked ledger under the workspace.
+    if path.name.endswith(".locked.json") or (
+        document.get("ledger_status") == "LOCKED"
+        and isinstance(document.get("human_accept_batch"), Mapping)
+    ):
+        if document.get("ledger_status") != "LOCKED":
+            errors.append(f"solo locked ledger missing LOCKED status: {path.as_posix()}")
+        lock = document.get("lock")
+        if not isinstance(lock, Mapping) or lock.get("locked") is not True:
+            errors.append(f"solo locked ledger is not lock.locked: {path.as_posix()}")
+        return errors
+    # Remaining provisional ledgers must stay unlocked.
     lock = document.get("lock")
     if isinstance(lock, Mapping) and lock.get("locked") is True:
         errors.append(f"solo provisional work is locked prematurely: {path.as_posix()}")
     status = document.get("ledger_status")
-    if isinstance(status, str) and status.upper().startswith("LOCKED"):
+    if isinstance(status, str) and status.upper() == "LOCKED":
         errors.append(f"solo provisional ledger status is locked prematurely: {path.as_posix()}")
     return errors
 

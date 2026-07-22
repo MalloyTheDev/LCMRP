@@ -64,6 +64,7 @@ class TaxonomySoloAiV3Tests(unittest.TestCase):
         )
 
     def test_03_all_analyses_exploratory_and_versioned_outputs_absent(self) -> None:
+        """Planned-output paths stay empty until bootstrap-safe authorization."""
         data = json.loads(V3.read_text(encoding="utf-8"))
         self.assertEqual(data["primary_method_profile"]["profile_version"], 2)
         for analysis in data["analyses"]:
