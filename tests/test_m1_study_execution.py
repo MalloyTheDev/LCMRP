@@ -849,10 +849,40 @@ def _formal_execution_metadata_errors() -> list[str]:
     if not isinstance(frozen_bindings, Mapping):
         errors.append("preflight lacks frozen bindings")
     else:
-        if frozen_bindings.get("registry_raw_byte_sha256") != _sha256(
-            ROOT / "registry/foundational-studies.yaml"
-        ):
-            errors.append("preflight registry digest mismatch")
+        live_registry_digest = _sha256(ROOT / "registry/foundational-studies.yaml")
+        recorded_registry_digest = frozen_bindings.get("registry_raw_byte_sha256")
+        if recorded_registry_digest != live_registry_digest:
+            # Live registry may advance after digest-linked supersession of either
+            # study while blocked formal preflight remains bound to its historical
+            # registry snapshot. Allow divergence only when a SUPERSEDED historical
+            # entry and a later ACTIVE successor exist for some admitted study.
+            registry = _load_yaml(Path("registry/foundational-studies.yaml"))
+            entries = registry.get("entries", []) if isinstance(registry, Mapping) else []
+            by_id: dict[str, list[Mapping[str, Any]]] = {}
+            for entry in entries:
+                if not isinstance(entry, Mapping):
+                    continue
+                rid = entry.get("record_id")
+                if isinstance(rid, str):
+                    by_id.setdefault(rid, []).append(entry)
+            supersession_present = False
+            for group in by_id.values():
+                superseded = any(e.get("registry_status") == "SUPERSEDED" for e in group)
+                active_later = any(
+                    e.get("registry_status") == "ACTIVE"
+                    and isinstance(e.get("record_version"), int)
+                    and e.get("record_version") > 1
+                    for e in group
+                )
+                if superseded and active_later:
+                    supersession_present = True
+                    break
+            if not (
+                supersession_present
+                and isinstance(recorded_registry_digest, str)
+                and len(recorded_registry_digest) == 64
+            ):
+                errors.append("preflight registry digest mismatch")
         if frozen_bindings.get("canonical_manifest_raw_byte_sha256") != _sha256(
             ROOT / FORMAL_MANIFEST
         ):

@@ -1,0 +1,60 @@
+{
+  "artifact_type": "foundational_study_superseding_record_package_manifest",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "package_id": "M1-TAX-STUDY-RECORD-V2",
+  "slice_id": "M1-TAX-STUDY-RECORD-V2-001",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "package_status": "FROZEN_SUPERSEDING_RECORD_EXECUTION_NOT_AUTHORIZED",
+  "supersedes": {
+    "study_record_version": 1,
+    "study_record_raw_byte_sha256": "01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139",
+    "blocker_ids_addressed": [
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "residual_blocker_ids": [
+      "B1"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "canonical_study_manifest_v2",
+      "locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v2.json",
+      "raw_byte_sha256": "3a9a1988ad64d864bd8140f2bfa6e5986e6f85fe57ad7209543fe5c117fb387e"
+    },
+    {
+      "role": "protocol_v2",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v2/protocol-v2.md",
+      "raw_byte_sha256": "51bb2afe3203c8464a1499ed67640b67ed5f5055e5ba877c5ae099ef3192cdeb"
+    },
+    {
+      "role": "freeze_attestation_v2",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/study-record-v2/freeze-attestation.json",
+      "raw_byte_sha256": "1214d28b1f802a0d30624e21ee6a79db04ac39a262af3ad5324bdff174d0be58"
+    }
+  ],
+  "execution_boundary": {
+    "frozen": true,
+    "registered_active": true,
+    "live_intake_created": false,
+    "adjudicators_appointed": false,
+    "case_contents_accessed": false,
+    "planned_outputs_created": 0,
+    "execution_authorized": false
+  },
+  "claims_made": [
+    "Taxonomy version-2 frozen preregistration supersedes version-1 for documented metadata/intake-contract blockers B2-B6.",
+    "Residual human-contributor blocker B1 remains open.",
+    "No case adjudication, intake, outputs, findings, or closeouts were created."
+  ],
+  "claims_explicitly_not_made": [
+    "Taxonomy scientific evaluation or adoption",
+    "Execution authorization",
+    "M1 completion or mechanism evidence"
+  ]
+}
