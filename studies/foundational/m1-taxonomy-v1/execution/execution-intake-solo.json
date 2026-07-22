@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_execution_intake_solo",
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-SOLO-INTAKE",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record": {
+    "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+    "record_version": 3,
+    "manifest_locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v3.json",
+    "manifest_digest": {
+      "algorithm": "SHA-256",
+      "value": "c7daa535fc800a6ef5e278777eae307cc9f0ce3402119e6e1e32f690c46460df",
+      "scope": "RAW_FILE_BYTES",
+      "status": "VERIFIED"
+    }
+  },
+  "method_profile_version": 2,
+  "research_lead": {
+    "contributor_id": "LCMRP-HUMAN-MALLOYTHEDEV",
+    "contributor_kind": "HUMAN_RESEARCH_CONTRIBUTOR",
+    "display_name": "Brendan Malloy (MalloyTheDev)",
+    "eligibility_declaration": "I am the human research lead for this solo M1 taxonomy evaluation under profile_version 2. I am not an AI agent. I accept that results are exploratory structural self-application only.",
+    "conflict_declaration": "I am protocol author and freeze authority for this study lineage. Under the solo profile this dual role is disclosed; it is not independent validation.",
+    "isolation_declaration": "Single-coder design: no second human primary. I will not treat AI outputs as final codes without my explicit accept/rewrite per cell.",
+    "no_prior_prohibited_access_declaration": "Before this intake I have not accessed planned taxonomy analysis output files under study-record-v3/outputs/. Case packet generation for multi-human isolation is not applicable; case contents will be used only as required by each analysis after this intake.",
+    "accepts_exploratory_dual_role_limitations": true,
+    "is_protocol_author": true,
+    "is_freeze_authority": true
+  },
+  "ai_tooling_disclosure": {
+    "ai_used": true,
+    "ai_casts_final_codes": false,
+    "ai_roles_permitted": [
+      "FORMATTING",
+      "NAVIGATION",
+      "PACKET_GENERATION",
+      "DRAFT_RATIONALE_PROPOSAL",
+      "DOCUMENTATION"
+    ],
+    "systems_or_models_note": "AI assistant (Grok) drafts provisional codes/rationales; human research lead must accept or revise every cell before ledger lock.",
+    "human_final_authority_assertion": "LCMRP-HUMAN-MALLOYTHEDEV retains final authority for every rubric code and rationale. AI drafts are provisional until human accept."
+  },
+  "dual_role_disclosure": {
+    "author_or_freeze_dual_role": true,
+    "independent_validation": false,
+    "statement": "Solo research lead authored/froze the method supersession and will adjudicate. Findings must remain EXPLORATORY and must not claim multi-rater independence or external validation."
+  },
+  "results_accessed_before_intake": false,
+  "planned_outputs_absent": true,
+  "case_packets_accessed_before_intake": false,
+  "intake_timestamp": "2026-07-22T19:00:00Z",
+  "execution_authority": {
+    "name": "LCMRP-HUMAN-MALLOYTHEDEV",
+    "authority_basis": "Solo research lead and repository steward authorizing solo intake under frozen taxonomy study-record v3 / method profile v2."
+  },
+  "digest_binding": {
+    "mode": "EXTERNAL_DIGEST_RECEIPT",
+    "receipt_schema_id": "urn:lcmrp:schema:foundational-execution-intake-receipt:0.1.0",
+    "receipt_locator": "studies/foundational/m1-taxonomy-v1/execution/execution-intake-solo.receipt.json",
+    "forbidden_self_digest_of_entire_payload_file": true
+  },
+  "claim_boundary": [
+    "This intake starts solo exploratory coding under the frozen v3 method.",
+    "It does not complete M1, adopt the taxonomy, or award mechanism evidence.",
+    "AI is not the final adjudicator.",
+    "Human must accept or revise every provisional AI-drafted cell before ledger lock."
+  ]
+}

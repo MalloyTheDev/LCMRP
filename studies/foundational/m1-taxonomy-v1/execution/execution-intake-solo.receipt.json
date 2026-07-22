@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_type": "foundational_execution_intake_receipt",
+  "artifact_id": "ARTIFACT-M1-TAXONOMY-SOLO-INTAKE-RECEIPT",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "payload_locator": "studies/foundational/m1-taxonomy-v1/execution/execution-intake-solo.json",
+  "payload_digest": {
+    "algorithm": "SHA-256",
+    "value": "929b91025df641388b4a79c71cfa6e50ed5827b741c9d18f727f13b03355c7de",
+    "scope": "RAW_FILE_BYTES",
+    "status": "VERIFIED"
+  },
+  "binding_mode": "EXTERNAL_DIGEST_RECEIPT",
+  "recorded_at": "2026-07-22T19:00:01Z",
+  "claim_boundary": [
+    "External receipt for solo intake payload raw bytes.",
+    "Does not itself authorize scientific conclusions."
+  ]
+}
