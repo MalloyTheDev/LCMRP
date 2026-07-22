@@ -1,0 +1,110 @@
+{
+  "artifact_type": "foundational_study_pre_result_superseding_package_manifest",
+  "artifact_version": 1,
+  "research_layer": "LAYER_1_FOUNDATIONAL_RESEARCH",
+  "package_id": "M1-TAX-PRE-RESULT-METADATA-INTAKE-V2",
+  "slice_id": "M1-TAX-PRE-RESULT-METADATA-INTAKE-V2-001",
+  "study_id": "LCMRP-FSTUDY-0001-M1-TAXONOMY",
+  "study_record_id": "LCMRP-FSTUDYREC-0001-M1-TAXONOMY",
+  "package_status": "PRE_RESULT_REPAIR_PACKAGE_NOT_FROZEN",
+  "baseline_commit_at_authoring": "a4d027910beca3773342e960b7d125b5c4cb787e",
+  "supersedes": {
+    "kind": "PRE_RESULT_METADATA_AND_INTAKE_CONTRACT_CORRECTION",
+    "study_record_version": 1,
+    "study_record_locator": "records/foundational/studies/LCMRP-FSTUDYREC-0001-M1-TAXONOMY-v1.json",
+    "study_record_raw_byte_sha256": "01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139",
+    "blocker_ids": [
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "residual_blocker_ids": [
+      "B1"
+    ],
+    "authority_reviews": [
+      "reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md",
+      "reviews/M1_STUDY_EXECUTION_DECISION_2026-07-21.md"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "package_readme",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/README.md",
+      "raw_byte_sha256": "5d0fdf6f7d70702b66c8d48334dd4837c3cdb5dcf6b8665225e9652a7485c804"
+    },
+    {
+      "role": "source_binding_reconciliation",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/source-binding-reconciliation.json",
+      "raw_byte_sha256": "fda93fa873d214e50da1d8d75a79d8b17726f081ed4d778d6c93e8e50e0813f5"
+    },
+    {
+      "role": "environment_freeze_obligations",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/environment-freeze-obligations.json",
+      "raw_byte_sha256": "974e8d468e4dad86691e79e464fe8c5cf2b82e24b2e932ac88be0dc45b3a139e"
+    },
+    {
+      "role": "intake_binding_contract",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/intake-binding-contract.md",
+      "raw_byte_sha256": "5e3a9e3f2f711e307ae8219f08535bf2c1bbe9a3f6fc1493c01323fb7e4ff807"
+    },
+    {
+      "role": "residual_human_contributor_gate",
+      "locator": "studies/foundational/m1-taxonomy-v1/superseding/pre-result-metadata-intake-v2/residual-human-contributor-gate.md",
+      "raw_byte_sha256": "2379bfff338411b4841276730983beacb62ed7f8ba3e62155821321c98d7d6fe"
+    }
+  ],
+  "shared_contract_artifacts": [
+    {
+      "role": "intake_payload_schema",
+      "locator": "schemas/foundational-execution-intake.schema.json",
+      "raw_byte_sha256": "59cd27deb877113e5858f5f0ad0d6ef472d21b8e861c9136036b2b04450f017b"
+    },
+    {
+      "role": "intake_receipt_schema",
+      "locator": "schemas/foundational-execution-intake-receipt.schema.json",
+      "raw_byte_sha256": "5a3526272252bc54b2c5da7446e883d4ffafb6393e09e236fbbb55c1f8d32464"
+    },
+    {
+      "role": "intake_template",
+      "locator": "templates/foundational-execution-intake.md",
+      "raw_byte_sha256": "39c1e3a0b413e02f04b2c9c995379d52324ff8c80b17ee6c57678b0a430d8353"
+    },
+    {
+      "role": "synthetic_intake_payload_example",
+      "locator": "examples/foundational-execution-intake.example.json",
+      "raw_byte_sha256": "b3243adf7a04c2b05b6da292bd2492124a01d390328f4afd80c7e23a1d797b08"
+    },
+    {
+      "role": "synthetic_intake_receipt_example",
+      "locator": "examples/foundational-execution-intake-receipt.example.json",
+      "raw_byte_sha256": "b987d7e5e4aa5ea1725a1070fd4a053e8de696b366fab73f043b70548f9454c9"
+    }
+  ],
+  "execution_boundary": {
+    "pre_result_only": true,
+    "frozen": false,
+    "registered": false,
+    "live_intake_created": false,
+    "adjudicators_appointed": false,
+    "case_contents_accessed": false,
+    "planned_outputs_created": 0,
+    "findings_published": false,
+    "closeouts_published": false,
+    "execution_authorized": false,
+    "mark_m1_complete": false
+  },
+  "claims_made": [
+    "Version-1 taxonomy study record digest 01640e8dae3836874b2b39fe3ea2a8f9c090374508aa69b31adf06fea9272139 remains the historical supersession target.",
+    "Blockers B2-B6 are expressed as superseding obligations and intake contracts without rewriting v1 bytes.",
+    "Intake full-file self-digest is rejected; external receipt is required."
+  ],
+  "claims_explicitly_not_made": [
+    "Taxonomy execution readiness or authorization",
+    "Resolution of residual human-contributor blocker B1",
+    "Scientific evaluation of the candidate taxonomy",
+    "Version-2 freeze or registry supersession",
+    "M1 completion or mechanism evidence"
+  ]
+}
