@@ -50,6 +50,9 @@ EXPECTED_MANIFEST_DIGESTS = {
 TAXONOMY_ROOT = Path("studies/foundational/m1-taxonomy-v1")
 FORMAL_ROOT = Path("studies/foundational/m1-formal-model-v1")
 TAXONOMY_INTAKE = TAXONOMY_ROOT / "execution/execution-intake.json"
+TAXONOMY_SOLO_INTAKE = TAXONOMY_ROOT / "execution/execution-intake-solo.json"
+TAXONOMY_SOLO_RECEIPT = TAXONOMY_ROOT / "execution/execution-intake-solo.receipt.json"
+TAXONOMY_SOLO_WORK = TAXONOMY_ROOT / "execution/work"
 TAXONOMY_CASE_ROOT = TAXONOMY_ROOT / "cases"
 TAXONOMY_READINESS_REVIEW = Path(
     "reviews/M1_TAXONOMY_EXECUTION_READINESS_2026-07-21.md"
@@ -554,6 +557,72 @@ def _self_referential_intake_digest_errors(document: Mapping[str, Any]) -> list[
     return []
 
 
+def _is_solo_execution_workspace_path(path: Path) -> bool:
+    """Solo coding workspace: intake, external receipt, provisional work only."""
+    if path in {TAXONOMY_SOLO_INTAKE, TAXONOMY_SOLO_RECEIPT}:
+        return True
+    try:
+        path.relative_to(TAXONOMY_SOLO_WORK)
+        return True
+    except ValueError:
+        return False
+
+
+def _valid_taxonomy_solo_intake_errors(document: Mapping[str, Any]) -> list[str]:
+    """Minimum boundary for solo+AI exploratory intake (study-record v3)."""
+    errors: list[str] = []
+    if document.get("artifact_type") != "foundational_execution_intake_solo":
+        errors.append("taxonomy solo intake has wrong artifact_type")
+    if document.get("study_id") != "LCMRP-FSTUDY-0001-M1-TAXONOMY":
+        errors.append("taxonomy solo intake study_id mismatch")
+    study_record = document.get("study_record")
+    if not isinstance(study_record, Mapping):
+        errors.append("taxonomy solo intake lacks study_record")
+    else:
+        if study_record.get("record_version") != 3:
+            errors.append("taxonomy solo intake is not bound to record_version 3")
+        if study_record.get("study_record_id") != "LCMRP-FSTUDYREC-0001-M1-TAXONOMY":
+            errors.append("taxonomy solo intake study_record_id mismatch")
+    lead = document.get("research_lead")
+    if not isinstance(lead, Mapping):
+        errors.append("taxonomy solo intake lacks research_lead")
+    else:
+        contributor_id = lead.get("contributor_id")
+        if not isinstance(contributor_id, str) or not contributor_id:
+            errors.append("taxonomy solo intake lacks research_lead.contributor_id")
+        elif PLACEHOLDER_ID.search(contributor_id):
+            errors.append("taxonomy solo intake uses a placeholder contributor ID")
+        if lead.get("contributor_kind") != "HUMAN_RESEARCH_CONTRIBUTOR":
+            errors.append("taxonomy solo intake research_lead is not human")
+        if lead.get("accepts_exploratory_dual_role_limitations") is not True:
+            errors.append("taxonomy solo intake omits dual-role exploratory acceptance")
+    ai = document.get("ai_tooling_disclosure")
+    if not isinstance(ai, Mapping):
+        errors.append("taxonomy solo intake lacks ai_tooling_disclosure")
+    elif ai.get("ai_casts_final_codes") is not False:
+        errors.append("taxonomy solo intake allows AI final codes")
+    dual = document.get("dual_role_disclosure")
+    if not isinstance(dual, Mapping):
+        errors.append("taxonomy solo intake lacks dual_role_disclosure")
+    elif dual.get("independent_validation") is not False:
+        errors.append("taxonomy solo intake claims independent validation")
+    if document.get("results_accessed_before_intake") is not False:
+        errors.append("taxonomy solo intake admits prior result access")
+    return errors
+
+
+def _solo_provisional_work_errors(document: Mapping[str, Any], path: Path) -> list[str]:
+    """Provisional workspace must stay unlocked until human accept."""
+    errors: list[str] = []
+    lock = document.get("lock")
+    if isinstance(lock, Mapping) and lock.get("locked") is True:
+        errors.append(f"solo provisional work is locked prematurely: {path.as_posix()}")
+    status = document.get("ledger_status")
+    if isinstance(status, str) and status.upper().startswith("LOCKED"):
+        errors.append(f"solo provisional ledger status is locked prematurely: {path.as_posix()}")
+    return errors
+
+
 def _taxonomy_state_errors(
     *,
     execution_documents: Mapping[Path, Any],
@@ -563,13 +632,46 @@ def _taxonomy_state_errors(
 ) -> list[str]:
     errors: list[str] = []
     intake = execution_documents.get(TAXONOMY_INTAKE)
-    other_documents = {
-        path: document
-        for path, document in execution_documents.items()
-        if path != TAXONOMY_INTAKE
-    }
+    solo_intake = execution_documents.get(TAXONOMY_SOLO_INTAKE)
 
-    if intake is None:
+    if intake is not None and solo_intake is not None:
+        errors.append(
+            "taxonomy cannot combine multi-human intake with solo intake in one state"
+        )
+
+    if intake is not None:
+        if not isinstance(intake, Mapping):
+            errors.append("taxonomy execution intake is not an object")
+        else:
+            errors.extend(_valid_taxonomy_intake_errors(intake))
+    elif solo_intake is not None:
+        if not isinstance(solo_intake, Mapping):
+            errors.append("taxonomy solo execution intake is not an object")
+        else:
+            errors.extend(_valid_taxonomy_solo_intake_errors(solo_intake))
+        for path, document in execution_documents.items():
+            if path == TAXONOMY_SOLO_INTAKE:
+                continue
+            if not isinstance(document, Mapping):
+                errors.append(f"taxonomy solo workspace document is not an object: {path}")
+                continue
+            if path == TAXONOMY_SOLO_RECEIPT:
+                continue
+            if _is_solo_execution_workspace_path(path):
+                errors.extend(_solo_provisional_work_errors(document, path))
+                continue
+            # Unexpected readiness/output JSON under execution/ is still blocked-style.
+            errors.extend(_taxonomy_blocked_document_errors(document))
+        if list(existing_outputs):
+            errors.append(
+                "taxonomy planned outputs exist while solo path still uses provisional work only"
+            )
+    else:
+        other_documents = {
+            path: document
+            for path, document in execution_documents.items()
+            if path != TAXONOMY_INTAKE
+        }
         for path, document in other_documents.items():
             if isinstance(document, Mapping):
                 errors.extend(_taxonomy_blocked_document_errors(document))
@@ -577,10 +679,6 @@ def _taxonomy_state_errors(
                 errors.append(f"taxonomy readiness is not an object: {path}")
         if list(existing_outputs):
             errors.append("taxonomy case/output work exists without an immutable intake")
-    elif not isinstance(intake, Mapping):
-        errors.append("taxonomy execution intake is not an object")
-    else:
-        errors.extend(_valid_taxonomy_intake_errors(intake))
 
     if list(finding_entries):
         errors.append("taxonomy findings are premature in the execution-readiness increment")
@@ -1059,7 +1157,15 @@ class M1StudyExecutionTests(unittest.TestCase):
     def test_01_frozen_manifests_and_permitted_bound_bytes_are_unchanged(self) -> None:
         self.assertEqual([], _immutable_frozen_errors())
 
-    def test_02_taxonomy_truthful_blocked_state_has_no_intake_or_outputs(self) -> None:
+    def test_02_taxonomy_state_is_blocked_or_valid_solo_without_locked_outputs(
+        self,
+    ) -> None:
+        """Multi-human lane stays blocked without intake; solo v3 may open.
+
+        Solo exploratory coding is allowed only with solo intake + provisional
+        work. Multi-human intake, locked planned outputs, findings, and
+        closeouts remain fail-closed until their own gates pass.
+        """
         manifest = _load_json(TAXONOMY_MANIFEST)
         output_paths = _manifest_outputs(manifest).values()
         existing_outputs = [path for path in output_paths if (ROOT / path).exists()]

@@ -140,13 +140,22 @@ class TaxonomyPreResultRepairV2Tests(unittest.TestCase):
         self.assertEqual(sha256_file(FORMAL_ANALYZER), V1_FORMAL_ANALYZER_DIGEST)
         self.assertEqual(sha256_file(FORMAL_GUARD_V2), FORMAL_GUARD_V2_DIGEST)
 
-    def test_04_planned_outputs_and_live_intake_absent(self) -> None:
+    def test_04_planned_outputs_and_multi_human_live_intake_absent(self) -> None:
+        """Pre-result v2 package did not open multi-human execution.
+
+        After taxonomy study-record v3 (solo+AI), ``execution/`` may hold solo
+        intake and provisional work. Multi-human ``execution-intake.json`` and
+        locked planned outputs under ``outputs/`` must still be absent.
+        """
         for relative in TAXONOMY_OUTPUTS + FORMAL_OUTPUTS:
             self.assertFalse((ROOT / relative).exists(), relative)
         self.assertFalse(LIVE_INTAKE.exists())
-        self.assertFalse(
-            (ROOT / "studies/foundational/m1-taxonomy-v1/execution").exists()
-        )
+        execution_dir = ROOT / "studies/foundational/m1-taxonomy-v1/execution"
+        if execution_dir.is_dir():
+            self.assertFalse((execution_dir / "execution-intake.json").exists())
+            # Locked planned-output names must not appear under outputs/.
+            outputs_dir = ROOT / "studies/foundational/m1-taxonomy-v1/outputs"
+            self.assertFalse(outputs_dir.exists())
 
     def test_05_source_reconciliation_covers_b2_b3(self) -> None:
         recon = load_json(PKG / "source-binding-reconciliation.json")

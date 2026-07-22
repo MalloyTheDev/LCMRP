@@ -29,7 +29,11 @@ If you edit the intake JSON, tell me and I will **recompute the receipt digest**
 
 ### B. Accept or revise provisional codes (required before lock)
 
-Open `term-contract-ledger.json`.
+Open:
+
+`studies/foundational/m1-taxonomy-v1/execution/work/term-contract-ledger.provisional.json`
+
+(165 cells = 33 terms × 5 checks). Do **not** invent a locked file under `outputs/` yet.
 
 For each cell (or in batches), either:
 
@@ -77,5 +81,5 @@ If v3 is not on `main` yet, merge https://github.com/MalloyTheDev/LCMRP/pull/33 
 | `execution/execution-intake-solo.json` | Your intake (edit if needed) |
 | `execution/execution-intake-solo.receipt.json` | Digest receipt |
 | `execution/HUMAN_ACTIONS.md` | This checklist |
-| `.../outputs/term-contract-ledger.json` | Analysis 1 provisional ledger |
+| `execution/work/term-contract-ledger.provisional.json` | Analysis 1 provisional ledger (unlock until you accept) |
 | `templates/foundational-execution-intake-solo.md` | Human-readable form |
