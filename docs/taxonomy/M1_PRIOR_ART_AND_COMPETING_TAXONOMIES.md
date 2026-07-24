@@ -1,10 +1,10 @@
 # M1 Prior Art and Competing Memory Taxonomies
 
-**Status:** literature synthesis — not an adopted taxonomy · Prepared 2026-07-21
+**Status:** literature synthesis — not an adopted taxonomy · Prepared 2026-07-21 · Evidence label: E0 (exploratory) · [AI-assisted]
 
 ## Claim and evidence boundary
 
-This document maps source-defined distinctions and exposes choices that a product-independent machine-memory taxonomy will have to make. It is not a finding, a registered foundational study, a formal model, a benchmark result, or evidence for any mechanism. No Charter mechanism evidence state applies. Nothing here establishes novelty, completeness, biological fidelity, usefulness, safety, or independent validation. Terms headed **LCMRP inference** are provisional interpretations proposed only to make later comparisons falsifiable.
+This document maps source-defined distinctions and exposes choices that a product-independent machine-memory taxonomy will have to make. It is not a finding, a formal model, a benchmark result, or evidence for any mechanism; it is an E0 (exploratory) input under [`METHOD.md`](../../METHOD.md). Nothing here establishes novelty, completeness, biological fidelity, usefulness, safety, or independent validation. Terms headed **LCMRP inference** are provisional interpretations proposed only to make later comparisons falsifiable.
 
 This map is a literature synthesis, not a completed evidence-synthesis finding. A later structural or taxonomy evaluation may use it as an input.
 
@@ -234,7 +234,7 @@ No positive answer is presumed. Null results, lower agreement, redundant facets,
 
 ## 13. Evidence status
 
-This artifact remains a non-evidentiary M1 research input. It records reproduced source claims, provisional inferences, and unresolved obligations. It awards no mechanism maturity label, registers no subject or study, reports no finding, and validates no taxonomy. The production registries remain outside this artifact and must not be changed on its authority.
+This artifact remains an exploratory (E0) research input. It records reproduced source claims, provisional inferences, and unresolved obligations. It awards no evidence label above E0, reports no finding, and validates no taxonomy.
 
 ## 14. Recommended next foundational study
 

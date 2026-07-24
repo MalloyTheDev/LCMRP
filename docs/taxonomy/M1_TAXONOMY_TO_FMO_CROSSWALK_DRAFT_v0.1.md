@@ -1,6 +1,6 @@
 # M1 Taxonomy-to-FMO Crosswalk Draft v0.1
 
-Status: draft proposal · Version 0.1
+Status: draft proposal · Version 0.1 · Evidence label: E1 (candidate) · [AI-assisted]
 
 ## Status
 
@@ -56,4 +56,4 @@ The mappings below compare the two candidate documents. A `direct` entry records
 
 ## Next falsification step
 
-Create a separately versioned analysis plan that binds the exact registered subject digests, maps every row to exact source locations in both candidates, permits `absent` and `conflict` outcomes, requires two independent semantic mappings plus retained disagreement, and rejects any row whose apparent correspondence is broader, circular, unsupported, or dependent on an undeclared implementation assumption. Do not add the result to either registered v1 subject in place.
+Create a separately versioned analysis plan that pins the exact bytes (SHA-256) of both candidate documents, maps every row to exact source locations in both, permits `absent` and `conflict` outcomes, requires two independent semantic mappings plus retained disagreement, and rejects any row whose apparent correspondence is broader, circular, unsupported, or dependent on an undeclared implementation assumption. Independent semantic mapping is the optional path to E3, not a prerequisite (see [`METHOD.md`](../../METHOD.md)).

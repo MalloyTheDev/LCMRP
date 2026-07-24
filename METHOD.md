@@ -104,8 +104,8 @@ no freeze/intake/guard machinery; no immutable registries or mandatory sign-off
 gates. A solo project cannot staff those, so such rules either block all work or
 get satisfied by pretending an AI is "independent" — which is worse than an
 honest single-analyst label. Provenance is the git commit hash; a citable
-snapshot is a git tag (plus a DOI at first release). The honest solo cap (§4)
-and the invitation to replicate (§9) replace the committee that isn't here.
+snapshot is a git tag (plus a DOI at first release). The honest solo cap and the
+invitation to replicate (both in §4) replace the committee that isn't here.
 
 Where an existing research artifact still says a study should use "independent
 adjudication" (e.g. the taxonomy's recommended falsification step), read that as

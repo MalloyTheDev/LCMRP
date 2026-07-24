@@ -34,6 +34,27 @@ to be refined, argued with, and revised.
   propositions (H1–H5) drawn from the taxonomy and formal model, a recommended
   first experiment, and benchmark options.
 
+## Studies and findings
+
+Solo, AI-assisted, capped at evidence label **E2** (not independently
+replicated). Each is a preregistration-and-report [study card](studies/STUDY-CARD-TEMPLATE.md).
+
+- **[H1 — do organizations K and R genuinely diverge?](studies/h1-k-vs-r/)** —
+  **SUPPORTED (E2).** All four organization cases force divergence on ≥2
+  dimensions, so the two competing organizations are distinct and are not
+  collapsed.
+- **[H2 — are the classification axes non-redundant?](studies/h2-axis-orthogonality/)** —
+  **SUPPORTED (E2).** All ten axes have an independent-variation witness; two
+  (A1, A10) rest on weaker evidence and are flagged for a purpose-built case set.
+
+## Executable and formal artifacts
+
+- **[FMO reference implementation](impl/)** — a minimal, append-only, in-memory
+  interpreter of the formal model, with tests covering the invariants, all ten
+  countermodels, the deletion-scope logic (H5), and the K-vs-R discriminator (H1).
+- **[Alloy formalization](formal/alloy/)** — a machine-checkable encoding of the
+  FMO core for satisfiability and non-entailment checks (H3).
+
 ## How this project works
 
 This is a solo, AI-assisted research effort, and its process is deliberately

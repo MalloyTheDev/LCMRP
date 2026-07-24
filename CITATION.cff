@@ -10,12 +10,12 @@ repository-code: "https://github.com/MalloyTheDev/LCMRP"
 url: "https://github.com/MalloyTheDev/LCMRP"
 license: MIT
 abstract: >-
-  An independent research and engineering program investigating lifelong,
-  human-inspired, machine-governed memory for artificial intelligence systems.
+  Working research drafts on lifelong, human-inspired memory for AI systems: a
+  candidate taxonomy, a candidate formal model, a prior-art survey, and
+  constructed test cases. These are falsifiable candidates, not validated
+  findings.
 keywords:
   - artificial intelligence
   - lifelong memory
   - memory systems
   - reproducible research
-  - security
-  - privacy
