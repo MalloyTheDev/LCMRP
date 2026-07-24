@@ -8,7 +8,7 @@
   "subject_binding": {
     "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
     "subject_version": 1,
-    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+    "raw_byte_sha256": "77ff4468d2164c9cdf61dba42287e5a9fbfe41e3ab8e920542d8811e06e95f7b"
   },
   "selection_rule": "Before freeze, construct four organization-competition cases and twelve boundary, authority, provenance, privacy, deletion, conflict, or corruption cases from the subject's open obligations. Include no expected classification. Freeze all cases with the method and analyze every case after freeze.",
   "holdout_limit": "The set is repository-visible and was designed from the candidate. It is held out only from post-freeze development; it is not independently sampled, representative, natural, or concealed from protocol authors.",

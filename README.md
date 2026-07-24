@@ -30,9 +30,26 @@ to be refined, argued with, and revised.
   positive, negative, and held-out cases plus the coding rules used to test
   whether the taxonomy's distinctions hold up.
 
+- **[Testable hypotheses](docs/HYPOTHESES.md)** — five falsifiable
+  propositions (H1–H5) drawn from the taxonomy and formal model, a recommended
+  first experiment, and benchmark options.
+
+## How this project works
+
+This is a solo, AI-assisted research effort, and its process is deliberately
+lightweight.
+
+- **[Research method](METHOD.md)** — evidence labels, hypothesis discipline,
+  reproducibility, and honesty rules, sized for one person.
+- **[Contributing](CONTRIBUTING.md)** — how to raise issues, propose changes, or
+  (most usefully) replicate and refute a study.
+- **[Decision log](docs/decisions/)** — lightweight ADRs recording why choices
+  were made.
+- **[Changelog](CHANGELOG.md)** — how the repository evolves.
+
 ## Scope
 
-The program studies memory mechanisms as research artifacts. Terms borrowed
+This project studies memory mechanisms as research artifacts. Terms borrowed
 from biological memory are motivation or analogy, not claims of equivalence,
 unless direct evidence supports a stronger relationship.
 

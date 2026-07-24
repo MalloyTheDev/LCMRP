@@ -8,7 +8,7 @@
   "subject_binding": {
     "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
     "subject_version": 1,
-    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+    "raw_byte_sha256": "77ff4468d2164c9cdf61dba42287e5a9fbfe41e3ab8e920542d8811e06e95f7b"
   },
   "construction_rule": "Before freeze, construct one bounded challenge for each profile integrity constraint. Do not attach an expected code. After freeze, retain every construction even if it exposes a method or subject defect.",
   "human_data_status": "No human subjects or participant data; all content is fictional.",
