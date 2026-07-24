@@ -6,7 +6,7 @@
     "subject_id": "LCMRP-FSUBJ-0001-MEMORY-TAXONOMY",
     "subject_version": 1,
     "locator": "docs/taxonomy/MEMORY_TAXONOMY_v0.1.md",
-    "raw_byte_sha256": "dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70"
+    "raw_byte_sha256": "77ff4468d2164c9cdf61dba42287e5a9fbfe41e3ab8e920542d8811e06e95f7b"
   },
   "rule_source": "This artifact operationalizes the exact candidate subject without replacing, correcting, or extending it. Where this artifact and the subject differ, the subject controls and the discrepancy is a protocol defect.",
   "term_scope": {

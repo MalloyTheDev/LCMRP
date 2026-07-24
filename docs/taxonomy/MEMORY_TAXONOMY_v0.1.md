@@ -306,4 +306,4 @@ Reject or supersede all or part of v0.1 if a governed analysis shows any of the 
 
 ## Recommended next falsification step
 
-Create a frozen structural/taxonomy protocol that compares Organizations K and R against a preregistered, versioned set of positive, negative, ambiguous, and adversarial constructed cases. Require term-by-term necessary-condition and negative-case checks, an explicit coverage rule, independent adjudication, and atomic reporting of every retained, narrowed, superseded, rejected, null, or invalid outcome.
+Create a preregistered structural/taxonomy study that compares Organizations K and R against a versioned set of positive, negative, ambiguous, and adversarial constructed cases. Require term-by-term necessary-condition and negative-case checks, an explicit coverage rule, and atomic reporting of every retained, narrowed, superseded, rejected, null, or invalid outcome. Independent adjudication is the optional path to independent corroboration (E3), not a prerequisite for running the study — see [`METHOD.md`](../../METHOD.md) and hypothesis H1 in [`HYPOTHESES.md`](../HYPOTHESES.md).
