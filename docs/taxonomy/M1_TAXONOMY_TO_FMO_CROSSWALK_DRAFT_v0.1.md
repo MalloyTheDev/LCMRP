@@ -1,29 +1,12 @@
 # M1 Taxonomy-to-FMO Crosswalk Draft v0.1
 
-Applicable layer: Layer 1 — Foundational Research
+Status: draft proposal · Version 0.1
 
-Artifact status: DRAFT CONTINUATION PROPOSAL / UNREGISTERED
+## Status
 
-Mechanism evidence label: Not applicable
+This is a draft, mutable research proposal. It maps terms from the [Candidate Memory Taxonomy v0.1](MEMORY_TAXONOMY_v0.1.md) to the [Candidate Formal Memory Object Model v0.1](FORMAL_MEMORY_OBJECT_MODEL_v0.1.md). It does not validate the mapping, establish completeness, or assert any finding.
 
-Scientific findings asserted: None
-
-Artifact ID: `LCMRP-M1-TAXONOMY-FMO-CROSSWALK-DRAFT`
-
-Artifact version: `0.1`
-
-## Status and provenance
-
-This draft preserves the taxonomy-to-FMO mapping proposal first introduced by commit `89f84a2b5e243a2054abfe61419c4442b5720dca`. That commit inserted the proposal into already registered Candidate Memory Taxonomy v0.1 bytes and changed the registered Candidate Formal Memory Object Model v0.1 bytes in place. The governing registries and frozen studies continued to bind the earlier raw bytes, so the in-place edits were removed and the exact registered version-1 subject bytes restored.
-
-This file is a separate, mutable research proposal. It does not amend or supersede either registered subject, change either frozen study, satisfy a planned analysis, report a finding, validate a mapping, establish completeness, award evidence, or authorize execution. A future study may bind an exact reviewed crosswalk version only through its own governed version and freeze process.
-
-The mappings below compare the exact registered Candidate Memory Taxonomy v0.1 with the exact registered FMO-0.1 candidate formal model. A `direct` entry records an apparent named counterpart in FMO-0.1; a `partial` entry records overlap with unresolved definition or coverage obligations; an `absent` entry would record no explicit counterpart identified in FMO-0.1; and a `conflict` entry would record an apparent incompatibility requiring versioned resolution. Every status remains a hypothesis pending line-level source verification and independent review.
-
-Exact comparison inputs:
-
-- `LCMRP-FSUBJ-0001-MEMORY-TAXONOMY` version 1, raw-byte SHA-256 `dbdc96095ae90549132e50cbb8759bc45f228cae7d8fcb9a107b95d33647ba70`.
-- `LCMRP-FSUBJ-0002-FORMAL-MEMORY-OBJECT-MODEL` version 1, raw-byte SHA-256 `82052e424c01d3204828472ef569f74f7c0aad418f827cffda92400562bbfaf3`.
+The mappings below compare the two candidate documents. A `direct` entry records an apparent named counterpart in FMO-0.1; a `partial` entry records overlap with unresolved definition or coverage obligations; an `absent` entry records no explicit counterpart identified in FMO-0.1; and a `conflict` entry records an apparent incompatibility requiring resolution. Every status remains a hypothesis pending line-level source verification.
 
 ## Proposed crosswalk
 

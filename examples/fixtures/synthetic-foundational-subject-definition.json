@@ -1,8 +1,0 @@
-{
-  "fixture_notice": "Synthetic schema fixture only; not a registered foundational subject, research result, or evidence.",
-  "subject_id": "LCMRP-FSUBJ-9999-SYNTHETIC-MEMORY-TAXONOMY",
-  "subject_series": "LCMRP-SYNTHETIC-MEMORY-TAXONOMY",
-  "subject_version": 1,
-  "definition": "A deliberately synthetic category system used only to exercise LCMRP M0 contracts.",
-  "boundary": "No memory mechanism, biological-validity claim, product architecture, or empirical result is represented."
-}

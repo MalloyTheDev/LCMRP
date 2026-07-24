@@ -1,15 +1,12 @@
 # M1 Prior Art and Competing Memory Taxonomies
 
-**Applicable layer: Layer 1 — Foundational Research**  
-**Artifact status:** M1 research input in progress — literature synthesis, not an adopted taxonomy  
-**Artifact type:** Unregistered prior-art map  
-**Prepared:** 2026-07-21
+**Status:** literature synthesis — not an adopted taxonomy · Prepared 2026-07-21
 
 ## Claim and evidence boundary
 
 This document maps source-defined distinctions and exposes choices that a product-independent machine-memory taxonomy will have to make. It is not a finding, a registered foundational study, a formal model, a benchmark result, or evidence for any mechanism. No Charter mechanism evidence state applies. Nothing here establishes novelty, completeness, biological fidelity, usefulness, safety, or independent validation. Terms headed **LCMRP inference** are provisional interpretations proposed only to make later comparisons falsifiable.
 
-The accepted [Foundational Study Contract](../program/FOUNDATIONAL_STUDY_CONTRACT.md) does not yet support evidence-synthesis studies. This map therefore must not be cited as a completed evidence-synthesis finding. A later structural or taxonomy evaluation may use it as an input only after independently freezing its subject, cases, adjudication procedure, and rejection criteria.
+This map is a literature synthesis, not a completed evidence-synthesis finding. A later structural or taxonomy evaluation may use it as an input.
 
 ## 1. Research question
 
