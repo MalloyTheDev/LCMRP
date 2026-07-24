@@ -1,6 +1,6 @@
 # Candidate Formal Memory Object Model v0.1
 
-Status: draft candidate · Version 0.1
+Status: draft candidate · Version 0.1 · Evidence label: E1 (candidate) · [AI-assisted]
 
 ## Candidate status
 

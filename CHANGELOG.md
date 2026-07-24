@@ -22,6 +22,20 @@ evolves.
   template and the first two records.
 - `studies/STUDY-CARD-TEMPLATE.md` — the preregistration-and-report template for
   running a study (e.g. the H1 first experiment).
+- `studies/h1-k-vs-r/` — first study (H1): Organizations K and R genuinely
+  diverge — **SUPPORTED (E2, `[AI-assisted]`)**.
+- `studies/h2-axis-orthogonality/` — second study (H2): the ten classification
+  axes are non-redundant — **SUPPORTED (E2, `[AI-assisted]`)**, with two
+  isolation gaps flagged.
+- `impl/` — minimal FMO reference implementation (append-only interpreter) with
+  a passing test suite (invariants, all ten countermodels, deletion scope,
+  K-vs-R discriminator).
+- `formal/alloy/` — Alloy encoding of the FMO core for satisfiability and
+  non-entailment checks (H3).
+- `.github/` — lightweight issue templates (critique/counterexample, question)
+  and a PR checklist.
+- `docs/decisions/0003-*.md` — records the first studies, the executable/formal
+  artifacts, evidence-label assignment, and the legacy-vocabulary reframe.
 - This changelog.
 
 ### Changed
@@ -29,6 +43,10 @@ evolves.
   `category-evaluation-rules.json` to the current bytes, and reframed the
   taxonomy's "independent adjudication" step as the optional path to E3 rather
   than a prerequisite, per `METHOD.md`.
+- Added inline evidence labels (E1/E0) and `[AI-assisted]` tags to the formal
+  model, crosswalk, and prior-art headers; removed leftover references to the
+  deleted Charter/registries; fixed a broken `METHOD.md` cross-reference; and
+  aligned the `CITATION.cff` abstract with the README's falsifiable-draft framing.
 
 ### Removed
 - The prior AI-generated governance apparatus (multi-role governance, review
