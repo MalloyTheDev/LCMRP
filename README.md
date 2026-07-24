@@ -8,6 +8,12 @@ This repository holds working research drafts. Nothing here is a validated
 finding or an adopted standard; the documents are falsifiable candidates meant
 to be refined, argued with, and revised.
 
+LCMRP is the **research arm of [CorpusStudio](https://github.com/MalloyTheDev/CorpusStudio)**:
+it investigates the lifelong-memory questions that surfaced while building
+CorpusStudio's training harness, and its findings feed back into the product.
+Findings stay method-first (see [`METHOD.md`](METHOD.md)) so they're worth
+relying on — independence of *evidence*, not of *purpose*.
+
 ## Contents
 
 - **[Candidate Memory Taxonomy v0.1](docs/taxonomy/MEMORY_TAXONOMY_v0.1.md)** —
@@ -46,6 +52,9 @@ replicated). Each is a preregistration-and-report [study card](studies/STUDY-CAR
 - **[H2 — are the classification axes non-redundant?](studies/h2-axis-orthogonality/)** —
   **SUPPORTED (E2).** All ten axes have an independent-variation witness; two
   (A1, A10) rest on weaker evidence and are flagged for a purpose-built case set.
+- **[H4-Oracle — the reasoning ceiling on LongMemEval](studies/h4-longmemeval-oracle/)** —
+  **planned** (preregistered). Runs on the CorpusStudio eval harness; a scoped
+  first step toward the empirical H4 memory-retrieval comparison.
 
 ## Executable and formal artifacts
 

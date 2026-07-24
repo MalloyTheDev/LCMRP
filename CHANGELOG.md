@@ -11,6 +11,18 @@ evolves.
 ## [Unreleased]
 
 ### Added
+- `studies/h4-longmemeval-oracle/` — preregistered H4-Oracle study card (the
+  reasoning-ceiling step toward H4) plus `convert_longmemeval.py`, a
+  LongMemEval→instruction-JSONL converter with a passing self-test, runnable on
+  the CorpusStudio eval harness.
+- `docs/decisions/0004-*.md` — records LCMRP's relationship to CorpusStudio
+  (research arm of the product) and the decision to use its evaluation harness.
+
+### Changed
+- README now states the CorpusStudio relationship plainly (research arm;
+  findings feed back; independence of evidence, not purpose).
+
+### Added (earlier in this unreleased set)
 - `METHOD.md` — the project's research method: evidence labels (E0–E3 + the
   `[AI-assisted]` tag), preregistration-lite, reproducibility, honesty rules,
   and artifact versioning.
