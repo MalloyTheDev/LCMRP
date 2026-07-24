@@ -1,11 +1,6 @@
 # Candidate Formal Memory Object Model v0.1
 
-Applicable layer: Layer 1 — Foundational Research  
-Artifact status: LAUNCHED / IN PROGRESS candidate  
-Mechanism evidence label: Not applicable  
-Scientific findings asserted: None  
-Artifact ID: `LCMRP-FORMAL-MEMORY-OBJECT-MODEL`  
-Artifact version: `0.1`
+Status: draft candidate · Version 0.1
 
 ## Candidate status
 

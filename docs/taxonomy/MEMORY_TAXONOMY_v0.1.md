@@ -1,17 +1,12 @@
 # Candidate Memory Taxonomy v0.1
 
-Applicable layer: Layer 1 — Foundational Research  
-Artifact status: LAUNCHED / IN PROGRESS candidate  
-Mechanism evidence label: Not applicable  
-Scientific findings asserted: None  
-Artifact ID: `LCMRP-MEMORY-TAXONOMY`  
-Artifact version: `0.1`
+Status: draft candidate · Version 0.1
 
 ## Candidate status and use
 
-This artifact proposes a product-independent vocabulary for studying lifelong machine memory. Its definitions are falsifiable candidates, not adopted terminology or findings. The categories are not presumed to be mutually exclusive, collectively exhaustive, biologically equivalent, or useful in an implementation.
+This document proposes a product-independent vocabulary for studying lifelong machine memory. Its definitions are falsifiable candidates, not adopted terminology or findings. The categories are not presumed to be mutually exclusive, collectively exhaustive, biologically equivalent, or useful in an implementation.
 
-The candidate taxonomy is intended to support later structural evaluation under the [Foundational Study Contract](../program/FOUNDATIONAL_STUDY_CONTRACT.md). Conformance to this document would mean only that a study or model uses the stated candidate definitions consistently. It would not establish that the definitions are correct, complete, externally valid, secure, or preferable to alternatives.
+The candidate taxonomy is intended to support later structural evaluation against the constructed cases in [`cases/`](cases/). Conformance to this document would mean only that a study or model uses the stated candidate definitions consistently. It would not establish that the definitions are correct, complete, externally valid, secure, or preferable to alternatives.
 
 ## Version and identifier rules
 

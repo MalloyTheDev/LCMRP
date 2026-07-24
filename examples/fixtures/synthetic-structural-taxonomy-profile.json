@@ -1,8 +1,0 @@
-{
-  "fixture_notice": "Synthetic schema fixture only; not a registered method result, completed study, or evidence.",
-  "profile_id": "LCMRP-MPROF-9999-STRUCTURAL-TAXONOMY",
-  "profile_series": "LCMRP-METHOD-PROFILE-STRUCTURAL-TAXONOMY",
-  "profile_version": 1,
-  "profile_kind": "STRUCTURAL_OR_TAXONOMY_EVALUATION",
-  "contract_scope": "Exercises competency-question, integrity-constraint, positive-case, negative-case, adjudication, and coverage fields only."
-}
